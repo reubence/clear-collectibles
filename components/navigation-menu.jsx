@@ -61,8 +61,8 @@ const frameworks = [
   },
   {
     icon: LEADERBOARD,
-    value: "user leaderboard",
-    label: "USER LEADERBOARD",
+    value: "leaderboard",
+    label: "LEADERBOARD",
   },
 ];
 
@@ -130,7 +130,7 @@ export default function NavigationMenu() {
                   <Button
                     role="combobox"
                     aria-expanded={open}
-                    className="py-3 w-64 justify-between font-semibold"
+                    className="py-3 w-64 justify-between font-semibold bg-white"
                   >
                     {value ? (
                       <div className="flex items-center text-sm font-semibold capitalize">

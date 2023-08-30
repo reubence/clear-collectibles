@@ -91,7 +91,7 @@ function Shop() {
         </div>
         <Separator className="my-6 mr-2.5 bg-white" />
         <div className="h-[calc(100vh-348px)] relative flex gap-7">
-          <div className="h-full w-[425px] bg-white rounded-2xl col-span-2 p-8 text-2xl">
+          <div className="hidden lg:block h-full w-[425px] bg-white rounded-2xl col-span-2 p-8 text-2xl">
             Type filtering
             <Separator className="my-7 bg-[#E6E6E6]" />
             {/* FILTERING OPTIONS */}
@@ -114,7 +114,7 @@ function Shop() {
           </div>
           <div className="h-full rounded-2xl col-span-5 flex flex-grow flex-col">
             <ScrollArea className="w-full h-[calc(100vh-458px)] border-b border-white pb-4 mb-5">
-              <div className="grid grid-cols-6 gap-3">
+              <div className="grid grid-cols-2 lg:grid-cols-6 gap-3">
                 {[...Array(16)].map((_, index) => (
                   <div
                     key={index}
