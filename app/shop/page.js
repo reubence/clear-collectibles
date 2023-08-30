@@ -113,7 +113,7 @@ function Shop() {
             </ScrollArea>
           </div>
           <div className="h-full rounded-2xl col-span-5 flex flex-grow flex-col">
-            <ScrollArea className="w-full h-[calc(100vh-458px)] border-b border-white pb-14 mb-5">
+            <ScrollArea className="w-full h-[calc(100vh-458px)] border-b border-white pb-4 mb-5">
               <div className="grid grid-cols-6 gap-3">
                 {[...Array(16)].map((_, index) => (
                   <div
