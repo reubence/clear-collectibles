@@ -2,6 +2,8 @@ import Image from "next/image";
 import React from "react";
 import SHOP from "@/public/images/icons/shop-icon.svg";
 import CLOCK from "@/public/images/icons/clock-icon.svg";
+import BUY from "@/public/images/icons/buy-icon.svg";
+import NFT_3 from "@/public/images/nft-3.png";
 import {
   Command,
   CommandEmpty,
@@ -17,8 +19,8 @@ import { RocketIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { Label } from "@/components/ui/label";
-import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { ScrollArea } from "@/components/ui/scroll-area";
+import { Checkbox } from "@/components/ui/checkbox";
 
 const filtering = [
   {
@@ -95,17 +97,68 @@ function Shop() {
             {/* FILTERING OPTIONS */}
             <ScrollArea className="h-[calc(100vh-500px)] pr-2.5">
               {filtering.map((filter, index) => (
-                <RadioGroup defaultValue="banana" key={index} className="mb-10">
-                  <div className="flex items-center justify-between">
-                    <Label htmlFor={filter.label}>{filter.name}</Label>
-                    <RadioGroupItem value={filter.label} id={filter.label} />
-                  </div>
-                </RadioGroup>
+                <div
+                  className="flex items-center justify-between mb-10"
+                  key={index}
+                >
+                  <label
+                    htmlFor={filter.label}
+                    className="text-xl font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                  >
+                    {filter.name}
+                  </label>
+                  <Checkbox id={filter.label} />
+                </div>
               ))}
             </ScrollArea>
           </div>
-          <div className="h-full bg-white rounded-2xl col-span-5 flex flex-grow">
-            Text
+          <div className="h-full rounded-2xl col-span-5 flex flex-grow flex-col">
+            <ScrollArea className="bg-primary w-full h-[calc(100vh-458px)] border-b border-white pb-14 mb-5">
+              T
+            </ScrollArea>
+            <div className="flex justify-between">
+              <div className="flex gap-x-6">
+                <Image
+                  src={NFT_3}
+                  alt="Clock Icon"
+                  height={94}
+                  width={94}
+                  className="rounded-2xl w-[94px] h-[94px]"
+                  unoptimized
+                />
+
+                <div className="flex flex-col">
+                  <h3 className="inline-block text-xl font-bold uppercase">
+                    SMB Inception
+                  </h3>
+                  <h2 className="inline-block text-[32px] uppercase">2343</h2>
+                  <p className="inline-block text-sm font-normal">
+                    A Banana icon badge for the MonkeDao Discord
+                  </p>
+                </div>
+              </div>
+              <div className="flex gap-6">
+                <div className="flex flex-col gap-y-1.5">
+                  <p className="text-2xl uppercase font-bold">
+                    Insufficient Bubbles!
+                  </p>
+                  <p className="text-2xl uppercase font-normal">
+                    My banana: 2932
+                  </p>
+                </div>
+                <Button className="gap-2 text-3xl font-bold text-white uppercase py-2 w-48 h-fit rounded-2xl">
+                  <Image
+                    src={SHOP}
+                    alt="Shop Icon"
+                    height={40}
+                    width={40}
+                    className="pb-2.5 text-white"
+                    unoptimized
+                  />
+                  Buy
+                </Button>
+              </div>
+            </div>
           </div>
         </div>
       </div>
