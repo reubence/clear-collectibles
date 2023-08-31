@@ -123,7 +123,7 @@ function History() {
           <div className="lg:h-[calc(100vh-348px)] relative flex flex-col lg:flex-row gap-7">
             <div
               className={cn(
-                "hidden lg:block h-full w-full lg:w-[425px] lg:bg-white rounded-2xl col-span-2 lg:p-8 text-2xl",
+                "hidden lg:block h-full w-full lg:w-fit lg:bg-white rounded-2xl col-span-2 lg:p-8 text-2xl",
                 { block: openFilterMobile }
               )}
             >
@@ -133,12 +133,12 @@ function History() {
               <ScrollArea className="lg:h-[calc(100vh-500px)] pr-2.5">
                 {filtering.map((filter, index) => (
                   <div
-                    className="flex items-center justify-between mb-10"
+                    className="flex items-center justify-between mb-10 gap-8"
                     key={index}
                   >
                     <label
                       htmlFor={filter.label}
-                      className="text-base font-semibold lg:text-xl lg:font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                      className="whitespace-nowrap text-base font-semibold lg:text-xl lg:font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
                     >
                       {filter.name}
                     </label>
