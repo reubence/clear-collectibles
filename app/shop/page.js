@@ -68,7 +68,7 @@ function Shop() {
                   alt="Shop Icon"
                   height={50}
                   width={50}
-                  className="w-6 h-6 lg:w-[50px] lg:h-[50px] mb-1 lg:pb-2"
+                  className="w-6 h-6 lg:w-[50px] lg:h-[50px] mb-1 lg:pb-1.5"
                   unoptimized
                 />
                 Shop
@@ -123,8 +123,8 @@ function Shop() {
           <div className="lg:h-[calc(100vh-348px)] relative flex flex-col lg:flex-row gap-7">
             <div
               className={cn(
-                "h-full w-full lg:w-[425px] lg:bg-white rounded-2xl col-span-2 lg:p-8 text-2xl",
-                { "hidden lg:block": openFilterMobile }
+                "hidden lg:block h-full w-full lg:w-[425px] lg:bg-white rounded-2xl col-span-2 lg:p-8 text-2xl",
+                { block: openFilterMobile }
               )}
             >
               <span class="hidden lg:block">Type filtering</span>
