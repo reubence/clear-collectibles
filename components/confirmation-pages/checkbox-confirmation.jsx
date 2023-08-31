@@ -1,12 +1,15 @@
-import Image from "next/image";
 import React from "react";
+import { Separator } from "../ui/separator";
+import { Button } from "../ui/button";
 import NFT_3 from "@/public/images/nft-3.png";
-import { Separator } from "./ui/separator";
-import { Button } from "./ui/button";
+import Image from "next/image";
+import Link from "next/link";
+import { Checkbox } from "../ui/checkbox";
+import { Label } from "../ui/label";
 
-function ConfirmationMenu() {
+function CheckboxConfirmation() {
   return (
-    <div className="px-8 pt-6 pb-7 flex flex-col gap-4 items-start w-full lg:w-[584px]">
+    <div className="px-8 pt-6 pb-7 flex flex-col gap-4 items-start w-full\\ lg:w-[584px]">
       <div className="flex w-full h-full justify-between items-center text-base font-bold whitespace-nowrap">
         <span>Confirm purchase?</span>
         <svg
@@ -67,15 +70,48 @@ function ConfirmationMenu() {
 
       <Separator className="w-full" />
 
-      <p className="text-sm font-medium text-muted-foreground/50">
-        This badge will be automatically show up next to your name in the
-        MonkeDAO discord server!
+      <p className="text-sm font-medium text-muted-foreground/50 ">
+        Redeem your airdropped all domains NFT for a monke domain on{" "}
+        <Link
+          href="https://alldomains.id/"
+          className="text-primary cursor-pointer"
+        >
+          https://alldomains.id/
+        </Link>
       </p>
+
+      <Separator className="w-full" />
+      <div className="flex flex-col break-all gap-5 text-sm font-extrabold w-full">
+        <p>Select airdrop target</p>
+
+        <div className="flex w-full items-center justify-between gap-16">
+          <Label
+            htmlFor="target"
+            className="font-medium peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+          >
+            asujorjoiqwj4901283928i2u9nk12h31923k1
+          </Label>
+          <Checkbox id="target" />
+        </div>
+
+        <div className="flex w-full items-center justify-between gap-16">
+          <Label
+            htmlFor="target"
+            className="font-medium peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+          >
+            asujorjoiqwj4901283928i2u9nk12h31923k1
+          </Label>
+          <Checkbox id="target" />
+        </div>
+      </div>
 
       <Separator className="w-full" />
 
       <div className="w-full flex items-center justify-end gap-5">
-        <Button className="min-w-fit gap-3.5 py-4 text-xs lg:text-base text-white capitalize lg:uppercase">
+        <Button
+          variant="outline"
+          className="min-w-fit gap-3.5 py-4 text-xs lg:text-base capitalize lg:uppercase"
+        >
           No
         </Button>
         <Button className="min-w-fit gap-3.5 py-4 text-xs lg:text-base text-white capitalize lg:uppercase">
@@ -86,4 +122,4 @@ function ConfirmationMenu() {
   );
 }
 
-export default ConfirmationMenu;
+export default CheckboxConfirmation;
