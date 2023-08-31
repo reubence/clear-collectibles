@@ -64,6 +64,16 @@ const frameworks = [
     value: "leaderboard",
     label: "LEADERBOARD",
   },
+  {
+    icon: SHOP,
+    value: "shop",
+    label: "SHOP",
+  },
+  {
+    icon: DISCONNECT,
+    value: "disconnect",
+    label: "DISCONNECT",
+  },
 ];
 
 function classNames() {
