@@ -265,7 +265,7 @@ function Shop() {
               </svg>{" "}
               Buy
             </SheetTrigger>
-            <SheetContent side="bottom" className="bg-white">
+            <SheetContent side="bottom" className="">
               <ConfirmationMenu />
             </SheetContent>
           </Sheet>
