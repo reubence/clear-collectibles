@@ -86,14 +86,24 @@ export default function NavigationMenu() {
   const [open, setOpen] = React.useState(false);
   const [value, setValue] = React.useState("");
   const [active, setActive] = React.useState(
-    pathname === "/dashboard" ? "dashboard" : "leaderboard"
+    pathname === "/shop"
+      ? "shop"
+      : pathname === "/leaderboard"
+      ? "leaderboard"
+      : pathname === "/shop/history"
+      ? "shop-history"
+      : ""
   );
 
   React.useEffect(() => {
-    if (pathname === "/dashboard") {
-      setActive("dashboard");
+    if (pathname === "/") {
+      setActive("");
     } else if (pathname === "/leaderboard") {
       setActive("leaderboard");
+    } else if (pathname === "/shop/history") {
+      setActive("shop-history");
+    } else if (pathname === "/shop") {
+      setActive("shop");
     }
   }, [pathname]);
 
@@ -203,6 +213,8 @@ export default function NavigationMenu() {
                                 (framework) => framework.value === value
                               ).icon
                             }
+                            width={20}
+                            height={20}
                             className="mr-3.5"
                           />
                           {framework.label}
