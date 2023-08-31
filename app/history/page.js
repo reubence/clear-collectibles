@@ -147,166 +147,147 @@ function History() {
                 ))}
               </ScrollArea>
             </div>
-            <div className="h-full rounded-2xl flex flex-grow flex-col">
-              <ScrollArea className="w-full lg:h-[calc(100vh-458px)] lg:border-b lg:border-white pb-44 lg:pb-4 lg:mb-5">
-                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-3">
+            <div className="h-full rounded-2xl flex flex-grow flex-col bg-white">
+              <ScrollArea className="w-full lg:h-[calc(100vh-258px)] lg:border-b lg:border-white pb-44 lg:pb-4 lg:mb-5">
+                <div className="flex flex-col gap-3 lg:gap-5 p-8">
                   {[...Array(16)].map((_, index) => (
                     <div
                       key={index}
-                      className="col-span-1 bg-white rounded-2xl max-h-[219px] lg:max-h-[264px] max-w-[200px] p-3"
+                      className="flex flex-col w-full border-t-2 border-t-primary border-b"
                     >
-                      <Image
-                        src={NFT_3}
-                        alt="Clock Icon"
-                        height={176}
-                        width={176}
-                        className="rounded-2xl h-[136px] w-[176px] lg:h-[176px] aspect-square object-cover"
-                        unoptimized
-                      />
-                      <p className="text-xs font-bold uppercase mt-2.5">
-                        SMB Inception
-                      </p>
-                      <p className="text-2xl uppercase">2343</p>
+                      <div className="flex bg-primary/10 p-5 justify-between items-center gap-3">
+                        {/* ORDER PLACED */}
+                        <div className="flex flex-col gap-1.5">
+                          <h2 className="font-normal text-muted-foreground/50">
+                            Order placed
+                          </h2>
+                          <p className="font-semibold">2023-09-08 18:00</p>
+                        </div>
+                        {/* Total */}
+                        <div className="flex flex-col gap-1.5">
+                          <h2 className="font-normal text-muted-foreground/50">
+                            Total
+                          </h2>
+                          <p className="font-semibold">5930</p>
+                        </div>
+                        {/* Quantity purchased */}
+                        <div className="flex flex-col gap-1.5">
+                          <h2 className="font-normal text-muted-foreground/50">
+                            Quantity purchased
+                          </h2>
+                          <p className="font-semibold">1</p>
+                        </div>
+                        {/* Delivery method */}
+                        <div className="flex flex-col gap-1.5">
+                          <h2 className="font-normal text-muted-foreground/50">
+                            Delivery method
+                          </h2>
+                          <p className="font-semibold">Manual</p>
+                        </div>
+                        {/* Support Ticket */}
+                        <div className="flex flex-col items-end gap-1.5 2xl:w-56">
+                          <h2 className="font-semibold text-primary">
+                            TX9Z18Y45G5
+                          </h2>
+                          <Button
+                            className={cn(
+                              "w-fit !uppercase !text-sm !px-2 !py-2 !font-medium"
+                            )}
+                          >
+                            Get Support
+                          </Button>
+                        </div>
+                      </div>
+                      <div class="flex gap-5 justify-between p-5">
+                        <div class="flex gap-5">
+                          <Image
+                            src={NFT_3}
+                            alt="Clock Icon"
+                            height={80}
+                            width={80}
+                            className="rounded-2xl h-[136px] w-[80px] lg:h-[80px] aspect-square object-cover"
+                            unoptimized
+                          />
+                          <div class="flex flex-col gap-2">
+                            <div class="flex items-center justify-between">
+                              <div class="flex flex-col gap-2">
+                                <p className="text-base font-semibold">
+                                  Merch Pack
+                                </p>
+                                <p className="text-base font-normal text-muted-foreground/50">
+                                  September Merch Pack
+                                </p>
+                              </div>
+                              <div className="flex flex-col gap-2">
+                                <p className="flex items-center font-normal gap-3">
+                                  Code:{" "}
+                                  <span className="font-semibold">
+                                    0382chjidwliajd012jn39123
+                                  </span>
+                                  <Button variant="ghost" size="ghost">
+                                    <svg
+                                      className="mb-1.5"
+                                      xmlns="http://www.w3.org/2000/svg"
+                                      width="20"
+                                      height="20"
+                                      viewBox="0 0 20 20"
+                                      fill="none"
+                                    >
+                                      <path
+                                        d="M9.1665 16.2501H13.9165C13.67 16.866 13.2444 17.3938 12.6947 17.7652C12.145 18.1366 11.4965 18.3345 10.8331 18.3334H4.99982C4.56205 18.3335 4.12854 18.2474 3.72407 18.0799C3.3196 17.9124 2.95209 17.6669 2.64254 17.3574C2.33298 17.0478 2.08746 16.6803 1.91999 16.2758C1.75252 15.8713 1.66638 15.4378 1.6665 15.0001V8.33339C1.66749 7.52166 1.96412 6.73809 2.50092 6.12921C3.03773 5.52032 3.77794 5.12782 4.58314 5.02511V11.6667C4.58314 14.1917 6.64147 16.2501 9.1665 16.2501ZM16.2498 5.20839H18.0165C17.9653 5.13328 17.9066 5.0635 17.8415 5.00007L14.9998 2.15827C14.9385 2.09339 14.8683 2.03739 14.7915 1.99187V3.75007C14.7933 4.13627 14.9476 4.50613 15.2207 4.77922C15.4938 5.05232 15.8636 5.20655 16.2498 5.20839ZM16.2498 6.45839C15.532 6.457 14.8439 6.17122 14.3363 5.66361C13.8287 5.156 13.5429 4.46793 13.5415 3.75007V1.66675H9.1665C8.72873 1.66663 8.29522 1.75276 7.89075 1.92023C7.48627 2.0877 7.11876 2.33323 6.8092 2.64278C6.49965 2.95233 6.25412 3.31984 6.08664 3.72431C5.91917 4.12879 5.83303 4.56229 5.83314 5.00007V11.6667C5.83303 12.1045 5.91917 12.538 6.08665 12.9425C6.25413 13.347 6.49966 13.7145 6.80921 14.024C7.11877 14.3336 7.48628 14.5791 7.89075 14.7466C8.29522 14.914 8.72873 15.0002 9.1665 15.0001H14.9998C15.4376 15.0002 15.8711 14.914 16.2756 14.7466C16.68 14.5791 17.0476 14.3336 17.3571 14.024C17.6667 13.7145 17.9122 13.347 18.0797 12.9425C18.2471 12.538 18.3333 12.1045 18.3331 11.6667V6.45839H16.2498Z"
+                                        fill="#6CD2FF"
+                                      />
+                                    </svg>
+                                  </Button>
+                                </p>
+                                <p className="flex items-center font-normal gap-3">
+                                  Code:{" "}
+                                  <span className="font-semibold">
+                                    0382chjidwliajd012jn39123
+                                  </span>
+                                  <Button variant="ghost" size="ghost">
+                                    <svg
+                                      className="mb-1.5"
+                                      xmlns="http://www.w3.org/2000/svg"
+                                      width="20"
+                                      height="20"
+                                      viewBox="0 0 20 20"
+                                      fill="none"
+                                    >
+                                      <path
+                                        d="M9.1665 16.2501H13.9165C13.67 16.866 13.2444 17.3938 12.6947 17.7652C12.145 18.1366 11.4965 18.3345 10.8331 18.3334H4.99982C4.56205 18.3335 4.12854 18.2474 3.72407 18.0799C3.3196 17.9124 2.95209 17.6669 2.64254 17.3574C2.33298 17.0478 2.08746 16.6803 1.91999 16.2758C1.75252 15.8713 1.66638 15.4378 1.6665 15.0001V8.33339C1.66749 7.52166 1.96412 6.73809 2.50092 6.12921C3.03773 5.52032 3.77794 5.12782 4.58314 5.02511V11.6667C4.58314 14.1917 6.64147 16.2501 9.1665 16.2501ZM16.2498 5.20839H18.0165C17.9653 5.13328 17.9066 5.0635 17.8415 5.00007L14.9998 2.15827C14.9385 2.09339 14.8683 2.03739 14.7915 1.99187V3.75007C14.7933 4.13627 14.9476 4.50613 15.2207 4.77922C15.4938 5.05232 15.8636 5.20655 16.2498 5.20839ZM16.2498 6.45839C15.532 6.457 14.8439 6.17122 14.3363 5.66361C13.8287 5.156 13.5429 4.46793 13.5415 3.75007V1.66675H9.1665C8.72873 1.66663 8.29522 1.75276 7.89075 1.92023C7.48627 2.0877 7.11876 2.33323 6.8092 2.64278C6.49965 2.95233 6.25412 3.31984 6.08664 3.72431C5.91917 4.12879 5.83303 4.56229 5.83314 5.00007V11.6667C5.83303 12.1045 5.91917 12.538 6.08665 12.9425C6.25413 13.347 6.49966 13.7145 6.80921 14.024C7.11877 14.3336 7.48628 14.5791 7.89075 14.7466C8.29522 14.914 8.72873 15.0002 9.1665 15.0001H14.9998C15.4376 15.0002 15.8711 14.914 16.2756 14.7466C16.68 14.5791 17.0476 14.3336 17.3571 14.024C17.6667 13.7145 17.9122 13.347 18.0797 12.9425C18.2471 12.538 18.3333 12.1045 18.3331 11.6667V6.45839H16.2498Z"
+                                        fill="#6CD2FF"
+                                      />
+                                    </svg>
+                                  </Button>
+                                </p>
+                              </div>
+                            </div>
+                            <p className="text-base font-normal text-muted-foreground/50">
+                              A code will be sent your order history,which can
+                              you redeem in a google form for next steps.
+                            </p>
+                          </div>
+                        </div>
+                        {/* ORDER STATUS */}
+                        <div className="flex flex-col gap-4">
+                          <p>Some Status</p>
+                          <Button
+                            variant="outline"
+                            className={cn(
+                              "w-fit !uppercase !text-sm !px-2 !py-2 !font-medium"
+                            )}
+                          >
+                            Reddem code
+                          </Button>
+                        </div>
+                      </div>
                     </div>
                   ))}
                 </div>
               </ScrollArea>
-
-              {/* DESKTOP BOTTOM SHOP NAV HIDDEN ON MOBILE */}
-              <div className="hidden lg:flex justify-between items-center">
-                <div className="flex gap-x-6">
-                  <Image
-                    src={NFT_3}
-                    alt="Clock Icon"
-                    height={94}
-                    width={94}
-                    className="rounded-2xl w-[94px] h-[94px]"
-                    unoptimized
-                  />
-
-                  <div className="flex flex-col">
-                    <h3 className="inline-block text-xl font-bold uppercase">
-                      SMB Inception
-                    </h3>
-                    <h2 className="inline-block text-[32px] uppercase">2343</h2>
-                    <p className="inline-block text-sm font-normal">
-                      A Banana icon badge for the MonkeDao Discord
-                    </p>
-                  </div>
-                </div>
-                <div className="flex gap-6">
-                  <div className="flex flex-col gap-y-1.5">
-                    <p className="text-2xl uppercase font-bold whitespace-nowrap">
-                      Insufficient Bubbles!
-                    </p>
-                    <p className="text-2xl uppercase font-normal">
-                      My banana: 2932
-                    </p>
-                  </div>
-                  <Popover>
-                    <PopoverTrigger
-                      className={cn(
-                        buttonVariants(),
-                        "gap-2 text-3xl font-bold text-white uppercase py-2 w-48 h-fit rounded-2xl"
-                      )}
-                    >
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="40"
-                        height="40"
-                        viewBox="0 0 40 40"
-                        fill="none"
-                        className="mb-2.5"
-                      >
-                        <path
-                          d="M30.2465 11.9421H27.3185C27.3185 7.89812 24.0401 4.61572 20.0001 4.61572C15.9601 4.61572 12.6817 7.89812 12.6817 11.9421H9.75368C8.14408 11.9421 6.84168 13.2613 6.84168 14.8733L6.82568 32.4581C6.82737 33.2345 7.1363 33.9786 7.68495 34.5278C8.23359 35.0771 8.97735 35.3868 9.75368 35.3893H30.2457C31.022 35.3868 31.7658 35.0771 32.3144 34.5278C32.8631 33.9786 33.172 33.2345 33.1737 32.4581V14.8741C33.172 14.0978 32.8631 13.3537 32.3144 12.8044C31.7658 12.2552 31.022 11.9455 30.2457 11.9429L30.2465 11.9421ZM20.0001 7.54612C20.5773 7.5456 21.149 7.65897 21.6824 7.87975C22.2157 8.10054 22.7003 8.42439 23.1083 8.83275C23.5163 9.24111 23.8397 9.72597 24.06 10.2595C24.2803 10.7931 24.3931 11.3649 24.3921 11.9421H15.6081C15.607 11.3649 15.7199 10.7931 15.9402 10.2595C16.1605 9.72597 16.4839 9.24111 16.8919 8.83275C17.2999 8.42439 17.7844 8.10054 18.3178 7.87975C18.8511 7.65897 19.4228 7.5456 20.0001 7.54612ZM20.0001 22.2005C15.9601 22.2005 12.6817 18.9181 12.6817 14.8725H15.6089C15.6077 15.4498 15.7205 16.0217 15.9408 16.5554C16.161 17.089 16.4844 17.574 16.8924 17.9824C17.3004 18.3909 17.785 18.7148 18.3184 18.9356C18.8518 19.1565 19.4236 19.2699 20.0009 19.2693C20.578 19.2696 21.1495 19.1561 21.6827 18.9352C22.2159 18.7144 22.7002 18.3905 23.1081 17.9821C23.5159 17.5738 23.8391 17.089 24.0593 16.5556C24.2795 16.0221 24.3923 15.4504 24.3913 14.8733H27.3193C27.3193 18.9181 24.0401 22.2005 20.0001 22.2005Z"
-                          fill="#F3F8FA"
-                        />
-                      </svg>{" "}
-                      Buy
-                    </PopoverTrigger>
-                    <PopoverContent>
-                      {/* <StandardConfirmation /> */}
-                      {/* <CheckboxConfirmation /> */}
-                      {/* <EmailConfirmation /> */}
-                      <AddressConfirmation />
-                    </PopoverContent>
-                  </Popover>
-                </div>
-              </div>
             </div>
           </div>
-        </div>
-      </div>
-
-      {/* MOBILE BOTTOM STICKY SHOP NAV */}
-      <div className="bg-[#E7F1F5] bottom-0 block lg:hidden fixed w-full">
-        <ScrollArea className="w-full border-t border-b border-t-white border-b-white h-28 p-5">
-          <div className="flex flex-col gap-y-6 lg:flex-row justify-between items-start">
-            <div className="flex gap-x-3 lg:gap-x-6">
-              <Image
-                src={NFT_3}
-                alt="Clock Icon"
-                height={94}
-                width={94}
-                className="rounded-2xl w-[70px] lg:w-[94px] h-[70px] lg:h-[94px]"
-                unoptimized
-              />
-
-              <div className="flex flex-col justify-center gap-0.5 lg:gap-0">
-                <h3 className="inline-block text-base lg:text-xl font-bold uppercase">
-                  SMB Inception
-                </h3>
-                <h2 className="inline-block text-2xl lg:text-[32px] uppercase">
-                  2343
-                </h2>
-                <p className="hidden lg:inline-block text-sm font-normal">
-                  A Banana icon badge for the MonkeDao Discord
-                </p>
-              </div>
-            </div>
-            <div className="flex gap-6">
-              <div className="flex flex-col gap-y-1.5">
-                <p className="text-base lg:text-2xl uppercase font-bold whitespace-nowrap">
-                  Insufficient Bubbles!
-                </p>
-                <p className="text-base lg:text-2xl uppercase font-normal">
-                  My banana: 2932
-                </p>
-              </div>
-            </div>
-          </div>
-        </ScrollArea>
-        <div className="p-5 bg">
-          <Sheet>
-            <SheetTrigger
-              className={cn(
-                buttonVariants(),
-                "lg:hidden gap-0.5 text-base font-bold text-white uppercase py-3 h-fit w-full rounded-2xl"
-              )}
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                className="mb-1.5"
-              >
-                <path
-                  d="M18.1477 7.16342H16.3909C16.3909 4.73702 14.4239 2.76758 11.9999 2.76758C9.57585 2.76758 7.60881 4.73702 7.60881 7.16342H5.85201C4.88625 7.16342 4.10481 7.95494 4.10481 8.92214L4.09521 19.473C4.09623 19.9388 4.28158 20.3853 4.61077 20.7148C4.93996 21.0444 5.38622 21.2302 5.85201 21.2317H18.1472C18.613 21.2302 19.0593 21.0444 19.3885 20.7148C19.7176 20.3853 19.903 19.9388 19.904 19.473V8.92262C19.903 8.45682 19.7176 8.01036 19.3885 7.68081C19.0593 7.35126 18.613 7.16542 18.1472 7.1639L18.1477 7.16342ZM11.9999 4.52582C12.3462 4.5255 12.6892 4.59353 13.0092 4.726C13.3292 4.85847 13.62 5.05278 13.8648 5.29779C14.1096 5.54281 14.3036 5.83372 14.4358 6.15386C14.568 6.474 14.6357 6.81707 14.6351 7.16342H9.36465C9.36402 6.81707 9.43174 6.474 9.56391 6.15386C9.69609 5.83372 9.89014 5.54281 10.1349 5.29779C10.3797 5.05278 10.6705 4.85847 10.9905 4.726C11.3105 4.59353 11.6535 4.5255 11.9999 4.52582ZM11.9999 13.3185C9.57585 13.3185 7.60881 11.349 7.60881 8.92166H9.36513C9.36444 9.26805 9.43211 9.61117 9.56425 9.93136C9.6964 10.2516 9.89044 10.5425 10.1352 10.7876C10.38 11.0327 10.6708 11.227 10.9908 11.3595C11.3109 11.492 11.6539 11.5601 12.0003 11.5597C12.3466 11.5599 12.6895 11.4918 13.0094 11.3593C13.3293 11.2268 13.6199 11.0324 13.8646 10.7874C14.1093 10.5424 14.3033 10.2515 14.4354 9.93148C14.5675 9.6114 14.6352 9.26841 14.6346 8.92214H16.3914C16.3914 11.349 14.4239 13.3185 11.9999 13.3185Z"
-                  fill="white"
-                />
-              </svg>{" "}
-              Buy
-            </SheetTrigger>
-            <SheetContent side="bottom" className="">
-              {/* <StandardConfirmation /> */}
-              {/* <CheckboxConfirmation /> */}
-              {/* <EmailConfirmation /> */}
-              <AddressConfirmation />
-            </SheetContent>
-          </Sheet>
         </div>
       </div>
     </>
