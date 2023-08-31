@@ -2,10 +2,11 @@ import Image from "next/image";
 import React from "react";
 import NFT_3 from "@/public/images/nft-3.png";
 import { Separator } from "./ui/separator";
+import { Button } from "./ui/button";
 
 function ConfirmationMenu() {
   return (
-    <div className="px-8 pt-6 pb-7 flex flex-col gap-4 items-start w-96">
+    <div className="px-8 pt-6 pb-7 flex flex-col gap-4 items-start w-full lg:w-[584px]">
       <div className="flex w-full h-full justify-between items-center text-base font-bold whitespace-nowrap">
         <span>Confirm purchase?</span>
         <svg
@@ -72,6 +73,15 @@ function ConfirmationMenu() {
       </p>
 
       <Separator className="w-full" />
+
+      <div className="w-full flex items-center justify-end gap-5">
+        <Button className="min-w-fit gap-3.5 py-4 text-xs lg:text-base text-white capitalize lg:uppercase">
+          No
+        </Button>
+        <Button className="min-w-fit gap-3.5 py-4 text-xs lg:text-base text-white capitalize lg:uppercase">
+          Yes
+        </Button>
+      </div>
     </div>
   );
 }

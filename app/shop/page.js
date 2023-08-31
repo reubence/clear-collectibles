@@ -19,6 +19,7 @@ import {
 } from "@/components/ui/popover";
 import ConfirmationMenu from "@/components/confirmation-menu";
 import { cn } from "@/lib/utils";
+import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 
 const filtering = [
   {
@@ -241,9 +242,9 @@ function Shop() {
             </div>
           </div>
         </ScrollArea>
-        <Popover>
-          <div className="p-5 bg">
-            <PopoverTrigger
+        <div className="p-5 bg">
+          <Sheet>
+            <SheetTrigger
               className={cn(
                 buttonVariants(),
                 "lg:hidden gap-0.5 text-base font-bold text-white uppercase py-3 h-fit w-full rounded-2xl"
@@ -263,12 +264,12 @@ function Shop() {
                 />
               </svg>{" "}
               Buy
-            </PopoverTrigger>
-            <PopoverContent>
+            </SheetTrigger>
+            <SheetContent side="bottom" className="bg-white">
               <ConfirmationMenu />
-            </PopoverContent>
-          </div>
-        </Popover>
+            </SheetContent>
+          </Sheet>
+        </div>
       </div>
     </>
   );
