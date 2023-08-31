@@ -93,14 +93,24 @@ export default function NavigationMenu() {
 
   return (
     <nav className="w-full">
-      <div className="px-[30px] pb-3 pt-6 relative justify-between flex">
+      <div className="px-[30px] pb-3 pt-6 relative justify-between flex items-center">
+        <div className="lg:hidden">
+          <Image
+            src={LOGO_MOBILE}
+            alt="DKS Logo"
+            height={29}
+            width={80}
+            className="lg:pt-4 lg:pl-2.5"
+            unoptimized
+          />
+        </div>
         <div className="flex items-center text-2xl gap-2 font-waves">
           <Image
             src={LOGO_DESKTOP}
             alt="DKS Logo"
             height={70}
             width={70}
-            className="pt-4 pl-2.5"
+            className="lg:pt-4 lg:pl-2.5 w-8 h-8 lg:w-[70px] lg:h-[70px]"
             unoptimized
           />
         </div>
