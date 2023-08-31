@@ -346,10 +346,7 @@ export default function NavigationMenu() {
                 )}
               </SheetTrigger>
               <SheetContent
-                onClick={() => {
-                  setSheetOpen(false);
-                }}
-                className="h-fit flex flex-col mt-40"
+                className="h-fit flex flex-col mt-40 mx-4 rounded-xl"
                 side="top"
               >
                 <div className="flex flex-col pt-7 sm:pt-14">
