@@ -33,7 +33,7 @@ function ListItem() {
           <p className="font-semibold">Manual</p>
         </div>
         {/* Support Ticket */}
-        <div className="flex flex-col items-end gap-1.5 2xl:w-56">
+        <div className="flex flex-col items-end gap-1.5 2xl:w-48">
           <h2 className="font-semibold text-primary">TX9Z18Y45G5</h2>
           <Button size="sm"> Get Support</Button>
         </div>

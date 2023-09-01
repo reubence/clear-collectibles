@@ -194,7 +194,7 @@ function Shop() {
                     </p>
                   </div>
                 </div>
-                <div className="flex gap-6">
+                <div className="flex flex-col xl:flex-row gap-2 xl:gap-6">
                   <div className="flex flex-col gap-y-1.5">
                     <p className="text-2xl uppercase font-bold whitespace-nowrap">
                       Insufficient Bubbles!
