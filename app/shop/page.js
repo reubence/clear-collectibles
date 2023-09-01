@@ -123,7 +123,7 @@ function Shop() {
           <div className="lg:h-[calc(100vh-348px)] relative flex flex-col lg:flex-row gap-7">
             <div
               className={cn(
-                "hidden lg:block h-full  w-full lg:w-fit lg:bg-white rounded-2xl col-span-2 lg:p-8 text-2xl",
+                "hidden lg:block h-full  w-full lg:w-fit 2xl:min-w-[425px] lg:bg-white rounded-2xl col-span-2 lg:p-8 text-2xl",
                 { block: openFilterMobile }
               )}
             >
