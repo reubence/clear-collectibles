@@ -60,7 +60,7 @@ function History() {
   return (
     <>
       <div className="px-4 lg:px-12 pb-12 pt-4 w-full lg:h-[calc(100vh-112px)] flex flex-col relative">
-        <div className="h-full w-full py-5 px-4 lg:p-[30px] border border-white rounded-2xl bg-white/25">
+        <div className="h-full w-full py-5 px-4 lg:p-[30px] border rounded-2xl bg-white/25">
           <div className="flex flex-col gap-4 lg:flex-row lg:justify-between items-start lg:items-center text-xl lg:text-2xl">
             <div className="flex items-center justify-between w-full lg:w-fit">
               <div className="gap-1.5 lg:gap-4 flex items-center uppercase font-extrabold text-xl lg:text-[32px]">
@@ -149,7 +149,7 @@ function History() {
               </ScrollArea>
             </div>
             <div className="h-full rounded-2xl flex flex-grow flex-col bg-white">
-              <ScrollArea className="w-full lg:h-[calc(100vh-258px)] lg:border-b lg:border-white pb-44 lg:pb-4 lg:mb-5">
+              <ScrollArea className="w-full lg:h-[calc(100vh-258px)] lg:border-bpb-44 lg:pb-4 lg:mb-5">
                 <div className="flex flex-col gap-3 lg:gap-5 p-8">
                   {[...Array(16)].map((_, index) => (
                     <ListItem key={index} />
