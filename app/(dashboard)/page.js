@@ -1,4 +1,7 @@
+import AllNFT from "@/components/dashboard-pages/all-nft";
+import Emblems from "@/components/dashboard-pages/emblems";
 import ProfileStat from "@/components/dashboard-pages/profile-stat";
+import TaskCompleted from "@/components/dashboard-pages/task-comlpeted";
 import Image from "next/image";
 
 export default function Home() {

@@ -106,7 +106,7 @@ function Shop() {
                 <CommandInput placeholder="Search..." />
               </Command>
 
-              <Button className="min-w-fit gap-3.5 text-xs lg:text-xl text-white capitalize lg:uppercase">
+              <Button className="min-w-fit gap-3.5 text-sm lg:text-xl text-white capitalize lg:uppercase">
                 <Image
                   src={CLOCK}
                   alt="Clock Icon"

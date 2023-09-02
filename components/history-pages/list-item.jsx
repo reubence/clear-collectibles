@@ -35,7 +35,10 @@ function ListItem() {
         {/* Support Ticket */}
         <div className="flex flex-col items-end gap-1.5 2xl:w-48">
           <h2 className="font-semibold text-primary">TX9Z18Y45G5</h2>
-          <Button size="sm"> Get Support</Button>
+          <Button size="sm" className="uppercase">
+            {" "}
+            Get Support
+          </Button>
         </div>
       </div>
 
@@ -112,8 +115,8 @@ function ListItem() {
         {/* ORDER STATUS */}
         <div className="flex flex-col gap-4 xl:w-56 2xl:w-72 lg:items-start xl:items-end justify-center">
           <p className="whitespace-nowrap">Some Status</p>
-          <Button variant="outline" size="sm">
-            Reddem code
+          <Button variant="outline" size="sm" className="uppercase">
+            Redeem code
           </Button>
         </div>
       </div>

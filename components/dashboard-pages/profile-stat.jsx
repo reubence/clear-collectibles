@@ -89,8 +89,10 @@ function ProfileStat() {
       >
         {stats.map((stat, index) => (
           <div className="flex w-full justify-between items-center" key={index}>
-            <span className="uppercase">{stat.label}</span>
-            <span className="text-[28px] text-foreground">{stat.value}</span>
+            <span className="text-sm lg:text-base uppercase">{stat.label}</span>
+            <span className="text-base lg:text-[28px] text-foreground">
+              {stat.value}
+            </span>
           </div>
         ))}
       </TabsContent>
