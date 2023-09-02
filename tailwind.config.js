@@ -11,11 +11,11 @@ module.exports = {
     container: {
       center: true,
       padding: "2rem",
-      screens: {
-        "2xl": "1400px",
-      },
     },
     extend: {
+      screens: {
+        "3xl": "1980px",
+      },
       fontFamily: {
         g8: ["var(--font-g8)"],
       },
