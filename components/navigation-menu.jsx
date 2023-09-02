@@ -225,7 +225,7 @@ export default function NavigationMenu() {
                 )}
               </SheetTrigger>
               <SheetContent
-                className="h-fit flex flex-col mt-40 mx-4 rounded-xl"
+                className="h-fit flex flex-col tallXS:mt-10 mt-40 mx-4 rounded-xl"
                 side="top"
               >
                 <div className="flex flex-col p-8 gap-6">
