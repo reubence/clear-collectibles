@@ -68,7 +68,7 @@ export default function ImageSlider() {
             </div>
           </div>
         </SwiperSlide>
-        <div className="flex flex-col lg:flex-row w-full p-5 gap-3 justify-center lg:justify-between items-center bg-white/50 -translate-y-5 lg:-translate-y-3">
+        <div className="flex flex-col lg:flex-row w-full p-5 pt-10 gap-3 justify-center lg:justify-between items-center bg-white/50 -translate-y-5 lg:-translate-y-8">
           <div className="hidden text-2xl font-black text-foreground/50 uppercase">
             leaderboard
           </div>
