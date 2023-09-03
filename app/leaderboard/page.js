@@ -9,7 +9,7 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { Separator } from "@/components/ui/separator";
-import ImageSlider from "@/components/image-slider";
+import ImageSlider from "@/components/ui/image-slider";
 
 const data = [
   {

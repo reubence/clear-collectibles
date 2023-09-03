@@ -1,5 +1,5 @@
 import { cn } from "@/lib/utils";
-import NavigationMenu from "@/components/ui/navigation-menu";
+import NavBar from "@/components/ui/navbar";
 import "@/public/globals.css";
 
 export const metadata = {
@@ -10,7 +10,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <body className={cn("gradient font-g8 overflow-y-scroll")}>
-      <NavigationMenu />
+      <NavBar />
       {children}
     </body>
   );
