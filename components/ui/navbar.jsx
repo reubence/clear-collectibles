@@ -154,7 +154,7 @@ export default function NavBar() {
             <div className="hidden lg:block relative mr-2">
               <NavigationMenu>
                 <NavigationMenuList>
-                  <NavigationMenuItem className="w-[218px]">
+                  <NavigationMenuItem className="w-[240px]">
                     <NavigationMenuTrigger>
                       <div className="flex gap-4 items-center pl-1 text-base">
                         <Image
