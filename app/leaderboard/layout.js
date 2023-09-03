@@ -9,7 +9,7 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <body className={cn("gradient")}>
+    <body className={cn("gradient font-g8")}>
       <NavigationMenu />
       {children}
     </body>

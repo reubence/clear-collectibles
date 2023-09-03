@@ -19,7 +19,7 @@ module.exports = {
         "3xl": "1980px",
       },
       fontFamily: {
-        g8: ["var(--font-g8)"],
+        g8: "var(--font-g8)",
       },
       colors: {
         border: "hsl(var(--border))",

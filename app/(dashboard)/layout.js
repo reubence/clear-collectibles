@@ -9,7 +9,7 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <body className={cn("bg-background")}>
+    <body className={cn("bg-background font-g8")}>
       <NavigationMenu />
       {children}
     </body>

@@ -9,6 +9,7 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { Separator } from "@/components/ui/separator";
+import ImageSlider from "@/components/image-slider";
 
 const data = [
   {
@@ -50,43 +51,46 @@ const data = [
 
 function Leaderboard() {
   return (
-    <main className="p-4">
-      <Table className="relative">
-        <TableHeader>
-          <TableRow>
-            <TableHead className="w-[100px]">Rank</TableHead>
-            <TableHead>Name</TableHead>
-            <TableHead className="text-right">Bubbles</TableHead>
-          </TableRow>
-        </TableHeader>
-        <TableBody className="round">
-          {data.map((item, index) => (
-            <TableRow key={index} className="">
-              <TableCell className="">{item.rank}</TableCell>
-              <TableCell>{item.name}</TableCell>
-              <TableCell className="text-right">{item.bubbles}</TableCell>
+    <main className="">
+      <ImageSlider />
+      <div className="p-4">
+        <Table className="relative">
+          <TableHeader>
+            <TableRow>
+              <TableHead className="w-[100px]">Rank</TableHead>
+              <TableHead>Name</TableHead>
+              <TableHead className="text-right">Bubbles</TableHead>
             </TableRow>
-          ))}
-        </TableBody>
+          </TableHeader>
+          <TableBody className="round">
+            {data.map((item, index) => (
+              <TableRow key={index} className="">
+                <TableCell className="">{item.rank}</TableCell>
+                <TableCell>{item.name}</TableCell>
+                <TableCell className="text-right">{item.bubbles}</TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
 
-        {/* Changing this structure may cause errors */}
-        <TableHeader>
-          <TableRow className="w-full h-8 relative">
-            <TableHead className="absolute w-full h-8 p-0">
-              <div className="absolute top-1/2 w-full h-[1px] bg-white" />
-            </TableHead>
-          </TableRow>
-        </TableHeader>
+          {/* Changing this structure may cause errors */}
+          <TableHeader>
+            <TableRow className="w-full h-8 relative">
+              <TableHead className="absolute w-full h-8 p-0">
+                <div className="absolute top-1/2 w-full h-[1px] bg-white" />
+              </TableHead>
+            </TableRow>
+          </TableHeader>
 
-        {/* Fixed Row for User rank */}
-        <TableBody className="round-fixed">
-          <TableRow>
-            <TableCell className="">232</TableCell>
-            <TableCell>EVOCATOR</TableCell>
-            <TableCell className="text-right">7002</TableCell>
-          </TableRow>
-        </TableBody>
-      </Table>
+          {/* Fixed Row for User rank */}
+          <TableBody className="round-fixed">
+            <TableRow>
+              <TableCell className="">232</TableCell>
+              <TableCell>EVOCATOR</TableCell>
+              <TableCell className="text-right">7002</TableCell>
+            </TableRow>
+          </TableBody>
+        </Table>
+      </div>
     </main>
   );
 }
