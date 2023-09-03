@@ -1,5 +1,6 @@
 import { cn } from "@/lib/utils";
 import NavigationMenu from "@/components/navigation-menu";
+import "@/public/globals.css";
 
 export const metadata = {
   title: "Create Next App",
@@ -8,11 +9,9 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className="h-screen">
-      <body className={cn("gradient")}>
-        <NavigationMenu />
-        {children}
-      </body>
-    </html>
+    <body className={cn("gradient")}>
+      <NavigationMenu />
+      {children}
+    </body>
   );
 }

@@ -1,4 +1,4 @@
-import "./../public/globals.css";
+import "@/public/globals.css";
 import { Inter } from "next/font/google";
 import localFont from "next/font/local";
 import { cn } from "@/lib/utils";
