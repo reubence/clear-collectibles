@@ -9,18 +9,22 @@ import "swiper/css/effect-coverflow";
 import "swiper/css/pagination";
 
 import "./styles.css";
+import NFT from "@/public/images/leaderboard-nft.png";
 
 // import required modules
 import { EffectCoverflow } from "swiper/modules";
+import Image from "next/image";
 
 export default function ImageSlider() {
   return (
     <>
       <Swiper
         effect={"coverflow"}
+        initialSlide={1}
         grabCursor={true}
         centeredSlides={true}
         slidesPerView={"auto"}
+        slide
         coverflowEffect={{
           rotate: 0,
           depth: 600,
@@ -30,14 +34,39 @@ export default function ImageSlider() {
         modules={[EffectCoverflow]}
         className="mySwiper"
       >
-        <SwiperSlide>
-          <img src="https://swiperjs.com/demos/images/nature-1.jpg" />
+        <SwiperSlide className="p-[2.5px] bg-gradient-to-b from-[#F9F9F9] to-[#87898A] rounded-[32px]">
+          <div className="p-[2.5px] bg-gradient-to-b from-[#D6D6D6 ] to-[#D0D0D0] rounded-[32px]">
+            <div className="p-[4.6px] bg-gradient-to-b from-[#C2C4C6] to-[#A7A9AB] rounded-[32px]">
+              <Image
+                src={NFT}
+                alt="Rank #1"
+                className="rounded-[32px] bg-[#DFDFDF]"
+              />
+            </div>
+          </div>
         </SwiperSlide>
-        <SwiperSlide>
-          <img src="https://swiperjs.com/demos/images/nature-2.jpg" />
+        <SwiperSlide className="p-1 bg-gradient-to-b from-[#FFE6C9] to-[#D67717] rounded-[32px]">
+          <div className="p-1 bg-gradient-to-b from-[#FFBA57] to-[#FFCA7D] rounded-[32px]">
+            <div className="p-1.5 bg-gradient-to-b from-[#FFAB05] to-[#F1B10E] rounded-[32px]">
+              <Image
+                src={NFT}
+                alt="Rank #1"
+                className="rounded-[32px] bg-[#EEEAC8]"
+              />
+            </div>
+          </div>
         </SwiperSlide>
-        <SwiperSlide>
-          <img src="https://swiperjs.com/demos/images/nature-3.jpg" />
+
+        <SwiperSlide className="p-1 bg-gradient-to-b from-[#F9E9E1] to-[#E57F3B] rounded-[32px]">
+          <div className="p-1 bg-gradient-to-b from-[#FFBB8F] to-[#FFDEC3] rounded-[32px]">
+            <div className="p-1.5 bg-gradient-to-b from-[#FFA96D] to-[#FCB88D] rounded-[32px]">
+              <Image
+                src={NFT}
+                alt="Rank #1"
+                className="rounded-[32px] bg-[#FEF4EA]"
+              />
+            </div>
+          </div>
         </SwiperSlide>
         <div className="flex flex-col lg:flex-row w-full p-5 gap-3 justify-center lg:justify-between items-center bg-white/50 -translate-y-5 lg:-translate-y-3">
           <div className="hidden text-2xl font-black text-foreground/50 uppercase">
