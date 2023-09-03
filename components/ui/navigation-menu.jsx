@@ -37,7 +37,7 @@ NavigationMenuList.displayName = NavigationMenuPrimitive.List.displayName;
 const NavigationMenuItem = NavigationMenuPrimitive.Item;
 
 const navigationMenuTriggerStyle = cva(
-  "group inline-flex w-full items-center justify-between rounded-md bg-white px-5 py-3 text-sm font-semibold transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:outline-none disabled:pointer-events-none hover:cursor-pointer disabled:opacity-50 data-[active]:bg-primary data-[state=open]:bg-white/80"
+  "group inline-flex w-full items-center justify-between rounded-lg bg-white px-5 py-2.5 text-sm font-semibold transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:outline-none disabled:pointer-events-none hover:cursor-pointer disabled:opacity-50 data-[active]:bg-primary data-[state=open]:bg-white/80"
 );
 
 const NavigationMenuTrigger = React.forwardRef(
@@ -78,7 +78,7 @@ const NavigationMenuViewport = React.forwardRef(
     <div className={cn("absolute w-full left-0 top-full flex justify-center")}>
       <NavigationMenuPrimitive.Viewport
         className={cn(
-          "origin-top-center relative mt-1.5 h-[var(--radix-navigation-menu-viewport-height)] w-full overflow-hidden rounded-md border bg-popover text-popover-foreground shadow-lg data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-90",
+          "origin-top-center relative mt-1.5 h-[var(--radix-navigation-menu-viewport-height)] w-full overflow-hidden rounded-lg border bg-popover text-popover-foreground shadow-lg data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-90",
           className
         )}
         ref={ref}
@@ -100,7 +100,7 @@ const NavigationMenuIndicator = React.forwardRef(
       )}
       {...props}
     >
-      <div className="relative top-[60%] h-2 w-2 rotate-45 rounded-tl-sm bg-border shadow-md" />
+      <div className="relative top-[60%] h-2 w-2 rotate-45 rounded-tl-lg bg-border shadow-md" />
     </NavigationMenuPrimitive.Indicator>
   )
 );
