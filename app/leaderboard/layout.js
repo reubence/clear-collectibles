@@ -1,5 +1,5 @@
 import { cn } from "@/lib/utils";
-import NavigationMenu from "@/components/navigation-menu";
+import NavigationMenu from "@/components/ui/navigation-menu";
 import "@/public/globals.css";
 
 export const metadata = {
