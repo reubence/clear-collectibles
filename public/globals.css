@@ -43,7 +43,7 @@
   * {
     @apply border-border;
   }
-  body {
-    @apply bg-background text-foreground;
+  .gradient {
+    background: linear-gradient(0deg, #eeeac8 0%, #eeeac8 100%);
   }
 }

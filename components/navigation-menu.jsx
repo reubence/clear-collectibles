@@ -108,7 +108,7 @@ export default function NavigationMenu() {
       setActive("");
     } else if (pathname === "/leaderboard") {
       setActive("leaderboard");
-    } else if (pathname === "/history") {
+    } else if (pathname === "/shop/history") {
       setActive("history");
     } else if (pathname === "/shop") {
       setActive("shop");

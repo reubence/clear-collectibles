@@ -21,16 +21,14 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className="h-screen">
-      <body
-        className={cn(
-          g8.variable,
-          "lg:h-full lg:w-full lg:overflow-y-hidden relative bg-background"
-        )}
-      >
-        <NavigationMenu />
-        {children}
-      </body>
+    <html
+      lang="en"
+      className={cn(
+        g8.variable,
+        "h-screen lg:h-full lg:w-full lg:overflow-y-hidden relative"
+      )}
+    >
+      {children}
     </html>
   );
 }
