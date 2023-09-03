@@ -98,7 +98,7 @@ export default function NavBar() {
     } else if (pathname === "/leaderboard") {
       setActive("/leaderboard");
     } else if (pathname === "/shop/history") {
-      setActive("/history");
+      setActive("/shop");
     } else if (pathname === "/shop") {
       setActive("/shop");
     }
