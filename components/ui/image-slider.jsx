@@ -9,7 +9,6 @@ import "swiper/css/effect-coverflow";
 import "swiper/css/pagination";
 
 import "./styles.css";
-import GOLD_COIN from "@/public/images/icons/gold-coin.svg";
 import NFT from "@/public/images/leaderboard-nft.png";
 
 // import required modules
@@ -17,6 +16,8 @@ import { EffectCoverflow } from "swiper/modules";
 import Image from "next/image";
 
 export default function ImageSlider() {
+  // COIN IMAGE BASED ON SWIPER INDEX SLIDE
+  const [coin, setCoin] = useState(1);
   return (
     <>
       <Swiper
@@ -25,6 +26,11 @@ export default function ImageSlider() {
         grabCursor={true}
         centeredSlides={true}
         slidesPerView={"auto"}
+        onActiveIndexChange={(swiper) => {
+          setCoin(
+            swiper.activeIndex === 0 ? 2 : swiper.activeIndex === 1 ? 1 : 3
+          );
+        }}
         coverflowEffect={{
           rotate: 0,
           depth: 470,
@@ -78,8 +84,8 @@ export default function ImageSlider() {
               <div className="hidden 2xl:flex 2xl:items-center 2xl:gap-2">
                 {/* COIN RANK FOR DESKTOP IMAGE GOES HERE */}
                 <Image
-                  src={GOLD_COIN}
-                  alt="Rank #1"
+                  src={`/images/icons/coin-${coin}.svg`}
+                  alt="Rank #2"
                   width={40}
                   height={40}
                   className="bg-[#FEF4EA] mb-1"
@@ -90,9 +96,12 @@ export default function ImageSlider() {
             </div>
             {/* COIN RANK FOR MOBILE IMAGE GOES HERE */}
             <Image
-              src={GOLD_COIN}
-              alt="Rank #1"
+              src={`/images/icons/coin-${coin}.svg`}
+              alt="Rank #2"
+              width={30}
+              height={30}
               className="bg-[#FEF4EA] mb-1 2xl:hidden"
+              unoptimized
             />
             <div className="flex gap-5 items-center ">
               <div className="hidden 2xl:flex gap-5">
@@ -129,7 +138,7 @@ function SwiperButton({ nextSlide }) {
   const swiperInst = useSwiper();
   var content = <div></div>;
 
-  if (nextSlide && swiperInst.slides.length - 1 !== swiperInst.activeIndex) {
+  if (nextSlide) {
     content = (
       <button
         className={`bg-[#EEEAC8] rounded-full px-5 py-1`}
