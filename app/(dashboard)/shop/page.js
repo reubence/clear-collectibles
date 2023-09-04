@@ -22,6 +22,7 @@ import StandardConfirmation from "@/components/confirmation-pages/standard-confi
 import CheckboxConfirmation from "@/components/confirmation-pages/checkbox-confirmation";
 import EmailConfirmation from "@/components/confirmation-pages/email-confirmation";
 import AddressConfirmation from "@/components/confirmation-pages/address-confirmation";
+import Link from "next/link";
 
 const filtering = [
   {
@@ -60,15 +61,15 @@ function Shop() {
     <>
       <div className="px-4 lg:px-12 pb-12 pt-4 w-full lg:h-[calc(100vh-112px)] flex flex-col relative">
         <div className="h-full w-full py-5 px-4 lg:p-[30px] border rounded-2xl bg-white/25">
-          <div className="flex flex-col gap-4 lg:flex-row lg:justify-between items-start lg:items-center text-xl lg:text-2xl">
+          <div className="flex flex-col gap-4 lg:flex-row lg:justify-between items-start lg:items-center text-base lg:text-xl">
             <div className="flex items-center justify-between w-full lg:w-fit">
-              <div className="gap-1.5 lg:gap-4 flex items-center uppercase font-extrabold text-xl lg:text-[32px]">
+              <div className="gap-1.5 lg:gap-3 flex items-center uppercase font-extrabold text-xl lg:text-2xl">
                 <Image
                   src={SHOP}
                   alt="Shop Icon"
-                  height={50}
-                  width={50}
-                  className="w-6 h-6 lg:w-[50px] lg:h-[50px] mb-1 lg:pb-1.5"
+                  height={40}
+                  width={40}
+                  className="w-6 h-6 lg:w-[40px] lg:h-[40px] mb-1 lg:pb-1"
                   unoptimized
                 />
                 Shop
@@ -102,32 +103,38 @@ function Shop() {
                 8,952
               </span>
 
-              <Command className="hidden lg:block rounded-lg border shadow-md">
+              <Command className="hidden lg:block rounded-lg border">
                 <CommandInput placeholder="Search..." />
               </Command>
 
-              <Button className="min-w-fit gap-3.5 text-sm lg:text-xl text-white capitalize lg:uppercase">
+              <Link
+                href="shop/history"
+                className={cn(
+                  buttonVariants(),
+                  "min-w-fit !py-3.5 gap-3.5 text-sm lg:text-xl text-white capitalize lg:uppercase"
+                )}
+              >
                 <Image
                   src={CLOCK}
                   alt="Clock Icon"
                   height={24}
                   width={24}
-                  className="hidden lg:block"
+                  className="hidden lg:block mb-1"
                   unoptimized
                 />
                 History
-              </Button>
+              </Link>
             </div>
           </div>
           <Separator className="my-5 lg:my-6 mr-2.5 bg-white" />
           <div className="lg:h-[calc(100vh-348px)] relative flex flex-col lg:flex-row gap-7">
             <div
               className={cn(
-                "hidden lg:block h-full  w-full lg:w-fit 2xl:min-w-[425px] lg:bg-white rounded-2xl col-span-2 lg:p-8 text-2xl",
+                "hidden lg:block h-full  w-full lg:w-fit 2xl:min-w-[425px] lg:bg-white rounded-2xl col-span-2 lg:p-8 text-base lg:text-xl",
                 { block: openFilterMobile }
               )}
             >
-              <span class="hidden lg:block">Type filtering</span>
+              <span class="hidden lg:block  ">Type filtering</span>
               <Separator className="hidden lg:block my-7 bg-[#E6E6E6]" />
               {/* FILTERING OPTIONS */}
               <ScrollArea className="lg:h-[calc(100vh-500px)] pr-2.5">
@@ -138,7 +145,7 @@ function Shop() {
                   >
                     <label
                       htmlFor={filter.label}
-                      className="whitespace-nowrap text-base font-semibold lg:text-xl lg:font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                      className="whitespace-nowrap text-sm font-semibold lg:text-base lg:font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
                     >
                       {filter.name}
                     </label>
@@ -166,14 +173,14 @@ function Shop() {
                       <p className="text-xs font-bold uppercase mt-2.5">
                         SMB Inception
                       </p>
-                      <p className="text-2xl uppercase">2343</p>
+                      <p className="text-xl uppercase">2343</p>
                     </div>
                   ))}
                 </div>
               </ScrollArea>
 
               {/* DESKTOP BOTTOM SHOP NAV HIDDEN ON MOBILE */}
-              <div className="hidden lg:flex justify-between items-center">
+              <div className="hidden lg:flex justify-between items-start">
                 <div className="flex gap-x-6">
                   <Image
                     src={NFT_3}
@@ -185,21 +192,21 @@ function Shop() {
                   />
 
                   <div className="flex flex-col">
-                    <h3 className="inline-block text-xl font-bold uppercase">
+                    <h3 className="inline-block text-base font-bold uppercase">
                       SMB Inception
                     </h3>
-                    <h2 className="inline-block text-[32px] uppercase">2343</h2>
-                    <p className="inline-block text-sm font-normal">
+                    <h2 className="inline-block text-lg uppercase">2343</h2>
+                    <p className="inline-block text-md font-normal">
                       A Banana icon badge for the MonkeDao Discord
                     </p>
                   </div>
                 </div>
                 <div className="flex flex-col xl:flex-row gap-2 xl:gap-6">
                   <div className="flex flex-col gap-y-1.5">
-                    <p className="text-2xl uppercase font-bold whitespace-nowrap">
+                    <p className="text-lg uppercase font-bold whitespace-nowrap">
                       Insufficient Bubbles!
                     </p>
-                    <p className="text-2xl uppercase font-normal">
+                    <p className="text-md uppercase font-normal">
                       My banana: 2932
                     </p>
                   </div>
@@ -207,16 +214,16 @@ function Shop() {
                     <PopoverTrigger
                       className={cn(
                         buttonVariants(),
-                        "gap-2 text-3xl font-bold text-white uppercase py-2 w-48 h-fit rounded-2xl"
+                        "text-xl font-bold text-white uppercase h-14 rounded-2xl"
                       )}
                     >
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
-                        width="40"
-                        height="40"
+                        width="30"
+                        height="30"
                         viewBox="0 0 40 40"
                         fill="none"
-                        className="mb-2.5"
+                        className="mb-1.5"
                       >
                         <path
                           d="M30.2465 11.9421H27.3185C27.3185 7.89812 24.0401 4.61572 20.0001 4.61572C15.9601 4.61572 12.6817 7.89812 12.6817 11.9421H9.75368C8.14408 11.9421 6.84168 13.2613 6.84168 14.8733L6.82568 32.4581C6.82737 33.2345 7.1363 33.9786 7.68495 34.5278C8.23359 35.0771 8.97735 35.3868 9.75368 35.3893H30.2457C31.022 35.3868 31.7658 35.0771 32.3144 34.5278C32.8631 33.9786 33.172 33.2345 33.1737 32.4581V14.8741C33.172 14.0978 32.8631 13.3537 32.3144 12.8044C31.7658 12.2552 31.022 11.9455 30.2457 11.9429L30.2465 11.9421ZM20.0001 7.54612C20.5773 7.5456 21.149 7.65897 21.6824 7.87975C22.2157 8.10054 22.7003 8.42439 23.1083 8.83275C23.5163 9.24111 23.8397 9.72597 24.06 10.2595C24.2803 10.7931 24.3931 11.3649 24.3921 11.9421H15.6081C15.607 11.3649 15.7199 10.7931 15.9402 10.2595C16.1605 9.72597 16.4839 9.24111 16.8919 8.83275C17.2999 8.42439 17.7844 8.10054 18.3178 7.87975C18.8511 7.65897 19.4228 7.5456 20.0001 7.54612ZM20.0001 22.2005C15.9601 22.2005 12.6817 18.9181 12.6817 14.8725H15.6089C15.6077 15.4498 15.7205 16.0217 15.9408 16.5554C16.161 17.089 16.4844 17.574 16.8924 17.9824C17.3004 18.3909 17.785 18.7148 18.3184 18.9356C18.8518 19.1565 19.4236 19.2699 20.0009 19.2693C20.578 19.2696 21.1495 19.1561 21.6827 18.9352C22.2159 18.7144 22.7002 18.3905 23.1081 17.9821C23.5159 17.5738 23.8391 17.089 24.0593 16.5556C24.2795 16.0221 24.3923 15.4504 24.3913 14.8733H27.3193C27.3193 18.9181 24.0401 22.2005 20.0001 22.2005Z"
