@@ -25,11 +25,10 @@ export default function ImageSlider() {
         grabCursor={true}
         centeredSlides={true}
         slidesPerView={"auto"}
-        slide
         coverflowEffect={{
           rotate: 0,
           depth: 470,
-          slideShadows: true,
+          slideShadows: false,
           stretch: 0,
         }}
         modules={[EffectCoverflow]}
