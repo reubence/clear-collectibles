@@ -27,16 +27,16 @@ export default function ImageSlider() {
         slide
         coverflowEffect={{
           rotate: 0,
-          depth: 600,
+          depth: 400,
           slideShadows: true,
           stretch: 0,
         }}
         modules={[EffectCoverflow]}
         className="mySwiper"
       >
-        <SwiperSlide className="p-[2.5px] bg-gradient-to-b from-[#F9F9F9] to-[#87898A] rounded-[32px]">
-          <div className="p-[2.5px] bg-gradient-to-b from-[#D6D6D6 ] to-[#D0D0D0] rounded-[32px]">
-            <div className="p-[4.6px] bg-gradient-to-b from-[#C2C4C6] to-[#A7A9AB] rounded-[32px]">
+        <SwiperSlide className="p-[2px] lg:p-[2.5px] bg-gradient-to-b from-[#F9F9F9] to-[#87898A] rounded-[32px]">
+          <div className="p-[2px] lg:p-[2.5px] bg-gradient-to-b from-[#D6D6D6 ] to-[#D0D0D0] rounded-[32px]">
+            <div className="p-[3.6px] lg:p-[4.6px] bg-gradient-to-b from-[#C2C4C6] to-[#A7A9AB] rounded-[32px]">
               <Image
                 src={NFT}
                 alt="Rank #1"
@@ -45,9 +45,9 @@ export default function ImageSlider() {
             </div>
           </div>
         </SwiperSlide>
-        <SwiperSlide className="p-1 bg-gradient-to-b from-[#FFE6C9] to-[#D67717] rounded-[32px]">
-          <div className="p-1 bg-gradient-to-b from-[#FFBA57] to-[#FFCA7D] rounded-[32px]">
-            <div className="p-1.5 bg-gradient-to-b from-[#FFAB05] to-[#F1B10E] rounded-[32px]">
+        <SwiperSlide className="p-[2px] lg:p-[2.5px] bg-gradient-to-b from-[#FFE6C9] to-[#D67717] rounded-[32px]">
+          <div className="p-[2px] lg:p-[2.5px] bg-gradient-to-b from-[#FFBA57] to-[#FFCA7D] rounded-[32px]">
+            <div className="p-[3.6px] lg:p-[4.6px] bg-gradient-to-b from-[#FFAB05] to-[#F1B10E] rounded-[32px]">
               <Image
                 src={NFT}
                 alt="Rank #1"
@@ -57,9 +57,9 @@ export default function ImageSlider() {
           </div>
         </SwiperSlide>
 
-        <SwiperSlide className="p-1 bg-gradient-to-b from-[#F9E9E1] to-[#E57F3B] rounded-[32px]">
-          <div className="p-1 bg-gradient-to-b from-[#FFBB8F] to-[#FFDEC3] rounded-[32px]">
-            <div className="p-1.5 bg-gradient-to-b from-[#FFA96D] to-[#FCB88D] rounded-[32px]">
+        <SwiperSlide className="p-[2px] lg:p-[2.5px] bg-gradient-to-b from-[#F9E9E1] to-[#E57F3B] rounded-[32px]">
+          <div className="p-[2px] lg:p-[2.5px] bg-gradient-to-b from-[#FFBB8F] to-[#FFDEC3] rounded-[32px]">
+            <div className="p-[3.6px] lg:p-[4.6px] bg-gradient-to-b from-[#FFA96D] to-[#FCB88D] rounded-[32px]">
               <Image
                 src={NFT}
                 alt="Rank #1"
@@ -68,7 +68,7 @@ export default function ImageSlider() {
             </div>
           </div>
         </SwiperSlide>
-        <div className="flex flex-col lg:flex-row w-full p-5 pt-10 gap-3 justify-center lg:justify-between items-center bg-white/50 -translate-y-5 lg:-translate-y-8">
+        <div className="flex flex-col lg:flex-row w-full p-5 pt-10 gap-3 justify-center lg:justify-between items-center bg-white/50 -translate-y-5 lg:-translate-y-10 z-50">
           <div className="hidden text-2xl font-black text-foreground/50 uppercase">
             leaderboard
           </div>

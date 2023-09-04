@@ -53,7 +53,7 @@ function Leaderboard() {
   return (
     <main className="">
       <ImageSlider />
-      <div className="p-4">
+      <div className="p-4 -translate-y-5 lg:-translate-y-7 lg:px-8 xl:px-28">
         <Table className="relative">
           <TableHeader>
             <TableRow>
