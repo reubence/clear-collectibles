@@ -93,7 +93,7 @@ export default function ImageSlider() {
             <Image
               src={GOLD_COIN}
               alt="Rank #1"
-              className="bg-[#FEF4EA] mb-1"
+              className="bg-[#FEF4EA] mb-1 2xl:hidden"
             />
             <div className="flex gap-5 items-center ">
               <div className="hidden 2xl:flex gap-5">
