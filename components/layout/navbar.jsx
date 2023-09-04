@@ -16,19 +16,6 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 
-import LOGO_DESKTOP from "@/public/images/logo-desktop.svg";
-import LOGO_MOBILE from "@/public/images/logo-mobile.svg";
-import INTERLACE_LOGO from "@/public/images/interlace-logo.svg";
-
-import X from "@/public/images/icons/x-icon.svg";
-import DISCORD from "@/public/images/icons/discord-icon.svg";
-import SQUARE from "@/public/images/icons/square-icon.svg";
-
-import DISCONNECT from "@/public/images/icons/disconnect-icon.svg";
-import HOME from "@/public/images/icons/home-icon.svg";
-import LEADERBOARD from "@/public/images/icons/leaderboard-icon.svg";
-import SHOP from "@/public/images/icons/shop-icon.svg";
-
 import { Separator } from "@/components/ui/separator";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import {
@@ -44,29 +31,29 @@ import {
 } from "@/components/ui/navigation-menu";
 
 const socialLinks = [
-  { name: "X", href: "#", icon: X },
-  { name: "Discord", href: "#", icon: DISCORD },
-  { name: "Square", href: "#", icon: SQUARE },
+  { name: "X", href: "#", icon: "/images/icons/x-icon.svg" },
+  { name: "Discord", href: "#", icon: "/images/icons/discord-icon.svg" },
+  { name: "Square", href: "#", icon: "/images/icons/square-icon.svg" },
 ];
 
 const navItems = [
   {
-    icon: HOME,
+    icon: "/images/icons/home-icon.svg",
     route: "/",
     label: "Dashboard",
   },
   {
-    icon: LEADERBOARD,
+    icon: "/images/icons/leaderboard-icon.svg",
     route: "/leaderboard",
     label: "Leaderboard",
   },
   {
-    icon: SHOP,
+    icon: "/images/icons/shop-icon.svg",
     route: "/shop",
     label: "Shop",
   },
   {
-    icon: DISCONNECT,
+    icon: "/images/icons/disconnect-icon.svg",
     route: "/disconnect",
     label: "Disconnect",
   },
@@ -112,7 +99,7 @@ export default function NavBar({ page }) {
       <div className="px-6 lg:px-[40px] pb-3 pt-6 relative justify-between flex items-center">
         <div className="lg:hidden">
           <Image
-            src={LOGO_MOBILE}
+            src="/images/logo-mobile.svg"
             alt="DKS Logo"
             height={29}
             width={80}
@@ -132,7 +119,7 @@ export default function NavBar({ page }) {
             />
           ) : (
             <Image
-              src={LOGO_DESKTOP}
+              src="/images/logo-desktop.svg"
               alt="DKS Logo"
               height={70}
               width={70}
@@ -149,7 +136,13 @@ export default function NavBar({ page }) {
                 {socialLinks.map((item, index) => (
                   <div className="px-4 border-r border-r-white" key={index}>
                     <Link href="#">
-                      <Image key={item.name} src={item.icon} alt={item.name} />
+                      <Image
+                        width={20}
+                        height={20}
+                        key={item.name}
+                        src={item.icon}
+                        alt={item.name}
+                      />
                     </Link>
                   </div>
                 ))}
@@ -175,6 +168,8 @@ export default function NavBar({ page }) {
                             navItems.find((item) => item.route === active)
                               ?.route
                           } icon`}
+                          width={24}
+                          height={24}
                           className="w-6 h-6 mb-1"
                           unoptimized
                         />
@@ -199,6 +194,8 @@ export default function NavBar({ page }) {
                             <Image
                               src={item.icon}
                               alt={`${item.route} icon`}
+                              width={24}
+                              height={24}
                               className="w-6 h-6 mb-1 group-hover:filter group-hover:invert"
                               unoptimized
                             />
@@ -235,7 +232,7 @@ export default function NavBar({ page }) {
                         </div>
                         <Separator className="bg-foreground/10 mt-4" />
                         <Image
-                          src={INTERLACE_LOGO}
+                          src="/images/interlace-logo.svg"
                           alt="DKS Logo"
                           width={179}
                           height={22}
@@ -320,6 +317,8 @@ export default function NavBar({ page }) {
                       <Image
                         src={framework.icon}
                         alt={`${framework.route} icon`}
+                        width={24}
+                        height={24}
                         className="w-6 h-6 mr-3 mb-1.5"
                         unoptimized
                       />
@@ -331,7 +330,19 @@ export default function NavBar({ page }) {
                   <div className="flex gap-6">
                     <Link href="#">
                       <Image
-                        src={SQUARE}
+                        src="/images/icons/square-icon.svg"
+                        alt="Web Icon"
+                        width={20}
+                        height={20}
+                        className="w-5 h-5"
+                        unoptimized
+                      />
+                    </Link>
+                    <Link href="#">
+                      <Image
+                        src="/images/icons/x-icon.svg"
+                        width={20}
+                        height={20}
                         alt="Web Icon"
                         className="w-5 h-5"
                         unoptimized
@@ -339,16 +350,10 @@ export default function NavBar({ page }) {
                     </Link>
                     <Link href="#">
                       <Image
-                        src={X}
+                        src="/images/icons/discord-icon.svg"
                         alt="Web Icon"
-                        className="w-5 h-5"
-                        unoptimized
-                      />
-                    </Link>
-                    <Link href="#">
-                      <Image
-                        src={DISCORD}
-                        alt="Web Icon"
+                        width={20}
+                        height={20}
                         className="w-5 h-5"
                         unoptimized
                       />
@@ -383,7 +388,7 @@ export default function NavBar({ page }) {
                   </div>
                   <Separator className="bg-foreground/10 mt-4" />
                   <Image
-                    src={INTERLACE_LOGO}
+                    src="images/interlace-logo.svg"
                     alt="DKS Logo"
                     width={179}
                     height={22}
