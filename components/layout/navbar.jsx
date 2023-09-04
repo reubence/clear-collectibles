@@ -76,7 +76,7 @@ function classNames() {
   return classes.filter(Boolean).join(" ");
 }
 
-export default function NavBar() {
+export default function NavBar({ page }) {
   const pathname = usePathname();
   const [sheetOpen, setSheetOpen] = React.useState();
   const [open, setOpen] = React.useState(false);
@@ -90,7 +90,6 @@ export default function NavBar() {
       ? "/history"
       : "/"
   );
-  console.log(pathname);
 
   React.useEffect(() => {
     if (pathname === "/") {
@@ -110,7 +109,7 @@ export default function NavBar() {
 
   return (
     <nav className="w-full">
-      <div className="px-[30px] pb-3 pt-6 relative justify-between flex items-center">
+      <div className="px-6 lg:px-[40px] pb-3 pt-6 relative justify-between flex items-center">
         <div className="lg:hidden">
           <Image
             src={LOGO_MOBILE}
@@ -122,14 +121,25 @@ export default function NavBar() {
           />
         </div>
         <div className="flex items-center text-2xl gap-2 font-waves">
-          <Image
-            src={LOGO_DESKTOP}
-            alt="DKS Logo"
-            height={70}
-            width={70}
-            className="lg:pt-4 lg:pl-2.5 w-8 h-8 lg:w-[70px] lg:h-[70px]"
-            unoptimized
-          />
+          {page === "leaderboard" ? (
+            <Image
+              src={`/images/logo-mobile.svg`}
+              alt="Rank #2"
+              width={200}
+              height={70}
+              className="mb-1 hidden lg:block"
+              unoptimized
+            />
+          ) : (
+            <Image
+              src={LOGO_DESKTOP}
+              alt="DKS Logo"
+              height={70}
+              width={70}
+              className="lg:pt-4 lg:pl-2.5 w-8 h-8 lg:w-[70px] lg:h-[70px]"
+              unoptimized
+            />
+          )}
         </div>
         <div className="relative flex items-start leading-none gap-2 text-xl font-wavesTiny">
           {/* DESKTOP VIEW */}
