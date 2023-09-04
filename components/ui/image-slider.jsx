@@ -9,6 +9,7 @@ import "swiper/css/effect-coverflow";
 import "swiper/css/pagination";
 
 import "./styles.css";
+import GOLD_COIN from "@/public/images/icons/gold-coin.svg";
 import NFT from "@/public/images/leaderboard-nft.png";
 
 // import required modules
@@ -27,7 +28,7 @@ export default function ImageSlider() {
         slide
         coverflowEffect={{
           rotate: 0,
-          depth: 400,
+          depth: 470,
           slideShadows: true,
           stretch: 0,
         }}
@@ -68,21 +69,33 @@ export default function ImageSlider() {
             </div>
           </div>
         </SwiperSlide>
-        <div className="flex flex-col 2xl:flex-row w-full p-5 pt-10 2xl:py-4 2xl:px-11 gap-3 2xl:gap-12 justify-center 2xl:justify-between items-center bg-white/50 -translate-y-5 md:-translate-y-8 2xl:-translate-y-10 z-50">
+        <div className="flex flex-col 2xl:flex-row w-full p-5 pt-10 2xl:py-4 2xl:px-11 gap-3 2xl:gap-12 justify-center 2xl:justify-between items-center bg-white/50 -translate-y-2 md:-translate-y-7 2xl:-translate-y-10 z-50">
           <div className="hidden 2xl:block text-2xl font-black text-foreground/10 uppercase">
             leaderboard
           </div>
-          <div className="flex justify-between items-center sm: 2xl:max-w-none w-full max-w-2xl">
-            <div className="flex gap-10 items-center ">
+          <div className="flex justify-between items-center max-w-md md:max-w-2xl 2xl:max-w-none w-full">
+            <div className="flex gap-5 items-center">
               <SwiperButton nextSlide={false} />
-              <div className="hidden 2xl:flex">
+              <div className="hidden 2xl:flex 2xl:items-center 2xl:gap-2">
                 {/* COIN RANK FOR DESKTOP IMAGE GOES HERE */}
+                <Image
+                  src={GOLD_COIN}
+                  alt="Rank #1"
+                  width={40}
+                  height={40}
+                  className="bg-[#FEF4EA] mb-1"
+                  unoptimized
+                />
                 <p className="text-2xl font-bold uppercase">Champion</p>
               </div>
             </div>
             {/* COIN RANK FOR MOBILE IMAGE GOES HERE */}
+            <Image
+              src={GOLD_COIN}
+              alt="Rank #1"
+              className="bg-[#FEF4EA] mb-1"
+            />
             <div className="flex gap-5 items-center ">
-              {/* COIN RANK FOR DESKTOP IMAGE GOES HERE */}
               <div className="hidden 2xl:flex gap-5">
                 <div className="text-base font-bold text-center uppercase">
                   <span className="text-foreground/50">Name</span> <br />{" "}
@@ -96,7 +109,7 @@ export default function ImageSlider() {
               <SwiperButton nextSlide={true} />
             </div>
           </div>
-          <div className="flex 2xl:hidden justify-between 2xl:max-w-none w-full max-w-2xl">
+          <div className="flex 2xl:hidden justify-between  max-w-md md:max-w-2xl 2xl:max-w-none w-full">
             <div className="text-base font-bold text-center uppercase">
               <span className="text-foreground/50">Name</span> <br /> Supersimon
             </div>
