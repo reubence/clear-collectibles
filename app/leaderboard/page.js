@@ -52,9 +52,10 @@ const data = [
 
 function Leaderboard() {
   return (
-    <main className="">
+    <main className="relative">
       <ImageSlider />
-      <div className="p-4 -translate-y-2 2xl:-translate-y-8 lg:px-8 xl:px-28">
+      <div className="p-4 -translate-y-2 2xl:-translate-y-8 lg:px-8 xl:px-28 relative h-full w-full">
+        <div className="hidden absolute lg:flex w-full h-screen top-0 left-0 -z-50 bg-repeat bg-[url(/images/bg-repeat.svg)] opacity-[0.15]" />
         <Table className="relative">
           <TableHeader>
             <TableRow>

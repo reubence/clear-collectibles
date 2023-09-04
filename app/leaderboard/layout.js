@@ -1,6 +1,7 @@
 import { cn } from "@/lib/utils";
 import NavBar from "@/components/layout/navbar";
 import "@/public/globals.css";
+import Image from "next/image";
 
 export const metadata = {
   title: "Create Next App",
@@ -9,7 +10,7 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <body className={cn("gradient font-g8 overflow-y-scroll")}>
+    <body className={cn("gradient font-g8 overflow-y-scroll relative")}>
       <NavBar page="leaderboard" />
       {children}
     </body>

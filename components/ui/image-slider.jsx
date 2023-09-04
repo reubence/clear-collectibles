@@ -74,8 +74,23 @@ export default function ImageSlider() {
             </div>
           </div>
         </SwiperSlide>
-        <div className="flex flex-col 2xl:flex-row w-full p-5 pt-10 2xl:py-4 2xl:px-11 gap-3 2xl:gap-12 justify-center 2xl:justify-between items-center bg-white/50 -translate-y-2 md:-translate-y-7 2xl:-translate-y-10 z-50">
-          <div className="hidden 2xl:block text-2xl font-black text-foreground/10 uppercase">
+        <div className="flex flex-col 2xl:flex-row w-full p-5 pt-10 2xl:py-4 2xl:px-11 gap-3 2xl:gap-12 justify-center 2xl:justify-between items-center bg-white/50 -translate-y-2 md:-translate-y-7 2xl:-translate-y-10 relative">
+          <Image
+            src={"/images/bg-bubble.svg"}
+            width={98}
+            height={104}
+            alt="bubble background image"
+            className="absolute -translate-y-[330px] translate-x-[500px]"
+          />
+
+          <div className="hidden 2xl:block text-2xl font-black text-foreground/10 uppercase relative">
+            <Image
+              src={"/images/bg-bubble.svg"}
+              width={140}
+              height={140}
+              alt="bubble background image"
+              className="absolute -z-50 -translate-y-44 translate-x-10"
+            />
             leaderboard
           </div>
           <div className="flex justify-between items-center max-w-md md:max-w-2xl 2xl:max-w-none w-full">
@@ -125,7 +140,21 @@ export default function ImageSlider() {
               <span className="text-foreground/50">Points</span> <br /> 10,921
             </div>
           </div>
-          <div className="hidden 2xl:block text-2xl font-black text-foreground/10 uppercase">
+          <div className="hidden 2xl:block text-2xl font-black text-foreground/10 uppercase relative">
+            <Image
+              src={"/images/bg-bubble.svg"}
+              width={94}
+              height={94}
+              alt="bubble background image"
+              className="absolute -z-50 -translate-y-24 -translate-x-20 "
+            />
+            <Image
+              src={"/images/bg-bubble.svg"}
+              width={140}
+              height={148}
+              alt="bubble background image"
+              className="absolute -z-50 -translate-y-80 translate-x-10"
+            />
             leaderboard
           </div>
         </div>

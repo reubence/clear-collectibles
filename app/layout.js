@@ -5,7 +5,6 @@ import { cn } from "@/lib/utils";
 
 const inter = Inter({ subsets: ["latin"] });
 
-
 // G8321GX FONT
 const g8 = localFont({
   src: "./../public/fonts/G8321GX.ttf",
