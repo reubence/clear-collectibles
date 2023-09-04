@@ -11,7 +11,7 @@ import { ScrollArea } from "../ui/scroll-area";
 
 function AddressConfirmation() {
   return (
-    <div className="px-8 pt-6 pb-7 flex flex-col gap-4 items-start w-full\\ lg:w-[584px]">
+    <div className="px-8 pt-6 pb-7 flex flex-col gap-4 items-start w-full lg:w-[584px]">
       <div className="flex w-full h-full justify-between items-center text-base font-bold whitespace-nowrap">
         <span>Confirm purchase?</span>
         <svg
@@ -78,7 +78,7 @@ function AddressConfirmation() {
       </p>
 
       <Separator className="w-full" />
-      <ScrollArea className="h-[30vh]">
+      <ScrollArea className="h-[25vh]">
         <div className="grid grid-cols-2 whitespace-nowrap items-end gap-4 px-1.5">
           <div className="col-span-2 space-y-2">
             <Label className="font-medium" htmlFor="email">
