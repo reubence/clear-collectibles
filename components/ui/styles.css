@@ -46,7 +46,5 @@ body {
 }
 
 .swiper-slide-active {
-  @media (max-width: 640px) {
-    margin-top: 20px;
-  }
+  transform: translateY(20px) !important;
 }
