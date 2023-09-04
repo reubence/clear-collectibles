@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import * as SheetPrimitive from "@radix-ui/react-dialog";
-import { Button, buttonVariants } from "./button";
+import { Button, buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
