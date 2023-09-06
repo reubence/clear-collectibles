@@ -21,28 +21,31 @@ import { cn } from "@/lib/utils";
 import Image from "next/image";
 
 const data = [
-  { icon: <Icons.tasks />, label: "Tasks", children: <TaskCompleted /> },
-  { icon: <Icons.allNFT />, label: "All NFTs", children: <AllNFT /> },
-  { icon: <Icons.emblems />, label: "Tasks", children: <Emblems /> },
+  { icon: Icons.tasks, label: "Tasks", children: <TaskCompleted /> },
+  { icon: Icons.allNFT, label: "All NFTs", children: <AllNFT /> },
+  { icon: Icons.emblems, label: "Tasks", children: <Emblems /> },
 ];
 
 export default function Home() {
   return (
-    <main className="flex items-center justify-between p-5 lg:p-24 relative">
+    <main className="flex flex-col-reverse lg:flex-row items-center justify-between p-5 lg:p-24 relative">
+      {/* Desktop View */}
       <div className="bg-white/40 lg:rounded-2xl fixed flex justify-between left-0 right-0 bottom-0 lg:bottom-12 lg:left-10 lg:right-10 py-2.5 px-5 lg:p-3">
         <div className="hidden lg:flex gap-3">
           {data.map((item, index) => (
             <Popover key={index}>
-              <PopoverTrigger
-                className={cn(
-                  buttonVariants({ variant: "secondary", size: "sm" }),
-                  "lg:bg-primary lg:hover:bg-primary/70 group lg:p-2.5"
-                )}
-              >
-                {item.icon}
+              <PopoverTrigger asChild>
+                {
+                  <item.icon
+                    className={cn(
+                      buttonVariants({ variant: "secondary", size: "sm" }),
+                      "w-full h-full cursor-pointer bg-white group lg:p-2.5 data-[state=open]:bg-primary fill-gray-300 data-[state=open]:fill-white"
+                    )}
+                  />
+                }
               </PopoverTrigger>
               <PopoverContent
-                className="p-8 bg-white/50"
+                className="p-8 bg-white/50 "
                 align="center"
                 collisionPadding={40}
               >
@@ -119,6 +122,8 @@ export default function Home() {
           </Button>
         </div>
       </div>
+      {/* Mobile View */}
+      <div></div>
     </main>
   );
 }
