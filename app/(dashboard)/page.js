@@ -49,7 +49,7 @@ export default function Home() {
       <div className="lg:bg-white/50 lg:rounded-2xl relative w-full h-full lg:h-fit flex flex-col lg:flex-row justify-between ">
         <div className="bg-white/50 lg:bg-transparent border lg:border-none rounded-xl flex gap-3 py-5 px-5 lg:p-3 h-full w-full">
           <div className="lg:hidden">
-            <Popover defaultOpen={true}>
+            <Popover>
               <PopoverTrigger asChild>
                 {
                   <Icons.profile
