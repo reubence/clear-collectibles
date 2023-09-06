@@ -28,9 +28,9 @@ const data = [
 
 export default function Home() {
   return (
-    <main className="flex flex-col lg:flex-row items-center justify-between p-5 lg:p-24 relative h-full w-full">
+    <main className="flex flex-col lg:flex-row items-end justify-between p-5 lg:pb-40 lg:px-10 relative h-screen w-full">
       {/* Desktop View */}
-      <div className="lg:bg-white/50 lg:rounded-2xl fixed flex flex-col lg:flex-row justify-between lg:bottom-12 lg:left-10 lg:right-10">
+      <div className="lg:bg-white/50 lg:rounded-2xl relative w-full flex flex-col lg:flex-row justify-between ">
         <div className="bg-white/50 lg:bg-transparent rounded-xl flex gap-3 py-2.5 px-5 lg:p-3">
           {data.map((item, index) => (
             <Popover key={index}>
