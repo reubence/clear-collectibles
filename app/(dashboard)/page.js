@@ -28,10 +28,10 @@ const data = [
 
 export default function Home() {
   return (
-    <main className="flex flex-col-reverse lg:flex-row items-center justify-between p-5 lg:p-24 relative">
+    <main className="flex flex-col lg:flex-row items-center justify-between p-5 lg:p-24 relative h-full w-full">
       {/* Desktop View */}
-      <div className="bg-white/40 lg:rounded-2xl fixed flex justify-between left-0 right-0 bottom-0 lg:bottom-12 lg:left-10 lg:right-10 py-2.5 px-5 lg:p-3">
-        <div className="hidden lg:flex gap-3">
+      <div className="lg:bg-white/50 lg:rounded-2xl fixed flex flex-col lg:flex-row justify-between lg:bottom-12 lg:left-10 lg:right-10">
+        <div className="bg-white/50 lg:bg-transparent rounded-xl flex gap-3 py-2.5 px-5 lg:p-3">
           {data.map((item, index) => (
             <Popover key={index}>
               <PopoverTrigger asChild>
@@ -39,7 +39,7 @@ export default function Home() {
                   <item.icon
                     className={cn(
                       buttonVariants({ variant: "secondary", size: "sm" }),
-                      "w-full h-full cursor-pointer bg-white group lg:p-2.5 data-[state=open]:bg-primary fill-gray-300 data-[state=open]:fill-white"
+                      "w-fit h-fit cursor-pointer bg-white group lg:p-2.5 data-[state=open]:bg-primary fill-gray-300 data-[state=open]:fill-white"
                     )}
                   />
                 }
@@ -56,7 +56,7 @@ export default function Home() {
           ))}
         </div>
 
-        <div class="w-full lg:w-fit justify-end lg:justify-normal flex gap-3">
+        <div class="fixed left-0 right-0 bottom-0 lg:relative w-full lg:w-fit justify-end lg:justify-normal flex gap-3 py-2.5 px-5 lg:p-3 bg-white/50 lg:bg-transparent">
           <DropdownMenu>
             <DropdownMenuTrigger
               className={cn(
