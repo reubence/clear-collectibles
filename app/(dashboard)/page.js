@@ -28,10 +28,32 @@ const data = [
 
 export default function Home() {
   return (
-    <main className="flex flex-col lg:flex-row items-end justify-between p-5 lg:pb-40 lg:px-10 relative h-screen w-full">
+    <main className="flex flex-col lg:flex-row items-end justify-between p-5 mb-20 lg:pb-36 lg:px-10 relative h-screen w-full">
       {/* Desktop View */}
       <div className="lg:bg-white/50 lg:rounded-2xl relative w-full h-full lg:h-fit flex flex-col lg:flex-row justify-between ">
-        <div className="bg-white/50 lg:bg-transparent rounded-xl flex gap-3 py-2.5 px-5 lg:p-3 h-full w-full">
+        <div className="bg-white/50 lg:bg-transparent border lg:border-none rounded-xl flex gap-3 py-5 px-5 lg:p-3 h-full w-full">
+          <div className="lg:hidden">
+            <Popover>
+              <PopoverTrigger asChild>
+                {
+                  <Icons.profile
+                    className={cn(
+                      buttonVariants({ variant: "secondary", size: "sm" }),
+                      "w-fit h-fit cursor-pointer bg-white group lg:p-2.5 data-[state=open]:bg-primary fill-gray-300 data-[state=open]:fill-white"
+                    )}
+                  />
+                }
+              </PopoverTrigger>
+              <PopoverContent
+                className="lg:p-8 bg-transparent lg:bg-white/50 relative border-none lg:border"
+                align="center"
+                collisionPadding={40}
+              >
+                <ProfileStat />
+                <PopoverArrow className="w-6 h-3 fill-transparent lg:fill-[#EBF4F7] -translate-y-0.5 z-50" />
+              </PopoverContent>
+            </Popover>
+          </div>
           {data.map((item, index) => (
             <Popover key={index}>
               <PopoverTrigger asChild>
@@ -56,7 +78,7 @@ export default function Home() {
           ))}
         </div>
 
-        <div class="fixed left-0 right-0 bottom-0 lg:relative w-full lg:w-fit justify-end lg:justify-normal flex gap-3 py-2.5 px-5 lg:p-3 bg-white/50 lg:bg-transparent">
+        <div class="z-50 lg:z-0 fixed left-0 right-0 bottom-0 lg:relative w-full lg:w-fit justify-end lg:justify-normal flex gap-3 py-2.5 px-5 lg:p-3 bg-white/50 lg:bg-transparent">
           <DropdownMenu>
             <DropdownMenuTrigger
               className={cn(
@@ -118,7 +140,7 @@ export default function Home() {
             className="gap-3 lg:py-2.5 lg:px-2.5 text-sm lg:text-xl"
           >
             Share Profile
-            <Image width={30} height={30} src={"/images/logo-desktop.svg"} />
+            <Icons.profile className="fill-white w-8 h-8" />
           </Button>
         </div>
       </div>
