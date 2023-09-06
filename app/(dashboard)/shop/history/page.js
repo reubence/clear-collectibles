@@ -104,8 +104,8 @@ function History() {
                   <path
                     d="M2.5 3.75L8.5 10.7574V16.0185L11.5 17.5V10.7574L17.5 3.75H2.5Z"
                     stroke="#333333"
-                    stroke-width="1.66667"
-                    stroke-linejoin="round"
+                    strokeWidth="1.66667"
+                    strokeLinejoin="round"
                   />
                 </svg>
               </Button>
@@ -152,7 +152,7 @@ function History() {
                 { block: openFilterMobile }
               )}
             >
-              <span class="hidden lg:block">Type filtering</span>
+              <span className="hidden lg:block">Type filtering</span>
               <Separator className="hidden lg:block my-7 bg-[#E6E6E6]" />
               {/* FILTERING OPTIONS */}
               <ScrollArea className="lg:h-[calc(100vh-500px)] pr-2.5">
