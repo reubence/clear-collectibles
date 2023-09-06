@@ -66,8 +66,6 @@ function classNames() {
 export default function NavBar({ page }) {
   const pathname = usePathname();
   const [sheetOpen, setSheetOpen] = React.useState();
-  const [open, setOpen] = React.useState(false);
-  const [route, setRoute] = React.useState("");
   const [active, setActive] = React.useState(
     pathname === "/shop"
       ? "/shop"

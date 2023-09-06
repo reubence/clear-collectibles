@@ -14,7 +14,7 @@ function ProfileStat() {
   return (
     <Tabs
       defaultValue="profile"
-      className="w-[calc(100vw-80px)] h-[calc(100vh-174px)] lg:w-[25vw] lg:min-h-[60vh]"
+      className="w-[calc(100vw-80px)] h-[calc(100vh-174px)] lg:w-[25vw] lg:h-[60vh]"
     >
       <TabsList>
         <TabsTrigger value="profile">Profile</TabsTrigger>

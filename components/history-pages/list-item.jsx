@@ -42,8 +42,8 @@ function ListItem() {
         </div>
       </div>
 
-      <div class="flex lg:flex-col items-start xl:flex-row gap-5 justify-between p-5">
-        <div class="flex lg:flex-col xl:flex-row gap-5">
+      <div className="flex lg:flex-col items-start xl:flex-row gap-5 justify-between p-5">
+        <div className="flex lg:flex-col xl:flex-row gap-5">
           <Image
             src={NFT_3}
             alt="Clock Icon"
@@ -52,9 +52,9 @@ function ListItem() {
             className="rounded-2xl h-[136px] w-[80px] lg:h-[80px] aspect-square object-cover"
             unoptimized
           />
-          <div class="flex flex-col gap-2">
-            <div class="flex flex-wrap xl:flex-row items-start xl:items-center justify-between gap-y-2">
-              <div class="flex flex-col gap-2">
+          <div className="flex flex-col gap-2">
+            <div className="flex flex-wrap xl:flex-row items-start xl:items-center justify-between gap-y-2">
+              <div className="flex flex-col gap-2">
                 <p className="text-base font-semibold">Merch Pack</p>
                 <p className="text-base font-normal text-muted-foreground/50">
                   September Merch Pack

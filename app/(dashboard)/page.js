@@ -19,11 +19,27 @@ import {
 } from "@/components/ui/popover";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
+import React from "react";
 
 const data = [
-  { icon: Icons.tasks, label: "Tasks", children: <TaskCompleted /> },
-  { icon: Icons.allNFT, label: "All NFTs", children: <AllNFT /> },
-  { icon: Icons.emblems, label: "Tasks", children: <Emblems /> },
+  {
+    icon: Icons.tasks,
+    label: "Tasks",
+    children: <TaskCompleted />,
+    value: "tasks",
+  },
+  {
+    icon: Icons.allNFT,
+    label: "All NFTs",
+    children: <AllNFT />,
+    value: "nfts",
+  },
+  {
+    icon: Icons.emblems,
+    label: "Emblems",
+    children: <Emblems />,
+    value: "emblems",
+  },
 ];
 
 export default function Home() {

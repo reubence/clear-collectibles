@@ -79,7 +79,7 @@ function Leaderboard() {
                     height="46"
                     viewBox="0 0 42 46"
                     fill="none"
-                    class="relative overflow-hidden"
+                    className="relative overflow-hidden"
                   >
                     <defs className="bg-black">
                       <clipPath id="cut-off-bottom">
@@ -122,7 +122,7 @@ function Leaderboard() {
                   height="46"
                   viewBox="0 0 42 46"
                   fill="none"
-                  class="relative overflow-hidden"
+                  className="relative overflow-hidden"
                 >
                   <defs className="bg-black">
                     <clipPath id="cut-off-bottom">

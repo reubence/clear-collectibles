@@ -16,7 +16,7 @@ function TaskCompleted() {
   return (
     <Tabs
       defaultValue="tasks"
-      className="w-[calc(100vw-80px)] h-[calc(100vh-174px)] lg:w-[25vw] lg:min-h-[60vh]"
+      className="w-[calc(100vw-80px)] h-[calc(100vh-174px)] lg:w-[25vw] lg:h-[60vh]"
     >
       <TabsList>
         <TabsTrigger value="tasks">Tasks</TabsTrigger>
@@ -102,18 +102,18 @@ function TaskCompleted() {
               d="M9.52842 10.1245C10.5877 11.1642 11.0057 12.6888 10.6238 14.1195C10.2419 15.5502 9.1185 16.6677 7.68021 17.0476C6.24192 17.4275 4.70925 17.0117 3.66406 15.958C2.09253 14.3394 2.11501 11.7666 3.71458 10.1755C5.31417 8.58433 7.90054 8.56196 9.52767 10.1252L9.52842 10.1245Z"
               fill="#424141"
               stroke="#424141"
-              stroke-width="1.66667"
+              strokeWidth="1.66667"
             />
             <path
               d="M9.58325 9.99984L16.6666 2.9165"
               stroke="#424141"
-              stroke-width="1.66667"
+              strokeWidth="1.66667"
             />
             <path
               d="M12.6272 7.0415L14.8891 9.2915L17.528 6.6665L15.2661 4.4165L12.6272 7.0415Z"
               fill="#424141"
               stroke="#424141"
-              stroke-width="1.66667"
+              strokeWidth="1.66667"
             />
           </svg>{" "}
           Refer a friend{" "}
