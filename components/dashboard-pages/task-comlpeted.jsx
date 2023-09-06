@@ -14,7 +14,7 @@ const stats = [
 
 function TaskCompleted() {
   return (
-    <Tabs defaultValue="tasks" className="w-full h-full">
+    <Tabs defaultValue="tasks" className="w-[25vw] min-h-[60vh]">
       <TabsList>
         <TabsTrigger value="tasks">Tasks</TabsTrigger>
         <TabsTrigger value="completed">Completed</TabsTrigger>
@@ -24,7 +24,7 @@ function TaskCompleted() {
         value="tasks"
         className="flex flex-col items-start gap-4 font-normal text-foreground/50"
       >
-        <Button variant="ghost" className="text-base p-0 font-bold">
+        <Button variant="ghost" className="text-base !p-0 font-bold">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="16"
@@ -86,7 +86,7 @@ function TaskCompleted() {
           <Button size="sm">Select avatar</Button>
         </div>
         <Separator className="my-2" />
-        <Button variant="ghost" className="text-base p-0 font-bold">
+        <Button variant="ghost" className="text-base !p-0 font-bold">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="20"

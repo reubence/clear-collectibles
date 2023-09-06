@@ -2,12 +2,123 @@ import AllNFT from "@/components/dashboard-pages/all-nft";
 import Emblems from "@/components/dashboard-pages/emblems";
 import ProfileStat from "@/components/dashboard-pages/profile-stat";
 import TaskCompleted from "@/components/dashboard-pages/task-comlpeted";
+import { Button, buttonVariants } from "@/components/ui/button";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import { Icons } from "@/components/ui/icons";
+import {
+  Popover,
+  PopoverArrow,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
+import { cn } from "@/lib/utils";
 import Image from "next/image";
+
+const data = [
+  { icon: <Icons.tasks />, label: "Tasks", children: <TaskCompleted /> },
+  { icon: <Icons.allNFT />, label: "All NFTs", children: <AllNFT /> },
+  { icon: <Icons.emblems />, label: "Tasks", children: <Emblems /> },
+];
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-5 lg:p-24">
-      <ProfileStat />
+    <main className="flex items-center justify-between p-5 lg:p-24 relative">
+      <div className="bg-white/40 lg:rounded-2xl fixed flex justify-between left-0 right-0 bottom-0 lg:bottom-12 lg:left-10 lg:right-10 py-2.5 px-5 lg:p-3">
+        <div className="hidden lg:flex gap-3">
+          {data.map((item, index) => (
+            <Popover key={index}>
+              <PopoverTrigger
+                className={cn(
+                  buttonVariants({ variant: "secondary", size: "sm" }),
+                  "lg:bg-primary lg:hover:bg-primary/70 group lg:p-2.5"
+                )}
+              >
+                {item.icon}
+              </PopoverTrigger>
+              <PopoverContent
+                className="p-8 bg-white/50"
+                align="center"
+                collisionPadding={40}
+              >
+                {item.children}{" "}
+                <PopoverArrow className="w-6 h-3 fill-[#EBF4F7] -translate-y-0.5 z-50" />
+              </PopoverContent>
+            </Popover>
+          ))}
+        </div>
+
+        <div class="w-full lg:w-fit justify-end lg:justify-normal flex gap-3">
+          <DropdownMenu>
+            <DropdownMenuTrigger
+              className={cn(
+                buttonVariants({
+                  variant: "secondary",
+                  size: "sm",
+                  className:
+                    "lg:bg-primary lg:hover:bg-primary/70 group lg:p-2.5",
+                })
+              )}
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="32"
+                height="32"
+                viewBox="0 0 32 32"
+                fill="none"
+              >
+                <path
+                  d="M25.2535 7.22561L18.3601 3.23895C17.0401 2.47895 14.9735 2.47895 13.6535 3.23895L6.69344 7.25228C3.93344 9.11895 3.77344 9.39894 3.77344 12.3723V19.6122C3.77344 22.5856 3.93344 22.8789 6.74677 24.7722L13.6401 28.7589C14.3068 29.1456 15.1601 29.3322 16.0001 29.3322C16.8401 29.3322 17.6935 29.1456 18.3468 28.7589L25.3068 24.7456C28.0668 22.8789 28.2268 22.5989 28.2268 19.6256V12.3723C28.2268 9.39894 28.0668 9.11895 25.2535 7.22561ZM16.0001 20.3322C13.6135 20.3322 11.6668 18.3856 11.6668 15.9989C11.6668 13.6122 13.6135 11.6656 16.0001 11.6656C18.3868 11.6656 20.3335 13.6122 20.3335 15.9989C20.3335 18.3856 18.3868 20.3322 16.0001 20.3322Z"
+                  fill="#6CD2FF"
+                  className="lg:fill-current lg:text-white"
+                />
+              </svg>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent
+              sideOffset={20}
+              className="w-80 bg-white/50 flex flex-col gap-3 p-2"
+            >
+              <DropdownMenuItem
+                className={cn(
+                  buttonVariants(
+                    {
+                      variant: "ghost",
+                      size: "sm",
+                      className: "text-primary cursor-pointer",
+                    },
+                    "text-primary"
+                  )
+                )}
+              >
+                Profile
+              </DropdownMenuItem>
+              <DropdownMenuItem
+                className={cn(
+                  buttonVariants({
+                    variant: "ghost",
+                    size: "sm",
+                    className: "text-primary cursor-pointer",
+                  })
+                )}
+              >
+                Avatar
+              </DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
+          <Button
+            size="sm"
+            className="gap-3 lg:py-2.5 lg:px-2.5 text-sm lg:text-xl"
+          >
+            Share Profile
+            <Image width={30} height={30} src={"/images/logo-desktop.svg"} />
+          </Button>
+        </div>
+      </div>
     </main>
   );
 }
