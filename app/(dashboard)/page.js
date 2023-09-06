@@ -30,8 +30,8 @@ export default function Home() {
   return (
     <main className="flex flex-col lg:flex-row items-end justify-between p-5 lg:pb-40 lg:px-10 relative h-screen w-full">
       {/* Desktop View */}
-      <div className="lg:bg-white/50 lg:rounded-2xl relative w-full flex flex-col lg:flex-row justify-between ">
-        <div className="bg-white/50 lg:bg-transparent rounded-xl flex gap-3 py-2.5 px-5 lg:p-3">
+      <div className="lg:bg-white/50 lg:rounded-2xl relative w-full h-full lg:h-fit flex flex-col lg:flex-row justify-between ">
+        <div className="bg-white/50 lg:bg-transparent rounded-xl flex gap-3 py-2.5 px-5 lg:p-3 h-full w-full">
           {data.map((item, index) => (
             <Popover key={index}>
               <PopoverTrigger asChild>
@@ -45,12 +45,12 @@ export default function Home() {
                 }
               </PopoverTrigger>
               <PopoverContent
-                className="p-8 bg-white/50 "
+                className="lg:p-8 bg-transparent lg:bg-white/50 relative border-none lg:border"
                 align="center"
                 collisionPadding={40}
               >
                 {item.children}{" "}
-                <PopoverArrow className="w-6 h-3 fill-[#EBF4F7] -translate-y-0.5 z-50" />
+                <PopoverArrow className="w-6 h-3 fill-transparent lg:fill-[#EBF4F7] -translate-y-0.5 z-50" />
               </PopoverContent>
             </Popover>
           ))}

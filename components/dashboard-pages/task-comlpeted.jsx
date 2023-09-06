@@ -14,7 +14,10 @@ const stats = [
 
 function TaskCompleted() {
   return (
-    <Tabs defaultValue="tasks" className="w-[25vw] min-h-[60vh]">
+    <Tabs
+      defaultValue="tasks"
+      className="w-[calc(100vw-80px)] h-[calc(100vh-174px)] lg:w-[25vw] lg:min-h-[60vh]"
+    >
       <TabsList>
         <TabsTrigger value="tasks">Tasks</TabsTrigger>
         <TabsTrigger value="completed">Completed</TabsTrigger>
