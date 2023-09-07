@@ -11,8 +11,8 @@ import { ScrollArea } from "../ui/scroll-area";
 
 function AddressConfirmation() {
   return (
-    <div className="px-8 pt-6 pb-7 flex flex-col gap-4 items-start w-full lg:w-[584px]">
-      <div className="flex w-full h-full justify-between items-center text-base font-bold whitespace-nowrap">
+    <div className="px-8 pt-6 pb-7 flex flex-col gap-4 items-start w-full lg:max-w-4xl 3xl:max-w-none">
+      <div className="flex w-full justify-between items-center text-base font-bold whitespace-nowrap">
         <span>Confirm purchase?</span>
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -78,9 +78,9 @@ function AddressConfirmation() {
       </p>
 
       <Separator className="w-full" />
-      <ScrollArea className="h-[25vh]">
-        <div className="grid grid-cols-2 whitespace-nowrap items-end gap-4 px-1.5">
-          <div className="col-span-2 space-y-2">
+      <ScrollArea className="h-[50vh] lg:h-[30vh] 3xl:h-full">
+        <div className="grid grid-cols-6 whitespace-nowrap items-end gap-4 px-1.5">
+          <div className="col-span-6 lg:col-span-2 space-y-2">
             <Label className="font-medium" htmlFor="email">
               Email :
             </Label>
@@ -91,10 +91,7 @@ function AddressConfirmation() {
               placeholder="Email"
             />
           </div>
-          <Label className="col-span-2 mt-4" htmlFor="email">
-            Shipping Address
-          </Label>
-          <div className="col-span-1 space-y-2">
+          <div className="col-span-6 lg:col-span-2 space-y-2">
             <Label className="font-medium" htmlFor="email">
               First Name:{" "}
             </Label>
@@ -105,7 +102,7 @@ function AddressConfirmation() {
               placeholder="First Name"
             />
           </div>
-          <div className="col-span-1 space-y-2">
+          <div className="col-span-6 lg:col-span-2 space-y-2">
             <Label className="font-medium" htmlFor="email">
               Last Name:{" "}
             </Label>
@@ -116,7 +113,11 @@ function AddressConfirmation() {
               placeholder="Last Name"
             />
           </div>
-          <div className="col-span-2 lg:col-span-1 space-y-2">
+
+          <Label className="col-span-6 mt-4" htmlFor="email">
+            Shipping Address
+          </Label>
+          <div className="col-span-6 lg:col-span-2 space-y-2">
             <Label className="font-medium" htmlFor="email">
               Address:{" "}
             </Label>
@@ -127,18 +128,7 @@ function AddressConfirmation() {
               placeholder="Address"
             />
           </div>
-          <div className="col-span-2 lg:col-span-1 space-y-2">
-            <Label className="font-medium" htmlFor="email">
-              Phone:
-            </Label>
-            <Input
-              className="max-w-sm"
-              type="tel"
-              id="phone"
-              placeholder="Number"
-            />
-          </div>
-          <div className="col-span-2 lg:col-span-1 space-y-2">
+          <div className="col-span-6 lg:col-span-2 space-y-2">
             <Label className="font-medium whitespace-normal" htmlFor="email">
               Apartment, suite, etc: (optional)
             </Label>
@@ -149,7 +139,18 @@ function AddressConfirmation() {
               placeholder="Additional Address"
             />
           </div>
-          <div className="col-span-2 lg:col-span-1 space-y-2">
+          <div className="col-span-3 lg:col-span-2 space-y-2">
+            <Label className="font-medium" htmlFor="email">
+              Phone:
+            </Label>
+            <Input
+              className="max-w-sm"
+              type="tel"
+              id="phone"
+              placeholder="Number"
+            />
+          </div>
+          <div className="col-span-3 lg:col-span-2 space-y-2">
             <Label className="font-medium" htmlFor="email">
               Postal Code:{" "}
             </Label>
@@ -160,7 +161,7 @@ function AddressConfirmation() {
               placeholder="Postal Code"
             />
           </div>
-          <div className="col-span-2 flex flex-col lg:flex-row items-end gap-4 ">
+          <div className="col-span-6 lg:col-span-4 flex flex-col lg:flex-row items-end gap-4 ">
             <div className="w-full lg:w-1/3">
               <Label className="font-medium" htmlFor="email">
                 Country/Region:{" "}
