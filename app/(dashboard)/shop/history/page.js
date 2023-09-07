@@ -66,7 +66,7 @@ function History() {
           <div className="flex flex-col gap-4 lg:flex-row lg:justify-between items-start lg:items-center text-base lg:text-xl">
             <div className="flex items-center justify-between w-full lg:w-fit">
               <div className="gap-1.5 lg:gap-3 flex items-center uppercase font-extrabold text-xl lg:text-2xl">
-                <Icons.clock className="mb-1" />
+                <Icons.clock className="mb-1 w-5 h-5 lg:w-8 lg:h-8 fill-foreground" />
                 History
               </div>
             </div>

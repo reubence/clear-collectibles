@@ -4,7 +4,6 @@ import Image from "next/image";
 import React from "react";
 import SHOP from "@/public/images/icons/shop-icon.svg";
 import CLOCK from "@/public/images/icons/clock-icon.svg";
-import BUY from "@/public/images/icons/buy-icon.svg";
 import NFT_3 from "@/public/images/nft-3.png";
 import { Command, CommandInput } from "@/components/ui/command";
 import { Button, buttonVariants } from "@/components/ui/button";
@@ -264,7 +263,7 @@ function Shop() {
               <div className="hidden lg:flex justify-between items-end">
                 <div className="flex items-end gap-x-6">
                   <Image
-                    src={NFT_3}
+                    src={"/images/nft-3.png"}
                     alt="Clock Icon"
                     height={94}
                     width={94}
@@ -336,7 +335,7 @@ function Shop() {
           <div className="flex flex-col gap-y-6 lg:flex-row justify-between items-start">
             <div className="flex gap-x-3 lg:gap-x-6">
               <Image
-                src={NFT_3}
+                src={"/images/nft-3.png"}
                 alt="Clock Icon"
                 height={94}
                 width={94}

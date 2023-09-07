@@ -38,7 +38,7 @@ function ShopItem({
   return (
     <div
       className={cn(
-        "relative col-span-1 bg-white rounded-2xl max-h-[219px] lg:max-h-[264px] max-w-[200px] p-3 cursor-pointer hover:scale-95 transition-all",
+        "relative col-span-1 bg-white rounded-2xl max-h-[219px] lg:max-h-[264px] max-w-[200px] p-3 cursor-pointer hover:scale-95 transition-all ease-in-out",
         {
           "ring ring-offset-4 lg:ring-offset-8 ring-ring ring-offset-white/50 hover:scale-100":
             selected === index,
@@ -71,7 +71,7 @@ function ShopItem({
           <div className="absolute left-0 top-0 w-full h-full text-white flex items-center justify-center">
             <div className="absolute w-full h-7 flex items-center gap-1 -top-2.5 lg:top-auto lg:bottom-0 left-0 bg-[#03B1FF] rounded-sm">
               <Icons.limited />
-              <p className="whitespace-nowrap text-[8px] uppercase lg:text-[11px] font-bold text-white">
+              <p className="whitespace-nowrap text-[8px] uppercase lg:text-[10px] font-bold text-white">
                 Limit 1 per person
               </p>
             </div>
