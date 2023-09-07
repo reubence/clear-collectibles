@@ -65,20 +65,9 @@ function ListItem({
           {/* Support Ticket */}
           <div className="flex flex-col items-end gap-1.5 2xl:w-48">
             <h2 className="font-semibold text-primary">{supportTicket}</h2>
-
-            <Dialog>
-              <DialogTrigger
-                className={cn(
-                  buttonVariants({ size: "sm" }),
-                  "uppercase lg:rounded-lg"
-                )}
-              >
-                Get Support
-              </DialogTrigger>
-              <DialogContent className="bg-white">
-                <AddressConfirmation className="lg:max-w-full" />
-              </DialogContent>
-            </Dialog>
+            <Button size="sm" className="uppercase lg:rounded-lg">
+              Get Support
+            </Button>
           </div>
         </div>
 
@@ -157,6 +146,7 @@ function ListItem({
               </p>
             )}
 
+            {/* REEDEEM CODE BUTTON */}
             {redeemCode && (
               <Popover>
                 <PopoverTrigger
@@ -174,6 +164,22 @@ function ListItem({
                   <RedeemCode />
                 </PopoverContent>
               </Popover>
+            )}
+            {/* DETAILS BUTTON */}
+            {details && (
+              <Dialog>
+                <DialogTrigger
+                  className={cn(
+                    buttonVariants({ variant: "outline", size: "sm" }),
+                    "uppercase lg:rounded-lg"
+                  )}
+                >
+                  Details
+                </DialogTrigger>
+                <DialogContent className="bg-white">
+                  <AddressConfirmation className="lg:max-w-full" />
+                </DialogContent>
+              </Dialog>
             )}
           </div>
         </div>

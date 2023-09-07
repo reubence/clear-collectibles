@@ -146,6 +146,7 @@ const ListItems = [
 
 function History() {
   const [openFilterMobile, setOpenFilterMobile] = React.useState(false);
+  const [status, setStatus] = React.useState("all");
   return (
     <>
       <div className="px-4 lg:px-12 pb-12 pt-4 w-full lg:h-[calc(100vh-112px)] flex flex-col relative">
@@ -224,9 +225,66 @@ function History() {
               </ScrollArea>
             </div>
             <div className="h-full rounded-2xl flex flex-grow flex-col lg:bg-white">
+              <div className="hidden w-full lg:flex justify-end items-center pr-8 pt-8">
+                <Button
+                  size="sm"
+                  variant="ghost"
+                  className={cn(
+                    "uppercase lg:rounded-lg text-base text-foreground/50",
+                    {
+                      "text-foreground": status === "all",
+                    }
+                  )}
+                  onClick={() => setStatus("all")}
+                >
+                  All
+                </Button>
+                <Button
+                  size="sm"
+                  variant="ghost"
+                  className={cn(
+                    "uppercase lg:rounded-lg text-base text-foreground/50",
+                    {
+                      "text-foreground": status === "pending",
+                    }
+                  )}
+                  onClick={() => setStatus("pending")}
+                >
+                  Pending
+                </Button>
+                <Button
+                  size="sm"
+                  variant="ghost"
+                  className={cn(
+                    "uppercase lg:rounded-lg text-base text-foreground/50",
+                    {
+                      "text-foreground": status === "fulfilled",
+                    }
+                  )}
+                  onClick={() => setStatus("fulfilled")}
+                >
+                  fulfilled
+                </Button>
+                <Button
+                  size="sm"
+                  variant="ghost"
+                  className={cn(
+                    "uppercase lg:rounded-lg text-base text-foreground/50",
+                    {
+                      "text-foreground": status === "refunded",
+                    }
+                  )}
+                  onClick={() => setStatus("refunded")}
+                >
+                  Refunded
+                </Button>
+              </div>
+
               <ScrollArea className="w-full lg:h-[calc(100vh-258px)] lg:border-bpb-44 lg:pb-4 lg:mb-5">
                 <div className="flex flex-col gap-3 lg:gap-5 lg:p-8">
-                  {ListItems.map((item, index) => (
+                  {ListItems.filter(
+                    (item) => status === "all" || item.status === status
+                  ).map((item, index) => (
                     <ListItem
                       orderPlaced={item.orderPlaced || null}
                       total={item.total || null}
