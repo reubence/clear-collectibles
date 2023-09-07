@@ -78,9 +78,9 @@ function AddressConfirmation() {
       </p>
 
       <Separator className="w-full" />
-      <ScrollArea className="h-[50vh] tallXS:h-[20vh] tallXL:h-[30vh] 3xl:h-full">
+      <ScrollArea className="h-[50vh] md:h-[40vh] tallXS:h-[20vh] tallXL:h-[30vh] 3xl:h-full w-full">
         <div className="grid grid-cols-6 whitespace-nowrap items-end gap-4 px-1.5">
-          <div className="col-span-6 lg:col-span-2 space-y-2">
+          <div className="col-span-6 md:col-span-2 space-y-2">
             <Label className="font-medium" htmlFor="email">
               Email :
             </Label>
@@ -91,7 +91,7 @@ function AddressConfirmation() {
               placeholder="Email"
             />
           </div>
-          <div className="col-span-6 lg:col-span-2 space-y-2">
+          <div className="col-span-6 md:col-span-2 space-y-2">
             <Label className="font-medium" htmlFor="email">
               First Name:{" "}
             </Label>
@@ -102,7 +102,7 @@ function AddressConfirmation() {
               placeholder="First Name"
             />
           </div>
-          <div className="col-span-6 lg:col-span-2 space-y-2">
+          <div className="col-span-6 md:col-span-2 space-y-2">
             <Label className="font-medium" htmlFor="email">
               Last Name:{" "}
             </Label>
@@ -117,7 +117,7 @@ function AddressConfirmation() {
           <Label className="col-span-6 mt-4" htmlFor="email">
             Shipping Address
           </Label>
-          <div className="col-span-6 lg:col-span-2 space-y-2">
+          <div className="col-span-6 md:col-span-2 space-y-2">
             <Label className="font-medium" htmlFor="email">
               Address:{" "}
             </Label>
@@ -128,7 +128,7 @@ function AddressConfirmation() {
               placeholder="Address"
             />
           </div>
-          <div className="col-span-6 lg:col-span-2 space-y-2">
+          <div className="col-span-6 md:col-span-2 space-y-2">
             <Label className="font-medium whitespace-normal" htmlFor="email">
               Apartment, suite, etc: (optional)
             </Label>
@@ -139,7 +139,7 @@ function AddressConfirmation() {
               placeholder="Additional Address"
             />
           </div>
-          <div className="col-span-3 lg:col-span-2 space-y-2">
+          <div className="col-span-3 md:col-span-2 space-y-2">
             <Label className="font-medium" htmlFor="email">
               Phone:
             </Label>
@@ -150,7 +150,7 @@ function AddressConfirmation() {
               placeholder="Number"
             />
           </div>
-          <div className="col-span-3 lg:col-span-2 space-y-2">
+          <div className="col-span-3 md:col-span-2 space-y-2">
             <Label className="font-medium" htmlFor="email">
               Postal Code:{" "}
             </Label>
@@ -161,8 +161,8 @@ function AddressConfirmation() {
               placeholder="Postal Code"
             />
           </div>
-          <div className="col-span-6 lg:col-span-4 flex flex-col lg:flex-row items-end gap-4 ">
-            <div className="w-full lg:w-1/3">
+          <div className="col-span-6 md:col-span-4 flex flex-col md:flex-row items-end gap-4 ">
+            <div className="w-full md:w-1/3">
               <Label className="font-medium" htmlFor="email">
                 Country/Region:{" "}
               </Label>
@@ -173,7 +173,7 @@ function AddressConfirmation() {
                 placeholder="Country"
               />
             </div>
-            <div className="w-full lg:w-1/3">
+            <div className="w-full md:w-1/3">
               <Label className="font-medium" htmlFor="email">
                 City:{" "}
               </Label>
@@ -184,7 +184,7 @@ function AddressConfirmation() {
                 placeholder="City"
               />
             </div>{" "}
-            <div className="w-full lg:w-1/3">
+            <div className="w-full md:w-1/3">
               <Label className="font-medium" htmlFor="email">
                 State:{" "}
               </Label>

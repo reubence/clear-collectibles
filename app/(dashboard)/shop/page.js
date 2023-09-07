@@ -156,7 +156,7 @@ const shopData = [
 
 function Shop() {
   const [openFilterMobile, setOpenFilterMobile] = React.useState(false);
-  const [selected, setSelected] = React.useState(1);
+  const [selected, setSelected] = React.useState(0);
   return (
     <>
       <div className="px-4 lg:px-12 pb-12 pt-4 w-full lg:h-[calc(100vh-112px)] flex flex-col relative">
@@ -256,7 +256,7 @@ function Shop() {
             </div>
             <div className="h-full rounded-2xl flex flex-grow flex-col">
               <ScrollArea className="w-full lg:h-[calc(100vh-458px)] lg:border-b pb-44 lg:pb-4 lg:mb-5">
-                <div className="p-3 grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 3xl:grid-cols-6 gap-5">
+                <div className="p-3 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 xl:grid-cols-4 2xl:grid-cols-5 3xl:grid-cols-6 gap-5">
                   {shopData.map((item, index) => (
                     <ShopItem
                       key={index}
@@ -330,7 +330,7 @@ function Shop() {
       </div>
 
       {/* MOBILE BOTTOM STICKY SHOP NAV */}
-      <div className="bg-[#E7F1F5] bottom-0 block lg:hidden fixed w-full">
+      <div className="bg-[#E7F1F5] bottom-0 block lg:hidden fixed w-full z-50">
         <ScrollArea className="w-full border-t border-b border-t-white border-b-white h-28 p-5">
           <div className="flex flex-col gap-y-6 lg:flex-row justify-between items-start">
             <div className="flex gap-x-3 lg:gap-x-6">
