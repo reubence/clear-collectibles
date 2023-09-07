@@ -82,7 +82,7 @@ const shopData = [
       days: 2,
       hours: 3,
       minutes: 4,
-      seconds: 40,
+      seconds: 10,
     },
   },
   {
