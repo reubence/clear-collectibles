@@ -153,9 +153,25 @@ function History() {
           <div className="flex flex-col gap-4 lg:flex-row lg:justify-between items-start lg:items-center text-base lg:text-xl">
             <div className="flex items-center justify-between w-full lg:w-fit">
               <div className="gap-1.5 lg:gap-3 flex items-center uppercase font-extrabold text-xl lg:text-2xl">
-                <Icons.clock className="mb-1 w-5 h-5 lg:w-8 lg:h-8 fill-foreground" />
-                History
+                <Image
+                  src={SHOP}
+                  alt="Shop Icon"
+                  height={40}
+                  width={40}
+                  className="w-6 h-6 lg:w-[40px] lg:h-[40px] mb-1 lg:pb-1"
+                  unoptimized
+                />
+                Shop
               </div>
+              <Button
+                variant="ghost"
+                onClick={() => {
+                  setOpenFilterMobile(!openFilterMobile);
+                }}
+                className=""
+              >
+                <Icons.filter className="lg:hidden w-5 h-5 fill-gray-400 stroke-gray-400" />
+              </Button>
             </div>
             <div className="flex items-center justify-between w-full lg:w-fit whitespace-nowrap gap-[30px]">
               <span>
@@ -207,9 +223,9 @@ function History() {
                 ))}
               </ScrollArea>
             </div>
-            <div className="h-full rounded-2xl flex flex-grow flex-col bg-white">
+            <div className="h-full rounded-2xl flex flex-grow flex-col lg:bg-white">
               <ScrollArea className="w-full lg:h-[calc(100vh-258px)] lg:border-bpb-44 lg:pb-4 lg:mb-5">
-                <div className="flex flex-col gap-3 lg:gap-5 p-8">
+                <div className="flex flex-col gap-3 lg:gap-5 lg:p-8">
                   {ListItems.map((item, index) => (
                     <ListItem
                       orderPlaced={item.orderPlaced || null}

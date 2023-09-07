@@ -38,7 +38,7 @@ function ShopItem({
   return (
     <div
       className={cn(
-        "relative col-span-1 bg-white rounded-2xl max-h-[219px] lg:max-h-[264px] max-w-[200px] p-3 cursor-pointer hover:scale-95 transition-all ease-in-out",
+        "relative col-span-1 bg-white rounded-2xl max-w-fit p-3 cursor-pointer hover:scale-95 transition-all ease-in-out",
         {
           "ring ring-offset-4 lg:ring-offset-8 ring-ring ring-offset-white/50 hover:scale-100":
             selected === index,
@@ -54,13 +54,12 @@ function ShopItem({
           alt="Clock Icon"
           height={176}
           width={176}
-          className="rounded-2xl h-[136px] w-[176px] lg:h-[176px] aspect-square object-cover"
+          className="rounded-2xl w-[136px] h-[136px] lg:w-[176px] lg:h-[176px] aspect-square object-cover"
           unoptimized
         />
         {unreleased && (
           <div className="bg-foreground/50 backdrop-blur-md absolute left-0 top-0 rounded-xl lg:rounded-2xl w-full h-full text-white flex flex-col gap-1 items-center justify-center z-30">
-            {/* use unreleased timer object to create a countdown */}
-            <Icons.hourglass className="" />
+            <Icons.hourglass />
             <p className="text-xs lg:text-sm font-bold uppercase">
               {time.days}d {time.hours}h {time.minutes}m {time.seconds}s
             </p>

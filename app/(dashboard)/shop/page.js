@@ -242,7 +242,7 @@ function Shop() {
             </div>
             <div className="h-full rounded-2xl flex flex-grow flex-col">
               <ScrollArea className="w-full lg:h-[calc(100vh-458px)] lg:border-b pb-44 lg:pb-4 lg:mb-5">
-                <div className="p-3 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 xl:grid-cols-4 2xl:grid-cols-5 3xl:grid-cols-6 gap-5">
+                <div className="p-3 grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 3xl:grid-cols-6 gap-5">
                   {shopData.map((item, index) => (
                     <ShopItem
                       key={index}
