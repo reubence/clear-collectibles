@@ -85,7 +85,6 @@ const shopData = [
     name: "SMB Inception",
     price: 6589,
     description: "A Banana icon badge for the MonkeDao Discord",
-    unreleased: true,
   },
   {
     image: "/images/nft-3.png",
