@@ -29,6 +29,7 @@ import {
   NavigationMenuViewport,
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
+import { Icons } from "../ui/icons";
 
 const socialLinks = [
   { name: "X", href: "#", icon: "/images/icons/x-icon.svg" },
@@ -38,22 +39,22 @@ const socialLinks = [
 
 const navItems = [
   {
-    icon: "/images/icons/home-icon.svg",
+    icon: Icons.dashboard,
     route: "/",
     label: "Dashboard",
   },
   {
-    icon: "/images/icons/leaderboard-icon.svg",
+    icon: Icons.leaderboard,
     route: "/leaderboard",
     label: "Leaderboard",
   },
   {
-    icon: "/images/icons/shop-icon.svg",
+    icon: Icons.shop,
     route: "/shop",
     label: "Shop",
   },
   {
-    icon: "/images/icons/disconnect-icon.svg",
+    icon: Icons.disconnect,
     route: "/disconnect",
     label: "Disconnect",
   },
@@ -87,6 +88,8 @@ export default function NavBar({ page }) {
       setActive("/shop");
     }
   }, [pathname]);
+
+  var route = navItems.find((item) => item.route === active);
 
   if (sheetOpen) {
     document.body.style.pointerEvents = "auto";
@@ -158,20 +161,7 @@ export default function NavBar({ page }) {
                   <NavigationMenuItem className="w-[240px]">
                     <NavigationMenuTrigger>
                       <div className="flex gap-4 items-center pl-1 text-base">
-                        <Image
-                          src={
-                            navItems.find((item) => item.route === active)?.icon
-                          }
-                          alt={`${
-                            navItems.find((item) => item.route === active)
-                              ?.route
-                          } icon`}
-                          width={24}
-                          height={24}
-                          className="w-6 h-6 mb-1"
-                          unoptimized
-                        />
-
+                        <route.icon className="w-6 h-6 mb-1.5" />
                         {navItems.find((item) => item.route === active)?.label}
                       </div>
                     </NavigationMenuTrigger>
@@ -189,16 +179,8 @@ export default function NavBar({ page }) {
                               "py-3 px-5 justify-normal gap-4 text-xs hover:bg-foreground group hover:text-white"
                             )}
                           >
-                            <Image
-                              src={item.icon}
-                              alt={`${item.route} icon`}
-                              width={24}
-                              height={24}
-                              className="w-6 h-6 mb-1 group-hover:filter group-hover:invert"
-                              unoptimized
-                            />
-
-                            {item.label}
+                            <item.icon className="w-6 h-6 mb-1 group-hover:fill-white" />
+                            <p>{item.label}</p>
                           </NavigationMenuLink>
                         </Link>
                       ))}
@@ -210,19 +192,7 @@ export default function NavBar({ page }) {
                             <span className="flex text-[28px] font-bold items-center gap-2">
                               87921
                               <Button variant="ghost" size="ghost">
-                                <svg
-                                  xmlns="http://www.w3.org/2000/svg"
-                                  width="20"
-                                  height="20"
-                                  viewBox="0 0 20 20"
-                                  fill="none"
-                                >
-                                  <path
-                                    d="M9.16675 16.2498H13.9167C13.6703 16.8657 13.2447 17.3935 12.695 17.765C12.1453 18.1364 11.4968 18.3343 10.8334 18.3331H5.00007C4.5623 18.3333 4.12879 18.2471 3.72432 18.0797C3.31984 17.9122 2.95233 17.6667 2.64278 17.3571C2.33323 17.0476 2.0877 16.68 1.92023 16.2756C1.75276 15.8711 1.66663 15.4376 1.66675 14.9998V8.33314C1.66773 7.52142 1.96437 6.73785 2.50117 6.12896C3.03797 5.52008 3.77819 5.12758 4.58339 5.02486V11.6665C4.58339 14.1915 6.64171 16.2498 9.16675 16.2498ZM16.2501 5.20814H18.0167C17.9655 5.13304 17.9069 5.06325 17.8417 4.99982L15.0001 2.15803C14.9387 2.09315 14.8686 2.03714 14.7917 1.99162V3.74982C14.7936 4.13603 14.9478 4.50589 15.2209 4.77898C15.494 5.05207 15.8639 5.20631 16.2501 5.20814ZM16.2501 6.45814C15.5322 6.45676 14.8441 6.17098 14.3365 5.66337C13.8289 5.15576 13.5431 4.46769 13.5417 3.74982V1.6665H9.16675C8.72897 1.66638 8.29547 1.75252 7.89099 1.91999C7.48652 2.08746 7.119 2.33298 6.80945 2.64253C6.49989 2.95209 6.25436 3.3196 6.08689 3.72407C5.91941 4.12854 5.83327 4.56205 5.83339 4.99982V11.6665C5.83328 12.1043 5.91942 12.5378 6.0869 12.9423C6.25437 13.3467 6.4999 13.7142 6.80946 14.0238C7.11901 14.3333 7.48652 14.5789 7.891 14.7463C8.29547 14.9138 8.72898 14.9999 9.16675 14.9998H15.0001C15.4378 14.9999 15.8713 14.9138 16.2758 14.7463C16.6803 14.5789 17.0478 14.3333 17.3573 14.0238C17.6669 13.7142 17.9124 13.3467 18.0799 12.9422C18.2474 12.5378 18.3335 12.1043 18.3334 11.6665V6.45814H16.2501Z"
-                                    fill="#424141"
-                                    fill-opacity="0.5"
-                                  />
-                                </svg>
+                                <Icons.copy className="fill-foreground/50" />
                               </Button>
                             </span>
                             <p className="text-sm font-normal">1/3</p>
@@ -312,14 +282,7 @@ export default function NavBar({ page }) {
                         }
                       )}
                     >
-                      <Image
-                        src={framework.icon}
-                        alt={`${framework.route} icon`}
-                        width={24}
-                        height={24}
-                        className="w-6 h-6 mr-3 mb-1.5"
-                        unoptimized
-                      />
+                      <framework.icon className="w-6 h-6 mr-3 mb-1.5" />
                       <span className="">{framework.label}</span>
                     </Link>
                   ))}
