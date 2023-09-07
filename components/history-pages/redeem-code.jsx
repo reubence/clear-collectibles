@@ -10,7 +10,7 @@ function RedeemCode() {
   return (
     <div className="px-8 pt-6 pb-7 flex flex-col gap-4 items-start w-full lg:w-[584px]">
       <div className="flex w-full h-full justify-between items-center text-base font-bold whitespace-nowrap">
-        <span>Confirm purchase?</span>
+        <span>Your redemption code is:</span>
         <Icons.skullLogo className="w-8 h-8 fill-primary" />
       </div>
 
