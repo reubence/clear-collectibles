@@ -17,9 +17,9 @@ function ShopItem({
   return (
     <div
       className={cn(
-        "relative col-span-1 bg-white rounded-2xl max-h-[219px] lg:max-h-[264px] max-w-[200px] p-3 cursor-pointer transition-all",
+        "relative col-span-1 bg-white rounded-2xl max-h-[219px] lg:max-h-[264px] max-w-[200px] p-3 cursor-pointer hover:scale-95 transition-all",
         {
-          "ring ring-offset-4 lg:ring-offset-8 ring-ring ring-offset-white/50":
+          "ring ring-offset-4 lg:ring-offset-8 ring-ring ring-offset-white/50 hover:scale-100":
             selected === index,
         }
       )}
