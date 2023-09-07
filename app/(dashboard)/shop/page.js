@@ -180,21 +180,7 @@ function Shop() {
                   setOpenFilterMobile(!openFilterMobile);
                 }}
               >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="20"
-                  height="20"
-                  viewBox="0 0 20 20"
-                  fill="none"
-                  className="lg:hidden"
-                >
-                  <path
-                    d="M2.5 3.75L8.5 10.7574V16.0185L11.5 17.5V10.7574L17.5 3.75H2.5Z"
-                    stroke="#333333"
-                    strokeWidth="1.66667"
-                    strokeLinejoin="round"
-                  />
-                </svg>
+                <Icons.filter className="lg:hidden w-5 h-5 fill-primary stroke-primary" />
               </Button>
             </div>
             <div className="flex items-center justify-between w-full lg:w-fit whitespace-nowrap gap-[30px]">
@@ -305,7 +291,22 @@ function Shop() {
                       My banana: 2932
                     </p>
                   </div>
-                  <Popover>
+                  <Dialog>
+                    <DialogTrigger
+                      className={cn(
+                        buttonVariants(),
+                        "text-xl font-bold text-white uppercase h-14 rounded-2xl"
+                      )}
+                    >
+                      <Icons.shop className="fill-white mb-1.5" />
+                      Buy
+                    </DialogTrigger>
+                    <DialogContent className="bg-white">
+                      <AddressConfirmation />
+                    </DialogContent>
+                  </Dialog>
+
+                  {/* <Popover>
                     <PopoverTrigger
                       className={cn(
                         buttonVariants(),
@@ -316,12 +317,12 @@ function Shop() {
                       Buy
                     </PopoverTrigger>
                     <PopoverContent>
-                      {/* <StandardConfirmation /> */}
-                      {/* <CheckboxConfirmation /> */}
-                      {/* <EmailConfirmation /> */}
+                      <StandardConfirmation />
+                      <CheckboxConfirmation />
+                      <EmailConfirmation />
                       <AddressConfirmation />
                     </PopoverContent>
-                  </Popover>
+                  </Popover> */}
                 </div>
               </div>
             </div>

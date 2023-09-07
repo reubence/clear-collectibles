@@ -15,7 +15,7 @@ function AddressConfirmation({ className }) {
   return (
     <div
       className={cn(
-        "px-8 pt-6 pb-7 flex flex-col gap-4 items-start w-full lg:max-w-4xl 3xl:max-w-none",
+        "px-8 pt-6 pb-7 flex flex-col gap-4 items-start w-full",
         className
       )}
     >
@@ -55,7 +55,7 @@ function AddressConfirmation({ className }) {
       </p>
 
       <Separator className="w-full bg-muted" />
-      <ScrollArea className="h-[50vh] md:h-[40vh] tallXS:h-[30vh] tallXL:h-[50vh] 3xl:h-full w-full">
+      <ScrollArea className="h-[51vh] md:h-[40vh] tallXS:h-[40h] tallXL:h-[51vh] 3xl:h-full w-full">
         <div className="grid grid-cols-6 whitespace-nowrap items-end gap-4 px-1.5">
           <div className="col-span-6 md:col-span-2 space-y-2">
             <Label className="font-medium" htmlFor="email">

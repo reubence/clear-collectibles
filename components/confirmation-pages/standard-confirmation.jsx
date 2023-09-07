@@ -5,10 +5,16 @@ import { Separator } from "../ui/separator";
 import { Button } from "../ui/button";
 import { Checkbox } from "../ui/checkbox";
 import { Icons } from "../ui/icons";
+import { cn } from "@/lib/utils";
 
-function StandardConfirmation() {
+function StandardConfirmation({ className }) {
   return (
-    <div className="px-8 pt-6 pb-7 flex flex-col gap-4 items-start w-full lg:w-[584px]">
+    <div
+      className={cn(
+        "px-8 pt-6 pb-7 flex flex-col gap-4 items-start w-full lg:w-[584px]",
+        className
+      )}
+    >
       <div className="flex w-full h-full justify-between items-center text-base font-bold whitespace-nowrap">
         <span>Confirm purchase?</span>
         <Icons.skullLogo className="w-8 h-8 fill-primary" />
