@@ -31,6 +31,7 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { Icons } from "@/components/ui/icons";
+import ShopItem from "@/components/shop-page/shop-item";
 
 const filtering = [
   {
@@ -167,32 +168,22 @@ function Shop() {
               <ScrollArea className="w-full lg:h-[calc(100vh-458px)] lg:border-b pb-44 lg:pb-4 lg:mb-5">
                 <div className="p-3 grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 3xl:grid-cols-6 gap-5">
                   {[...Array(16)].map((_, index) => (
-                    <div
+                    <ShopItem
                       key={index}
-                      className={cn(
-                        "col-span-1 bg-white rounded-2xl max-h-[219px] lg:max-h-[264px] max-w-[200px] p-3 cursor-pointer transition-all",
-                        {
-                          "ring ring-offset-4 lg:ring-offset-8 ring-ring ring-offset-white/50":
-                            selected === index,
-                        }
-                      )}
-                      onClick={() => {
-                        setSelected(index);
-                      }}
-                    >
-                      <Image
-                        src={NFT_3}
-                        alt="Clock Icon"
-                        height={176}
-                        width={176}
-                        className="rounded-2xl h-[136px] w-[176px] lg:h-[176px] aspect-square object-cover"
-                        unoptimized
-                      />
-                      <p className="text-xs font-bold uppercase mt-2.5">
-                        SMB Inception
-                      </p>
-                      <p className="text-xl uppercase">2343</p>
-                    </div>
+                      setSelected={() => setSelected(index)}
+                      selected={selected}
+                      image={NFT_3}
+                      index={index}
+                      // unreleased
+                      // // pass object with timer props to show timer
+                      // unreleasedTimer={{
+                      //   days: 2,
+                      //   hours: 3,
+                      //   minutes: 4,
+                      //   seconds: 40,
+                      // }}
+                      limited={1}
+                    />
                   ))}
                 </div>
               </ScrollArea>
