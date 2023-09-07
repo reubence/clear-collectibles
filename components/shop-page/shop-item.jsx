@@ -1,6 +1,7 @@
+"use client";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Icons } from "../ui/icons";
 
 function ShopItem({
@@ -14,6 +15,25 @@ function ShopItem({
   name,
   price,
 }) {
+  const [time, setTime] = useState(unreleasedTimer && unreleasedTimer);
+  useEffect(() => {
+    var interval;
+    unreleasedTimer &&
+      (interval = setInterval(() => {
+        setTime((prevTime) => ({
+          days: prevTime.seconds === 0 ? prevTime.days - 1 : prevTime.days,
+          hours:
+            prevTime.minutes === 0 && prevTime.seconds === 0
+              ? prevTime.hours - 1
+              : prevTime.hours,
+          minutes:
+            prevTime.seconds === 0 ? prevTime.minutes - 1 : prevTime.minutes,
+          seconds: prevTime.seconds === 0 ? 59 : prevTime.seconds - 1,
+        }));
+      }, 1000));
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <div
       className={cn(
@@ -41,8 +61,7 @@ function ShopItem({
             {/* use unreleased timer object to create a countdown */}
             <Icons.hourglass className="" />
             <p className="text-xs lg:text-sm font-bold uppercase">
-              {unreleasedTimer.days}d {unreleasedTimer.hours}h{" "}
-              {unreleasedTimer.minutes}m {unreleasedTimer.seconds}s
+              {time.days}d {time.hours}h {time.minutes}m {time.seconds}s
             </p>
           </div>
         )}
