@@ -302,19 +302,19 @@ function ListItem({
           <Separator className="bg-muted my-4" />
         </div>
         <div className="flex justify-end w-full gap-1.5">
-          <Dialog>
-            <DialogTrigger
+          <Sheet>
+            <SheetTrigger
               className={cn(
                 buttonVariants({ size: "sm" }),
                 "uppercase rounded-lg p-4 text-xs w-full"
               )}
             >
               Get Support
-            </DialogTrigger>
-            <DialogContent className="bg-white">
+            </SheetTrigger>
+            <SheetContent side="bottom" className="">
               <AddressConfirmation className="lg:max-w-full" />
-            </DialogContent>
-          </Dialog>
+            </SheetContent>
+          </Sheet>
 
           {redeemCode && (
             <Sheet>
