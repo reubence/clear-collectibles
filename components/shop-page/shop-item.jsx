@@ -37,7 +37,7 @@ function ShopItem({
           unoptimized
         />
         {unreleased && (
-          <div className="bg-foreground/50 absolute left-0 top-0 rounded-xl lg:rounded-2xl w-full h-full text-white flex flex-col gap-1 items-center justify-center z-50">
+          <div className="bg-foreground/50 absolute left-0 top-0 rounded-xl lg:rounded-2xl w-full h-full text-white flex flex-col gap-1 items-center justify-center z-30">
             {/* use unreleased timer object to create a countdown */}
             <Icons.hourglass className="w-7 h-7 lg:w-12 lg:h-12 fill-white" />
             <p className="text-base font-bold uppercase">
@@ -48,8 +48,8 @@ function ShopItem({
         )}
 
         {limited && (
-          <div className="absolute left-0 top-0 rounded-xl lg:rounded-2xl w-full h-full text-white flex items-center justify-center">
-            <div className="absolute w-full h-7 flex items-center gap-1 -top-2.5 lg:top-auto lg:bottom-0 left-0 bg-[#03B1FF] rounded-md">
+          <div className="absolute left-0 top-0 w-full h-full text-white flex items-center justify-center">
+            <div className="absolute w-full h-7 flex items-center gap-1 -top-2.5 lg:top-auto lg:bottom-0 left-0 bg-[#03B1FF] rounded-sm">
               <Icons.limited />
               <p className="whitespace-nowrap text-[8px] uppercase lg:text-[11px] font-bold text-white">
                 Limit 1 per person

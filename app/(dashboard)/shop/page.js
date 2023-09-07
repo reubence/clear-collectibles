@@ -272,7 +272,6 @@ function Shop() {
                       price={item.price}
                       index={index}
                       unreleased={item.unreleased || false}
-                      // pass object with timer props to show timer
                       unreleasedTimer={item.unreleasedTimer || null}
                       limited={item.limited || null}
                     />
