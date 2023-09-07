@@ -110,14 +110,17 @@ export default function ImageSlider() {
               </div>
             </div>
             {/* COIN RANK FOR MOBILE IMAGE GOES HERE */}
-            <Image
-              src={`/images/icons/coin-${coin}.svg`}
-              alt="Rank #2"
-              width={30}
-              height={30}
-              className="bg-[#FEF4EA] mb-1 2xl:hidden"
-              unoptimized
-            />
+            <div className="2xl:hidden flex items-center gap-2">
+              <Image
+                src={`/images/icons/coin-${coin}.svg`}
+                alt="Rank #2"
+                width={30}
+                height={30}
+                className="bg-[#FEF4EA] 2xl:hidden"
+                unoptimized
+              />
+              <p className="text-lg font-bold uppercase">Champion</p>
+            </div>
             <div className="flex gap-5 items-center ">
               <div className="hidden 2xl:flex gap-5">
                 <div className="text-base font-bold text-center uppercase">
