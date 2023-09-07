@@ -14,37 +14,52 @@ import RedeemCode from "./redeem-code";
 import { Dialog, DialogContent, DialogTrigger } from "../ui/dialog";
 import AddressConfirmation from "../confirmation-pages/address-confirmation";
 
-function ListItem({ status }) {
+function ListItem({
+  orderPlaced,
+  total,
+  quantityPurchased,
+  deliveryMethod,
+  supportTicket,
+  status,
+  title,
+  subtitle,
+  description,
+  airdropWallet,
+  code,
+  email,
+  details,
+  redeemCode,
+}) {
   return (
     <div className="flex flex-col w-full border-t-2 border-t-primary border-b">
       <div className="flex md:flex-col xl:flex-row lg:flex-wrap bg-primary/10 p-5 justify-between items-start gap-3">
         {/* ORDER PLACED */}
         <div className="flex flex-col gap-1.5">
           <h2 className="font-normal text-muted-foreground/50">Order placed</h2>
-          <p className="font-semibold">2023-09-08 18:00</p>
+          <p className="font-semibold">{orderPlaced}</p>
         </div>
         {/* Total */}
         <div className="flex flex-col gap-1.5">
           <h2 className="font-normal text-muted-foreground/50">Total</h2>
-          <p className="font-semibold">5930</p>
+          <p className="font-semibold">{total}</p>
         </div>
         {/* Quantity purchased */}
         <div className="flex flex-col gap-1.5">
           <h2 className="font-normal text-muted-foreground/50">
             Quantity purchased
           </h2>
-          <p className="font-semibold">1</p>
+          <p className="font-semibold">{quantityPurchased}</p>
         </div>
         {/* Delivery method */}
         <div className="flex flex-col gap-1.5">
           <h2 className="font-normal text-muted-foreground/50">
             Delivery method
           </h2>
-          <p className="font-semibold">Manual</p>
+          <p className="font-semibold">{deliveryMethod}</p>
         </div>
         {/* Support Ticket */}
         <div className="flex flex-col items-end gap-1.5 2xl:w-48">
-          <h2 className="font-semibold text-primary">TX9Z18Y45G5</h2>
+          <h2 className="font-semibold text-primary">{supportTicket}</h2>
 
           <Dialog>
             <DialogTrigger
@@ -79,36 +94,45 @@ function ListItem({ status }) {
           <div className="flex flex-col gap-2">
             <div className="flex flex-wrap xl:flex-row items-start xl:items-center justify-between gap-y-2">
               <div className="flex flex-col gap-2">
-                <p className="text-base font-semibold">Merch Pack</p>
+                <p className="text-base font-semibold">{title}</p>
                 <p className="text-base font-normal text-muted-foreground/50">
-                  September Merch Pack
+                  {subtitle}
                 </p>
               </div>
               {/* CODE WITH COPY ICON */}
               <div className="flex flex-col gap-2">
-                <p className="flex items-center font-normal gap-3">
-                  Code:{" "}
-                  <span className="font-semibold">
-                    0382chjidwliajd012jn39123
-                  </span>
-                  <Button variant="ghost" size="ghost">
-                    <Icons.copy className="mb-1.5 fill-primary" />
-                  </Button>
-                </p>
-                <p className="flex items-center font-normal gap-3">
-                  Code:{" "}
-                  <span className="font-semibold">
-                    0382chjidwliajd012jn39123
-                  </span>
-                  <Button variant="ghost" size="ghost">
-                    <Icons.copy className="mb-1.5 fill-primary" />
-                  </Button>
-                </p>
+                {code && (
+                  <p className="flex items-center font-normal gap-3">
+                    Code:{" "}
+                    <span className="font-semibold">
+                      0382chjidwliajd012jn39123
+                    </span>
+                    <Button variant="ghost" size="ghost">
+                      <Icons.copy className="mb-1.5 fill-primary" />
+                    </Button>
+                  </p>
+                )}
+                {email && (
+                  <p className="flex items-center font-normal gap-3">
+                    Email: <span className="font-semibold">{email}</span>
+                    <Button variant="ghost" size="ghost">
+                      <Icons.copy className="mb-1.5 fill-primary" />
+                    </Button>
+                  </p>
+                )}
+                {airdropWallet && (
+                  <p className="flex items-center font-normal gap-3">
+                    Airdrop Wallet:{" "}
+                    <span className="font-semibold">{airdropWallet}</span>
+                    <Button variant="ghost" size="ghost">
+                      <Icons.copy className="mb-1.5 fill-primary" />
+                    </Button>
+                  </p>
+                )}
               </div>
             </div>
             <p className="text-base font-normal text-muted-foreground/50">
-              A code will be sent your order history,which can you redeem in a
-              google form for next steps.
+              {description}
             </p>
           </div>
         </div>
@@ -132,22 +156,24 @@ function ListItem({ status }) {
             </p>
           )}
 
-          <Popover>
-            <PopoverTrigger
-              className={cn(
-                buttonVariants({ variant: "outline", size: "sm" }),
-                "uppercase lg:rounded-lg"
-              )}
-            >
-              Redeem code
-            </PopoverTrigger>
-            <PopoverContent
-              sideOffset={8}
-              className="border border-muted shadow-lg"
-            >
-              <RedeemCode />
-            </PopoverContent>
-          </Popover>
+          {redeemCode && (
+            <Popover>
+              <PopoverTrigger
+                className={cn(
+                  buttonVariants({ variant: "outline", size: "sm" }),
+                  "uppercase lg:rounded-lg"
+                )}
+              >
+                Redeem code
+              </PopoverTrigger>
+              <PopoverContent
+                sideOffset={8}
+                className="border border-muted shadow-lg"
+              >
+                <RedeemCode />
+              </PopoverContent>
+            </Popover>
+          )}
         </div>
       </div>
     </div>

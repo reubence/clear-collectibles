@@ -57,6 +57,93 @@ const filtering = [
   },
 ];
 
+const ListItems = [
+  {
+    orderPlaced: "2023-09-08 18:00",
+    total: "5930",
+    quantityPurchased: "1",
+    deliveryMethod: "Manual",
+    supportTicket: "TX9Z18Y45G5",
+    status: "pending",
+    title: "Merch Pack",
+    subtitle: "September Merch Pack",
+    description:
+      "A code will be sent your order history,which can you redeem in a google form for next steps.",
+    code: "0382chjidwliajd012jn39123",
+    email: "noah@interlace.app",
+    details: true,
+  },
+  {
+    orderPlaced: "2023-09-08 18:00",
+    total: "5930",
+    quantityPurchased: "1",
+    deliveryMethod: "Redeemable NFT airdrop",
+    supportTicket: "TX9Z18Y45G5",
+    status: "fulfilled",
+    title: "Merch Pack",
+    subtitle: "Claim a personal .Monke domain",
+    description:
+      "Redeem your airdropped all domains NFT for a monk domain on https://alldomains.id/",
+    airdropWallet: "noah@interlace.app",
+    redeemCode: true,
+  },
+  {
+    orderPlaced: "2023-09-08 18:00",
+    total: "5930",
+    quantityPurchased: "1",
+    deliveryMethod: "Manual",
+    supportTicket: "TX9Z18Y45G5",
+    status: "refunded",
+    title: "Merch Pack",
+    subtitle: "September Merch Pack",
+    description:
+      "Redeem your airdropped all domains NFT for a monk domain on https://alldomains.id/",
+    airdropWallet: "noah@interlace.app",
+  },
+  {
+    orderPlaced: "2023-09-08 18:00",
+    total: "5930",
+    quantityPurchased: "1",
+    deliveryMethod: "Manual",
+    supportTicket: "TX9Z18Y45G5",
+    status: "pending",
+    title: "Merch Pack",
+    subtitle: "September Merch Pack",
+    description:
+      "A code will be sent your order history,which can you redeem in a google form for next steps.",
+    code: "0382chjidwliajd012jn39123",
+    email: "noah@interlace.app",
+    details: true,
+  },
+  {
+    orderPlaced: "2023-09-08 18:00",
+    total: "5930",
+    quantityPurchased: "1",
+    deliveryMethod: "Redeemable NFT airdrop",
+    supportTicket: "TX9Z18Y45G5",
+    status: "fulfilled",
+    title: "Merch Pack",
+    subtitle: "Claim a personal .Monke domain",
+    description:
+      "Redeem your airdropped all domains NFT for a monk domain on https://alldomains.id/",
+    airdropWallet: "noah@interlace.app",
+    redeemCode: true,
+  },
+  {
+    orderPlaced: "2023-09-08 18:00",
+    total: "5930",
+    quantityPurchased: "1",
+    deliveryMethod: "Manual",
+    supportTicket: "TX9Z18Y45G5",
+    status: "refunded",
+    title: "Merch Pack",
+    subtitle: "September Merch Pack",
+    description:
+      "Redeem your airdropped all domains NFT for a monk domain on https://alldomains.id/",
+    airdropWallet: "noah@interlace.app",
+  },
+];
+
 function History() {
   const [openFilterMobile, setOpenFilterMobile] = React.useState(false);
   return (
@@ -123,11 +210,22 @@ function History() {
             <div className="h-full rounded-2xl flex flex-grow flex-col bg-white">
               <ScrollArea className="w-full lg:h-[calc(100vh-258px)] lg:border-bpb-44 lg:pb-4 lg:mb-5">
                 <div className="flex flex-col gap-3 lg:gap-5 p-8">
-                  {[...Array(16)].map((_, index) => (
+                  {ListItems.map((item, index) => (
                     <ListItem
-                      // status="refunded"
-                      status="fulfilled"
-                      // status="pending"
+                      orderPlaced={item.orderPlaced || null}
+                      total={item.total || null}
+                      quantityPurchased={item.quantityPurchased || null}
+                      deliveryMethod={item.deliveryMethod || null}
+                      supportTicket={item.supportTicket || null}
+                      status={item.status || null}
+                      title={item.title || null}
+                      subtitle={item.subtitle || null}
+                      description={item.description || null}
+                      airdropWallet={item.airdropWallet || null}
+                      code={item.code || null}
+                      email={item.email || null}
+                      details={item.details || false}
+                      redeemCode={item.redeemCode || false}
                       key={index}
                     />
                   ))}
