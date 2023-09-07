@@ -65,6 +65,7 @@ const filtering = [
 
 function Shop() {
   const [openFilterMobile, setOpenFilterMobile] = React.useState(false);
+  const [selected, setSelected] = React.useState(1);
   return (
     <>
       <div className="px-4 lg:px-12 pb-12 pt-4 w-full lg:h-[calc(100vh-112px)] flex flex-col relative">
@@ -164,11 +165,20 @@ function Shop() {
             </div>
             <div className="h-full rounded-2xl flex flex-grow flex-col">
               <ScrollArea className="w-full lg:h-[calc(100vh-458px)] lg:border-b pb-44 lg:pb-4 lg:mb-5">
-                <div className="grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 3xl:grid-cols-6 gap-3">
+                <div className="p-3 grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 3xl:grid-cols-6 gap-3">
                   {[...Array(16)].map((_, index) => (
                     <div
                       key={index}
-                      className="col-span-1 bg-white rounded-2xl max-h-[219px] lg:max-h-[264px] max-w-[200px] p-3"
+                      className={cn(
+                        "col-span-1 bg-white rounded-2xl max-h-[219px] lg:max-h-[264px] max-w-[200px] p-3 cursor-pointer hover:ring-2 hover:ring-offset-2 hover:ring-primary transition-all",
+                        {
+                          "ring-2 ring-offset-2 ring-primary":
+                            selected === index,
+                        }
+                      )}
+                      onClick={() => {
+                        setSelected(index);
+                      }}
                     >
                       <Image
                         src={NFT_3}
