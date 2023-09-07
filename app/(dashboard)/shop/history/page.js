@@ -59,6 +59,7 @@ const filtering = [
 
 const ListItems = [
   {
+    image: "/images/nft-3.png",
     orderPlaced: "2023-09-08 18:00",
     total: "5930",
     quantityPurchased: "1",
@@ -74,6 +75,7 @@ const ListItems = [
     details: true,
   },
   {
+    image: "/images/nft-3.png",
     orderPlaced: "2023-09-08 18:00",
     total: "5930",
     quantityPurchased: "1",
@@ -88,6 +90,7 @@ const ListItems = [
     redeemCode: true,
   },
   {
+    image: "/images/nft-3.png",
     orderPlaced: "2023-09-08 18:00",
     total: "5930",
     quantityPurchased: "1",
@@ -101,6 +104,7 @@ const ListItems = [
     airdropWallet: "noah@interlace.app",
   },
   {
+    image: "/images/nft-3.png",
     orderPlaced: "2023-09-08 18:00",
     total: "5930",
     quantityPurchased: "1",
@@ -116,6 +120,7 @@ const ListItems = [
     details: true,
   },
   {
+    image: "/images/nft-3.png",
     orderPlaced: "2023-09-08 18:00",
     total: "5930",
     quantityPurchased: "1",
@@ -130,6 +135,7 @@ const ListItems = [
     redeemCode: true,
   },
   {
+    image: "/images/nft-3.png",
     orderPlaced: "2023-09-08 18:00",
     total: "5930",
     quantityPurchased: "1",
@@ -286,6 +292,7 @@ function History() {
                     (item) => status === "all" || item.status === status
                   ).map((item, index) => (
                     <ListItem
+                      image={item.image}
                       orderPlaced={item.orderPlaced || null}
                       total={item.total || null}
                       quantityPurchased={item.quantityPurchased || null}

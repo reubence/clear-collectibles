@@ -14,8 +14,10 @@ import RedeemCode from "./redeem-code";
 import { Dialog, DialogContent, DialogTrigger } from "../ui/dialog";
 import AddressConfirmation from "../confirmation-pages/address-confirmation";
 import { Separator } from "../ui/separator";
+import { Sheet, SheetContent, SheetTrigger } from "../ui/sheet";
 
 function ListItem({
+  image,
   orderPlaced,
   total,
   quantityPurchased,
@@ -74,7 +76,7 @@ function ListItem({
         <div className="flex lg:flex-col items-start xl:flex-row gap-5 justify-between p-5">
           <div className="flex lg:flex-col xl:flex-row gap-5">
             <Image
-              src={"/images/nft-3.png"}
+              src={image}
               alt="NFT IMAGE"
               height={80}
               width={80}
@@ -184,6 +186,7 @@ function ListItem({
           </div>
         </div>
       </div>
+
       {/* MOBILE VIEW START */}
       <div
         className={cn("lg:hidden rounded-xl cursor-pointer", {
@@ -201,7 +204,7 @@ function ListItem({
         <Separator className="bg-muted my-4" />
         <div className="flex gap-4">
           <Image
-            src={"/images/nft-3.png"}
+            src={image}
             alt="NFT IMAGE"
             height={60}
             width={60}
@@ -314,22 +317,19 @@ function ListItem({
           </Dialog>
 
           {redeemCode && (
-            <Popover>
-              <PopoverTrigger
+            <Sheet>
+              <SheetTrigger
                 className={cn(
                   buttonVariants({ variant: "outline", size: "sm" }),
-                  "uppercase rounded-lg p-4 text-xs w-full "
+                  "uppercase rounded-lg p-4 text-xs w-full lg:hidden gap-1 py-3"
                 )}
               >
                 Redeem code
-              </PopoverTrigger>
-              <PopoverContent
-                sideOffset={8}
-                className="border border-muted shadow-lg"
-              >
+              </SheetTrigger>
+              <SheetContent side="bottom" className="">
                 <RedeemCode />
-              </PopoverContent>
-            </Popover>
+              </SheetContent>
+            </Sheet>
           )}
         </div>
       </div>
