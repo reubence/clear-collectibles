@@ -11,6 +11,8 @@ function ShopItem({
   unreleased,
   unreleasedTimer,
   limited,
+  name,
+  price,
 }) {
   return (
     <div
@@ -25,16 +27,6 @@ function ShopItem({
         setSelected(index);
       }}
     >
-      {unreleased && (
-        <div className="bg-foreground/50 absolute left-0 top-0 rounded-xl lg:rounded-2xl w-full h-full text-white flex items-center justify-center">
-          {/* use unreleased timer object to create a countdown */}
-          <p className="text-base font-bold uppercase">
-            {unreleasedTimer.days}d {unreleasedTimer.hours}h{" "}
-            {unreleasedTimer.minutes}m {unreleasedTimer.seconds}s
-          </p>
-        </div>
-      )}
-
       <div className="relative">
         <Image
           src={image}
@@ -44,6 +36,17 @@ function ShopItem({
           className="rounded-2xl h-[136px] w-[176px] lg:h-[176px] aspect-square object-cover"
           unoptimized
         />
+        {unreleased && (
+          <div className="bg-foreground/50 absolute left-0 top-0 rounded-xl lg:rounded-2xl w-full h-full text-white flex flex-col gap-1 items-center justify-center z-50">
+            {/* use unreleased timer object to create a countdown */}
+            <Icons.hourglass className="w-7 h-7 lg:w-12 lg:h-12 fill-white" />
+            <p className="text-base font-bold uppercase">
+              {unreleasedTimer.days}d {unreleasedTimer.hours}h{" "}
+              {unreleasedTimer.minutes}m {unreleasedTimer.seconds}s
+            </p>
+          </div>
+        )}
+
         {limited && (
           <div className="absolute left-0 top-0 rounded-xl lg:rounded-2xl w-full h-full text-white flex items-center justify-center">
             <div className="absolute w-full h-7 flex items-center gap-1 -top-2.5 lg:top-auto lg:bottom-0 left-0 bg-[#03B1FF] rounded-md">
@@ -55,8 +58,8 @@ function ShopItem({
           </div>
         )}
       </div>
-      <p className="text-xs font-bold uppercase mt-2.5">SMB Inception</p>
-      <p className="text-xl uppercase">2343</p>
+      <p className="text-xs font-bold uppercase mt-2.5">{name}</p>
+      <p className="text-xl uppercase">{price}</p>
     </div>
   );
 }

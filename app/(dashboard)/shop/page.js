@@ -64,6 +64,53 @@ const filtering = [
   },
 ];
 
+const shopData = [
+  {
+    image: "/images/nft-3.png",
+    name: "SMB Inception",
+    price: 6589,
+    description: "A Banana icon badge for the MonkeDao Discord",
+    limited: 1,
+  },
+  {
+    image: "/images/nft-2.png",
+    name: "SMB Inception",
+    price: 2343,
+    description: "A Banana icon badge for the MonkeDao Discord",
+    unreleased: true,
+    unreleasedTimer: {
+      days: 2,
+      hours: 3,
+      minutes: 4,
+      seconds: 40,
+    },
+  },
+  {
+    image: "/images/nft-3.png",
+    name: "SMB Inception",
+    price: 6589,
+    description: "A Banana icon badge for the MonkeDao Discord",
+  },
+  {
+    image: "/images/nft-3.png",
+    name: "SMB Inception",
+    price: 2343,
+    description: "A Banana icon badge for the MonkeDao Discord",
+  },
+  {
+    image: "/images/nft-2.png",
+    name: "SMB Inception",
+    price: 6589,
+    description: "A Banana icon badge for the MonkeDao Discord",
+  },
+  {
+    image: "/images/nft-3.png",
+    name: "SMB Inception",
+    price: 2343,
+    description: "A Banana icon badge for the MonkeDao Discord",
+  },
+];
+
 function Shop() {
   const [openFilterMobile, setOpenFilterMobile] = React.useState(false);
   const [selected, setSelected] = React.useState(1);
@@ -167,22 +214,19 @@ function Shop() {
             <div className="h-full rounded-2xl flex flex-grow flex-col">
               <ScrollArea className="w-full lg:h-[calc(100vh-458px)] lg:border-b pb-44 lg:pb-4 lg:mb-5">
                 <div className="p-3 grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 3xl:grid-cols-6 gap-5">
-                  {[...Array(16)].map((_, index) => (
+                  {shopData.map((item, index) => (
                     <ShopItem
                       key={index}
                       setSelected={() => setSelected(index)}
                       selected={selected}
-                      image={NFT_3}
+                      image={item.image}
+                      name={item.name}
+                      price={item.price}
                       index={index}
-                      // unreleased
-                      // // pass object with timer props to show timer
-                      // unreleasedTimer={{
-                      //   days: 2,
-                      //   hours: 3,
-                      //   minutes: 4,
-                      //   seconds: 40,
-                      // }}
-                      limited={1}
+                      unreleased={item.unreleased || false}
+                      // pass object with timer props to show timer
+                      unreleasedTimer={item.unreleasedTimer || null}
+                      limited={item.limited || null}
                     />
                   ))}
                 </div>
