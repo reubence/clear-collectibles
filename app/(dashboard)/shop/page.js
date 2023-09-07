@@ -198,8 +198,8 @@ function Shop() {
               </ScrollArea>
 
               {/* DESKTOP BOTTOM SHOP NAV HIDDEN ON MOBILE */}
-              <div className="hidden lg:flex justify-between items-start">
-                <div className="flex gap-x-6">
+              <div className="hidden lg:flex justify-between items-end">
+                <div className="flex items-end gap-x-6">
                   <Image
                     src={NFT_3}
                     alt="Clock Icon"
