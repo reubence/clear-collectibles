@@ -291,7 +291,7 @@ function Shop() {
                       My banana: 2932
                     </p>
                   </div>
-                  <Dialog>
+                  {/* <Dialog>
                     <DialogTrigger
                       className={cn(
                         buttonVariants(),
@@ -304,9 +304,9 @@ function Shop() {
                     <DialogContent className="bg-white">
                       <AddressConfirmation />
                     </DialogContent>
-                  </Dialog>
+                  </Dialog> */}
 
-                  {/* <Popover>
+                  <Popover>
                     <PopoverTrigger
                       className={cn(
                         buttonVariants(),
@@ -317,12 +317,12 @@ function Shop() {
                       Buy
                     </PopoverTrigger>
                     <PopoverContent>
-                      <StandardConfirmation />
-                      <CheckboxConfirmation />
+                      {/* <StandardConfirmation /> */}
+                      {/* <CheckboxConfirmation /> */}
                       <EmailConfirmation />
-                      <AddressConfirmation />
+                      {/* <AddressConfirmation /> */}
                     </PopoverContent>
-                  </Popover> */}
+                  </Popover>
                 </div>
               </div>
             </div>
