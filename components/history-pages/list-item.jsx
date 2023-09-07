@@ -256,36 +256,36 @@ function ListItem({
             {code && (
               <p className="flex items-center justify-between font-normal">
                 Code:{" "}
-                <div className="flex items-center gap-1.5">
+                <span className="flex items-center gap-1.5">
                   <span className="font-semibold">
                     0382chjidwliajd012jn39123
                   </span>
                   <Button variant="ghost" size="ghost">
                     <Icons.copy className="mb-1 fill-primary" />
                   </Button>
-                </div>
+                </span>
               </p>
             )}
             {email && (
               <p className="flex items-center justify-between font-normal gap-2.5">
                 Email:{" "}
-                <div className="flex items-center gap-1.5">
+                <span className="flex items-center gap-1.5">
                   <span className="font-semibold">{email}</span>
                   <Button variant="ghost" size="ghost">
                     <Icons.copy className="mb-1 fill-primary" />
                   </Button>
-                </div>
+                </span>
               </p>
             )}
             {airdropWallet && (
               <p className="flex items-center justify-between font-normal gap-2.5">
-                Airdrop Wallet:{" "}
-                <div className="flex items-center gap-1.5">
+                Airdrop Wallet:
+                <span className="flex items-center gap-1.5">
                   <span className="font-semibold">{airdropWallet}</span>
                   <Button variant="ghost" size="ghost">
                     <Icons.copy className="mb-1 fill-primary" />
                   </Button>
-                </div>
+                </span>
               </p>
             )}
           </div>
