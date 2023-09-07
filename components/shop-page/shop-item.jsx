@@ -39,8 +39,8 @@ function ShopItem({
         {unreleased && (
           <div className="bg-foreground/50 absolute left-0 top-0 rounded-xl lg:rounded-2xl w-full h-full text-white flex flex-col gap-1 items-center justify-center z-30">
             {/* use unreleased timer object to create a countdown */}
-            <Icons.hourglass className="w-7 h-7 lg:w-12 lg:h-12 fill-white" />
-            <p className="text-base font-bold uppercase">
+            <Icons.hourglass className="" />
+            <p className="text-xs lg:text-sm font-bold uppercase">
               {unreleasedTimer.days}d {unreleasedTimer.hours}h{" "}
               {unreleasedTimer.minutes}m {unreleasedTimer.seconds}s
             </p>

@@ -96,4 +96,38 @@
     border-left: 52px solid transparent;
     border-right: 52px solid transparent;
   }
+
+  .hourglass {
+    display: block;
+    margin: 0 auto;
+    width: 1em;
+    height: 1.5em;
+    animation: hourglass 1s linear infinite;
+  }
+
+  .outer {
+    fill: #fff;
+  }
+
+  .middle {
+    fill: #000000;
+  }
+
+  @keyframes hourglass {
+    0% {
+      transform: rotate(0deg);
+      box-shadow: inset #fff 0 -0em 0 0, inset #000000 0 -0.75em 0 0,
+        inset #fff 0 -1.5em 0 0;
+    }
+    80% {
+      transform: rotate(0deg);
+      box-shadow: inset #fff 0 -0.75em 0 0, inset #000000 0 -0.75em 0 0,
+        inset #fff 0 -0.75em 0 0;
+    }
+    100% {
+      transform: rotate(180deg);
+      box-shadow: inset #fff 0 -0.75em 0 0, inset #000000 0 -0.75em 0 0,
+        inset #fff 0 -0.75em 0 0;
+    }
+  }
 }
