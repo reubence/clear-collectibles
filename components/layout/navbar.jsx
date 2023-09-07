@@ -73,7 +73,7 @@ export default function NavBar({ page }) {
       : pathname === "/leaderboard"
       ? "/leaderboard"
       : pathname === "/shop/history"
-      ? "/history"
+      ? "/shop"
       : "/"
   );
 
@@ -161,7 +161,7 @@ export default function NavBar({ page }) {
                   <NavigationMenuItem className="w-[240px]">
                     <NavigationMenuTrigger>
                       <div className="flex gap-4 items-center pl-1 text-base">
-                        <route.icon className="w-6 h-6 mb-1.5" />
+                        <route.icon className="w-6 h-6 mb-1" />
                         {navItems.find((item) => item.route === active)?.label}
                       </div>
                     </NavigationMenuTrigger>
