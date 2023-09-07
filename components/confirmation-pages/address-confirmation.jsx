@@ -78,7 +78,7 @@ function AddressConfirmation() {
       </p>
 
       <Separator className="w-full" />
-      <ScrollArea className="h-[50vh] lg:h-[30vh] 3xl:h-full">
+      <ScrollArea className="h-[50vh] tallXS:h-[20vh] tallXL:h-[30vh] 3xl:h-full">
         <div className="grid grid-cols-6 whitespace-nowrap items-end gap-4 px-1.5">
           <div className="col-span-6 lg:col-span-2 space-y-2">
             <Label className="font-medium" htmlFor="email">
