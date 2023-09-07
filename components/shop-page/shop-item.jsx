@@ -15,23 +15,24 @@ function ShopItem({
   name,
   price,
 }) {
-  const [time, setTime] = useState(unreleasedTimer && unreleasedTimer);
+  const [time, setTime] = useState(
+    unreleasedTimer && unreleasedTimer.getTime()
+  );
   useEffect(() => {
-    var interval;
     unreleasedTimer &&
-      (interval = setInterval(() => {
-        setTime((prevTime) => ({
-          days: prevTime.seconds === 0 ? prevTime.days - 1 : prevTime.days,
-          hours:
-            prevTime.minutes === 0 && prevTime.seconds === 0
-              ? prevTime.hours - 1
-              : prevTime.hours,
-          minutes:
-            prevTime.seconds === 0 ? prevTime.minutes - 1 : prevTime.minutes,
-          seconds: prevTime.seconds === 0 ? 59 : prevTime.seconds - 1,
-        }));
-      }, 1000));
-    return () => clearInterval(interval);
+      setInterval(() => {
+        var now = new Date().getTime();
+        var timeleft = time - now;
+
+        var days = Math.floor(timeleft / (1000 * 60 * 60 * 24));
+        var hours = Math.floor(
+          (timeleft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+        );
+        var minutes = Math.floor((timeleft % (1000 * 60 * 60)) / (1000 * 60));
+        var seconds = Math.floor((timeleft % (1000 * 60)) / 1000);
+
+        setTime({ days, hours, minutes, seconds });
+      }, 1000);
   }, []);
 
   return (
@@ -57,7 +58,7 @@ function ShopItem({
           unoptimized
         />
         {unreleased && (
-          <div className="bg-foreground/70 backdrop-blur-[2px] absolute left-0 top-0 rounded-xl lg:rounded-2xl w-full h-full text-white flex flex-col gap-1 items-center justify-center z-30">
+          <div className="bg-foreground/50 backdrop-blur-md absolute left-0 top-0 rounded-xl lg:rounded-2xl w-full h-full text-white flex flex-col gap-1 items-center justify-center z-30">
             {/* use unreleased timer object to create a countdown */}
             <Icons.hourglass className="" />
             <p className="text-xs lg:text-sm font-bold uppercase">
