@@ -161,7 +161,7 @@ export default function NavBar({ page }) {
                   <NavigationMenuItem className="w-[240px]">
                     <NavigationMenuTrigger>
                       <div className="flex gap-4 items-center pl-1 text-base">
-                        <route.icon className="w-6 h-6 mb-1" />
+                        <route.icon className="w-6 h-6 mb-1 fill-foreground" />
                         {navItems.find((item) => item.route === active)?.label}
                       </div>
                     </NavigationMenuTrigger>
@@ -179,7 +179,7 @@ export default function NavBar({ page }) {
                               "py-3 px-5 justify-normal gap-4 text-xs hover:bg-foreground group hover:text-white"
                             )}
                           >
-                            <item.icon className="w-6 h-6 mb-1 group-hover:fill-white" />
+                            <item.icon className="w-6 h-6 mb-1 fill-foreground group-hover:fill-white" />
                             <p>{item.label}</p>
                           </NavigationMenuLink>
                         </Link>
@@ -282,7 +282,7 @@ export default function NavBar({ page }) {
                         }
                       )}
                     >
-                      <framework.icon className="w-6 h-6 mr-3 mb-1.5" />
+                      <framework.icon className="w-6 h-6 mr-3 mb-1.5 fill-foreground" />
                       <span className="">{framework.label}</span>
                     </Link>
                   ))}

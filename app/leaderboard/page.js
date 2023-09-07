@@ -90,7 +90,7 @@ function Leaderboard() {
                     <image
                       width="42"
                       height="46"
-                      xlinkHref="/images/nft-2.png"
+                      xlinkHref="/images/nft-4.png"
                       clip-path="url(#cut-off-bottom)"
                       className="absolute top-0 left-0"
                     />
@@ -133,7 +133,7 @@ function Leaderboard() {
                   <image
                     width="42"
                     height="46"
-                    xlinkHref="/images/nft-2.png"
+                    xlinkHref="/images/nft-4.png"
                     clip-path="url(#cut-off-bottom)"
                     className="absolute top-0 left-0"
                   />
