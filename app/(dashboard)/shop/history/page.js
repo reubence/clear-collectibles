@@ -236,9 +236,9 @@ function History() {
                   size="sm"
                   variant="ghost"
                   className={cn(
-                    "uppercase lg:rounded-lg text-base text-foreground/50",
+                    "uppercase lg:rounded-lg text-base font-medium text-foreground/50",
                     {
-                      "text-foreground": status === "all",
+                      "text-foreground font-bold": status === "all",
                     }
                   )}
                   onClick={() => setStatus("all")}
@@ -249,9 +249,9 @@ function History() {
                   size="sm"
                   variant="ghost"
                   className={cn(
-                    "uppercase lg:rounded-lg text-base text-foreground/50",
+                    "uppercase lg:rounded-lg text-base font-medium text-foreground/50",
                     {
-                      "text-foreground": status === "pending",
+                      "text-foreground font-bold": status === "pending",
                     }
                   )}
                   onClick={() => setStatus("pending")}
@@ -262,9 +262,9 @@ function History() {
                   size="sm"
                   variant="ghost"
                   className={cn(
-                    "uppercase lg:rounded-lg text-base text-foreground/50",
+                    "uppercase lg:rounded-lg text-base font-medium text-foreground/50",
                     {
-                      "text-foreground": status === "fulfilled",
+                      "text-foreground font-bold": status === "fulfilled",
                     }
                   )}
                   onClick={() => setStatus("fulfilled")}
@@ -275,9 +275,9 @@ function History() {
                   size="sm"
                   variant="ghost"
                   className={cn(
-                    "uppercase lg:rounded-lg text-base text-foreground/50",
+                    "uppercase lg:rounded-lg text-base font-medium text-foreground/50",
                     {
-                      "text-foreground": status === "refunded",
+                      "text-foreground font-bold": status === "refunded",
                     }
                   )}
                   onClick={() => setStatus("refunded")}
