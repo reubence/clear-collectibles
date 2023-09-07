@@ -109,6 +109,54 @@ const shopData = [
     price: 2343,
     description: "A Banana icon badge for the MonkeDao Discord",
   },
+  {
+    image: "/images/nft-3.png",
+    name: "SMB Inception",
+    price: 6589,
+    description: "A Banana icon badge for the MonkeDao Discord",
+  },
+  {
+    image: "/images/nft-3.png",
+    name: "SMB Inception",
+    price: 2343,
+    description: "A Banana icon badge for the MonkeDao Discord",
+  },
+  {
+    image: "/images/nft-2.png",
+    name: "SMB Inception",
+    price: 6589,
+    description: "A Banana icon badge for the MonkeDao Discord",
+  },
+  {
+    image: "/images/nft-3.png",
+    name: "SMB Inception",
+    price: 2343,
+    description: "A Banana icon badge for the MonkeDao Discord",
+  },
+  {
+    image: "/images/nft-3.png",
+    name: "SMB Inception",
+    price: 6589,
+    description: "A Banana icon badge for the MonkeDao Discord",
+  },
+  {
+    image: "/images/nft-3.png",
+    name: "SMB Inception",
+    price: 2343,
+    description: "A Banana icon badge for the MonkeDao Discord",
+  },
+  {
+    image: "/images/nft-2.png",
+    name: "SMB Inception",
+    price: 6589,
+    description: "A Banana icon badge for the MonkeDao Discord",
+  },
+  {
+    image: "/images/nft-3.png",
+    name: "SMB Inception",
+    price: 2343,
+    description: "A Banana icon badge for the MonkeDao Discord",
+  },
 ];
 
 function Shop() {
