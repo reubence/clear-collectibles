@@ -86,7 +86,6 @@ const shopData = [
     price: 6589,
     description: "A Banana icon badge for the MonkeDao Discord",
     unreleased: true,
-    unreleasedTimer: new Date("Sep 10, 2023 16:37:52"),
   },
   {
     image: "/images/nft-3.png",
