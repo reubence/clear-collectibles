@@ -178,8 +178,9 @@ function Shop() {
                 onClick={() => {
                   setOpenFilterMobile(!openFilterMobile);
                 }}
+                className=""
               >
-                <Icons.filter className="lg:hidden w-5 h-5 fill-primary stroke-primary" />
+                <Icons.filter className="lg:hidden w-5 h-5 fill-gray-400 stroke-gray-400" />
               </Button>
             </div>
             <div className="flex items-center justify-between w-full lg:w-fit whitespace-nowrap gap-[30px]">
@@ -372,23 +373,11 @@ function Shop() {
             <SheetTrigger
               className={cn(
                 buttonVariants(),
-                "lg:hidden gap-0.5 text-base font-bold text-white uppercase py-3 h-fit w-full rounded-2xl"
+                "lg:hidden gap-1 text-base font-bold text-white uppercase py-3 h-fit w-full rounded-2xl"
               )}
             >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                className="mb-1.5"
-              >
-                <path
-                  d="M18.1477 7.16342H16.3909C16.3909 4.73702 14.4239 2.76758 11.9999 2.76758C9.57585 2.76758 7.60881 4.73702 7.60881 7.16342H5.85201C4.88625 7.16342 4.10481 7.95494 4.10481 8.92214L4.09521 19.473C4.09623 19.9388 4.28158 20.3853 4.61077 20.7148C4.93996 21.0444 5.38622 21.2302 5.85201 21.2317H18.1472C18.613 21.2302 19.0593 21.0444 19.3885 20.7148C19.7176 20.3853 19.903 19.9388 19.904 19.473V8.92262C19.903 8.45682 19.7176 8.01036 19.3885 7.68081C19.0593 7.35126 18.613 7.16542 18.1472 7.1639L18.1477 7.16342ZM11.9999 4.52582C12.3462 4.5255 12.6892 4.59353 13.0092 4.726C13.3292 4.85847 13.62 5.05278 13.8648 5.29779C14.1096 5.54281 14.3036 5.83372 14.4358 6.15386C14.568 6.474 14.6357 6.81707 14.6351 7.16342H9.36465C9.36402 6.81707 9.43174 6.474 9.56391 6.15386C9.69609 5.83372 9.89014 5.54281 10.1349 5.29779C10.3797 5.05278 10.6705 4.85847 10.9905 4.726C11.3105 4.59353 11.6535 4.5255 11.9999 4.52582ZM11.9999 13.3185C9.57585 13.3185 7.60881 11.349 7.60881 8.92166H9.36513C9.36444 9.26805 9.43211 9.61117 9.56425 9.93136C9.6964 10.2516 9.89044 10.5425 10.1352 10.7876C10.38 11.0327 10.6708 11.227 10.9908 11.3595C11.3109 11.492 11.6539 11.5601 12.0003 11.5597C12.3466 11.5599 12.6895 11.4918 13.0094 11.3593C13.3293 11.2268 13.6199 11.0324 13.8646 10.7874C14.1093 10.5424 14.3033 10.2515 14.4354 9.93148C14.5675 9.6114 14.6352 9.26841 14.6346 8.92214H16.3914C16.3914 11.349 14.4239 13.3185 11.9999 13.3185Z"
-                  fill="white"
-                />
-              </svg>{" "}
-              Buy
+              <Icons.shop className="fill-white mb-1.5" />
+              <p>Buy</p>
             </SheetTrigger>
             <SheetContent side="bottom" className="">
               {/* <StandardConfirmation /> */}
