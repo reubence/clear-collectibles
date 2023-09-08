@@ -158,7 +158,14 @@ export default function Home() {
         </div>
       </div>
       {/* Mobile View */}
-      <div className="lg:hidden">
+      <div className="lg:hidden -mt-20">
+        <Image
+          src="/images/nft-1.png"
+          alt="Dashboard Nft Image"
+          width={341}
+          height={374}
+          className="mx-auto w-full"
+        />
         <div className="bg-white/50 rounded-xl p-5 w-full flex flex-col gap-5">
           <div className="flex gap-3">
             {data.map((item, index) => (
