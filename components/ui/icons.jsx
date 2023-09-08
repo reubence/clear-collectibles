@@ -265,4 +265,47 @@ export const Icons = {
       />
     </svg>
   ),
+  info: ({ ...props }) => (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="16"
+      height="16"
+      viewBox="0 0 16 16"
+      {...props}
+    >
+      <g opacity="0.5" clip-path="url(#clip0_1_3189)">
+        <path
+          d="M7.99992 14.6668C9.84085 14.6668 11.5075 13.9206 12.714 12.7142C13.9204 11.5078 14.6666 9.8411 14.6666 8.00016C14.6666 6.15923 13.9204 4.49256 12.714 3.28612C11.5075 2.07969 9.84085 1.3335 7.99992 1.3335C6.15899 1.3335 4.49232 2.07969 3.28587 3.28612C2.07945 4.49256 1.33325 6.15923 1.33325 8.00016C1.33325 9.8411 2.07945 11.5078 3.28587 12.7142C4.49232 13.9206 6.15899 14.6668 7.99992 14.6668Z"
+          stroke="#333333"
+          strokeWidth="1.33333"
+          strokeLinejoin="round"
+        />
+        <path
+          fillRule="evenodd"
+          clipRule="evenodd"
+          d="M8.00008 3.6665C8.46031 3.6665 8.83341 4.0396 8.83341 4.49984C8.83341 4.96007 8.46031 5.33317 8.00008 5.33317C7.53985 5.33317 7.16675 4.96007 7.16675 4.49984C7.16675 4.0396 7.53985 3.6665 8.00008 3.6665Z"
+          fill="#333333"
+        />
+        <path
+          d="M8.16667 11.3332V6.6665H7.83333H7.5"
+          stroke="#333333"
+          strokeWidth="1.33333"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+        <path
+          d="M7 11.3335H9.33333"
+          stroke="#333333"
+          strokeWidth="1.33333"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+      </g>
+      <defs>
+        <clipPath id="clip0_1_3189">
+          <rect width="16" height="16" fill="white" />
+        </clipPath>
+      </defs>
+    </svg>
+  ),
 };

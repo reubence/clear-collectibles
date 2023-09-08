@@ -211,7 +211,7 @@ function History() {
               )}
             >
               <span className="hidden lg:block">Type filtering</span>
-              <Separator className="hidden lg:block my-7 bg-[#E6E6E6]" />
+              <Separator className="hidden lg:block my-7 bg-muted" />
               {/* FILTERING OPTIONS */}
               <ScrollArea className="lg:h-[calc(100vh-500px)] pr-2.5">
                 {filtering.map((filter, index) => (

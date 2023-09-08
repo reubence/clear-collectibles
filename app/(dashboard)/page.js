@@ -1,3 +1,4 @@
+"use client";
 import AllNFT from "@/components/dashboard-pages/all-nft";
 import Emblems from "@/components/dashboard-pages/emblems";
 import ProfileStat from "@/components/dashboard-pages/profile-stat";
@@ -17,11 +18,18 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
+import { Separator } from "@/components/ui/separator";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
-import React from "react";
+import React, { useState } from "react";
 
 const data = [
+  {
+    icon: Icons.profile,
+    label: "Profile",
+    children: <ProfileStat />,
+    value: "profile",
+  },
   {
     icon: Icons.tasks,
     label: "Tasks",
@@ -43,10 +51,11 @@ const data = [
 ];
 
 export default function Home() {
+  const [selected, setSelected] = useState("profile");
   return (
-    <main className="flex flex-col lg:flex-row items-end justify-between p-5 mb-20 lg:pb-36 lg:px-10 relative h-screen w-full">
+    <main className="flex flex-col lg:flex-row lg:items-end justify-between p-5 mb-20 lg:pb-36 lg:px-10 relative h-screen w-full">
       {/* Desktop View */}
-      <div className="lg:bg-white/50 lg:rounded-2xl relative w-full h-full lg:h-fit flex flex-col lg:flex-row justify-between ">
+      <div className="lg:bg-white/50 lg:rounded-2xl relative w-full h-full lg:h-fit hidden lg:flex flex-col lg:flex-row justify-between ">
         <div className="bg-white/50 lg:bg-transparent border lg:border-none rounded-xl flex gap-3 py-5 px-5 lg:p-3 h-full w-full">
           <div className="lg:hidden">
             <Popover>
@@ -149,7 +158,119 @@ export default function Home() {
         </div>
       </div>
       {/* Mobile View */}
-      <div></div>
+      <div className="lg:hidden">
+        <div className="bg-white/50 rounded-xl p-5 w-full flex flex-col gap-5">
+          <div className="flex gap-3">
+            {data.map((item, index) => (
+              <Button
+                key={index}
+                variant="secondary"
+                size="sm"
+                className={cn({
+                  "cursor-pointer bg-white": selected !== item.value,
+                  "!bg-primary": selected === item.value,
+                })}
+                onClick={() => setSelected(item.value)}
+              >
+                {
+                  <item.icon
+                    className={cn("fill-gray-300", {
+                      "fill-white": selected === item.value,
+                    })}
+                  />
+                }
+              </Button>
+            ))}
+          </div>
+          {data.map((item, index) => (
+            <div
+              key={index}
+              className={cn({
+                "hidden ": selected !== item.value || selected === "profile",
+                "block ": selected === item.value && selected !== "profile",
+              })}
+            >
+              {item.children}
+            </div>
+          ))}
+          {selected === "profile" && (
+            <div className="flex flex-col gap-2">
+              <div className="flex gap-2.5 items-center">
+                <p className="text-2xl">BROOM</p>
+                <span className="font-semibold bg-primary text-white px-2 rounded-xl">
+                  Lv.5
+                </span>
+              </div>
+              <p className="font-medium">Clear Collectibles #852</p>
+              <Separator className="w-full bg-white my-3" />
+              <p className="text-xl">Bubbles: 8,952</p>
+              <p className="font-bold flex items-center gap-1.5">
+                <span className="font-normal">Multiplier:</span> 60%
+                <span>
+                  <Icons.info className="fill-white/50 w-5 h-5" />
+                </span>
+              </p>
+              <Button className="text-base w-fit mt-3">
+                Distribute Bubbles
+              </Button>
+            </div>
+          )}
+        </div>
+        {selected === "profile" && (
+          <div className="flex flex-col gap-2 bg-white/50 mt-5 rounded-xl p-5">
+            <ProfileStat />{" "}
+          </div>
+        )}
+
+        <div class="z-50 fixed left-0 right-0 bottom-0 w-full justify-end flex gap-3 py-2.5 px-5 bg-white/50">
+          <DropdownMenu>
+            <DropdownMenuTrigger
+              className={cn(
+                buttonVariants({
+                  variant: "secondary",
+                  size: "sm",
+                })
+              )}
+            >
+              <Icons.hexagon className="fill-primary" />
+            </DropdownMenuTrigger>
+            <DropdownMenuContent
+              sideOffset={20}
+              className="w-80 bg-white/50 flex flex-col gap-3 p-2"
+            >
+              <DropdownMenuItem
+                className={cn(
+                  buttonVariants(
+                    {
+                      variant: "ghost",
+                      size: "sm",
+                      className: "text-primary cursor-pointer",
+                    },
+                    "text-primary"
+                  )
+                )}
+              >
+                Profile
+              </DropdownMenuItem>
+              <DropdownMenuItem
+                className={cn(
+                  buttonVariants({
+                    variant: "ghost",
+                    size: "sm",
+                    className: "text-primary cursor-pointer",
+                  })
+                )}
+              >
+                Avatar
+              </DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
+          <Button size="sm" className="gap-3 text-sm px-4">
+            Share Profile
+            <Icons.profile className="fill-white w-7 h-7" />
+          </Button>
+        </div>
+      </div>
     </main>
   );
 }
