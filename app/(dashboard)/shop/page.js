@@ -156,6 +156,7 @@ const shopData = [
 function Shop() {
   const [openFilterMobile, setOpenFilterMobile] = React.useState(false);
   const [selected, setSelected] = React.useState(0);
+  const [popoverOpen, setPopoverOpen] = React.useState(-1);
   return (
     <>
       <div className="px-4 lg:px-12 pb-12 pt-4 w-full lg:h-[calc(100vh-112px)] flex flex-col relative">
@@ -291,38 +292,50 @@ function Shop() {
                       My banana: 2932
                     </p>
                   </div>
-                  {/* <Dialog>
-                    <DialogTrigger
-                      className={cn(
-                        buttonVariants(),
-                        "text-xl font-bold text-white uppercase h-14 rounded-2xl"
-                      )}
-                    >
-                      <Icons.shop className="fill-white mb-1.5" />
-                      Buy
-                    </DialogTrigger>
-                    <DialogContent className="bg-white">
-                      <AddressConfirmation />
-                    </DialogContent>
-                  </Dialog> */}
-
-                  <Popover>
-                    <PopoverTrigger
-                      className={cn(
-                        buttonVariants(),
-                        "text-xl font-bold text-white uppercase h-14 rounded-2xl"
-                      )}
-                    >
-                      <Icons.shop className="fill-white mb-1.5" />
-                      Buy
-                    </PopoverTrigger>
-                    <PopoverContent>
-                      {/* <StandardConfirmation /> */}
-                      {/* <CheckboxConfirmation /> */}
-                      <EmailConfirmation />
-                      {/* <AddressConfirmation /> */}
-                    </PopoverContent>
-                  </Popover>
+                  {/* ADDRESS DIALOG FULL SCREEN */}
+                  {popoverOpen >= 3 && (
+                    <Dialog>
+                      <DialogTrigger
+                        className={cn(
+                          buttonVariants(),
+                          "text-xl font-bold text-white uppercase h-14 rounded-2xl"
+                        )}
+                        onClick={
+                          popoverOpen === 4
+                            ? () => setPopoverOpen(-1)
+                            : () => setPopoverOpen(popoverOpen + 1)
+                        }
+                      >
+                        <Icons.shop className="fill-white mb-1.5" />
+                        Buy
+                      </DialogTrigger>
+                      <DialogContent className="bg-white">
+                        <AddressConfirmation />
+                      </DialogContent>
+                    </Dialog>
+                  )}
+                  {/* REMAINING POPUPS */}
+                  {popoverOpen < 3 && (
+                    <Popover>
+                      <PopoverTrigger
+                        className={cn(
+                          buttonVariants(),
+                          "text-xl font-bold text-white uppercase h-14 rounded-2xl"
+                        )}
+                        onClick={() => {
+                          setPopoverOpen(popoverOpen + 1);
+                        }}
+                      >
+                        <Icons.shop className="fill-white mb-1.5" />
+                        Buy
+                      </PopoverTrigger>
+                      <PopoverContent>
+                        {popoverOpen === 0 && <StandardConfirmation />}
+                        {popoverOpen === 1 && <CheckboxConfirmation />}
+                        {popoverOpen === 2 && <EmailConfirmation />}
+                      </PopoverContent>
+                    </Popover>
+                  )}
                 </div>
               </div>
             </div>
@@ -375,15 +388,20 @@ function Shop() {
                 buttonVariants(),
                 "lg:hidden gap-1 text-base font-bold text-white uppercase py-3 h-fit w-full rounded-2xl"
               )}
+              onClick={() => {
+                popoverOpen === 3
+                  ? setPopoverOpen(0)
+                  : setPopoverOpen(popoverOpen + 1);
+              }}
             >
               <Icons.shop className="fill-white mb-1.5" />
               <p>Buy</p>
             </SheetTrigger>
             <SheetContent side="bottom" className="">
-              {/* <StandardConfirmation /> */}
-              {/* <CheckboxConfirmation /> */}
-              {/* <EmailConfirmation /> */}
-              <AddressConfirmation />
+              {popoverOpen === 0 && <StandardConfirmation />}
+              {popoverOpen === 1 && <CheckboxConfirmation />}
+              {popoverOpen === 2 && <EmailConfirmation />}
+              {popoverOpen === 3 && <AddressConfirmation />}
             </SheetContent>
           </Sheet>
         </div>
