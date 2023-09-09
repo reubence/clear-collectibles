@@ -29,25 +29,18 @@ function AddressConfirmation({ className }) {
     lastName: z.string(),
     address: z.string(),
     address2: z.string(),
-    phone: z.string(),
-    pincode: z.string(),
+    phone: z
+      .string()
+      .length(10)
+      .regex(/^[0-9]+$/, "Must be only digits"),
+    pincode: z
+      .string()
+      .length(6)
+      .regex(/^[0-9]+$/, "Must be only digits"),
     country: z.string(),
     city: z.string(),
     state: z.string(),
   });
-
-  const fields = [
-    { name: "email", label: "Email" },
-    { name: "firstName", label: "First Name" },
-    { name: "lastName", label: "Last Name" },
-    { name: "address", label: "Address" },
-    { name: "address2", label: "Apartment, suite, etc: (optional)" },
-    { name: "phone", label: "Phone" },
-    { name: "pincode", label: "Postal Code" },
-    { name: "country", label: "Country/Region" },
-    { name: "city", label: "City" },
-    { name: "state", label: "State" },
-  ];
 
   const form = useForm({
     resolver: zodResolver(formSchema),
