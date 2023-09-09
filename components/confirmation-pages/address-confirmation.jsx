@@ -29,14 +29,8 @@ function AddressConfirmation({ className }) {
     lastName: z.string(),
     address: z.string(),
     address2: z.string(),
-    phone: z
-      .string()
-      .length(10)
-      .regex(/^[0-9]+$/, "Must be only digits"),
-    pincode: z
-      .string()
-      .length(6)
-      .regex(/^[0-9]+$/, "Must be only digits"),
+    phone: z.string().regex(/^[0-9]+$/, "Must be only digits"),
+    pincode: z.string().regex(/^[0-9]+$/, "Must be only digits"),
     country: z.string(),
     city: z.string(),
     state: z.string(),
@@ -95,7 +89,7 @@ function AddressConfirmation({ className }) {
           </p>
 
           <Separator className="w-full bg-muted" />
-          <ScrollArea className="h-[51vh] md:h-[40vh] tallXS:h-[40h] tallXL:h-[51vh] 3xl:h-full w-full">
+          <ScrollArea className="h-[40vh] tallXS:h-[40h] tallXL:h-[51vh] 3xl:h-full w-full">
             <div className="grid grid-cols-6 whitespace-nowrap items-start gap-4 px-1.5">
               <div className="col-span-6 md:col-span-2 space-y-2">
                 <FormField

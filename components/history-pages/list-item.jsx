@@ -14,7 +14,7 @@ import RedeemCode from "./redeem-code";
 import { Dialog, DialogContent, DialogTrigger } from "../ui/dialog";
 import AddressConfirmation from "../confirmation-pages/address-confirmation";
 import { Separator } from "../ui/separator";
-import { Sheet, SheetContent, SheetTrigger } from "../ui/sheet";
+import { Sheet, SheetClose, SheetContent, SheetTrigger } from "../ui/sheet";
 
 function ListItem({
   image,
