@@ -302,19 +302,13 @@ function ListItem({
           <Separator className="bg-muted my-4" />
         </div>
         <div className="flex justify-end w-full gap-1.5">
-          <Sheet>
-            <SheetTrigger
-              className={cn(
-                buttonVariants({ size: "sm" }),
-                "uppercase rounded-lg p-4 text-xs w-full"
-              )}
-            >
-              Get Support
-            </SheetTrigger>
-            <SheetContent side="bottom" className="">
-              <AddressConfirmation className="lg:max-w-full" />
-            </SheetContent>
-          </Sheet>
+          <Button
+            size="sm"
+            className={cn("uppercase rounded-lg p-4 text-xs w-full")}
+            onClick={() => console.log("Get Support")}
+          >
+            Get Support
+          </Button>
 
           {redeemCode && (
             <Sheet>
@@ -328,6 +322,22 @@ function ListItem({
               </SheetTrigger>
               <SheetContent side="bottom" className="">
                 <RedeemCode />
+              </SheetContent>
+            </Sheet>
+          )}
+
+          {details && (
+            <Sheet>
+              <SheetTrigger
+                className={cn(
+                  buttonVariants({ variant: "outline", size: "sm" }),
+                  "uppercase rounded-lg p-4 text-xs w-full lg:hidden gap-1 py-3"
+                )}
+              >
+                Details
+              </SheetTrigger>
+              <SheetContent side="bottom" className="">
+                <AddressConfirmation className="lg:max-w-full" />
               </SheetContent>
             </Sheet>
           )}
