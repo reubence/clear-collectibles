@@ -37,7 +37,7 @@ function ListItem({
   return (
     <div className="bg-white p-4 lg:p-0 lg:bg-none rounded-xl lg:rounded-none">
       <div className="hidden lg:flex flex-col w-full border-t-2 border-t-primary border-b">
-        <div className="flex md:flex-col xl:flex-row lg:flex-wrap bg-primary/10 p-5 justify-between items-start gap-3">
+        <div className="flex md:flex-col lg:flex-row lg:flex-wrap bg-primary/10 p-5 justify-between items-start gap-3">
           {/* ORDER PLACED */}
           <div className="flex flex-col gap-1.5">
             <h2 className="font-normal text-muted-foreground/50">
@@ -73,8 +73,8 @@ function ListItem({
           </div>
         </div>
 
-        <div className="flex lg:flex-col items-start xl:flex-row gap-5 justify-between p-5">
-          <div className="flex lg:flex-col xl:flex-row gap-5">
+        <div className="flex flex-col xl:flex-row h-full items-start gap-5 justify-between p-5">
+          <div className="flex gap-5">
             <Image
               src={image}
               alt="NFT IMAGE"
@@ -128,7 +128,7 @@ function ListItem({
               </p>
             </div>
           </div>
-          <div className="flex flex-col gap-4 xl:w-56 2xl:w-72 lg:items-start xl:items-end justify-center">
+          <div className="flex xl:flex-col gap-4 xl:w-56 2xl:w-72 h-full items-end justify-center">
             {/* ORDER STATUS PENDING */}
             {status === "pending" && (
               <p className="whitespace-nowrap capitalize px-4 py-2 text-[#F90] bg-[#FFF5E5] rounded-lg">
@@ -189,9 +189,13 @@ function ListItem({
 
       {/* MOBILE VIEW START */}
       <div
-        className={cn("lg:hidden rounded-xl cursor-pointer", {
-          "ring-primary": openDetails,
-        })}
+        className={cn(
+          "lg:hidden rounded-xl cursor-pointer  transition-all ease-in-out",
+          {
+            // put some styling code here for wheh popup is open
+            "": openDetails,
+          }
+        )}
         onClick={() => setOpenDetails(!openDetails)}
       >
         {/* ORDER PLACED */}
