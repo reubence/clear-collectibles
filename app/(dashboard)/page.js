@@ -22,6 +22,8 @@ import { Separator } from "@/components/ui/separator";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
 import React, { useState } from "react";
+import { motion } from "framer-motion";
+import { AnimatePresence } from "framer-motion";
 
 const data = [
   {
@@ -81,14 +83,59 @@ export default function Home() {
           </div>
           {data.map((item, index) => (
             <Popover key={index}>
-              <PopoverTrigger asChild>
+              <PopoverTrigger
+                className={cn(
+                  buttonVariants({ variant: "secondary", size: "sm" }),
+                  "w-fit h-fit cursor-pointer bg-white group lg:p-2.5 data-[state=open]:bg-primary"
+                )}
+                onClick={() => setSelected(item.value)}
+              >
                 {
-                  <item.icon
-                    className={cn(
-                      buttonVariants({ variant: "secondary", size: "sm" }),
-                      "w-fit h-fit cursor-pointer bg-white group lg:p-2.5 data-[state=open]:bg-primary fill-gray-300 data-[state=open]:fill-white"
-                    )}
-                  />
+                  <div className="flex items-center gap-2 group transition-all ease-in-out">
+                    <item.icon
+                      className={cn(
+                        "fill-gray-300 data-[state=open]:fill-white"
+                      )}
+                    />
+                    <AnimatePresence mode="wait">
+                      {selected === item.value && (
+                        <motion.p
+                          initial={{
+                            width: 0,
+                            opacity: 0,
+                          }}
+                          animate={{
+                            width: "auto",
+                            opacity: 1,
+                            transition: {
+                              width: {
+                                duration: 0.4,
+                              },
+                              opacity: {
+                                duration: 0.25,
+                                delay: 0.5,
+                              },
+                            },
+                          }}
+                          exit={{
+                            width: 0,
+                            opacity: 0,
+                            transition: {
+                              width: {
+                                duration: 0.4,
+                              },
+                              opacity: {
+                                duration: 0.1,
+                              },
+                            },
+                          }}
+                          key="test"
+                        >
+                          {item.label}
+                        </motion.p>
+                      )}
+                    </AnimatePresence>
+                  </div>
                 }
               </PopoverTrigger>
               <PopoverContent
