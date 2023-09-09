@@ -165,7 +165,7 @@ function History() {
                   alt="Shop Icon"
                   height={40}
                   width={40}
-                  className="w-6 h-6 lg:w-[40px] lg:h-[40px] mb-1 lg:pb-1"
+                  className="hidden lg:block w-6 h-6 lg:w-[40px] lg:h-[40px] mb-1 lg:pb-1"
                   unoptimized
                 />
                 Shop
