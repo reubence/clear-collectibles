@@ -1,7 +1,10 @@
+"use client";
 import React from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Button } from "../ui/button";
 import { Separator } from "../ui/separator";
+import { Input } from "../ui/input";
+import { Textarea } from "../ui/textarea";
 
 const stats = [
   { label: "Total Bubbles", value: 9921 },
@@ -10,7 +13,8 @@ const stats = [
   { label: "Join Date", value: "23.09.08" },
 ];
 
-function ProfileStat() {
+function ProfileStat({ profileDetails, setProfileDetails, editProfile }) {
+  const [data, setData] = React.useState(profileDetails);
   return (
     <Tabs
       defaultValue="profile"
@@ -55,13 +59,24 @@ function ProfileStat() {
             </svg>{" "}
           </Button>
         </div>
-        <span className="">
-          At MonkeDAO, our mission is to create a more inclusive, transparent,
-          and decentralized world by harnessing the power of blockchain
-          technology and community-driven governance. We believe in the
-          potential of decentralized decision-making to drive meaningful change
-          and unlock new{" "}
-        </span>
+        <Textarea
+          className="disabled:opacity-100 p-0 pl-1 bg-white disabled:cursor-default disabled:text-foreground disabled:bg-transparent z-10"
+          rows={data && data.bio.length / 50 + 1}
+          placeholder={data && data.bio}
+          disabled={!editProfile}
+          value={data && data.bio}
+          onChange={(e) => {
+            setData({
+              ...data,
+              bio: e.target.value,
+            });
+            setProfileDetails({
+              ...profileDetails,
+              bio: e.target.value,
+            });
+          }}
+        />
+
         <div className="flex flex-col gap-1">
           <span className="flex gap-2 items-start text-sm">
             <svg

@@ -79,7 +79,7 @@ export default function Home() {
     <main className="flex flex-col lg:flex-row lg:items-end justify-between p-5 mb-20 lg:pb-36 lg:px-10 relative h-screen w-full">
       {/* EDIT PROFILE BUTTON */}
       {editProfile && (
-        <div className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-20 bg-primary p-2 pl-4 flex items-center gap-14 rounded-2xl">
+        <div className="whitespace-nowrap text-xs lg:text-base fixed lg:absolute top-28 shadow-md lg:top-0 left-1/2 transform -translate-x-1/2 -translate-y-20 bg-primary p-2 pl-4 flex items-center gap-14 rounded-2xl z-50">
           <p className="3xl:text-2xl">You are in editing mode</p>
           <div className="flex gap-2">
             <Button
@@ -150,7 +150,11 @@ export default function Home() {
         </div>
         {/* PROFILE / STAT COMPONENT */}
         <div className="flex flex-col gap-2 bg-white/25 border mt-5 rounded-xl p-5">
-          <ProfileStat />
+          <ProfileStat
+            profileDetails={profileDetails}
+            setProfileDetails={() => setProfileDetails}
+            editProfile={editProfile}
+          />
         </div>
       </div>
       {/* DESKTOP VIEW STARTS HERE */}
@@ -372,7 +376,19 @@ export default function Home() {
           {selected === "profile" && (
             <div className="flex flex-col gap-2">
               <div className="flex gap-2.5 items-center">
-                <p className="text-2xl">BROOM</p>
+                <Input
+                  className="rounded-md w-fit text-2xl disabled:opacity-100 p-0 pl-1 disabled:cursor-default disabled:text-foreground disabled:bg-transparent z-10"
+                  size={profileDetails.nickname.length + 1}
+                  placeholder={profileDetails.nickname}
+                  disabled={!editProfile}
+                  value={profileDetails.nickname}
+                  onChange={(e) => {
+                    setProfileDetails({
+                      ...profileDetails,
+                      nickname: e.target.value,
+                    });
+                  }}
+                />{" "}
                 <span className="font-semibold bg-primary text-white px-2 rounded-xl">
                   Lv.5
                 </span>
@@ -396,7 +412,11 @@ export default function Home() {
         {/* PROFILE / STAT COMPONENT */}
         {selected === "profile" && (
           <div className="flex flex-col gap-2 bg-white/25 border mt-5 rounded-xl p-5">
-            <ProfileStat />
+            <ProfileStat
+              profileDetails={profileDetails}
+              setProfileDetails={() => setProfileDetails}
+              editProfile={editProfile}
+            />
           </div>
         )}
 
@@ -428,6 +448,7 @@ export default function Home() {
                     "text-primary"
                   )
                 )}
+                onClick={() => setEditProfile(true)}
               >
                 Profile
               </DropdownMenuItem>
