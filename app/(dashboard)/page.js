@@ -27,6 +27,53 @@ import { AnimatePresence } from "framer-motion";
 import { Input } from "@/components/ui/input";
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 
+const emblemData = [
+  {
+    icon: "/images/emblem.svg",
+    label: "SMB Inception",
+    subheading: "subheading",
+  },
+  {
+    icon: "/images/emblem.svg",
+    label: "SMB Inception",
+    subheading: "subheading",
+  },
+  {
+    icon: "/images/emblem.svg",
+    label: "SMB Inception",
+    subheading: "subheading",
+  },
+  {
+    icon: "/images/emblem.svg",
+    label: "SMB Inception",
+    subheading: "subheading",
+  },
+  {
+    icon: "/images/emblem.svg",
+    label: "SMB Inception",
+    subheading: "subheading",
+  },
+  {
+    icon: "/images/emblem.svg",
+    label: "SMB Inception",
+    subheading: "subheading",
+  },
+  {
+    icon: "/images/emblem.svg",
+    label: "SMB Inception",
+    subheading: "subheading",
+  },
+  {
+    icon: "/images/emblem.svg",
+    label: "SMB Inception",
+    subheading: "subheading",
+  },
+  {
+    icon: "/images/emblem.svg",
+    label: "SMB Inception",
+    subheading: "subheading",
+  },
+];
 const data = [
   {
     icon: Icons.profile,
@@ -49,7 +96,7 @@ const data = [
   {
     icon: Icons.emblems,
     label: "Emblems",
-    children: <Emblems />,
+    children: <Emblems emblemData={emblemData} />,
     value: "emblems",
   },
 ];
@@ -58,6 +105,7 @@ export default function Home() {
   const [selectedDesktop, setSelectedDesktop] = useState("");
   const [selected, setSelected] = useState("");
   const [editProfile, setEditProfile] = useState(false);
+  const [editAvatar, setEditAvatar] = useState(false);
   const [profileDetails, setProfileDetails] = useState({
     nickname: "BROOM",
     location: "Canada",
@@ -78,28 +126,35 @@ export default function Home() {
   }, []);
   return (
     <main className="flex flex-col lg:flex-row lg:items-end justify-between p-5 mb-20 lg:pb-36 lg:px-10 relative h-screen w-full">
-      {/* EDIT PROFILE BUTTON */}
-      {editProfile && (
-        <div className="whitespace-nowrap text-xs lg:text-base fixed lg:absolute top-28 shadow-md lg:top-0 left-1/2 transform -translate-x-1/2 -translate-y-20 bg-primary p-2 pl-4 flex items-center gap-14 rounded-2xl z-50">
-          <p className="3xl:text-2xl">You are in editing mode</p>
-          <div className="flex gap-2">
-            <Button
-              size="sm"
-              variant="secondary"
-              onClick={() => setEditProfile(false)}
-            >
-              Save
-            </Button>
-            <Button
-              size="sm"
-              variant="secondary"
-              onClick={() => setEditProfile(false)}
-            >
-              <Icons.close className="stroke-primary" />
-            </Button>
+      {/* EDIT PROFILE & AVATAR BUTTON */}
+      {editProfile ||
+        (editAvatar && (
+          <div className="whitespace-nowrap text-xs lg:text-base fixed lg:absolute top-28 shadow-md lg:top-0 left-1/2 transform -translate-x-1/2 -translate-y-20 bg-primary p-2 pl-4 flex items-center gap-14 rounded-2xl z-50">
+            <p className="3xl:text-2xl">You are in editing mode</p>
+            <div className="flex gap-2">
+              <Button
+                size="sm"
+                variant="secondary"
+                onClick={() => {
+                  setEditProfile(false);
+                  setEditAvatar(true);
+                }}
+              >
+                Save
+              </Button>
+              <Button
+                size="sm"
+                variant="secondary"
+                onClick={() => {
+                  setEditProfile(false);
+                  setEditAvatar(true);
+                }}
+              >
+                <Icons.close className="stroke-primary" />
+              </Button>
+            </div>
           </div>
-        </div>
-      )}
+        ))}
       {/* DESKTOP NFT IMAGE  */}
       <Image
         src="/images/nft-1.png"
@@ -323,6 +378,11 @@ export default function Home() {
                     className: "text-primary cursor-pointer",
                   })
                 )}
+                onClick={() => {
+                  setEditAvatar(true);
+                  setSelectedDesktop("nfts");
+                  setSelected("nfts");
+                }}
               >
                 Avatar
               </DropdownMenuItem>
@@ -473,6 +533,11 @@ export default function Home() {
                     className: "text-primary cursor-pointer",
                   })
                 )}
+                onClick={() => {
+                  setEditAvatar(true);
+                  setSelectedDesktop("nfts");
+                  setSelected("nfts");
+                }}
               >
                 Avatar
               </DropdownMenuItem>
