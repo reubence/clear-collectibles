@@ -77,7 +77,7 @@ export default function Home() {
   }, []);
   return (
     <main className="flex flex-col lg:flex-row lg:items-end justify-between p-5 mb-20 lg:pb-36 lg:px-10 relative h-screen w-full">
-      {/* EDIT PROFILE MODAL */}
+      {/* EDIT PROFILE BUTTON */}
       {editProfile && (
         <div className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-20 bg-primary p-2 pl-4 flex items-center gap-14 rounded-2xl">
           <p className="3xl:text-2xl">You are in editing mode</p>
