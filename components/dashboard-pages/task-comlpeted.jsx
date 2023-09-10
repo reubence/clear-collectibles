@@ -5,6 +5,7 @@ import { Separator } from "../ui/separator";
 import { Label } from "../ui/label";
 import { Input } from "../ui/input";
 import { Icons } from "../ui/icons";
+import { motion } from "framer-motion";
 
 const stats = [
   { label: "Total Bubbles", value: 9921 },
@@ -12,16 +13,37 @@ const stats = [
   { label: "Rank", value: 7 },
   { label: "Join Date", value: "23.09.08" },
 ];
+let tabs = [
+  { id: "tasks", label: "Tasks" },
+  { id: "completed", label: "Completed" },
+];
 
 function TaskCompleted() {
+  let [activeTab, setActiveTab] = React.useState(tabs[0].id);
   return (
     <Tabs
       defaultValue="tasks"
-      className="w-[calc(100vw-80px)] sm:w-[calc(768px-368px)] lg:w-[35vw] xl:w-[27vw]"
+      className="w-[calc(100vw-80px)] sm:w-[calc(768px-368px)] lg:w-[35vw] xl:w-[27vw] h-[460px]"
     >
       <TabsList>
-        <TabsTrigger value="tasks">Tasks</TabsTrigger>
-        <TabsTrigger value="completed">Completed</TabsTrigger>
+        {tabs.map((tab) => (
+          <div className="relative" key={tab.id}>
+            <TabsTrigger
+              className="relative font-bold text-xl leading-none"
+              value={tab.id}
+              onClick={() => setActiveTab(tab.id)}
+            >
+              {activeTab === tab.id && (
+                <motion.div
+                  layoutId="dot"
+                  transition={{ type: "spring", xbounce: 0.2, duration: 0.6 }}
+                  className="absolute w-1.5 h-1.5 rounded-full bg-foreground right-1/2 mt-10"
+                />
+              )}
+              {tab.label}
+            </TabsTrigger>
+          </div>
+        ))}
       </TabsList>
       <Separator className="mt-4 mb-7" />
       <TabsContent
