@@ -9,6 +9,7 @@ import { ScrollArea } from "../ui/scroll-area";
 import { Icons } from "../ui/icons";
 import { Toggle } from "../ui/toggle";
 import { cn } from "@/lib/utils";
+import { motion } from "framer-motion";
 
 const stats = [
   { label: "Total Bubbles", value: 9921 },
@@ -16,17 +17,39 @@ const stats = [
   { label: "Rank", value: 7 },
   { label: "Join Date", value: "23.09.08" },
 ];
+let tabs = [
+  { id: "profile", label: "Profile" },
+  { id: "stat", label: "Stat" },
+];
 
 function ProfileStat({ profileDetails, setProfileDetails, editProfile }) {
   const [data, setData] = React.useState(profileDetails);
+  let [activeTab, setActiveTab] = React.useState(tabs[0].id);
+
   return (
     <Tabs
       defaultValue="profile"
-      className="w-[calc(100vw-80px)] sm:w-[calc(768px-368px)] lg:w-[35vw] xl:w-[27vw]"
+      className="w-[calc(100vw-80px)] sm:w-[calc(768px-368px)] lg:w-[35vw] xl:w-[27vw] h-[350px]"
     >
       <TabsList>
-        <TabsTrigger value="profile">Profile</TabsTrigger>
-        <TabsTrigger value="stat">Stat</TabsTrigger>
+        {tabs.map((tab) => (
+          <div className="relative" key={tab.id}>
+            <TabsTrigger
+              className="relative font-bold text-xl leading-none"
+              value={tab.id}
+              onClick={() => setActiveTab(tab.id)}
+            >
+              {activeTab === tab.id && (
+                <motion.div
+                  layoutId="dot2"
+                  transition={{ type: "spring", xbounce: 0.2, duration: 0.6 }}
+                  className="absolute w-1.5 h-1.5 rounded-full bg-foreground right-1/2 mt-10"
+                />
+              )}
+              {tab.label}
+            </TabsTrigger>
+          </div>
+        ))}
       </TabsList>
       <Separator className="mt-4 mb-7" />
       <TabsContent
@@ -51,25 +74,23 @@ function ProfileStat({ profileDetails, setProfileDetails, editProfile }) {
             </Toggle>
           )}
         </div>
-        <ScrollArea className="lg:h-[120px]">
-          <Textarea
-            className="disabled:border-none disabled:opacity-100 p-0 pl-1 text-foreground bg-white disabled:cursor-default disabled:text-foreground disabled:bg-transparent"
-            rows={data && data.bio.length / 50 + 1}
-            placeholder={data && data.bio}
-            disabled={!editProfile}
-            value={data && data.bio}
-            onChange={(e) => {
-              setData({
-                ...data,
-                bio: e.target.value,
-              });
-              setProfileDetails({
-                ...profileDetails,
-                bio: e.target.value,
-              });
-            }}
-          />
-        </ScrollArea>
+        <Textarea
+          className="w-full disabled:border-none disabled:opacity-100 p-0 pl-1 text-foreground bg-white disabled:cursor-default disabled:text-foreground disabled:bg-transparent"
+          rows={7}
+          placeholder={data && data.bio}
+          disabled={!editProfile}
+          value={data && data.bio}
+          onChange={(e) => {
+            setData({
+              ...data,
+              bio: e.target.value,
+            });
+            setProfileDetails({
+              ...profileDetails,
+              bio: e.target.value,
+            });
+          }}
+        />
 
         <div className="flex flex-col gap-1">
           <span className="flex gap-2 items-start text-sm">
