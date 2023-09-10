@@ -3,38 +3,50 @@ import EMBLEM from "@/public/images/emblem.svg";
 import Image from "next/image";
 import { Separator } from "../ui/separator";
 import { ScrollArea } from "../ui/scroll-area";
+import { Tilt } from "react-tilt";
+
+const defaultOptions = {
+  reverse: false, // reverse the tilt direction
+  max: 35, // max tilt rotation (degrees)
+  perspective: 700, // Transform perspective, the lower the more extreme the tilt gets.
+  // scale: 1.1, // 2 = 200%, 1.5 = 150%, etc..
+  speed: 1000, // Speed of the enter/exit transition
+  transition: true, // Set a transition on enter/exit.
+  axis: null, // What axis should be disabled. Can be X or Y.
+  reset: true, // If the tilt effect has to be reset on exit.
+  easing: "cubic-bezier(.03,.98,.52,.99)", // Easing on enter/exit.
+};
 
 function Emblems({ emblemData }) {
   return (
-    <div className="flex flex-col justify-start gap-4 w-[calc(100vw-80px)] sm:w-[calc(768px-368px)] lg:w-[25vw] lg:h-[54vh]">
+    <div className="flex flex-col justify-start gap-4 w-[calc(100vw-80px)] sm:w-[calc(768px-368px)] lg:w-[35vw] xl:w-[27vw]">
       <span className="uppercase text-xl ml-2 col-span-2 text-left whitespace-nowrap">
         emblems
       </span>
       <Separator className="col-span-2" />
 
       <ScrollArea className="h-[430px]">
-        <div className="grid grid-cols-2 w-full h-full gap-8 relative">
+        <div className="grid grid-cols-2 w-full h-full gap-8 relative p-3.5">
           {emblemData.length > 0 ? (
             emblemData.map((item, i) => (
-              <div
-                key={i}
-                className="flex flex-col items-center mx-auto group  hover:border-primary hover:bg-primary/20 hover:cursor-pointer border-2 border-transparent rounded-2xl transition-all duration-500 ease-in-out"
-              >
-                <Image
-                  src={item.icon}
-                  alt="Emblem Icon"
-                  height={120}
-                  width={120}
-                  className="rounded-2xl h-[80] w-[80px] lg:h-[120px] lg:w-[120px] aspect-square object-cover"
-                  unoptimized
-                />
-                <h3 className="text-sm font-bold uppercase mt-3">
-                  {item.label}
-                </h3>
-                <p className="text-sm font-normal uppercase text-foreground/50">
-                  {item.subheading}
-                </p>
-              </div>
+              <Tilt key={i} options={defaultOptions}>
+                <div className="flex flex-col items-center mx-auto group p-1 hover:border-primary hover:shadow-2xl hover:cursor-pointer border-2 border-transparent rounded-2xl transition-all duration-500 ease-in-out">
+                  <Image
+                    src={item.icon}
+                    alt="Emblem Icon"
+                    height={120}
+                    width={120}
+                    className="rounded-2xl h-[80] w-[80px] xl:h-[120px] xl:w-[120px] aspect-square object-cover"
+                    unoptimized
+                  />
+                  <h3 className="text-center text-sm font-bold uppercase mt-3">
+                    {item.label}
+                  </h3>
+                  <p className="text-sm font-normal uppercase text-foreground/50">
+                    {item.subheading}
+                  </p>
+                </div>
+              </Tilt>
             ))
           ) : (
             <div className="col-span-2 flex flex-col gap-3 w-full h-full justify-center items-center">

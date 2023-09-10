@@ -17,7 +17,7 @@ function TaskCompleted() {
   return (
     <Tabs
       defaultValue="tasks"
-      className="w-[calc(100vw-80px)] sm:w-[calc(768px-368px)] lg:w-[25vw] lg:h-[54vh]"
+      className="w-[calc(100vw-80px)] sm:w-[calc(768px-368px)] lg:w-[35vw] xl:w-[27vw]"
     >
       <TabsList>
         <TabsTrigger value="tasks">Tasks</TabsTrigger>

@@ -118,7 +118,7 @@ export default function Home() {
   useEffect(() => {
     containerRef.current = document.body;
     // if window width is less than 1024px then set selected to tasks
-    if (window.innerWidth >= 1024) {
+    if (window.innerWidth >= 1280) {
       setSelectedDesktop("tasks");
     } else {
       setSelected("profile");
@@ -147,7 +147,7 @@ export default function Home() {
                 variant="secondary"
                 onClick={() => {
                   setEditProfile(false);
-                  setEditAvatar(true);
+                  setEditAvatar(false);
                 }}
               >
                 <Icons.close className="stroke-primary" />
@@ -166,10 +166,10 @@ export default function Home() {
       {/* BROOM PROFILE SECTION */}
       <div className="absolute hidden lg:block right-10 bottom-60 z-20">
         <div className="flex flex-col gap-2 tall2XL:gap-3.5 relative">
-          <div className="absolute whitespace-nowrap right-[57vw] xl:right-[37vw] tall2XL:right-0 tall2XL:relative flex items-center tall2XL:items-start justify-between tall2XL:justify-start tall2XL:flex-col gap-2">
+          <div className="absolute flex flex-col items-center whitespace-nowrap right-[57vw] xl:right-[40vw] tall2XL:right-0 tall2XL:relative tall2XL:items-start justify-between tall2XL:justify-start tall2XL:flex-col gap-2">
             <div className="flex gap-2.5 items-center">
               <Input
-                className="rounded-md 3xl:rounded-xl w-fit text-2xl tall2XL:text-6xl flex flex-shrink disabled:opacity-100 p-0 pl-1 disabled:cursor-default disabled:text-foreground disabled:bg-transparent z-10"
+                className="rounded-md 3xl:rounded-xl w-fit text-4xl tall2XL:text-6xl flex flex-shrink disabled:opacity-100 p-0 pl-1 disabled:cursor-default disabled:text-foreground disabled:bg-transparent z-10"
                 size={profileDetails.nickname.length + 1}
                 placeholder={profileDetails.nickname}
                 disabled={!editProfile}
@@ -191,7 +191,7 @@ export default function Home() {
           </div>
           <Separator className="hidden 3xl:block w-full bg-white my-3" />
 
-          <div className="flex items-center justify-between bg-white/25 p-5 rounded-2xl border">
+          <div className="flex items-center justify-between gap-3 bg-white/25 p-5 rounded-2xl border">
             <div className="flex flex-col gap-2">
               <p className="text-xl 3xl:">Bubbles: 8,952</p>
               <p className="font-bold flex items-center gap-1.5">
