@@ -24,6 +24,7 @@ import Image from "next/image";
 import React, { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { AnimatePresence } from "framer-motion";
+import { Input } from "@/components/ui/input";
 
 const data = [
   {
@@ -55,6 +56,14 @@ const data = [
 export default function Home() {
   const [selectedDesktop, setSelectedDesktop] = useState("");
   const [selected, setSelected] = useState("");
+  const [editProfile, setEditProfile] = useState(false);
+  const [profileDetails, setProfileDetails] = useState({
+    nickname: "BROOM",
+    location: "Canada",
+    bio: "At MonkeDAO, our mission is to create a more inclusive, transparent, and decentralized world by harnessing the power of blockchain technology and community-driven governance. We believe in the potential of decentralized decision-making to drive meaningful change and unlock new ",
+    visibility: true,
+  });
+
   const containerRef = useRef(null);
 
   useEffect(() => {
@@ -68,20 +77,54 @@ export default function Home() {
   }, []);
   return (
     <main className="flex flex-col lg:flex-row lg:items-end justify-between p-5 mb-20 lg:pb-36 lg:px-10 relative h-screen w-full">
+      {/* EDIT PROFILE MODAL */}
+      {editProfile && (
+        <div className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-20 bg-primary p-2 pl-4 flex items-center gap-14 rounded-2xl">
+          <p className="3xl:text-2xl">You are in editing mode</p>
+          <div className="flex gap-2">
+            <Button
+              size="sm"
+              variant="secondary"
+              onClick={() => setEditProfile(false)}
+            >
+              Save
+            </Button>
+            <Button
+              size="sm"
+              variant="secondary"
+              onClick={() => setEditProfile(false)}
+            >
+              <Icons.close className="stroke-primary" />
+            </Button>
+          </div>
+        </div>
+      )}
       {/* DESKTOP NFT IMAGE  */}
       <Image
         src="/images/nft-1.png"
         alt="Dashboard Nft Image"
         width={341}
         height={374}
-        className="hidden lg:block absolute xl:left-[78vw] 2xl:left-[80vw] 3xl:left-[85vw] -translate-x-10 xl:-translate-x-[50vw] mb-[76px] xl:-mb-10 z-10 w-[55vw] xl:w-[40vw] 3xl:w-[750px]"
+        className="hidden lg:block absolute left-0 bottom-36 xl:left-1/2 xl:-translate-x-1/2 mb-[76px] xl:-mb-10 z-10 w-[48vw] xl:w-[40vw] 3xl:w-[750px]"
       />
       {/* BROOM PROFILE SECTION */}
       <div className="absolute hidden lg:block right-10 bottom-60">
         <div className="flex flex-col gap-2 tall2XL:gap-3.5 relative">
-          <div className="absolute whitespace-nowrap right-[36vw] tall2XL:right-0 tall2XL:relative flex items-center tall2XL:items-start justify-between tall2XL:justify-start tall2XL:flex-col gap-2">
+          <div className="absolute whitespace-nowrap right-[60vw] xl:right-[40vw] tall2XL:right-0 tall2XL:relative flex items-center tall2XL:items-start justify-between tall2XL:justify-start tall2XL:flex-col gap-2">
             <div className="flex gap-2.5 items-center">
-              <p className="text-2xl tall2XL:text-6xl">BROOM</p>
+              <Input
+                className="rounded-md 3xl:rounded-xl w-fit text-2xl tall2XL:text-6xl flex flex-shrink disabled:opacity-100 p-0 pl-1 disabled:cursor-default disabled:text-foreground disabled:bg-transparent z-10"
+                size={profileDetails.nickname.length + 1}
+                placeholder={profileDetails.nickname}
+                disabled={!editProfile}
+                value={profileDetails.nickname}
+                onChange={(e) => {
+                  setProfileDetails({
+                    ...profileDetails,
+                    nickname: e.target.value,
+                  });
+                }}
+              />
               <span className="font-semibold bg-primary text-white tall2XL:text-3xl px-2 tall2XL:px-3 rounded-xl">
                 Lv.5
               </span>
@@ -111,8 +154,17 @@ export default function Home() {
         </div>
       </div>
       {/* DESKTOP VIEW STARTS HERE */}
-      <div className="hidden lg:bg-white/40 lg:rounded-2xl relative w-full h-full lg:h-fit lg:flex flex-col lg:flex-row justify-between ">
-        <div className="rounded-xl flex gap-3 py-5 px-5 lg:p-3 h-full w-full">
+      <div
+        className={cn(
+          "hidden lg:bg-white/40 lg:rounded-2xl relative w-full h-full lg:h-fit lg:flex flex-col lg:flex-row justify-between",
+          {
+            "cursor-not-allowed pointer-events-none opacity-40": editProfile,
+          }
+        )}
+      >
+        <div
+          className={cn("rounded-xl flex gap-3 py-5 px-5 lg:p-3 h-full w-full")}
+        >
           {/* TASKS / ALL-NFTs / EMBLEMS COMPONENTS SECTION */}
           {data
             .filter((item) => item.value !== "profile")
@@ -134,7 +186,12 @@ export default function Home() {
                   className={cn(
                     buttonVariants({ variant: "secondary", size: "sm" }),
                     "w-fit h-fit cursor-pointer bg-white group lg:p-2.5 data-[state=open]:bg-primary",
-                    { "bg-primary": selectedDesktop === item.value }
+                    {
+                      "bg-primary": selectedDesktop === item.value,
+
+                      "cursor-not-allowed pointer-events-none opacity-40":
+                        editProfile,
+                    }
                   )}
                   onClick={() => setSelectedDesktop(item.value)}
                 >
@@ -188,7 +245,16 @@ export default function Home() {
                   }
                 </PopoverTrigger>
                 <PopoverContent
-                  className="lg:p-8 bg-transparent bg-[#E7F1F5] xl:bg-white/25 relative border"
+                  className={cn(
+                    "p-8 bg-[#E7F1F5] 2xl:bg-white/25 relative border",
+                    {
+                      "cursor-not-allowed pointer-events-none opacity-40":
+                        editProfile,
+                    }
+                  )}
+                  onPointerDownOutside={(e) => e.preventDefault()}
+                  onFocusOutside={(e) => e.preventDefault()}
+                  onInteractOutside={(e) => e.preventDefault()}
                   align="center"
                   collisionPadding={40}
                   sideOffset={20}
@@ -215,7 +281,7 @@ export default function Home() {
             </DropdownMenuTrigger>
             <DropdownMenuContent
               sideOffset={20}
-              className="w-80 bg-white/50 flex flex-col gap-3 p-2"
+              className="w-80 bg-[#E7F1F5] flex flex-col gap-3 p-2"
             >
               <DropdownMenuItem
                 className={cn(
@@ -228,6 +294,7 @@ export default function Home() {
                     "text-primary"
                   )
                 )}
+                onClick={() => setEditProfile(true)}
               >
                 Profile
               </DropdownMenuItem>
@@ -348,7 +415,7 @@ export default function Home() {
             </DropdownMenuTrigger>
             <DropdownMenuContent
               sideOffset={20}
-              className="w-80 bg-white/50 flex flex-col gap-3 p-2"
+              className="w-80 bg-[#E7F1F5] flex flex-col gap-3 p-2"
             >
               <DropdownMenuItem
                 className={cn(
