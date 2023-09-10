@@ -74,10 +74,10 @@ export default function Home() {
         alt="Dashboard Nft Image"
         width={341}
         height={374}
-        className="hidden lg:block absolute left-[80vw] 3xl:left-[85vw] -translate-x-[50vw] -mb-10 z-10 w-[40vw] 3xl:w-[750px]"
+        className="hidden lg:block absolute xl:left-[78vw] 2xl:left-[80vw] 3xl:left-[85vw] -translate-x-10 xl:-translate-x-[50vw] mb-[76px] xl:-mb-10 z-10 w-[55vw] xl:w-[40vw] 3xl:w-[750px]"
       />
       {/* BROOM PROFILE SECTION */}
-      <div className="absolute right-10 bottom-60">
+      <div className="absolute hidden lg:block right-10 bottom-60">
         <div className="flex flex-col gap-2 tall2XL:gap-3.5 relative">
           <div className="absolute whitespace-nowrap right-[36vw] tall2XL:right-0 tall2XL:relative flex items-center tall2XL:items-start justify-between tall2XL:justify-start tall2XL:flex-col gap-2">
             <div className="flex gap-2.5 items-center">
@@ -188,7 +188,7 @@ export default function Home() {
                   }
                 </PopoverTrigger>
                 <PopoverContent
-                  className="lg:p-8 bg-transparent lg:bg-white/25 relative border"
+                  className="lg:p-8 bg-transparent bg-[#E7F1F5] xl:bg-white/25 relative border"
                   align="center"
                   collisionPadding={40}
                   sideOffset={20}
@@ -256,7 +256,7 @@ export default function Home() {
       {/* DESKTOP VIEW ENDS HERE */}
 
       {/* MOBILE VIEW STARTS HERE */}
-      <div className="lg:hidden pb-28">
+      <div className="lg:hidden mx-auto md:max-w-md pb-28">
         <Image
           src="/images/nft-1.png"
           alt="Dashboard Nft Image"

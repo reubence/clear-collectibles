@@ -6,7 +6,7 @@ import { ScrollArea } from "../ui/scroll-area";
 
 function AllNFT() {
   return (
-    <div className="flex flex-col justify-start gap-4 w-[calc(100vw-80px)] h-[calc(100vh-174px)] lg:w-[25vw] lg:h-[60vh]">
+    <div className="flex flex-col justify-start gap-4 w-[calc(100vw-80px)] sm:w-[calc(768px-368px)] h-[calc(100vh-174px)] lg:w-[25vw] lg:h-[60vh]">
       <span className="uppercase text-xl ml-2 col-span-2 text-left whitespace-nowrap">
         ALL NFT
       </span>
@@ -32,7 +32,7 @@ function AllNFT() {
         </div>
       </ScrollArea>
       <Separator className="" />
-      <div className="uppercase inline-flex justify-center items-center gap-3 lg:hidden">
+      <div class="uppercase inline-flex justify-center items-center gap-3 lg:hidden">
         <span className="">cc #852</span>
         <span className="font-normal">lv.2</span>
       </div>
