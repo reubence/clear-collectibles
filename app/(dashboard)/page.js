@@ -53,53 +53,80 @@ const data = [
 ];
 
 export default function Home() {
+  const [selectedDesktop, setSelectedDesktop] = useState("");
   const [selected, setSelected] = useState("");
   const containerRef = useRef(null);
 
   useEffect(() => {
     containerRef.current = document.body;
-    setSelected("tasks");
+    // if window width is less than 1024px then set selected to tasks
+    if (window.innerWidth >= 1024) {
+      setSelectedDesktop("tasks");
+    } else {
+      setSelected("profile");
+    }
   }, []);
   return (
     <main className="flex flex-col lg:flex-row lg:items-end justify-between p-5 mb-20 lg:pb-36 lg:px-10 relative h-screen w-full">
-      {/* Desktop View */}
-      <div className="lg:bg-white/50 lg:rounded-2xl relative w-full h-full lg:h-fit hidden lg:flex flex-col lg:flex-row justify-between ">
-        <div className="bg-white/50 lg:bg-transparent border lg:border-none rounded-xl flex gap-3 py-5 px-5 lg:p-3 h-full w-full">
-          {/* <div className="lg:hidden">
-            <Popover>
-              <PopoverTrigger asChild>
-                {
-                  <Icons.profile
-                    className={cn(
-                      buttonVariants({ variant: "secondary", size: "sm" }),
-                      "w-fit h-fit cursor-pointer bg-white group lg:p-2.5 data-[state=open]:bg-primary fill-gray-300 data-[state=open]:fill-white"
-                    )}
-                  />
-                }
-              </PopoverTrigger>
-              <PopoverContent
-                className="lg:p-8 bg-transparent lg:bg-white/50 relative border-none lg:border"
-                align="center"
-                collisionPadding={40}
-              >
-                <ProfileStat />
-                <PopoverArrow className="w-6 h-3 fill-transparent lg:fill-[#EBF4F7] -translate-y-0.5 z-50" />
-              </PopoverContent>
-            </Popover>
-          </div> */}
+      {/* DESKTOP NFT IMAGE  */}
+      <Image
+        src="/images/nft-1.png"
+        alt="Dashboard Nft Image"
+        width={341}
+        height={374}
+        className="hidden lg:block absolute left-[80vw] 3xl:left-[85vw] -translate-x-[50vw] -mb-10 z-10 w-[40vw] 3xl:w-[750px]"
+      />
+      {/* BROOM PROFILE SECTION */}
+      <div className="absolute right-10 bottom-60">
+        <div className="flex flex-col gap-2 tall2XL:gap-3.5 relative">
+          <div className="absolute whitespace-nowrap right-[36vw] tall2XL:right-0 tall2XL:relative flex items-center tall2XL:items-start justify-between tall2XL:justify-start tall2XL:flex-col gap-2">
+            <div className="flex gap-2.5 items-center">
+              <p className="text-2xl tall2XL:text-6xl">BROOM</p>
+              <span className="font-semibold bg-primary text-white tall2XL:text-3xl px-2 tall2XL:px-3 rounded-xl">
+                Lv.5
+              </span>
+            </div>
+            <p className="font-bold tall2XL:text-3xl">
+              Clear Collectibles #852
+            </p>
+          </div>
+          <Separator className="hidden 3xl:block w-full bg-white my-3" />
+
+          <div className="flex items-center justify-between bg-white/25 p-5 rounded-2xl border">
+            <div className="flex flex-col gap-2">
+              <p className="text-xl 3xl:">Bubbles: 8,952</p>
+              <p className="font-bold flex items-center gap-1.5">
+                <span className="font-normal">Multiplier:</span> 60%
+                <span>
+                  <Icons.info className="fill-white/50 w-5 h-5" />
+                </span>
+              </p>
+            </div>
+            <Button className="text-base w-fit">Distribute Bubbles</Button>
+          </div>
+        </div>
+        {/* PROFILE / STAT COMPONENT */}
+        <div className="flex flex-col gap-2 bg-white/25 border mt-5 rounded-xl p-5">
+          <ProfileStat />
+        </div>
+      </div>
+      {/* DESKTOP VIEW STARTS HERE */}
+      <div className="hidden lg:bg-white/40 lg:rounded-2xl relative w-full h-full lg:h-fit lg:flex flex-col lg:flex-row justify-between ">
+        <div className="rounded-xl flex gap-3 py-5 px-5 lg:p-3 h-full w-full">
+          {/* TASKS / ALL-NFTs / EMBLEMS COMPONENTS SECTION */}
           {data
             .filter((item) => item.value !== "profile")
             .map((item, index) => (
               <Popover
                 key={index}
-                defaultOpen={selected === item.value}
-                open={selected === item.value}
+                defaultOpen={selectedDesktop === item.value}
+                open={selectedDesktop === item.value}
                 container={containerRef.current}
                 onOpenChange={(open) => {
                   if (open) {
-                    setSelected(item.value);
+                    setSelectedDesktop(item.value);
                   } else {
-                    setSelected("");
+                    setSelectedDesktop("");
                   }
                 }}
               >
@@ -107,34 +134,35 @@ export default function Home() {
                   className={cn(
                     buttonVariants({ variant: "secondary", size: "sm" }),
                     "w-fit h-fit cursor-pointer bg-white group lg:p-2.5 data-[state=open]:bg-primary",
-                    { "bg-primary": selected === item.value }
+                    { "bg-primary": selectedDesktop === item.value }
                   )}
-                  onClick={() => setSelected(item.value)}
+                  onClick={() => setSelectedDesktop(item.value)}
                 >
                   {
-                    <div className="flex items-center gap-2 group transition-all ease-in-out text-white">
+                    <div className="flex items-center gap-2 group text-white">
                       <item.icon
                         className={cn("fill-gray-300", {
-                          "fill-white": selected === item.value,
+                          "fill-white": selectedDesktop === item.value,
                         })}
                       />
                       <AnimatePresence mode="wait">
-                        {selected === item.value && (
+                        {selectedDesktop === item.value && (
                           <motion.p
                             initial={{
                               width: 0,
                               opacity: 0,
                             }}
                             animate={{
+                              animation: "ease-in-out",
                               width: "auto",
                               opacity: 1,
                               transition: {
                                 width: {
-                                  duration: 0.4,
+                                  duration: 0.5,
                                 },
                                 opacity: {
                                   duration: 0.25,
-                                  delay: 0.5,
+                                  delay: 0.3,
                                 },
                               },
                             }}
@@ -143,7 +171,7 @@ export default function Home() {
                               opacity: 0,
                               transition: {
                                 width: {
-                                  duration: 0.4,
+                                  duration: 0.5,
                                 },
                                 opacity: {
                                   duration: 0.1,
@@ -160,9 +188,10 @@ export default function Home() {
                   }
                 </PopoverTrigger>
                 <PopoverContent
-                  className="lg:p-8 bg-transparent lg:bg-white/50 relative border-none lg:border"
+                  className="lg:p-8 bg-transparent lg:bg-white/25 relative border"
                   align="center"
                   collisionPadding={40}
+                  sideOffset={20}
                 >
                   {item.children}{" "}
                   <PopoverArrow className="w-6 h-3 fill-transparent lg:fill-[#EBF4F7] -translate-y-0.5 z-50" />
@@ -170,7 +199,6 @@ export default function Home() {
               </Popover>
             ))}
         </div>
-
         <div className="z-50 lg:z-0 fixed left-0 right-0 bottom-0 lg:relative w-full lg:w-fit justify-end lg:justify-normal flex gap-3 py-2.5 px-5 lg:p-3 bg-white/50 lg:bg-transparent">
           <DropdownMenu>
             <DropdownMenuTrigger
@@ -225,16 +253,18 @@ export default function Home() {
           </Button>
         </div>
       </div>
-      {/* Mobile View */}
-      <div className="lg:hidden -mt-20">
+      {/* DESKTOP VIEW ENDS HERE */}
+
+      {/* MOBILE VIEW STARTS HERE */}
+      <div className="lg:hidden pb-28">
         <Image
           src="/images/nft-1.png"
           alt="Dashboard Nft Image"
           width={341}
           height={374}
-          className="mx-auto w-full"
+          className="mx-auto w-full -mt-5 ml-2"
         />
-        <div className="bg-white/50 rounded-xl p-5 w-full flex flex-col gap-5">
+        <div className="bg-white/25 border rounded-xl p-5 w-full flex flex-col gap-5">
           <div className="flex gap-3">
             {data.map((item, index) => (
               <Button
@@ -257,6 +287,8 @@ export default function Home() {
               </Button>
             ))}
           </div>
+
+          {/* TASKS / ALL-NFTs / EMBLEMS COMPONENTS SECTION */}
           {data.map((item, index) => (
             <div
               key={index}
@@ -268,6 +300,8 @@ export default function Home() {
               {item.children}
             </div>
           ))}
+
+          {/* BROOM PROFILE SECTION */}
           {selected === "profile" && (
             <div className="flex flex-col gap-2">
               <div className="flex gap-2.5 items-center">
@@ -291,13 +325,16 @@ export default function Home() {
             </div>
           )}
         </div>
+
+        {/* PROFILE / STAT COMPONENT */}
         {selected === "profile" && (
-          <div className="flex flex-col gap-2 bg-white/50 mt-5 rounded-xl p-5">
-            <ProfileStat />{" "}
+          <div className="flex flex-col gap-2 bg-white/25 border mt-5 rounded-xl p-5">
+            <ProfileStat />
           </div>
         )}
 
-        <div className="z-50 fixed left-0 right-0 bottom-0 w-full justify-end flex gap-3 py-2.5 px-5 bg-white/50">
+        {/* MOBILE BOTTOM STICKY SHOP NAV */}
+        <div className="z-50 fixed left-0 right-0 bottom-0 w-full justify-end flex gap-3 py-2.5 px-5 bg-[#E7F1F5]">
           <DropdownMenu>
             <DropdownMenuTrigger
               className={cn(
@@ -346,6 +383,7 @@ export default function Home() {
           </Button>
         </div>
       </div>
+      {/* MOBILE VIEW ENDS HERE */}
     </main>
   );
 }
