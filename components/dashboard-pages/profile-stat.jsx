@@ -5,6 +5,7 @@ import { Button } from "../ui/button";
 import { Separator } from "../ui/separator";
 import { Input } from "../ui/input";
 import { Textarea } from "../ui/textarea";
+import { ScrollArea } from "../ui/scroll-area";
 
 const stats = [
   { label: "Total Bubbles", value: 9921 },
@@ -18,7 +19,7 @@ function ProfileStat({ profileDetails, setProfileDetails, editProfile }) {
   return (
     <Tabs
       defaultValue="profile"
-      className="w-[calc(100vw-22vw)] sm:w-[calc(768px-368px)] lg:w-[456px] lg:h-96"
+      className="w-[calc(100vw-22vw)] sm:w-[calc(768px-368px)] lg:w-[456px] lg:h-[330px]"
     >
       <TabsList>
         <TabsTrigger value="profile">Profile</TabsTrigger>
@@ -59,23 +60,25 @@ function ProfileStat({ profileDetails, setProfileDetails, editProfile }) {
             </svg>{" "}
           </Button>
         </div>
-        <Textarea
-          className="disabled:border-none disabled:opacity-100 p-0 pl-1 bg-white disabled:cursor-default disabled:text-foreground disabled:bg-transparent"
-          rows={data && data.bio.length / 50 + 1}
-          placeholder={data && data.bio}
-          disabled={!editProfile}
-          value={data && data.bio}
-          onChange={(e) => {
-            setData({
-              ...data,
-              bio: e.target.value,
-            });
-            setProfileDetails({
-              ...profileDetails,
-              bio: e.target.value,
-            });
-          }}
-        />
+        <ScrollArea className="lg:h-[120px]">
+          <Textarea
+            className="disabled:border-none disabled:opacity-100 p-0 pl-1 bg-white disabled:cursor-default disabled:text-foreground disabled:bg-transparent"
+            rows={data && data.bio.length / 50 + 1}
+            placeholder={data && data.bio}
+            disabled={!editProfile}
+            value={data && data.bio}
+            onChange={(e) => {
+              setData({
+                ...data,
+                bio: e.target.value,
+              });
+              setProfileDetails({
+                ...profileDetails,
+                bio: e.target.value,
+              });
+            }}
+          />
+        </ScrollArea>
 
         <div className="flex flex-col gap-1">
           <span className="flex gap-2 items-start text-sm">
