@@ -109,7 +109,7 @@ export default function Home() {
         className="hidden lg:block absolute left-0 bottom-36 xl:left-1/2 xl:-translate-x-1/2 mb-[76px] xl:-mb-10 z-10 w-[48vw] xl:w-[40vw] 3xl:w-[750px]"
       />
       {/* BROOM PROFILE SECTION */}
-      <div className="absolute hidden lg:block right-10 bottom-60">
+      <div className="absolute hidden lg:block right-10 bottom-60 z-20">
         <div className="flex flex-col gap-2 tall2XL:gap-3.5 relative">
           <div className="absolute whitespace-nowrap right-[57vw] xl:right-[37vw] tall2XL:right-0 tall2XL:relative flex items-center tall2XL:items-start justify-between tall2XL:justify-start tall2XL:flex-col gap-2">
             <div className="flex gap-2.5 items-center">
@@ -162,7 +162,7 @@ export default function Home() {
           </div>
         </div>
         {/* PROFILE / STAT COMPONENT */}
-        <div className="flex flex-col gap-2 bg-white/25 border mt-5 rounded-xl p-5">
+        <div className="flex flex-col gap-2 bg-white/25 border mt-5 rounded-xl p-5 z-20">
           <ProfileStat
             profileDetails={profileDetails}
             setProfileDetails={() => setProfileDetails}
