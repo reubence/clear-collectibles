@@ -25,6 +25,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { AnimatePresence } from "framer-motion";
 import { Input } from "@/components/ui/input";
+import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 
 const data = [
   {
@@ -145,7 +146,19 @@ export default function Home() {
                 </span>
               </p>
             </div>
-            <Button className="text-base w-fit">Distribute Bubbles</Button>
+
+            <Dialog>
+              <DialogTrigger
+                className={cn(buttonVariants(), "text-base w-fit")}
+              >
+                Distribute Bubbles
+              </DialogTrigger>
+              <DialogContent className="py-8 px-10 bg-[#E7F1F5]">
+                <div className="flex gap-2">
+                  <AllNFT />
+                </div>
+              </DialogContent>
+            </Dialog>
           </div>
         </div>
         {/* PROFILE / STAT COMPONENT */}

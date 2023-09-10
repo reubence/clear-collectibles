@@ -60,7 +60,7 @@ function ProfileStat({ profileDetails, setProfileDetails, editProfile }) {
           </Button>
         </div>
         <Textarea
-          className="disabled:opacity-100 p-0 pl-1 bg-white disabled:cursor-default disabled:text-foreground disabled:bg-transparent z-10"
+          className="disabled:border-none disabled:opacity-100 p-0 pl-1 bg-white disabled:cursor-default disabled:text-foreground disabled:bg-transparent"
           rows={data && data.bio.length / 50 + 1}
           placeholder={data && data.bio}
           disabled={!editProfile}
