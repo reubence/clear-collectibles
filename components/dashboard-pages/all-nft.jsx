@@ -32,7 +32,7 @@ function AllNFT() {
         </div>
       </ScrollArea>
       <Separator className="" />
-      <div class="uppercase inline-flex justify-center items-center gap-3 lg:hidden">
+      <div className="uppercase inline-flex justify-center items-center gap-3 lg:hidden">
         <span className="">cc #852</span>
         <span className="font-normal">lv.2</span>
       </div>

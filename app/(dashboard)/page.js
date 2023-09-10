@@ -21,7 +21,7 @@ import {
 import { Separator } from "@/components/ui/separator";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { AnimatePresence } from "framer-motion";
 
@@ -53,13 +53,19 @@ const data = [
 ];
 
 export default function Home() {
-  const [selected, setSelected] = useState("profile");
+  const [selected, setSelected] = useState("");
+  const containerRef = useRef(null);
+
+  useEffect(() => {
+    containerRef.current = document.body;
+    setSelected("tasks");
+  }, []);
   return (
     <main className="flex flex-col lg:flex-row lg:items-end justify-between p-5 mb-20 lg:pb-36 lg:px-10 relative h-screen w-full">
       {/* Desktop View */}
       <div className="lg:bg-white/50 lg:rounded-2xl relative w-full h-full lg:h-fit hidden lg:flex flex-col lg:flex-row justify-between ">
         <div className="bg-white/50 lg:bg-transparent border lg:border-none rounded-xl flex gap-3 py-5 px-5 lg:p-3 h-full w-full">
-          <div className="lg:hidden">
+          {/* <div className="lg:hidden">
             <Popover>
               <PopoverTrigger asChild>
                 {
@@ -80,77 +86,92 @@ export default function Home() {
                 <PopoverArrow className="w-6 h-3 fill-transparent lg:fill-[#EBF4F7] -translate-y-0.5 z-50" />
               </PopoverContent>
             </Popover>
-          </div>
-          {data.map((item, index) => (
-            <Popover key={index}>
-              <PopoverTrigger
-                className={cn(
-                  buttonVariants({ variant: "secondary", size: "sm" }),
-                  "w-fit h-fit cursor-pointer bg-white group lg:p-2.5 data-[state=open]:bg-primary"
-                )}
-                onClick={() => setSelected(item.value)}
+          </div> */}
+          {data
+            .filter((item) => item.value !== "profile")
+            .map((item, index) => (
+              <Popover
+                key={index}
+                defaultOpen={selected === item.value}
+                open={selected === item.value}
+                container={containerRef.current}
+                onOpenChange={(open) => {
+                  if (open) {
+                    setSelected(item.value);
+                  } else {
+                    setSelected("");
+                  }
+                }}
               >
-                {
-                  <div className="flex items-center gap-2 group transition-all ease-in-out">
-                    <item.icon
-                      className={cn(
-                        "fill-gray-300 data-[state=open]:fill-white"
-                      )}
-                    />
-                    <AnimatePresence mode="wait">
-                      {selected === item.value && (
-                        <motion.p
-                          initial={{
-                            width: 0,
-                            opacity: 0,
-                          }}
-                          animate={{
-                            width: "auto",
-                            opacity: 1,
-                            transition: {
-                              width: {
-                                duration: 0.4,
+                <PopoverTrigger
+                  className={cn(
+                    buttonVariants({ variant: "secondary", size: "sm" }),
+                    "w-fit h-fit cursor-pointer bg-white group lg:p-2.5 data-[state=open]:bg-primary",
+                    { "bg-primary": selected === item.value }
+                  )}
+                  onClick={() => setSelected(item.value)}
+                >
+                  {
+                    <div className="flex items-center gap-2 group transition-all ease-in-out text-white">
+                      <item.icon
+                        className={cn("fill-gray-300", {
+                          "fill-white": selected === item.value,
+                        })}
+                      />
+                      <AnimatePresence mode="wait">
+                        {selected === item.value && (
+                          <motion.p
+                            initial={{
+                              width: 0,
+                              opacity: 0,
+                            }}
+                            animate={{
+                              width: "auto",
+                              opacity: 1,
+                              transition: {
+                                width: {
+                                  duration: 0.4,
+                                },
+                                opacity: {
+                                  duration: 0.25,
+                                  delay: 0.5,
+                                },
                               },
-                              opacity: {
-                                duration: 0.25,
-                                delay: 0.5,
+                            }}
+                            exit={{
+                              width: 0,
+                              opacity: 0,
+                              transition: {
+                                width: {
+                                  duration: 0.4,
+                                },
+                                opacity: {
+                                  duration: 0.1,
+                                },
                               },
-                            },
-                          }}
-                          exit={{
-                            width: 0,
-                            opacity: 0,
-                            transition: {
-                              width: {
-                                duration: 0.4,
-                              },
-                              opacity: {
-                                duration: 0.1,
-                              },
-                            },
-                          }}
-                          key="test"
-                        >
-                          {item.label}
-                        </motion.p>
-                      )}
-                    </AnimatePresence>
-                  </div>
-                }
-              </PopoverTrigger>
-              <PopoverContent
-                className="lg:p-8 bg-transparent lg:bg-white/50 relative border-none lg:border"
-                align="center"
-                collisionPadding={40}
-              >
-                {item.children}{" "}
-                <PopoverArrow className="w-6 h-3 fill-transparent lg:fill-[#EBF4F7] -translate-y-0.5 z-50" />
-              </PopoverContent>
-            </Popover>
-          ))}
+                            }}
+                            key="test"
+                          >
+                            {item.label}
+                          </motion.p>
+                        )}
+                      </AnimatePresence>
+                    </div>
+                  }
+                </PopoverTrigger>
+                <PopoverContent
+                  className="lg:p-8 bg-transparent lg:bg-white/50 relative border-none lg:border"
+                  align="center"
+                  collisionPadding={40}
+                >
+                  {item.children}{" "}
+                  <PopoverArrow className="w-6 h-3 fill-transparent lg:fill-[#EBF4F7] -translate-y-0.5 z-50" />
+                </PopoverContent>
+              </Popover>
+            ))}
         </div>
 
-        <div class="z-50 lg:z-0 fixed left-0 right-0 bottom-0 lg:relative w-full lg:w-fit justify-end lg:justify-normal flex gap-3 py-2.5 px-5 lg:p-3 bg-white/50 lg:bg-transparent">
+        <div className="z-50 lg:z-0 fixed left-0 right-0 bottom-0 lg:relative w-full lg:w-fit justify-end lg:justify-normal flex gap-3 py-2.5 px-5 lg:p-3 bg-white/50 lg:bg-transparent">
           <DropdownMenu>
             <DropdownMenuTrigger
               className={cn(
@@ -276,7 +297,7 @@ export default function Home() {
           </div>
         )}
 
-        <div class="z-50 fixed left-0 right-0 bottom-0 w-full justify-end flex gap-3 py-2.5 px-5 bg-white/50">
+        <div className="z-50 fixed left-0 right-0 bottom-0 w-full justify-end flex gap-3 py-2.5 px-5 bg-white/50">
           <DropdownMenu>
             <DropdownMenuTrigger
               className={cn(
