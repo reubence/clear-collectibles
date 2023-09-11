@@ -547,9 +547,16 @@ export default function Home() {
                   </Dialog>
                 </span>
               </p>
-              <Button className="text-base w-fit mt-3">
-                Distribute Bubbles
-              </Button>
+              <Dialog>
+                <DialogTrigger
+                  className={cn(buttonVariants(), "text-base w-fit mt-3")}
+                >
+                  Distribute Bubbles
+                </DialogTrigger>
+                <DialogContent className="w-[90vw] max-w-md lg:max-w-5xl p-5 lg:py-7 lg:px-10 bg-[#E7F1F5] rounded-xl lg:rounded-2xl">
+                  <Distribute />
+                </DialogContent>
+              </Dialog>
             </div>
           )}
         </div>
