@@ -14,7 +14,7 @@ function AllNFT() {
 
       <ScrollArea className="h-[430px]">
         <div className="grid grid-cols-3 w-full gap-3">
-          {[...Array(10)].map((_, i) => (
+          {[...Array(8)].map((_, i) => (
             <div
               key={i}
               className="flex flex-col gap-4 items-center p-2 mx-auto group hover:border-primary hover:bg-primary/20 hover:cursor-pointer border-2 border-transparent rounded-2xl transition-all duration-500 ease-in-out"
