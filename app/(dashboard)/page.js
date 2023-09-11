@@ -34,6 +34,7 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import Multiplier from "@/components/dashboard-pages/multiplier";
+import Distribute from "@/components/dashboard-pages/distribute";
 
 const emblemData = [
   {
@@ -231,7 +232,7 @@ export default function Home() {
               <p className="font-bold flex items-center gap-1.5">
                 <span className="font-normal">Multiplier:</span> 60%
                 <span>
-                  {/* MULTIPLIER INFO ICON */}
+                  {/* MULTIPLIER POP UP */}
                   <Dialog className="p-5">
                     <DialogTrigger
                       className={cn(
@@ -241,7 +242,7 @@ export default function Home() {
                       <Icons.info className="fill-white/50 w-5 h-5" />
                     </DialogTrigger>
 
-                    <DialogContent className="w-[90vw] lg:max-w-7xl  p-5 bg-[#E7F1F5] rounded-xl lg:rounded-2xl">
+                    <DialogContent className="w-[90vw] max-w-md lg:max-w-7xl  p-5 bg-[#E7F1F5] rounded-xl lg:rounded-2xl">
                       <DialogHeader className={"items-start text-start"}>
                         <DialogTitle className="text-xl lg:text-3xl w-full">
                           Multiplier
@@ -262,11 +263,8 @@ export default function Home() {
               >
                 Distribute Bubbles
               </DialogTrigger>
-              <DialogContent className="py-8 px-10 bg-[#E7F1F5]">
-                <div className="flex gap-2">
-                  <AllNFT />
-                </div>
-                Dialog
+              <DialogContent className="w-[90vw] max-w-md lg:max-w-5xl p-5 lg:py-7 lg:px-10 bg-[#E7F1F5] rounded-xl lg:rounded-2xl">
+                <Distribute />
               </DialogContent>
             </Dialog>
           </div>
@@ -527,7 +525,25 @@ export default function Home() {
               <p className="font-bold flex items-center gap-1.5">
                 <span className="font-normal">Multiplier:</span> 60%
                 <span>
-                  <Icons.info className="fill-white/50 w-5 h-5" />
+                  <Dialog className="p-5">
+                    <DialogTrigger
+                      className={cn(
+                        buttonVariants({ variant: "ghost", size: "sm" })
+                      )}
+                    >
+                      <Icons.info className="fill-white/50 w-5 h-5" />
+                    </DialogTrigger>
+
+                    <DialogContent className="w-[90vw] lg:max-w-7xl  p-5 bg-[#E7F1F5] rounded-xl lg:rounded-2xl">
+                      <DialogHeader className={"items-start text-start"}>
+                        <DialogTitle className="text-xl lg:text-3xl w-full">
+                          Multiplier
+                          <Separator className="w-full bg-white my-7 hidden lg:block" />
+                        </DialogTitle>
+                      </DialogHeader>
+                      <Multiplier />
+                    </DialogContent>
+                  </Dialog>
                 </span>
               </p>
               <Button className="text-base w-fit mt-3">
