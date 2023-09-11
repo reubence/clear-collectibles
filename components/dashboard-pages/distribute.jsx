@@ -18,6 +18,7 @@ import { cn } from "@/lib/utils";
 import { Button, buttonVariants } from "../ui/button";
 import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover";
 import StandardConfirmation from "../confirmation-pages/standard-confirmation";
+import { Icons } from "../ui/icons";
 
 function Distribute() {
   const [progress, setProgress] = React.useState(13);
@@ -79,12 +80,27 @@ function Distribute() {
             </Button>
           </div>
 
-          <Popover>
+          <Popover className="">
             <PopoverTrigger className={cn(buttonVariants(), "w-fit ml-auto")}>
               Distribute
             </PopoverTrigger>
-            <PopoverContent className="border shadow-lg">
-              Something
+            <PopoverContent className="z-50 border shadow-lg px-8 pt-6 pb-7 flex flex-col gap-4 items-start lg:w-[400px]">
+              <div className="flex w-full h-full justify-between items-center text-base font-bold whitespace-nowrap">
+                <span>Confirm purchase?</span>
+                <Icons.skullLogo className="w-8 h-8 fill-primary" />
+              </div>
+              <Separator className="w-full bg-muted" />
+              <div className="w-full flex items-center justify-end gap-5">
+                <Button
+                  variant="outline"
+                  className="min-w-fit gap-3.5 py-4 text-xs lg:text-base capitalize lg:uppercase"
+                >
+                  No
+                </Button>
+                <Button className="min-w-fit gap-3.5 py-4 text-xs lg:text-base text-white capitalize lg:uppercase">
+                  Yes
+                </Button>
+              </div>
             </PopoverContent>
           </Popover>
         </div>
