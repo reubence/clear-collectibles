@@ -284,34 +284,13 @@ export default function NavBar({ page }) {
                 <div className="flex flex-col h-full w-full items-center justify-end mt-28">
                   <div className="flex gap-6">
                     <Link href="#">
-                      <Image
-                        src="/images/icons/square-icon.svg"
-                        alt="Web Icon"
-                        width={20}
-                        height={20}
-                        className="w-5 h-5"
-                        unoptimized
-                      />
+                      <Icons.squareLogo className="w-5 h-5" />
                     </Link>
                     <Link href="#">
-                      <Image
-                        src="/images/icons/x-icon.svg"
-                        width={20}
-                        height={20}
-                        alt="Web Icon"
-                        className="w-5 h-5"
-                        unoptimized
-                      />
+                      <Icons.xLogo className="w-5 h-5" />
                     </Link>
                     <Link href="#">
-                      <Image
-                        src="/images/icons/discord-icon.svg"
-                        alt="Web Icon"
-                        width={20}
-                        height={20}
-                        className="w-5 h-5"
-                        unoptimized
-                      />
+                      <Icons.discordLogo className="w-5 h-5" />
                     </Link>
                   </div>
                 </div>
