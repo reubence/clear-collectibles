@@ -172,7 +172,7 @@ export default function Home() {
               variant="secondary"
               onClick={() => {
                 setEditProfile(false);
-                setEditAvatar(true);
+                setEditAvatar(false);
               }}
             >
               Save
