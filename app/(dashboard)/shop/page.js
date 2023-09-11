@@ -2,9 +2,6 @@
 
 import Image from "next/image";
 import React from "react";
-import SHOP from "@/public/images/icons/shop-icon.svg";
-import CLOCK from "@/public/images/icons/clock-icon.svg";
-import NFT_3 from "@/public/images/nft-3.png";
 import { Command, CommandInput } from "@/components/ui/command";
 import { Button, buttonVariants } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
@@ -77,7 +74,7 @@ const shopData = [
     price: 2343,
     description: "A Banana icon badge for the MonkeDao Discord",
     unreleased: true,
-    unreleasedTimer: new Date("Sep 10, 2023 16:37:52"),
+    unreleasedTimer: new Date("Sep 30, 2023 16:37:52"),
   },
   {
     image: "/images/nft-3.png",
@@ -164,14 +161,7 @@ function Shop() {
           <div className="flex flex-col gap-4 lg:flex-row lg:justify-between items-start lg:items-center text-base lg:text-xl">
             <div className="flex items-center justify-between w-full lg:w-fit">
               <div className="gap-1.5 lg:gap-3 flex items-center uppercase font-extrabold text-xl lg:text-2xl">
-                <Image
-                  src={SHOP}
-                  alt="Shop Icon"
-                  height={40}
-                  width={40}
-                  className="w-6 h-6 lg:w-[40px] lg:h-[40px] mb-1 lg:pb-1"
-                  unoptimized
-                />
+                <Icons.shop className="w-6 h-6 lg:w-[40px] lg:h-[40px] mb-1 lg:pb-1 fill-foreground" />
                 Shop
               </div>
               <Button
@@ -201,14 +191,7 @@ function Shop() {
                   "min-w-fit !py-3.5 gap-3.5 text-sm lg:text-xl text-white capitalize lg:uppercase"
                 )}
               >
-                <Image
-                  src={CLOCK}
-                  alt="Clock Icon"
-                  height={24}
-                  width={24}
-                  className="hidden lg:block mb-1"
-                  unoptimized
-                />
+                <Icons.clock className="hidden lg:block w-6 h-6 fill-white" />
                 History
               </Link>
             </div>

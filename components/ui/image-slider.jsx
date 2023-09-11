@@ -9,7 +9,6 @@ import "swiper/css/effect-coverflow";
 import "swiper/css/pagination";
 
 import "./styles.css";
-import NFT from "@/public/images/leaderboard-nft.png";
 
 // import required modules
 import { EffectCoverflow } from "swiper/modules";
@@ -44,8 +43,10 @@ export default function ImageSlider() {
           <div className="p-[2px] 2xl:p-[2.5px] bg-gradient-to-b from-[#D6D6D6 ] to-[#D0D0D0] rounded-[32px]">
             <div className="p-[3.6px] 2xl:p-[4.6px] bg-gradient-to-b from-[#C2C4C6] to-[#A7A9AB] rounded-[32px]">
               <Image
-                src={NFT}
+                src={"/images/leaderboard-nft.png"}
                 alt="Rank #1"
+                width={1024}
+                height={1024}
                 className="rounded-[32px] bg-[#DFDFDF]"
               />
             </div>
@@ -55,7 +56,9 @@ export default function ImageSlider() {
           <div className="p-[2px] 2xl:p-[2.5px] bg-gradient-to-b from-[#FFBA57] to-[#FFCA7D] rounded-[32px]">
             <div className="p-[3.6px] 2xl:p-[4.6px] bg-gradient-to-b from-[#FFAB05] to-[#F1B10E] rounded-[32px]">
               <Image
-                src={NFT}
+                src={"/images/leaderboard-nft.png"}
+                width={1024}
+                height={1024}
                 alt="Rank #1"
                 className="rounded-[32px] bg-[#EEEAC8]"
               />
@@ -67,7 +70,9 @@ export default function ImageSlider() {
           <div className="p-[2px] 2xl:p-[2.5px] bg-gradient-to-b from-[#FFBB8F] to-[#FFDEC3] rounded-[32px]">
             <div className="p-[3.6px] 2xl:p-[4.6px] bg-gradient-to-b from-[#FFA96D] to-[#FCB88D] rounded-[32px]">
               <Image
-                src={NFT}
+                src={"/images/leaderboard-nft.png"}
+                width={1024}
+                height={1024}
                 alt="Rank #1"
                 className="rounded-[32px] bg-[#FEF4EA]"
               />
@@ -98,6 +103,7 @@ export default function ImageSlider() {
               <SwiperButton nextSlide={false} />
               <div className="hidden 2xl:flex 2xl:items-center 2xl:gap-2">
                 {/* COIN RANK FOR DESKTOP IMAGE GOES HERE */}
+
                 <Image
                   src={`/images/icons/coin-${coin}.svg`}
                   alt="Rank #2"
