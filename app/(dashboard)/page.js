@@ -22,6 +22,7 @@ import { Separator } from "@/components/ui/separator";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
 import React, { useEffect, useRef, useState } from "react";
+import { motion } from "framer-motion";
 import { AnimatePresence } from "framer-motion";
 import { Input } from "@/components/ui/input";
 import {
@@ -240,33 +241,12 @@ export default function Home() {
                       <Icons.info className="fill-white/50 w-5 h-5" />
                     </DialogTrigger>
 
-                    <DialogContent className="w-[90vw] lg:max-w-4xl  p-5 bg-[#E7F1F5] rounded-xl lg:rounded-2xl">
-                      <DialogHeader className={"gap-7 items-start text-start"}>
-                        <DialogTitle className="text-xl ">
+                    <DialogContent className="w-[90vw] lg:max-w-7xl  p-5 bg-[#E7F1F5] rounded-xl lg:rounded-2xl">
+                      <DialogHeader className={"items-start text-start"}>
+                        <DialogTitle className="text-xl lg:text-3xl w-full">
                           Multiplier
+                          <Separator className="w-full bg-white my-7 hidden lg:block" />
                         </DialogTitle>
-                        <DialogDescription className="w-full flex flex-col gap-3 text-base text-muted-foreground/50 font-semibold">
-                          <p>
-                            Total Pixel Multiplier:{" "}
-                            <span className="font-bold text-foreground">
-                              60%
-                            </span>
-                          </p>{" "}
-                          <div className="flex justify-between w-full">
-                            <p>
-                              Level:{" "}
-                              <span className="font-bold text-foreground">
-                                10%
-                              </span>
-                            </p>
-                            <p>
-                              Booster:{" "}
-                              <span className="font-bold text-foreground">
-                                20%
-                              </span>
-                            </p>
-                          </div>{" "}
-                        </DialogDescription>
                       </DialogHeader>
                       <Multiplier />
                     </DialogContent>
