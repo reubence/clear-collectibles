@@ -377,6 +377,7 @@ export default function Home() {
                         editProfile,
                     }
                   )}
+                  onOpenAutoFocus={(e) => e.preventDefault()}
                   onPointerDownOutside={(e) => e.preventDefault()}
                   onFocusOutside={(e) => e.preventDefault()}
                   onInteractOutside={(e) => e.preventDefault()}
