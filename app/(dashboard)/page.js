@@ -22,10 +22,17 @@ import { Separator } from "@/components/ui/separator";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
 import React, { useEffect, useRef, useState } from "react";
-import { motion } from "framer-motion";
 import { AnimatePresence } from "framer-motion";
 import { Input } from "@/components/ui/input";
-import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
+import Multiplier from "@/components/dashboard-pages/multiplier";
 
 const emblemData = [
   {
@@ -100,7 +107,33 @@ const data = [
     value: "emblems",
   },
 ];
+let tabs = [
+  { id: "level", label: "Level" },
+  { id: "booster", label: "Booster Pack" },
+];
 
+let tableData = [
+  {
+    level: "5",
+    booster: "5%",
+  },
+  {
+    level: "10",
+    booster: "10%",
+  },
+  {
+    level: "15",
+    booster: "15%",
+  },
+  {
+    level: "20",
+    booster: "20%",
+  },
+  {
+    level: "25",
+    booster: "25%",
+  },
+];
 export default function Home() {
   const [selectedDesktop, setSelectedDesktop] = useState("");
   const [selected, setSelected] = useState("");
@@ -124,6 +157,7 @@ export default function Home() {
       setSelected("profile");
     }
   }, []);
+
   return (
     <main className="flex flex-col lg:flex-row lg:items-end justify-between p-5 mb-20 lg:pb-36 lg:px-10 relative h-screen w-full">
       {/* EDIT PROFILE & AVATAR BUTTON */}
@@ -196,11 +230,52 @@ export default function Home() {
               <p className="font-bold flex items-center gap-1.5">
                 <span className="font-normal">Multiplier:</span> 60%
                 <span>
-                  <Icons.info className="fill-white/50 w-5 h-5" />
+                  {/* MULTIPLIER INFO ICON */}
+                  <Dialog className="p-5">
+                    <DialogTrigger
+                      className={cn(
+                        buttonVariants({ variant: "ghost", size: "sm" })
+                      )}
+                    >
+                      <Icons.info className="fill-white/50 w-5 h-5" />
+                    </DialogTrigger>
+
+                    <DialogContent className="w-[90vw] lg:max-w-4xl  p-5 bg-[#E7F1F5] rounded-xl lg:rounded-2xl">
+                      <DialogHeader className={"gap-7 items-start text-start"}>
+                        <DialogTitle className="text-xl ">
+                          Multiplier
+                        </DialogTitle>
+                        <DialogDescription className="w-full flex flex-col gap-3 text-base text-muted-foreground/50 font-semibold">
+                          <p>
+                            Total Pixel Multiplier:{" "}
+                            <span className="font-bold text-foreground">
+                              60%
+                            </span>
+                          </p>{" "}
+                          <div className="flex justify-between w-full">
+                            <p>
+                              Level:{" "}
+                              <span className="font-bold text-foreground">
+                                10%
+                              </span>
+                            </p>
+                            <p>
+                              Booster:{" "}
+                              <span className="font-bold text-foreground">
+                                20%
+                              </span>
+                            </p>
+                          </div>{" "}
+                        </DialogDescription>
+                      </DialogHeader>
+                      <Multiplier />
+                    </DialogContent>
+                  </Dialog>
                 </span>
               </p>
             </div>
 
+            {/* DISTRIBUTE BUBBLES BUTTON DIALOG */}
             <Dialog>
               <DialogTrigger
                 className={cn(buttonVariants(), "text-base w-fit")}
@@ -211,6 +286,7 @@ export default function Home() {
                 <div className="flex gap-2">
                   <AllNFT />
                 </div>
+                Dialog
               </DialogContent>
             </Dialog>
           </div>
