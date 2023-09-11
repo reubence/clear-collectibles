@@ -51,7 +51,7 @@ function TaskCompleted() {
         className="flex flex-col items-start gap-4 font-normal text-foreground/50"
       >
         <div className="flex gap-3 items-center text-base !p-0 font-bold">
-          <Icons.xLogo className="w-4 h-4 fill-foreground" />
+          <Icons.twitterLogo className="w-4 h-4 fill-foreground" />
           Share us on Twitter!
         </div>
         <span className="">

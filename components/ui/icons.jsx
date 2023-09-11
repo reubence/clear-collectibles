@@ -329,7 +329,7 @@ export const Icons = {
       />
     </svg>
   ),
-  xLogo: ({ ...props }) => (
+  twitterLogo: ({ ...props }) => (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       width="30"
@@ -409,6 +409,35 @@ export const Icons = {
         fill="#424141"
         stroke="#424141"
         stroke-width="1.66667"
+      />
+    </svg>
+  ),
+  squareLogo: ({ ...props }) => (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="18"
+      height="18"
+      viewBox="0 0 18 18"
+    >
+      <path
+        fill-rule="evenodd"
+        clip-rule="evenodd"
+        d="M18 0V18H0V0H18ZM16.2 1.79956H1.8V16.1996H16.2V1.79956ZM12.0003 5.99985H6.00029V11.9999H12.0003V5.99985Z"
+        fill="#424141"
+      />
+    </svg>
+  ),
+  xLogo: ({ ...props }) => (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="28"
+      height="20"
+      viewBox="0 0 28 20"
+      {...props}
+    >
+      <path
+        d="M5.52298 2.32959L11.8678 10.7908L5.48291 17.6702H6.91988L12.5098 11.6472L17.0263 17.6702H21.9164L15.2146 8.73302L21.1576 2.32959H19.7206L14.5726 7.87664L10.413 2.32959H5.52298ZM7.63615 3.38528H9.88266L19.8029 16.6143H17.5564L7.63615 3.38528Z"
+        fill="#424141"
       />
     </svg>
   ),

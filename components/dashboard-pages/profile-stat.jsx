@@ -59,7 +59,7 @@ function ProfileStat({ profileDetails, setProfileDetails, editProfile }) {
         <div className="flex justify-between">
           <div className="flex gap-4">
             <Button size="sm" variant="secondary">
-              <Icons.xLogo className="w-4 lg:w-6 h-4 lg:h-6 fill-primary" />
+              <Icons.twitterLogo className="w-4 lg:w-6 h-4 lg:h-6 fill-primary" />
             </Button>
             <Button size="sm" variant="secondary">
               <Icons.discordLogo className="w-4 lg:w-6 h-4 lg:h-6 fill-primary" />

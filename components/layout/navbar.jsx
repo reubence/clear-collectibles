@@ -32,9 +32,9 @@ import {
 import { Icons } from "../ui/icons";
 
 const socialLinks = [
-  { name: "X", href: "#", icon: "/images/icons/x-icon.svg" },
-  { name: "Discord", href: "#", icon: "/images/icons/discord-icon.svg" },
-  { name: "Square", href: "#", icon: "/images/icons/square-icon.svg" },
+  { name: "X", href: "#", icon: Icons.xLogo },
+  { name: "Discord", href: "#", icon: Icons.discordLogo },
+  { name: "Square", href: "#", icon: Icons.squareLogo },
 ];
 
 const navItems = [
@@ -133,17 +133,11 @@ export default function NavBar({ page }) {
           {/* DESKTOP VIEW */}
           <div className="hidden md:flex items-center gap-6">
             <div className="flex items-center gap-9">
-              <div className="flex [&>*:last-child]:!border-none mr-2">
+              <div className="flex [&>*:last-child]:!border-none items-center mr-2">
                 {socialLinks.map((item, index) => (
                   <div className="px-4 border-r border-r-white" key={index}>
                     <Link href="#">
-                      <Image
-                        width={20}
-                        height={20}
-                        key={item.name}
-                        src={item.icon}
-                        alt={item.name}
-                      />
+                      <item.icon className="fill-foreground w-6 h-6" />
                     </Link>
                   </div>
                 ))}

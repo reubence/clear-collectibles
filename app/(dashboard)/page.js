@@ -340,7 +340,7 @@ export default function Home() {
                               opacity: 1,
                               transition: {
                                 width: {
-                                  duration: 0.5,
+                                  duration: 0.3,
                                 },
                                 opacity: {
                                   duration: 0.25,
@@ -353,7 +353,7 @@ export default function Home() {
                               opacity: 0,
                               transition: {
                                 width: {
-                                  duration: 0.5,
+                                  duration: 0.3,
                                 },
                                 opacity: {
                                   duration: 0.1,
