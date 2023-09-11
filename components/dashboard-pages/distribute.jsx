@@ -84,7 +84,7 @@ function Distribute() {
               Distribute
             </PopoverTrigger>
             <PopoverContent className="border shadow-lg">
-              <StandardConfirmation />
+              Something
             </PopoverContent>
           </Popover>
         </div>

@@ -156,7 +156,7 @@ export default function NavBar({ page }) {
               </div>
             </div>
             <div className="hidden lg:block relative mr-2">
-              <NavigationMenu>
+              <NavigationMenu className="z-50">
                 <NavigationMenuList>
                   <NavigationMenuItem className="w-[240px]">
                     <NavigationMenuTrigger>
