@@ -231,7 +231,15 @@ export default function Home() {
           </div>
           <Separator className="hidden tall2XL:3xl:block w-full bg-white my-3" />
 
-          <div className="flex items-center justify-between gap-3 bg-white/25 p-5 rounded-2xl border">
+          <div
+            className={cn(
+              "flex items-center justify-between gap-3 bg-white/25 p-5 rounded-2xl border",
+              {
+                "cursor-not-allowed pointer-events-none opacity-40":
+                  editProfile || editAvatar,
+              }
+            )}
+          >
             <div className="flex flex-col gap-2">
               <p className="text-xl 3xl:">Bubbles: 8,952</p>
               <p className="font-bold flex items-center gap-1.5">
@@ -417,7 +425,10 @@ export default function Home() {
                     "text-primary"
                   )
                 )}
-                onClick={() => setEditProfile(true)}
+                onClick={() => {
+                  setEditProfile(true);
+                  setSelectedDesktop("");
+                }}
               >
                 Profile
               </DropdownMenuItem>
@@ -544,16 +555,7 @@ export default function Home() {
                   </Dialog>
                 </span>
               </p>
-              <Dialog>
-                <DialogTrigger
-                  className={cn(buttonVariants(), "text-base w-fit mt-3")}
-                >
-                  Distribute Bubbles
-                </DialogTrigger>
-                <DialogContent className="w-[90vw] max-w-md lg:max-w-5xl p-5 lg:py-7 lg:px-10 bg-[#E7F1F5] rounded-xl lg:rounded-2xl">
-                  <Distribute />
-                </DialogContent>
-              </Dialog>
+              <Distribute />
             </div>
           )}
         </div>
