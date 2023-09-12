@@ -26,13 +26,16 @@ import { set } from "zod";
 function Distribute() {
   const [progress, setProgress] = useState(13);
   const [editBubble, setEditBubble] = useState(2343);
-  const [openDialog, setOpenDialog] = useState(false);
-  const [openPopover, setOpenPopover] = useState(false);
+  const [openDialog, setOpenDialog] = useState();
+  const [openPopover, setOpenPopover] = useState();
   useEffect(() => {
     const timer = setTimeout(() => setProgress(40), 500);
     return () => clearTimeout(timer);
   }, []);
 
+  useEffect(() => {
+    console.log(openPopover);
+  }, [openPopover]);
   return (
     <Dialog open={openDialog} onOpenChange={() => setOpenDialog(!openDialog)}>
       <DialogTrigger className={cn(buttonVariants(), "text-base w-fit")}>
