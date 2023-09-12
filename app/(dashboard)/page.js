@@ -599,7 +599,9 @@ export default function Home() {
                     "text-primary"
                   )
                 )}
-                onClick={() => setEditProfile(true)}
+                onClick={() => {
+                  setEditProfile(true), setSelected("profile");
+                }}
               >
                 Profile
               </DropdownMenuItem>

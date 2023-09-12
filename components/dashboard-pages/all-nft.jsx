@@ -1,5 +1,4 @@
 import React from "react";
-import NFT_3 from "@/public/images/nft-3.png";
 import Image from "next/image";
 import { Separator } from "../ui/separator";
 import { ScrollArea } from "../ui/scroll-area";
