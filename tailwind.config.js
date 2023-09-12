@@ -16,7 +16,7 @@ module.exports = {
       screens: {
         tallXS: { raw: "(max-height: 750px)" },
         tallXL: { raw: "(min-height: 750px) and (min-width: 1024px)" },
-        tall2XL: { raw: "(min-height: 820px) and (min-width: 1024px)" },
+        tall2XL: { raw: "(min-height: 873px) and (min-width: 1024px)" },
         "3xl": "1920px",
       },
       fontFamily: {

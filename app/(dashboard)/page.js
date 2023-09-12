@@ -154,7 +154,8 @@ export default function Home() {
     containerRef.current = document.body;
     // if window width is less than 1024px then set selected to tasks
     if (window.innerWidth >= 1280) {
-      setSelectedDesktop("tasks");
+      // Removing for ease of testing
+      // setSelectedDesktop("tasks");
     } else {
       setSelected("profile");
     }
@@ -201,7 +202,7 @@ export default function Home() {
       {/* BROOM PROFILE SECTION */}
       <div className="absolute hidden lg:block right-10 bottom-60 z-20">
         <div className="flex flex-col gap-2 tall2XL:gap-3.5 relative">
-          <div className="absolute flex flex-col items-center whitespace-nowrap right-[57vw] xl:right-[40vw] tall2XL:right-0 tall2XL:relative tall2XL:items-start justify-between tall2XL:justify-start tall2XL:flex-col gap-2">
+          <div className="absolute hidden xl:flex flex-col items-center whitespace-nowrap right-[63vw]  xl:right-[40vw] tall2XL:right-0 tall2XL:relative tall2XL:items-start justify-between tall2XL:justify-start tall2XL:flex-col gap-2">
             <div className="flex gap-2.5 items-center">
               <Input
                 className="rounded-md 3xl:rounded-xl w-fit text-4xl tall2XL:text-6xl flex flex-shrink disabled:opacity-100 p-0 pl-1 disabled:cursor-default disabled:text-foreground disabled:bg-transparent z-10"
