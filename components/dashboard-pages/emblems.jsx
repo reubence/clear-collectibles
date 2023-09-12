@@ -76,14 +76,16 @@ function Emblems({ emblemData }) {
             ))
           ) : (
             <div className="col-span-2 flex flex-col gap-3 w-full h-full justify-center items-center">
-              <Image
-                src={"/images/emblem.svg"}
-                alt="Emblem Icon"
-                height={160}
-                width={160}
-                className="rounded-2xl h-[120] w-[120px] lg:h-[160px] lg:w-[160px] aspect-square object-cover mb-3"
-                unoptimized
-              />
+              <Tilt options={defaultOptions}>
+                <Image
+                  src={"/images/emblem.svg"}
+                  alt="Emblem Icon"
+                  height={160}
+                  width={160}
+                  className="rounded-2xl h-[120] w-[120px] lg:h-[160px] lg:w-[160px] aspect-square object-cover mb-3"
+                  unoptimized
+                />
+              </Tilt>
               <h3 className="text-2xl font-bold uppercase mt-3">
                 SMB Inception
               </h3>
