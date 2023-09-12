@@ -615,7 +615,6 @@ export default function Home() {
                 )}
                 onClick={() => {
                   setEditAvatar(true);
-                  setSelectedDesktop("nfts");
                   setSelected("nfts");
                 }}
               >
