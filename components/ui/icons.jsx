@@ -441,4 +441,19 @@ export const Icons = {
       />
     </svg>
   ),
+  backArrow: ({ ...props }) => (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="9"
+      height="16"
+      viewBox="0 0 9 16"
+      {...props}
+    >
+      <path
+        d="M7.5 14L2.91421 9.41421C2.13317 8.63317 2.13316 7.36684 2.91421 6.58579L7.5 2"
+        stroke-width="3"
+        stroke-linecap="round"
+      />
+    </svg>
+  ),
 };

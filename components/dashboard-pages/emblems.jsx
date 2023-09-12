@@ -5,6 +5,8 @@ import { Separator } from "../ui/separator";
 import { ScrollArea } from "../ui/scroll-area";
 import { Tilt } from "react-tilt";
 import { set } from "zod";
+import { Button } from "../ui/button";
+import { Icons } from "../ui/icons";
 
 const defaultOptions = {
   reverse: false, // reverse the tilt direction
@@ -23,8 +25,23 @@ function Emblems({ emblemData }) {
   const [selected, setSelected] = React.useState(0);
   return (
     <div className="flex flex-col justify-start gap-4 w-[calc(100vw-80px)] sm:w-[calc(768px-368px)] lg:w-[35vw] xl:w-[27vw]">
-      <span className="uppercase text-xl ml-2 col-span-2 text-left whitespace-nowrap">
+      <span className="uppercase text-xl ml-2 col-span-2 text-left whitespace-nowrap flex items-center justify-between">
         emblems
+        {open && (
+          <span className="">
+            <Button
+              variant="secondary"
+              size="sm"
+              className="!px-3 mr-2"
+              onClick={() => {
+                setOpen(false);
+              }}
+            >
+              <Icons.backArrow className="fill-none stroke-foreground" />
+            </Button>
+            Back
+          </span>
+        )}
       </span>
       <Separator className="col-span-2" />
 
