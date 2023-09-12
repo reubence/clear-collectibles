@@ -12,7 +12,7 @@ function AllNFT() {
       </span>
       <Separator className="col-span-2" />
 
-      <ScrollArea className="h-[430px]">
+      <ScrollArea className="h-[430px] lg:pr-2.5">
         <div className="grid grid-cols-3 w-full gap-3">
           {[...Array(8)].map((_, i) => (
             <div

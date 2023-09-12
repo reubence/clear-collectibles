@@ -153,13 +153,13 @@ export default function Home() {
   useEffect(() => {
     containerRef.current = document.body;
     // if window width is less than 1024px then set selected to tasks
-    if (window.innerWidth >= 1280) {
+    if (window.innerWidth >= 1280 && !editProfile) {
       // Removing for ease of testing
-      // setSelectedDesktop("tasks");
+      setSelectedDesktop("tasks");
     } else {
       setSelected("profile");
     }
-  }, []);
+  }, [editProfile]);
 
   return (
     <main className="flex flex-col lg:flex-row lg:items-end justify-between p-5 mb-20 lg:pb-36 lg:px-10 relative h-screen w-full">
@@ -200,7 +200,11 @@ export default function Home() {
         className="hidden lg:block absolute left-0 bottom-36 xl:left-1/2 xl:-translate-x-1/2 mb-[76px] xl:-mb-10 z-10 w-[48vw] xl:w-[37vw] 3xl:w-[750px] max-w-[650px]"
       />
       {/* BROOM PROFILE SECTION */}
-      <div className="absolute hidden lg:block right-10 bottom-60 z-20">
+      <div
+        className={cn("absolute hidden lg:block right-10 bottom-60 z-20", {
+          "cursor-not-allowed pointer-events-none opacity-40": editAvatar,
+        })}
+      >
         <div className="flex flex-col gap-2 tall2XL:gap-3.5 relative">
           <div className="absolute hidden xl:flex flex-col items-center whitespace-nowrap right-[63vw]  xl:right-[40vw] tall2XL:right-0 tall2XL:relative tall2XL:items-start justify-between tall2XL:justify-start tall2XL:flex-col gap-2">
             <div className="flex gap-2.5 items-center">
@@ -258,16 +262,7 @@ export default function Home() {
             </div>
 
             {/* DISTRIBUTE BUBBLES BUTTON DIALOG */}
-            <Dialog>
-              <DialogTrigger
-                className={cn(buttonVariants(), "text-base w-fit")}
-              >
-                Distribute Bubbles
-              </DialogTrigger>
-              <DialogContent className="w-[90vw] max-w-md lg:max-w-5xl p-5 lg:py-7 lg:px-10 bg-[#E7F1F5] rounded-xl lg:rounded-2xl">
-                <Distribute />
-              </DialogContent>
-            </Dialog>
+            <Distribute />
           </div>
         </div>
         {/* PROFILE / STAT COMPONENT */}
@@ -284,7 +279,8 @@ export default function Home() {
         className={cn(
           "hidden lg:bg-white/40 lg:rounded-2xl relative w-full h-full lg:h-fit lg:flex flex-col lg:flex-row justify-between",
           {
-            "cursor-not-allowed pointer-events-none opacity-40": editProfile,
+            "cursor-not-allowed pointer-events-none opacity-40":
+              editProfile || editAvatar,
           }
         )}
       >
@@ -316,7 +312,7 @@ export default function Home() {
                       "bg-primary": selectedDesktop === item.value,
 
                       "cursor-not-allowed pointer-events-none opacity-40":
-                        editProfile,
+                        editProfile || editAvatar,
                     }
                   )}
                   onClick={() => setSelectedDesktop(item.value)}
