@@ -4,6 +4,7 @@ import Image from "next/image";
 import { Separator } from "../ui/separator";
 import { ScrollArea } from "../ui/scroll-area";
 import { Tilt } from "react-tilt";
+import { set } from "zod";
 
 const defaultOptions = {
   reverse: false, // reverse the tilt direction
@@ -18,6 +19,8 @@ const defaultOptions = {
 };
 
 function Emblems({ emblemData }) {
+  const [open, setOpen] = React.useState(false);
+  const [selected, setSelected] = React.useState(0);
   return (
     <div className="flex flex-col justify-start gap-4 w-[calc(100vw-80px)] sm:w-[calc(768px-368px)] lg:w-[35vw] xl:w-[27vw]">
       <span className="uppercase text-xl ml-2 col-span-2 text-left whitespace-nowrap">
@@ -27,10 +30,16 @@ function Emblems({ emblemData }) {
 
       <ScrollArea className="h-[430px]">
         <div className="grid grid-cols-2 w-full h-full gap-8 relative p-3.5">
-          {emblemData.length > 0 ? (
+          {!open ? (
             emblemData.map((item, i) => (
               <Tilt key={i} options={defaultOptions}>
-                <div className="flex flex-col items-center mx-auto group p-1 hover:border-primary hover:shadow-2xl hover:cursor-pointer border-2 border-transparent rounded-2xl transition-all duration-500 ease-in-out">
+                <div
+                  onClick={() => {
+                    setSelected(i);
+                    setOpen(true);
+                  }}
+                  className="flex flex-col items-center mx-auto group p-1 hover:border-primary hover:shadow-2xl hover:cursor-pointer border-2 border-transparent rounded-2xl transition-all duration-500 ease-in-out"
+                >
                   <Image
                     src={item.icon}
                     alt="Emblem Icon"
