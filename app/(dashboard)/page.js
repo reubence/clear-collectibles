@@ -197,7 +197,7 @@ export default function Home() {
         alt="Dashboard Nft Image"
         width={1000}
         height={1000}
-        className="hidden lg:block absolute left-0 bottom-36 xl:left-1/2 xl:-translate-x-1/2 mb-[76px] xl:-mb-10 z-10 w-[48vw] xl:w-[40vw] 3xl:w-[750px]"
+        className="hidden lg:block absolute left-0 bottom-36 xl:left-1/2 xl:-translate-x-1/2 mb-[76px] xl:-mb-10 z-10 w-[48vw] xl:w-[37vw] 3xl:w-[750px] max-w-[650px]"
       />
       {/* BROOM PROFILE SECTION */}
       <div className="absolute hidden lg:block right-10 bottom-60 z-20">
@@ -225,7 +225,7 @@ export default function Home() {
               Clear Collectibles #852
             </p>
           </div>
-          <Separator className="hidden 3xl:block w-full bg-white my-3" />
+          <Separator className="hidden tall2XL:3xl:block w-full bg-white my-3" />
 
           <div className="flex items-center justify-between gap-3 bg-white/25 p-5 rounded-2xl border">
             <div className="flex flex-col gap-2">
