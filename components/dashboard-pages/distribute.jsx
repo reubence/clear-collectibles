@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect } from "react";
+import { useState, useEffect } from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import {
   Table,
@@ -24,11 +24,11 @@ import { Dialog, DialogContent, DialogTrigger } from "../ui/dialog";
 import { set } from "zod";
 
 function Distribute() {
-  const [progress, setProgress] = React.useState(13);
-  const [editBubble, setEditBubble] = React.useState(2343);
-  const [openDialog, setOpenDialog] = React.useState(false);
-  const [openPopover, setOpenPopover] = React.useState(false);
-  React.useEffect(() => {
+  const [progress, setProgress] = useState(13);
+  const [editBubble, setEditBubble] = useState(2343);
+  const [openDialog, setOpenDialog] = useState(false);
+  const [openPopover, setOpenPopover] = useState(false);
+  useEffect(() => {
     const timer = setTimeout(() => setProgress(40), 500);
     return () => clearTimeout(timer);
   }, []);
@@ -112,7 +112,9 @@ function Distribute() {
 
               <Popover
                 open={openPopover}
-                onOpenChange={() => setOpenPopover(!openPopover)}
+                onOpenChange={() => {
+                  setOpenPopover(!openPopover);
+                }}
               >
                 <PopoverTrigger
                   className={cn(buttonVariants(), "w-fit ml-auto")}
