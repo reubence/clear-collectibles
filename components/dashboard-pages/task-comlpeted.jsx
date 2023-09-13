@@ -1,11 +1,9 @@
-import React from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Button } from "../ui/button";
-import { Separator } from "../ui/separator";
-import { Label } from "../ui/label";
-import { Input } from "../ui/input";
-import { Icons } from "../ui/icons";
 import { motion } from "framer-motion";
+import React from "react";
+import { Button } from "../ui/button";
+import { Icons } from "../ui/icons";
+import { Separator } from "../ui/separator";
 
 const stats = [
   { label: "Total Bubbles", value: 9921 },

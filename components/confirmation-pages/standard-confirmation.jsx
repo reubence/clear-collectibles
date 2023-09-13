@@ -1,11 +1,9 @@
-import Image from "next/image";
-import React from "react";
-import NFT_3 from "@/public/images/nft-3.png";
-import { Separator } from "../ui/separator";
-import { Button } from "../ui/button";
-import { Checkbox } from "../ui/checkbox";
-import { Icons } from "../ui/icons";
 import { cn } from "@/lib/utils";
+import NFT_3 from "@/public/images/nft-3.png";
+import Image from "next/image";
+import { Button } from "../ui/button";
+import { Icons } from "../ui/icons";
+import { Separator } from "../ui/separator";
 
 function StandardConfirmation({ className }) {
   return (

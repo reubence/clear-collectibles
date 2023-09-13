@@ -1,16 +1,12 @@
-import React from "react";
+import ImageSlider from "@/components/ui/image-slider";
 import {
   Table,
   TableBody,
-  TableCaption,
   TableCell,
   TableHead,
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { Separator } from "@/components/ui/separator";
-import ImageSlider from "@/components/ui/image-slider";
-import Image from "next/image";
 
 const data = [
   {

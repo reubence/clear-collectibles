@@ -1,15 +1,10 @@
-import React from "react";
-import { Separator } from "../ui/separator";
-import { Button } from "../ui/button";
-import NFT_3 from "@/public/images/nft-3.png";
-import Image from "next/image";
-import Link from "next/link";
-import { Checkbox } from "../ui/checkbox";
-import { Label } from "../ui/label";
-import { Input } from "../ui/input";
-import { ScrollArea } from "../ui/scroll-area";
 import { cn } from "@/lib/utils";
-import { Icons } from "../ui/icons";
+import NFT_3 from "@/public/images/nft-3.png";
+import { zodResolver } from "@hookform/resolvers/zod";
+import Image from "next/image";
+import { useForm } from "react-hook-form";
+import * as z from "zod";
+import { Button } from "../ui/button";
 import {
   Form,
   FormControl,
@@ -18,9 +13,11 @@ import {
   FormLabel,
   FormMessage,
 } from "../ui/form";
-import * as z from "zod";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
+import { Icons } from "../ui/icons";
+import { Input } from "../ui/input";
+import { Label } from "../ui/label";
+import { ScrollArea } from "../ui/scroll-area";
+import { Separator } from "../ui/separator";
 
 function AddressConfirmation({ className }) {
   const formSchema = z.object({

@@ -1,12 +1,11 @@
-import React from "react";
-import { Separator } from "../ui/separator";
-import { Button } from "../ui/button";
 import NFT_3 from "@/public/images/nft-3.png";
 import Image from "next/image";
 import Link from "next/link";
+import { Button } from "../ui/button";
 import { Checkbox } from "../ui/checkbox";
-import { Label } from "../ui/label";
 import { Icons } from "../ui/icons";
+import { Label } from "../ui/label";
+import { Separator } from "../ui/separator";
 
 function CheckboxConfirmation() {
   return (

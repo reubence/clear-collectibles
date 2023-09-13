@@ -1,23 +1,20 @@
-import React from "react";
-import { Separator } from "../ui/separator";
-import { Button } from "../ui/button";
 import NFT_3 from "@/public/images/nft-3.png";
+import { zodResolver } from "@hookform/resolvers/zod";
 import Image from "next/image";
-import { Label } from "../ui/label";
-import { Input } from "../ui/input";
-import { Icons } from "../ui/icons";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
-import { zodResolver } from "@hookform/resolvers/zod";
+import { Button } from "../ui/button";
 import {
   Form,
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
   FormLabel,
   FormMessage,
 } from "../ui/form";
+import { Icons } from "../ui/icons";
+import { Input } from "../ui/input";
+import { Separator } from "../ui/separator";
 const formSchema = z.object({
   email: z.string().email({ message: "Invalid email address" }),
 });

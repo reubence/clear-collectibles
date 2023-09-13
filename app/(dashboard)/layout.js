@@ -1,5 +1,5 @@
-import { cn } from "@/lib/utils";
 import NavBar from "@/components/layout/navbar";
+import { cn } from "@/lib/utils";
 import "@/public/globals.css";
 
 export const metadata = {

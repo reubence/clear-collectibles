@@ -1,26 +1,15 @@
 "use client";
 
-import Image from "next/image";
-import React from "react";
-import { Command, CommandInput } from "@/components/ui/command";
-import { Button, buttonVariants } from "@/components/ui/button";
-import { Separator } from "@/components/ui/separator";
-import { ScrollArea } from "@/components/ui/scroll-area";
-import { Checkbox } from "@/components/ui/checkbox";
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@/components/ui/popover";
-import { cn } from "@/lib/utils";
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import StandardConfirmation from "@/components/confirmation-pages/standard-confirmation";
-import CheckboxConfirmation from "@/components/confirmation-pages/checkbox-confirmation";
-import EmailConfirmation from "@/components/confirmation-pages/email-confirmation";
-import AddressConfirmation from "@/components/confirmation-pages/address-confirmation";
 import ListItem from "@/components/history-pages/list-item";
-import Link from "next/link";
+import { Button, buttonVariants } from "@/components/ui/button";
+import { Checkbox } from "@/components/ui/checkbox";
+import { Command, CommandInput } from "@/components/ui/command";
 import { Icons } from "@/components/ui/icons";
+import { ScrollArea } from "@/components/ui/scroll-area";
+import { Separator } from "@/components/ui/separator";
+import { cn } from "@/lib/utils";
+import Link from "next/link";
+import React from "react";
 
 const filtering = [
   {

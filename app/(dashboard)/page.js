@@ -1,17 +1,26 @@
 "use client";
 import AllNFT from "@/components/dashboard-pages/all-nft";
+import Distribute from "@/components/dashboard-pages/distribute";
 import Emblems from "@/components/dashboard-pages/emblems";
+import Multiplier from "@/components/dashboard-pages/multiplier";
 import ProfileStat from "@/components/dashboard-pages/profile-stat";
 import TaskCompleted from "@/components/dashboard-pages/task-comlpeted";
 import { Button, buttonVariants } from "@/components/ui/button";
 import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
+import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
-  DropdownMenuLabel,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Icons } from "@/components/ui/icons";
+import { Input } from "@/components/ui/input";
 import {
   Popover,
   PopoverArrow,
@@ -20,21 +29,9 @@ import {
 } from "@/components/ui/popover";
 import { Separator } from "@/components/ui/separator";
 import { cn } from "@/lib/utils";
+import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
-import React, { useEffect, useRef, useState } from "react";
-import { motion } from "framer-motion";
-import { AnimatePresence } from "framer-motion";
-import { Input } from "@/components/ui/input";
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from "@/components/ui/dialog";
-import Multiplier from "@/components/dashboard-pages/multiplier";
-import Distribute from "@/components/dashboard-pages/distribute";
+import { useEffect, useRef, useState } from "react";
 
 const emblemData = [
   {
@@ -192,13 +189,15 @@ export default function Home() {
         </div>
       )}
       {/* DESKTOP NFT IMAGE  */}
-      <Image
-        src="/images/nft-1.png"
-        alt="Dashboard Nft Image"
-        width={1000}
-        height={1000}
-        className="hidden lg:block absolute left-0 bottom-36 xl:left-1/2 xl:-translate-x-1/2 mb-[76px] xl:-mb-10 z-10 w-[48vw] xl:w-[37vw] 3xl:w-[750px] max-w-[650px]"
-      />
+      <div className="hidden lg:block absolute left-0 bottom-36 xl:left-1/2 xl:-translate-x-1/2 mb-[76px] xl:-mb-10 z-10 w-[48vw] xl:w-[37vw] 3xl:w-[750px] max-w-[650px]">
+        <Image
+          src="/images/nft-1.png"
+          alt="Dashboard Nft Image"
+          width={1000}
+          height={1000}
+          className=""
+        />
+      </div>
       {/* BROOM PROFILE SECTION */}
       <div
         className={cn("absolute hidden lg:block right-10 bottom-60 z-20", {

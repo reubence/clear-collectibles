@@ -1,15 +1,13 @@
 "use client";
-import React from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Button, buttonVariants } from "../ui/button";
-import { Separator } from "../ui/separator";
-import { Input } from "../ui/input";
-import { Textarea } from "../ui/textarea";
-import { ScrollArea } from "../ui/scroll-area";
-import { Icons } from "../ui/icons";
-import { Toggle } from "../ui/toggle";
 import { cn } from "@/lib/utils";
 import { motion } from "framer-motion";
+import React from "react";
+import { Button } from "../ui/button";
+import { Icons } from "../ui/icons";
+import { Separator } from "../ui/separator";
+import { Textarea } from "../ui/textarea";
+import { Toggle } from "../ui/toggle";
 
 const stats = [
   { label: "Total Bubbles", value: 9921 },

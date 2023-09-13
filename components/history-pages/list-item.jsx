@@ -1,20 +1,14 @@
-import React from "react";
-import { Button, buttonVariants } from "../ui/button";
-import Image from "next/image";
-import NFT_3 from "@/public/images/nft-3.png";
 import { cn } from "@/lib/utils";
-import { Icons } from "../ui/icons";
-import {
-  Popover,
-  PopoverArrow,
-  PopoverContent,
-  PopoverTrigger,
-} from "../ui/popover";
-import RedeemCode from "./redeem-code";
-import { Dialog, DialogContent, DialogTrigger } from "../ui/dialog";
+import Image from "next/image";
+import React from "react";
 import AddressConfirmation from "../confirmation-pages/address-confirmation";
+import { Button, buttonVariants } from "../ui/button";
+import { Dialog, DialogContent, DialogTrigger } from "../ui/dialog";
+import { Icons } from "../ui/icons";
+import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover";
 import { Separator } from "../ui/separator";
-import { Sheet, SheetClose, SheetContent, SheetTrigger } from "../ui/sheet";
+import { Sheet, SheetContent, SheetTrigger } from "../ui/sheet";
+import RedeemCode from "./redeem-code";
 
 function ListItem({
   image,

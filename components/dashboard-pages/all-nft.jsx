@@ -1,7 +1,6 @@
-import React from "react";
 import Image from "next/image";
-import { Separator } from "../ui/separator";
 import { ScrollArea } from "../ui/scroll-area";
+import { Separator } from "../ui/separator";
 
 function AllNFT() {
   return (

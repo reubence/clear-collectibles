@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import { useState } from "react";
 
 function TestPage() {
   const [value, setValue] = useState(0);

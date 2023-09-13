@@ -1,7 +1,6 @@
-import { cn } from "@/lib/utils";
 import NavBar from "@/components/layout/navbar";
+import { cn } from "@/lib/utils";
 import "@/public/globals.css";
-import Image from "next/image";
 
 export const metadata = {
   title: "Create Next App",

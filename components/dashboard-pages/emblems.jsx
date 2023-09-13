@@ -1,12 +1,10 @@
-import React from "react";
-import EMBLEM from "@/public/images/emblem.svg";
 import Image from "next/image";
-import { Separator } from "../ui/separator";
-import { ScrollArea } from "../ui/scroll-area";
+import React from "react";
 import { Tilt } from "react-tilt";
-import { set } from "zod";
 import { Button } from "../ui/button";
 import { Icons } from "../ui/icons";
+import { ScrollArea } from "../ui/scroll-area";
+import { Separator } from "../ui/separator";
 
 const defaultOptions = {
   reverse: false, // reverse the tilt direction

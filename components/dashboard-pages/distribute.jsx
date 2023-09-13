@@ -1,27 +1,15 @@
 "use client";
-import { useState, useEffect } from "react";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "@/components/ui/table";
-import { motion } from "framer-motion";
+import { cn } from "@/lib/utils";
+import { useEffect, useState } from "react";
+import { Button, buttonVariants } from "../ui/button";
+import { Dialog, DialogContent, DialogTrigger } from "../ui/dialog";
+import { Icons } from "../ui/icons";
+import { Input } from "../ui/input";
+import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover";
+import { Progress } from "../ui/progress";
 import { ScrollArea } from "../ui/scroll-area";
 import { Separator } from "../ui/separator";
 import AllNFT from "./all-nft";
-import { Progress } from "../ui/progress";
-import { cn } from "@/lib/utils";
-import { Button, buttonVariants } from "../ui/button";
-import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover";
-import StandardConfirmation from "../confirmation-pages/standard-confirmation";
-import { Icons } from "../ui/icons";
-import { Input } from "../ui/input";
-import { Dialog, DialogContent, DialogTrigger } from "../ui/dialog";
-import { set } from "zod";
 
 function Distribute() {
   const [progress, setProgress] = useState(13);
