@@ -159,7 +159,7 @@ export default function Home() {
   }, [editProfile]);
 
   return (
-    <main className="flex flex-col lg:flex-row lg:items-end justify-between p-5 mb-20 lg:pb-36 lg:px-10 relative h-screen w-full">
+    <main className="flex flex-col lg:flex-row lg:items-end justify-between p-5 tallXL:mb-20 tallXL:pb-36 tallXL:px-10 relative h-screen tallXS:h-[700px] w-full">
       {/* EDIT PROFILE & AVATAR BUTTON */}
       {(editProfile || editAvatar) && (
         <div className="whitespace-nowrap text-xs lg:text-base fixed lg:absolute top-28 shadow-md lg:top-0 left-1/2 transform -translate-x-1/2 -translate-y-20 bg-primary p-2 pl-4 flex items-center gap-14 rounded-2xl z-50">
@@ -189,7 +189,7 @@ export default function Home() {
         </div>
       )}
       {/* DESKTOP NFT IMAGE  */}
-      <div className="hidden lg:block absolute left-0 xl:left-1/2 xl:-translate-x-1/2 bottom-36 xl mb-[76px] xl:-mb-10 z-10 w-[48vw] xl:w-[37vw] 3xl:w-[750px] max-w-[650px]">
+      <div className="hidden lg:block absolute left-0 xl:left-1/2 xl:-translate-x-1/2 tallXL:bottom-36 mb-[76px] xl:-mb-10 z-10 w-[48vw] xl:w-[37vw] 3xl:w-[750px] max-w-[650px]">
         <div className="absolute left-1/2 transform -translate-x-1/2 top-8 xl:hidden tall2XL:hidden">
           <div className="flex gap-2.5 items-center">
             <Input
@@ -222,9 +222,12 @@ export default function Home() {
       </div>
       {/* BROOM PROFILE SECTION */}
       <div
-        className={cn("absolute hidden lg:block right-10 bottom-60 z-20", {
-          "cursor-not-allowed pointer-events-none opacity-40": editAvatar,
-        })}
+        className={cn(
+          "absolute hidden lg:block right-10 bottom-32 tallXL:bottom-60 z-20",
+          {
+            "cursor-not-allowed pointer-events-none opacity-40": editAvatar,
+          }
+        )}
       >
         <div className="flex flex-col gap-2 tall2XL:gap-3.5 relative">
           <div className="absolute hidden tall2XL:flex xl:flex flex-col items-center whitespace-nowrap right-[63vw]  xl:right-[40vw] tall2XL:right-0 tall2XL:relative tall2XL:items-start justify-between tall2XL:justify-start tall2XL:flex-col gap-2">
