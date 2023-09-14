@@ -189,7 +189,29 @@ export default function Home() {
         </div>
       )}
       {/* DESKTOP NFT IMAGE  */}
-      <div className="hidden lg:block absolute left-0 bottom-36 xl:left-1/2 xl:-translate-x-1/2 mb-[76px] xl:-mb-10 z-10 w-[48vw] xl:w-[37vw] 3xl:w-[750px] max-w-[650px]">
+      <div className="hidden lg:block absolute left-0 xl:left-1/2 xl:-translate-x-1/2 bottom-36 xl mb-[76px] xl:-mb-10 z-10 w-[48vw] xl:w-[37vw] 3xl:w-[750px] max-w-[650px]">
+        <div className="absolute left-1/2 transform -translate-x-1/2 top-8 xl:hidden tall2XL:hidden">
+          <div className="flex gap-2.5 items-center">
+            <Input
+              className="rounded-md 3xl:rounded-xl w-fit text-4xl tall2XL:text-6xl flex flex-shrink disabled:opacity-100 p-0 pl-1 disabled:cursor-default disabled:text-foreground disabled:bg-transparent z-10"
+              size={profileDetails.nickname.length + 1}
+              placeholder={profileDetails.nickname}
+              disabled={!editProfile}
+              value={profileDetails.nickname}
+              onChange={(e) => {
+                setProfileDetails({
+                  ...profileDetails,
+                  nickname: e.target.value,
+                });
+              }}
+            />
+            <span className="font-semibold bg-primary text-white tall2XL:text-3xl px-2 tall2XL:px-3 rounded-xl">
+              Lv.5
+            </span>
+          </div>
+          <p className="font-bold tall2XL:text-3xl">Clear Collectibles #852</p>
+        </div>
+
         <Image
           src="/images/nft-1.png"
           alt="Dashboard Nft Image"
@@ -205,7 +227,7 @@ export default function Home() {
         })}
       >
         <div className="flex flex-col gap-2 tall2XL:gap-3.5 relative">
-          <div className="absolute hidden xl:flex flex-col items-center whitespace-nowrap right-[63vw]  xl:right-[40vw] tall2XL:right-0 tall2XL:relative tall2XL:items-start justify-between tall2XL:justify-start tall2XL:flex-col gap-2">
+          <div className="absolute hidden tall2XL:flex xl:flex flex-col items-center whitespace-nowrap right-[63vw]  xl:right-[40vw] tall2XL:right-0 tall2XL:relative tall2XL:items-start justify-between tall2XL:justify-start tall2XL:flex-col gap-2">
             <div className="flex gap-2.5 items-center">
               <Input
                 className="rounded-md 3xl:rounded-xl w-fit text-4xl tall2XL:text-6xl flex flex-shrink disabled:opacity-100 p-0 pl-1 disabled:cursor-default disabled:text-foreground disabled:bg-transparent z-10"
