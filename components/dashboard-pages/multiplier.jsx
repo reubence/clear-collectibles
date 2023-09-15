@@ -77,11 +77,10 @@ function Multiplier() {
               and the type of Booster pack purchased.
             </p>
           </ScrollArea>
-          <Separator className="w-full bg-white lg:hidden" />
         </div>
         <div className="mt-4 lg:mt-0">
           <Tabs defaultValue="level" className="w-full">
-            <TabsList className="flex justify-between items-center bg-[#D8E5EC] p-3 mb-7">
+            <TabsList className="hidden lg:flex justify-between items-center bg-[#D8E5EC] p-3 mb-7">
               {tabs.map((tab) => (
                 <div className="relative w-full" key={tab.id}>
                   <TabsTrigger
