@@ -1,21 +1,39 @@
 import Image from "next/image";
-import { ScrollArea } from "../ui/scroll-area";
+import { ScrollArea, ScrollBar } from "../ui/scroll-area";
 import { Separator } from "../ui/separator";
+import { cn } from "@/lib/utils";
 
-function AllNFT() {
+function AllNFT({ orientation = "vertical" }) {
   return (
-    <div className="flex flex-col justify-start gap-4 w-[calc(100vw-80px)] sm:w-[calc(768px-368px)] lg:w-[35vw] xl:w-[27vw]">
+    <div className="flex flex-col justify-start gap-4 w-[calc(100vw-80px)] sm:w-[calc(768px-368px)]">
       <span className="uppercase text-xl ml-2 col-span-2 text-left whitespace-nowrap text-foreground">
         ALL NFT
       </span>
       <Separator className="col-span-2" />
 
-      <ScrollArea className="h-[430px] lg:pr-2.5">
-        <div className="grid grid-cols-3 w-full gap-3">
+      <ScrollArea
+        className={cn("lg:pr-2.5", {
+          "h-[430px]": orientation === "vertical",
+          "h-[calc(360px)] lg:h-[430px]": orientation === "horizontal",
+        })}
+      >
+        <ScrollBar orientation={orientation} />
+        <div
+          className={cn("grid gap-3", {
+            "grid-cols-2 w-full": orientation === "vertical",
+            "grid-cols-6 w-[100vh] lg:grid-cols-2 lg:w-full":
+              orientation === "horizontal",
+          })}
+        >
           {[...Array(8)].map((_, i) => (
             <div
               key={i}
-              className="flex flex-col gap-4 items-center p-2 mx-auto group hover:border-primary hover:bg-primary/20 hover:cursor-pointer border-2 border-transparent rounded-2xl transition-all duration-500 ease-in-out"
+              className={cn(
+                "flex flex-col gap-4 items-center p-2 mx-auto group hover:border-primary hover:bg-primary/20 hover:cursor-pointer border-2 border-transparent rounded-2xl transition-all duration-500 ease-in-out",
+                {
+                  "w-full": orientation === "horizontal",
+                }
+              )}
             >
               <Image
                 src={"/images/nft-3.png"}
@@ -34,8 +52,15 @@ function AllNFT() {
         </div>
       </ScrollArea>
       <Separator className="" />
-      <div class="uppercase inline-flex justify-center items-center gap-3 lg:hidden">
-        <span className="">cc #852</span>
+      <div
+        className={cn(
+          "uppercase inline-flex justify-center items-center gap-3 lg:hidden",
+          {
+            hidden: orientation === "horizontal",
+          }
+        )}
+      >
+        <span className="text-foreground">cc #852</span>
         <span className="font-normal">lv.2</span>
       </div>
     </div>

@@ -191,7 +191,7 @@ function History() {
               <span className="hidden lg:block">Type filtering</span>
               <Separator className="hidden lg:block my-7 bg-muted" />
               {/* FILTERING OPTIONS */}
-              <ScrollArea className="lg:h-[calc(100vh-500px)] pr-2.5">
+              <ScrollArea className="lg:h-[calc(100vh-500px)] lg:pr-2.5">
                 {filtering.map((filter, index) => (
                   <div
                     className="flex items-center justify-between mb-10 gap-8"

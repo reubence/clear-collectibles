@@ -10,6 +10,16 @@ import { Progress } from "../ui/progress";
 import { ScrollArea } from "../ui/scroll-area";
 import { Separator } from "../ui/separator";
 import AllNFT from "./all-nft";
+import {
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "../ui/form";
+import { z } from "zod";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
 
 function Distribute() {
   const [progress, setProgress] = useState(13);
@@ -24,21 +34,22 @@ function Distribute() {
   useEffect(() => {
     console.log(openPopover);
   }, [openPopover]);
+
   return (
     <Dialog open={openDialog} onOpenChange={() => setOpenDialog(!openDialog)}>
       <DialogTrigger className={cn(buttonVariants(), "text-base w-fit")}>
         Distribute Bubbles
       </DialogTrigger>
 
-      <DialogContent className="w-[90vw] max-w-md lg:max-w-5xl p-5 lg:py-7 lg:px-10 bg-[#E7F1F5] rounded-xl lg:rounded-2xl">
-        <ScrollArea className="w-full h-[calc(100vh-200px)] lg:h-fit">
+      <DialogContent className="w-[90vw] max-w-md lg:max-w-5xl p-5 pr-2 lg:py-7 lg:px-10 bg-[#E7F1F5] rounded-xl lg:rounded-2xl">
+        <ScrollArea className="w-full tallXS:h-[calc(100vh-100px)] lg:h-fit">
           <div className="grid grid-cols-1 lg:grid-cols-2 lg:gap-12">
             <div className="w-full h-full flex flex-col gap-3 text-base text-muted-foreground/50 font-semibold">
-              <AllNFT />
+              <AllNFT orientation={"horizontal"} />
             </div>
-            <div className="flex flex-col gap-3 mt-10">
+            <div className="flex flex-col gap-3 mt-2 lg:mt-10">
               <div className="flex gap-2.5 items-center">
-                <p className="lg:text-xl">Broom</p>
+                <p className="text-xl uppercase">Broom</p>
                 <span className="font-semibold bg-primary text-white px-2 rounded-xl">
                   Lv.5
                 </span>
@@ -48,57 +59,60 @@ function Distribute() {
 
               <Separator className="w-full bg-white" />
 
-              <div className="mt-5 flex flex-col gap-3.5">
-                <p className="lg:text-xl">EXP</p>
-                <Progress value={progress} className="w-full" />
+              <div className="lg:mt-5 flex flex-col gap-3.5">
+                <p className="text-xl">EXP</p>
+                <Progress value={editBubble} max={10000} className="w-full" />
                 <div className="flex justify-between w-full">
                   <span className="text-sm font-normal text-muted-foreground/50 flex">
                     Current XP:
-                    <p className="font-extrabold text-foreground"> 4989</p>
+                    <p className="font-extrabold text-foreground">2434</p>
                   </span>
                   <span className="text-sm font-normal text-muted-foreground/50 flex">
-                    XP:<p className="font-extrabold text-foreground"> 4989</p>
+                    XP:<p className="font-extrabold text-foreground"> 10000</p>
                   </span>
                 </div>
               </div>
 
-              <div className="mt-6 flex flex-col gap-5">
+              <div className="lg:mt-6 flex flex-col gap-5">
                 <span className="text-sm font-normal text-muted-foreground/50 flex">
                   Available Bubbles:
                   <p className="font-extrabold text-foreground"> 5,000 </p>
                 </span>
-                <Input
-                  className={cn(
-                    buttonVariants({
-                      variant: "secondary",
-                      size: "sm",
-                      className: "justify-start lg:text-xl",
-                    })
-                  )}
-                  placeholder={"2343"}
-                  disabled={!editBubble}
-                  value={editBubble}
-                  onChange={(e) => {
-                    setEditBubble(e.target.value);
-                  }}
-                  type="number"
-                />
-                <Input
-                  className={cn(
-                    buttonVariants({
-                      variant: "secondary",
-                      size: "sm",
-                      className: "justify-start lg:text-xl",
-                    })
-                  )}
-                  placeholder={"2343"}
-                  disabled={!editBubble}
-                  value={editBubble}
-                  onChange={(e) => {
-                    setEditBubble(e.target.value);
-                  }}
-                  type="number"
-                />
+                <div className="flex gap-3 lg:flex-col lg:gap-5">
+                  <Input
+                    className={cn(
+                      buttonVariants({
+                        variant: "secondary",
+                        size: "sm",
+                        className: "justify-start lg:text-xl",
+                      })
+                    )}
+                    placeholder={"2343"}
+                    max={5000}
+                    value={editBubble}
+                    onChange={(e) => {
+                      setEditBubble(e.target.value);
+                    }}
+                    type="number"
+                  />
+
+                  <Input
+                    className={cn(
+                      buttonVariants({
+                        variant: "secondary",
+                        size: "sm",
+                        className: "justify-start lg:text-xl",
+                      })
+                    )}
+                    placeholder={"2343"}
+                    max={5000}
+                    value={editBubble}
+                    onChange={(e) => {
+                      setEditBubble(e.target.value);
+                    }}
+                    type="number"
+                  />
+                </div>
               </div>
 
               <Popover
@@ -108,7 +122,10 @@ function Distribute() {
                 }}
               >
                 <PopoverTrigger
-                  className={cn(buttonVariants(), "w-fit ml-auto")}
+                  className={cn(
+                    buttonVariants(),
+                    "text-base lg:text-xl lg:w-fit lg:ml-auto"
+                  )}
                 >
                   Distribute
                 </PopoverTrigger>
