@@ -50,9 +50,18 @@ function Distribute() {
             <div className="flex flex-col gap-3 mt-2 lg:mt-10">
               <div className="flex gap-2.5 items-center">
                 <p className="text-xl uppercase">Broom</p>
-                <span className="font-semibold bg-primary text-white px-2 rounded-xl">
-                  Lv.5
-                </span>
+                <div className="text-sm lg:text-base">
+                  <span
+                    className={cn(
+                      "bg-primary text-white font-semibold px-2 py-1 rounded-l-md"
+                    )}
+                  >
+                    Lv.5
+                  </span>
+                  <span className="bg-primary/70 text-white font-bold px-2 py-1 rounded-r-md">
+                    +2
+                  </span>
+                </div>
               </div>
 
               <p className="font-medium">Clear Collectibles #852</p>
