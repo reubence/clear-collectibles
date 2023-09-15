@@ -230,7 +230,7 @@ export default function Home() {
         )}
       >
         <div className="flex flex-col gap-2 tall2XL:gap-3.5 relative">
-          <div className="absolute hidden tall2XL:flex xl:flex flex-col items-center whitespace-nowrap right-[63vw]  xl:right-[40vw] tall2XL:right-0 tall2XL:relative tall2XL:items-start justify-between tall2XL:justify-start tall2XL:flex-col gap-2">
+          <div className="absolute hidden tall2XL:flex xl:flex flex-col items-center whitespace-nowrap right-[63vw] xl:right-[40vw] tall2XL:right-0 tall2XL:relative tall2XL:items-start justify-between tall2XL:justify-start tall2XL:flex-col gap-2">
             <div className="flex gap-2.5 items-center">
               <Input
                 className="rounded-md 3xl:rounded-xl w-fit text-4xl tall2XL:text-6xl flex flex-shrink disabled:opacity-100 p-0 pl-1 disabled:cursor-default disabled:text-foreground disabled:bg-transparent z-10"
@@ -536,7 +536,9 @@ export default function Home() {
             <div className="flex flex-col gap-2">
               <div className="flex gap-2.5 items-center">
                 <Input
-                  className="rounded-md w-fit text-2xl disabled:opacity-100 p-0 pl-1 disabled:cursor-default disabled:text-foreground disabled:bg-transparent z-10"
+                  className={cn(
+                    "rounded-md w-fit text-2xl disabled:opacity-100 p-0 pl-1 disabled:cursor-default disabled:text-foreground disabled:bg-transparent z-10"
+                  )}
                   size={profileDetails.nickname.length + 1}
                   placeholder={profileDetails.nickname}
                   disabled={!editProfile}
