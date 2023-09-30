@@ -1,5 +1,6 @@
 "use client";
 import AllNFT from "@/components/dashboard-pages/all-nft";
+import NftCharge from "@/components/dashboard-pages/nft-charge";
 import NavBar from "@/components/layout/navbar";
 import Distribute from "@/components/dashboard-pages/distribute";
 import { background as BackgroundNft } from "@/constants";
@@ -39,13 +40,15 @@ import { useRouter } from "next/router";
 import { useSession, signOut } from "next-auth/react";
 import { ProgressLottie as Character } from "@/components";
 import { getParsedNftAccountsByOwner } from "@nfteyez/sol-rayz";
-import { Connection, PublicKey } from "@solana/web3.js";
+import { Connection } from "@solana/web3.js";
 
 export default function Dashboard() {
   const effectRan = useRef(false);
-  const [ranCount, setRanCount] = useState(0)
+  const [tokens, setTokens] = useState(0)
+  const [countRan, setCountRan] = useState(0)
   const [mdiscord, setDiscord] = useState(null);
   const [mtwitter, setTwitter] = useState(null);
+  const [mwallets, setWallets] = useState([])
   const [loading, setLoading] = useState(true);
   const [avatar, setAvatar] = useState(null);
   const [completed, setCompleted] = useState([]);
@@ -57,13 +60,16 @@ export default function Dashboard() {
   const [oldDiscord, setOldDiscord] = useState();
   const [oldTwitter, setOldTwitter] = useState();
   const [tweet, setTweet] = useState(null);
+  const [staked, setStaked] = useState([])
   const [createdAt, setCreatedAt] = useState();
   const [submitLoading, setSubmitLoading] = useState(false);
   const [nfts, setResult] = useState([]);
   const [background, setBackground] = useState("#D7E8EF");
   const [favNft, setFavNft] = useState("/images/nft-1.png");
+  const [favLevel, setFavLevel] = useState(0);
   const [selectedNft, setSelectedNft] = useState("");
   const [distribute, setDistribute] = useState(false)
+  const [multiplier, setMultiplier] = useState(1)
   const [oldFavNft, setOldFavNft] = useState({
     number: null,
     background: "#D7E8EF",
@@ -112,6 +118,12 @@ export default function Dashboard() {
       children: <AllNFT />,
       value: "nfts",
     },
+    {
+      icon: Icons.charge,
+      label: "Charge",
+      children: <NftCharge />,
+      value: "charge",
+    },
   ];
 
   const wrapperRef = useRef(null);
@@ -123,7 +135,8 @@ export default function Dashboard() {
           ref?.current !== null &&
           !ref.current.contains(event.target) &&
           !editAvatar &&
-          selectedDesktop !== "tasks"
+          selectedDesktop !== "tasks" && 
+          selectedDesktop !== "charge"
         ) {
           setSelectedDesktop("");
           setBackground(oldFavNft.background);
@@ -132,7 +145,7 @@ export default function Dashboard() {
             setFavNft(
               `https://shdw-drive.genesysgo.net/4ogWuz5n4TB2NFdPdtTT9uAsuudNE242EnpM4VwEmBHM/${oldFavNft.number}.png`
             );
-            setSelectedNft({ number: oldFavNft.number });
+            setSelectedNft({ number: oldFavNft.number, level: favLevel });
           } else {
             setFavNft(`/images/nft-1.png`);
           }
@@ -190,10 +203,29 @@ export default function Dashboard() {
           for (let info of numbers) {
             for (let asset of assets) {
               if (info.number == asset.number) {
-                let level = 1;
-                if (asset.xp >= 1000) {
-                  level = 2;
+                let level = 0;
+                if (Number(asset.xp) >= 300 && Number(asset.xp) < 600) {
+                  level = 1;
+                }else if(Number(asset.xp) >= 600 && Number(asset.xp) < 1100){
+                  level = 2
+                }else if(Number(asset.xp) >= 1100 && Number(asset.xp) < 1800){
+                  level = 3
+                }else if(Number(asset.xp) >= 1800 && Number(asset.xp) < 2900){
+                  level = 4
+                }else if(Number(asset.xp) >= 2900 && Number(asset.xp) < 4200){
+                  level = 5
+                }else if(Number(asset.xp) >= 4200 && Number(asset.xp) < 5900){
+                  level = 6
+                }else if(Number(asset.xp) >= 5900 && Number(asset.xp) < 8000){
+                  level = 7
+                }else if(Number(asset.xp) >= 8000 && Number(asset.xp) < 11000){
+                  level = 8
+                }else if(Number(asset.xp) >= 11000 && Number(asset.xp) < 15000){
+                  level = 9
+                }else if(Number(asset.xp) == 15000){
+                  level = 10
                 }
+
                 info["xp"] = asset.xp;
                 info["level"] = level;
               }
@@ -201,7 +233,6 @@ export default function Dashboard() {
           }
 
           const finalResult = numbers.sort((a, b) => a.number - b.number);
-
           setResult(finalResult);
         }
       }
@@ -352,6 +383,37 @@ export default function Dashboard() {
     }
   }
 
+  async function getWallets(token){
+    try{
+    let wallets = []
+    const response = await fetch("https://api.matrica.io/oauth2/user/wallets", {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+  
+    const data = await response.text();
+    if (data.length) {
+      const results = JSON.parse(data);
+      for(let result of results){
+        wallets.push({id:result.id})
+      }
+      setWallets(wallets)
+      if(countRan == 0){
+        getNft(wallets)
+        setCountRan(1)
+
+      }
+      
+    }
+  
+  
+   
+  }catch(err){
+    console.log(err)
+  }
+  }
+
   async function getData(token) {
     try {
       //  Block of code to try
@@ -370,16 +432,23 @@ export default function Dashboard() {
         setCounter(result?.count);
         setOldDiscord(result?.discord?.name);
         setOldTwitter(result?.twitter?.name);
+        setMultiplier(result?.multiplier)
+
+        if(result.assets && result.assets.length > 0){
+          setStaked(result.assets)
+        }
+
         if (result.twitter.pfp) {
           setAvatar(result.twitter.url);
         }
         setCreatedAt(result.createdAt);
         setTweet(result?.tweet);
         if (
-          result.name !== null &&
-          result.bio !== null &&
-          profileDetails.bio == "" &&
-          profileDetails.nickname == ""
+          (result.name !== null ||
+          result.bio !== null )&&
+          (
+          profileDetails.bio == "" ||
+          profileDetails.nickname == "")
         ) {
           setProfileDetails({
             nickname: result.name,
@@ -404,12 +473,15 @@ export default function Dashboard() {
             number: Number(result.avatar),
             background: foundObject.background,
           });
+          
+          setSelectedNft({number:Number(result.avatar), level: Number(result.avatarLevel)})
+          setFavLevel(result.avatarLevel)
         }
 
         setTimeout(() => {
           setLoading(false);
           setTaskLoading(false);
-        }, 1000);
+        }, 500);
       }
     } catch (e) {
       console.log(e);
@@ -433,11 +505,11 @@ export default function Dashboard() {
       const result = JSON.parse(resultText);
 
       if (result.token !== null && typeof result.token !== "undefined") {
-        const expiry = Date.now() + 1641600 * 1000;
+        const expiry = Date.now() + 3600 * 1000;
         localStorage.setItem("token", result?.token);
         localStorage.setItem("expiry", expiry);
-
         await getData(result.token);
+        
       }
     }
   }
@@ -445,24 +517,21 @@ export default function Dashboard() {
   useEffect(() => {
 
     if (session?.accessToken) {
-      getToken(session?.accessToken);
       getTwitter(session?.accessToken);
       getDiscord(session?.accessToken);
+      getWallets(session?.accessToken)
     }
 
-    if(session && ranCount == 0){
-      getNft(session?.wallets);
-      setRanCount(1)
-    }
+    
 
     if (session?.error === "RefreshAccessTokenError") {
       localStorage.clear();
       signOut({ callbackUrl: "/login" });
     }
-  }, [session, ranCount]);
+  }, [session]);
 
   useEffect(() => {
-    if (effectRan === false) {
+   /*  if (effectRan === false) { */
       if (
         mtwitter !== null &&
         mdiscord !== null &&
@@ -474,19 +543,21 @@ export default function Dashboard() {
         const token = localStorage.getItem("token");
         const expiry = localStorage.getItem("expiry");
 
-        if (!token || Date.now() > expiry) {
+        if (token && token !== null && typeof token !== "undefined" && Date.now() < expiry) {
+          getData(token);
+        }
+    
+        if(!token || Date.now() > expiry){
           getToken(session.accessToken);
         }
 
-        if (mtwitter !== oldTwitter || mdiscord !== oldDiscord) {
-          getToken(session.accessToken);
-        }
+   
       }
-    }
+   /*  }
 
     return () => {
       effectRan.current = true;
-    };
+    }; */
   }, [mtwitter, mdiscord]);
 
   useEffect(() => {
@@ -638,12 +709,12 @@ export default function Dashboard() {
                 transition={{ duration: 1 }}
                 exit={{ opacity: 0 }}
                 className="hidden lg:block absolute left-0 xl:left-1/2  xl:-translate-x-1/2  -mb-10 z-10  lg:bottom-[262px] xl:bottom-[136px]
-              w-[600px] h-[600px]
-              xl:w-[calc(100vw-750px)] xl:h-[calc(100vw-750px)] 
-              2xl:w-[calc(100vw-700px)] 3xl:h-[calc(100vw-700px)] 
-              2xl:max-w-[800px] 2xl:max-h-[800px]
-              3xl:max-w-[850px] 3xl:max-h-[850px] 
-              tallXS:!bottom-[138px]
+                  w-[600px] h-[600px]
+                  xl:w-[calc(100vw-750px)] xl:h-[calc(100vw-750px)] 
+                  2xl:w-[calc(100vw-700px)] 3xl:h-[calc(100vw-700px)] 
+                  2xl:max-w-[800px] 2xl:max-h-[800px]
+                  3xl:max-w-[850px] 3xl:max-h-[850px] 
+                  tallXS:!bottom-[138px]
                 "
               >
                 <div className="relative w-full h-full">
@@ -677,14 +748,18 @@ export default function Dashboard() {
                       disabled={!editProfile || submitLoading}
                       value={profileDetails.nickname}
                       onChange={(e) => {
-                        setProfileDetails({
-                          ...profileDetails,
-                          nickname: e.target.value,
-                        });
+                        const isValid = /^[a-z0-9 ]*$/i.test(e.target.value);
+                        if(isValid){
+                          setProfileDetails({
+                            ...profileDetails,
+                            nickname: e.target.value,
+                          });
+                        }
+                       
                       }}
                     />
                     <div className="font-semibold bg-primary text-white xl:text-3xl tall2XL:text-3xl px-2 tall2XL:px-3 rounded-xl">
-                      Lv.5
+                      Lv.{selectedNft.level}
                     </div>
                   </div>
                   <div className="flex justify-between items-center">
@@ -706,7 +781,7 @@ export default function Dashboard() {
                   <div className="flex flex-col gap-2">
                     <p className="text-xl 3xl:">Bubbles: {xp}</p>
                     <p className="font-bold flex items-center gap-1.5">
-                      <span className="font-normal">Multiplier:</span> 60%
+                      <span className="font-normal">Multiplier:</span> {multiplier}x
                       <span>
                         {/* MULTIPLIER POP UP */}
                         <Dialog className="p-5">
@@ -734,15 +809,12 @@ export default function Dashboard() {
 
                   {/* DISTRIBUTE BUBBLES BUTTON DIALOG */}
                   <Distribute 
-                  xp={xp} 
-                  nfts={nfts} 
-                  profileDetails={profileDetails} 
-                  setBackground={setBackground} 
-                  setFavNft={setFavNft} 
-                  setSelectedNft={setSelectedNft} 
-                  selectedNft={selectedNft}  
-                  wrapperRef={wrapperRef} 
-                  setDistribute={setDistribute}
+                    xp={xp}
+                    nfts={nfts} 
+                    profileDetails={profileDetails}
+                    wallets={mwallets}
+                    getNft={getNft}
+                    getData={getData}
                   />
                 </div>
                 {/* PROFILE / STAT COMPONENT */}
@@ -784,6 +856,7 @@ export default function Dashboard() {
                         defaultOpen={selectedDesktop === item.value}
                         open={selectedDesktop === item.value}
                         container={containerRef.current}
+                        usePortal={false}
                         onOpenChange={(open) => {
                           if (open) {
                             setSelectedDesktop(item.value);
@@ -793,6 +866,7 @@ export default function Dashboard() {
                         }}
                       >
                         <PopoverTrigger
+                        disabled={submitLoading}
                           className={cn(
                             buttonVariants({
                               variant: "secondary",
@@ -863,7 +937,7 @@ export default function Dashboard() {
                         <PopoverContent
                           style={{
                             backgroundColor: background,
-                            filter: "brightness(98%)",
+                            filter: "brightness(99%)",
                           }}
                           className={cn(
                             `${
@@ -897,8 +971,19 @@ export default function Dashboard() {
                               wrapperRef={wrapperRef}
                               selectedNft={selectedNft}
                               distribute={distribute}
+                              submitLoading={submitLoading}
+                              
                             />
-                          ) : (
+                          ) : item.value == "charge" ? (
+                            <NftCharge
+                              nfts={nfts}
+                              tokens={tokens}
+                              staked={staked}
+                              getData={(token) => getData(token)}
+                              submitLoading={submitLoading}
+                              setSubmitLoading={setSubmitLoading}
+                            />
+                          ): (
                             <>{item.children}</>
                           )}{" "}
                           <PopoverArrow className="w-6 h-3 fill-transparent lg:fill-[#EBF4F7] -translate-y-0.5 z-50" />
@@ -991,6 +1076,7 @@ export default function Dashboard() {
                           "cursor-pointer bg-white": selected !== item.value,
                           "!bg-primary": selected === item.value,
                         })}
+                        disabled={submitLoading}
                         onClick={() => setSelected(item.value)}
                       >
                         {
@@ -1021,7 +1107,20 @@ export default function Dashboard() {
                             completed={completed}
                             taskLoading={taskLoading}
                           />
-                        ) : (
+                        ) : item.value == "charge" ? (
+                          <NftCharge
+                            nfts={nfts}
+                            tokens={tokens}
+                            staked={staked}
+                            getData={(token) => getData(token)}
+                            submitLoading={submitLoading}
+                            setSubmitLoading={setSubmitLoading}
+                          />
+                        )
+                        
+                        :
+                        
+                        (
                           item.value == "nfts" && (
                             <AllNFT
                               nfts={nfts}
@@ -1031,6 +1130,7 @@ export default function Dashboard() {
                               wrapperRef={wrapperRef}
                               selectedNft={selectedNft}
                               distribute={distribute}
+                              submitLoading={submitLoading}
                             />
                           )
                         )}
@@ -1051,14 +1151,17 @@ export default function Dashboard() {
                       disabled={!editProfile || submitLoading}
                       value={profileDetails.nickname}
                       onChange={(e) => {
-                        setProfileDetails({
-                          ...profileDetails,
-                          nickname: e.target.value,
-                        });
+                        const isValid = /^[a-z0-9 ]*$/i.test(e.target.value);
+                        if(isValid){
+                          setProfileDetails({
+                            ...profileDetails,
+                            nickname: e.target.value,
+                          });
+                        }
                       }}
                     />{" "}
                         <span className="font-semibold bg-primary text-white px-2 rounded-xl">
-                          Lv.5
+                          Lv.{selected.level}
                         </span>
                       </div>
                       <p className="font-medium">
@@ -1067,7 +1170,7 @@ export default function Dashboard() {
                       <Separator className="w-full bg-white my-3" />
                       <p className="text-xl">Bubbles: {xp}</p>
                       <p className="font-bold flex items-center gap-1.5">
-                        <span className="font-normal">Multiplier:</span> 60%
+                        <span className="font-normal">Multiplier:</span> {multiplier}x
                         <span>
                           <Dialog className="p-5">
                             <DialogTrigger
@@ -1096,13 +1199,9 @@ export default function Dashboard() {
                               xp={xp}
                               nfts={nfts} 
                               profileDetails={profileDetails} 
-                              setBackground={setBackground}
-                              setFavNft={setFavNft}
-                              setSelectedNft={setSelectedNft}
-                              selectedNft={selectedNft}
-                              wrapperRef={wrapperRef}
-                              setDistribute={setDistribute}
-
+                              wallets={mwallets}
+                              getNft={getNft}
+                              getData={getData}
                               />
                     </div>
                   )}

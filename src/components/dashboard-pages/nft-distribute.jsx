@@ -5,16 +5,11 @@ import { cn } from "@/lib/utils";
 import { background } from "@/constants";
 import { useEffect, useState } from "react";
 
-function AllNFT({ orientation = "vertical", nfts, setBackground, setFavNft, setSelectedNft, wrapperRef, selectedNft, submitLoading }) {
- const [data, setData] = useState([])
-  useEffect(() => {
-    if(nfts && nfts.length > 0){
-      setData(nfts)
-    }
-  }, [nfts])
+function NftDistribute({ orientation = "vertical", nfts, setSelectedNft, selectedNft, submitLoading}) {
+
+
   return (
     <div 
-    ref={wrapperRef}
     className="flex flex-col justify-start gap-4 w-[calc(100vw-80px)] sm:w-[calc(768px-368px)] h-full">
       <span className="uppercase text-xl ml-2 col-span-2 text-left whitespace-nowrap text-foreground">
         ALL NFT {`(${nfts ? nfts.length : "0"})`}
@@ -35,14 +30,14 @@ function AllNFT({ orientation = "vertical", nfts, setBackground, setFavNft, setS
               orientation === "horizontal",
           })}
         >
-          {(data && data.length > 0) &&
+          {(nfts && nfts.length > 0) &&
           <>
-            {data.map((item, i) => {
+            {nfts.map((item, i) => {
               return(
             <div
               key={i}
               className={cn(
-                `flex flex-col gap-4 items-center p-2 mx-auto group ${selectedNft && selectedNft.number == item.number && "!border-primary bg-primary/20"} hover:border-primary hover:bg-primary/20 hover:cursor-pointer border-2 border-transparent rounded-2xl transition-all duration-500 ease-in-out`,
+                `flex flex-col gap-4 items-center p-2 mx-auto group ${(selectedNft && selectedNft.number == item.number)&& "!border-primary bg-primary/20"} hover:border-primary hover:bg-primary/20 hover:cursor-pointer border-2 border-transparent rounded-2xl transition-all duration-500 ease-in-out`,
                 
                 {
                   "w-full": orientation === "horizontal",
@@ -50,13 +45,6 @@ function AllNFT({ orientation = "vertical", nfts, setBackground, setFavNft, setS
               )}
               onClick={() => {
                 if(!submitLoading){
-                  const foundObject = background.find(b => b.number === item.number);
-                  if(foundObject){
-                    setBackground(foundObject.background)
-                    setFavNft(`https://shdw-drive.genesysgo.net/4ogWuz5n4TB2NFdPdtTT9uAsuudNE242EnpM4VwEmBHM/${item.number}.png`)
-                   
-                  }
-                  
                   setSelectedNft(item)
                 }
                 
@@ -92,4 +80,4 @@ function AllNFT({ orientation = "vertical", nfts, setBackground, setFavNft, setS
   );
 }
 
-export default AllNFT;
+export default NftDistribute;

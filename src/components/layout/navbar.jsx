@@ -139,8 +139,10 @@ export default function NavBar({ page, avatar }) {
               <NavigationMenu className="z-50">
                 <NavigationMenuList>
                   <NavigationMenuItem className="w-[240px]">
-                    <NavigationMenuTrigger>
-                      <div className="flex gap-4 items-center pl-1 text-base">
+                    <NavigationMenuTrigger
+                    >
+                      <div className="flex gap-4 items-center pl-1 text-base"
+                      >
                         <route.icon className="w-6 h-6 mb-1 fill-foreground" />
                         {navItems.find((item) => item.route === active)?.label}
                       </div>
@@ -263,7 +265,7 @@ export default function NavBar({ page, avatar }) {
                     </Link>
                   ))}
                 </div>
-                <div className="flex flex-col h-full w-full items-center justify-end mt-28">
+                <div className="flex flex-col h-full w-full items-center justify-end mt-28 pb-10">
                   <div className="flex gap-6">
                     <Link href="#">
                       <Icons.squareLogo className="w-5 h-5" />

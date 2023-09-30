@@ -58,7 +58,7 @@ function ProfileStat({ profileDetails, setProfileDetails, editProfile, mtwitter,
           <div className="flex gap-4">
             <a href={`https://twitter.com/${mtwitter}`} target="_blank">
             <Button size="sm" variant="secondary">
-              <Icons.twitterLogo className="w-4 lg:w-6 h-4 lg:h-6 fill-primary" />
+              <Icons.xLogo className="w-4 lg:w-6 h-4 lg:h-6 fill-primary" />
             </Button>
             </a>
          
@@ -81,12 +81,13 @@ function ProfileStat({ profileDetails, setProfileDetails, editProfile, mtwitter,
           disabled={!editProfile || submitLoading}
           value={profileDetails ? profileDetails.bio : ''}
           onChange={(e) => {
-            console.log(e.target.value)
-            setProfileDetails({
-              ...profileDetails,
-              bio: e.target.value,
-            });
-           
+            const isValid = /^[a-z0-9 ]*$/i.test(e.target.value);
+            if(isValid){
+              setProfileDetails({
+                ...profileDetails,
+                bio: e.target.value,
+              });
+            }
           }}
         />
 

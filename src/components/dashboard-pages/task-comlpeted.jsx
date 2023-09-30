@@ -154,12 +154,12 @@ export default function TaskCompleted({ task, completed, taskLoading }) {
 
            {item.name === "PFP"
             &&
-            `Automatically earn ${item.xp} points a day for having one of the selected PFPs as your Twitter profile picture`
+            `Automatically earn ${item.multiplier}% Multiplier a day for having one of the selected PFPs as your Twitter profile picture`
             }
 
             {item.name === "name"
             &&
-            `Automatically earn ${item.xp} points a day for having 🧊 in your Twitter handle.`
+            `Automatically earn ${item.multiplier}% Multiplier a day for having 🧊 in your Twitter handle.`
             }
 
           
@@ -176,7 +176,12 @@ export default function TaskCompleted({ task, completed, taskLoading }) {
                             className="text-primary w-full justify-start px-5 pointer-events-none "
                           >
                             <Icons.skullLogo className="w-4 lg:w-6 h-4 lg:h-6 fill-primary" />
-                            {item.xp} Bubbles{" "}
+                            {item.name == "PFP" || item.name == "name" ?
+                            <>{item.multiplier}% Multiplier</>
+                            :
+                            <>{item.xp} Bubbles{" "}</>
+                            }
+                           
                           </Button>
                          
                             
@@ -329,12 +334,12 @@ export default function TaskCompleted({ task, completed, taskLoading }) {
 
            {item.name === "PFP"
             &&
-            `Automatically earn  a day for having one of the selected PFPs as your Twitter profile picture`
+            `Automatically earn ${item.multiplier}% Multiplier a day for having one of the selected PFPs as your Twitter profile picture`
             }
 
             {item.name === "name"
             &&
-            `Automatically earn ${item.xp} points a day for having 🧊 in your Twitter handle.`
+            `Automatically earn ${item.multiplier}% Multiplier a day for having 🧊 in your Twitter handle.`
             }
 
 
@@ -350,15 +355,13 @@ export default function TaskCompleted({ task, completed, taskLoading }) {
                             className="text-primary w-full justify-start px-5 pointer-events-none "
                           >
                             <Icons.skullLogo className="w-4 lg:w-6 h-4 lg:h-6 fill-primary" />
-                            {item.xp} Bubbles{" "}
+                            {item.name == "PFP" || item.name == "name" ?
+                            <>{item.multiplier}% Multiplier</>
+                            :
+                            <>{item.xp} Bubbles{" "}</>
+                            }
                           </Button>
-                          {item.name == "PFP"
-                          &&
-                        <Button size="sm" className="">
-                            Select avatar
-                          </Button>
-                        
-                          }
+                         
                            
                             
                             
