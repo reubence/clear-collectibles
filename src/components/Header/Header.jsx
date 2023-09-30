@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import { useRouter } from "next/router";
-import { DropDown, ConnectSocialModal as ScModal } from "@/components";
+import { DropDown } from "@/components";
 import { links } from "@/constants";
 import { cleanPathname } from "@/lib/utils";
 import { RxCross2, RxHamburgerMenu } from "react-icons/rx";
@@ -202,7 +202,7 @@ const Header = ({ open, setOpen, hidden, counter, code, notConnected }) => {
                  {router.pathname === "/dashboard" && (
                 <>
                   <BsCircleFill className="text-[#fcaa0c] absolute top-0 right-0 w-3 h-3 border border-[#ecf4ee] rounded-full" />
-                  <ScModal  onConnect={handleClose} />
+               
                 </>
               )}
                 
