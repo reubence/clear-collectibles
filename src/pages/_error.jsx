@@ -2,8 +2,7 @@ import Image from "next/image"
 import {signOut } from "next-auth/react";
 import React,{useEffect, useState} from 'react'
 import { AnimatePresence, motion } from "framer-motion";
-import { Header, ProgressLottie as Character, TensorModal as TsModal } from "@/components";
-import { Menu } from "@/sections";
+import { Header, ProgressLottie as Character } from "@/components";
 import Head from "next/head";
 
 const Error = () => {
@@ -89,14 +88,7 @@ const Error = () => {
                  <Image src="/border.png" layout="fill" alt="/" unoptimized />
        
                </div>
-               <div className="hidden lg:block bottom-[10px] right-0 z-[9999] absolute"
-               onClick={()=>{
-                 router.push('https://www.tensor.trade/trade/nomads')
-               }}
-               >
-                 <TsModal />
-       
-               </div>
+               
                
                <div className="grid grid-cols-4 lg:grid-cols-11 xl:grid-cols-9 2xl:grid-cols-11 p-6 place-content-between place-items-center absolute inset-0 w-full gap-5 z-10 overflow-hidden h-screen min-h-[700px]">
                  {animations.map((animation, index) => (
@@ -151,14 +143,7 @@ const Error = () => {
                  
                 
                </div>
-               <div className="lg:hidden mt-10"
-               onClick={()=>{
-                 router.push('https://www.tensor.trade/trade/nomads')
-               }}
-               >
-                 <TsModal />
-       
-               </div>
+           
                
              </motion.div>
              </>

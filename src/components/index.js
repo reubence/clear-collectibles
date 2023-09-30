@@ -26,21 +26,21 @@ import TwitterTaskModal from "./Modal/TwitterTaskModal";
 import NameModal from "./Modal/NameModal";
 import ConnectSocialModal from "./Modal/ConnectSocialModal"; */
 import ProgressLottie from "./Lottie/ProgressLottie";
-/* import DropDown from "./Header/DropDown";
-import Toast from './Toast/Toast' */
+import DropDown from "./Header/DropDown";
+/*import Toast from './Toast/Toast' */
 
 export {
   Borders,
   Tab,
   Header,
   ProgressLottie,
+  DropDown,
 /*Task,
   Claim,
   WhitelistModal,
   TensorModal,
   TwitterTaskModal,
   ConnectSocialModal,
-  DropDown,
   NameModal,
   Toast */
 };

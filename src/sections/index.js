@@ -12,9 +12,6 @@
 
 import Card from "./Login/Card";
 import Menu from "./Login/Menu";
-import Activate from "./Activation/Activate";
-import Tasks from "./Tasks/Tasks";
-import Podium from "./Leaderboard/Podium";
-import Hero from "./Leaderboard/Hero";
 
-export { Card, Menu, Activate, Tasks, Podium, Hero };
+
+export { Card, Menu};
