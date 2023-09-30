@@ -23,8 +23,8 @@ import Claim from "./Claim/Claim";
 import WhitelistModal from "./Modal/WhitelistModal";
 import TensorModal from "./Modal/TensorModal";
 import TwitterTaskModal from "./Modal/TwitterTaskModal";
-import NameModal from "./Modal/NameModal";
-import ConnectSocialModal from "./Modal/ConnectSocialModal"; */
+import NameModal from "./Modal/NameModal";*/
+import ConnectSocialModal from "./Modal/ConnectSocialModal"; 
 import ProgressLottie from "./Lottie/ProgressLottie";
 import DropDown from "./Header/DropDown";
 /*import Toast from './Toast/Toast' */
@@ -35,12 +35,12 @@ export {
   Header,
   ProgressLottie,
   DropDown,
+  ConnectSocialModal,
 /*Task,
   Claim,
   WhitelistModal,
   TensorModal,
   TwitterTaskModal,
-  ConnectSocialModal,
   NameModal,
   Toast */
 };
