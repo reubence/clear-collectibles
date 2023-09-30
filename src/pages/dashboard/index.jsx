@@ -724,6 +724,7 @@ export default function Dashboard() {
                     fill
                     style={{ objectFit: "cover" }}
                     className=""
+                    priority
                   />
                 </div>
               </motion.div>
@@ -1064,6 +1065,7 @@ export default function Dashboard() {
                   width={341}
                   height={374}
                   className="mx-auto w-full -mt-5 ml-2"
+                  priority
                 />
                 <div className="bg-white/25 border rounded-xl p-5 w-full flex flex-col gap-5">
                   <div className="flex gap-3">
