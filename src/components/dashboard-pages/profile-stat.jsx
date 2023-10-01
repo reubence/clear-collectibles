@@ -20,7 +20,7 @@ let tabs = [
   { id: "stat", label: "Stat" },
 ];
 
-function ProfileStat({ profileDetails, setProfileDetails, editProfile, mtwitter, count, xp, createdAt, submitLoading }) {
+function ProfileStat({ profileDetails, setProfileDetails, editProfile, mtwitter, count, xp, createdAt, submitLoading,  errorProfile, setErrorProfile }) {
   
   let [activeTab, setActiveTab] = React.useState(tabs[0].id);
 
@@ -90,6 +90,7 @@ function ProfileStat({ profileDetails, setProfileDetails, editProfile, mtwitter,
             }
           }}
         />
+        {errorProfile !== '' && <p className="text-[red] text-sm font-[400]">{errorProfile}</p>}
 
        {/*  <div className="flex flex-col gap-1">
           <span className="flex gap-2 items-start text-sm">
@@ -114,10 +115,10 @@ function ProfileStat({ profileDetails, setProfileDetails, editProfile, mtwitter,
             </span>
           </div>
           <div className="flex w-full justify-between items-center" >
-            {/* <span className="text-sm lg:text-base uppercase">Total Clear Collectibles</span>
+            <span className="text-sm lg:text-base uppercase">Total Clear Collectibles</span>
             <span className="text-base lg:text-[28px] text-foreground">
               {count}
-            </span> */}
+            </span>
           </div>
           <div className="flex w-full justify-between items-center" >
             <span className="text-sm lg:text-base uppercase">Join Date</span>

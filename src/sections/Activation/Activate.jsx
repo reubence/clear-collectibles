@@ -10,7 +10,7 @@ const Activate = ({discord, twitter}) => {
 
 
   return (
-    <>
+    <div className="bg-[#15B7FF]/[0.15] px-9 py-10 rounded-2xl">
       <div className="flex w-full justify-start items-center">
         <h1 className="text-white font-montserrat font-black text-[20px] 2xl:text-[25px] capitalize">
         Please complete the following steps to enter
@@ -39,7 +39,7 @@ const Activate = ({discord, twitter}) => {
                  <h3 className="text-white font-montserrat font-black text-[18px] min-[1920px]:text-[22px] max-w-sm">
                 1. Matrica
               </h3>
-              <p className="text-white font-montserrat font-light text-[16px] min-[1920px]:text-[18px]">
+              <p className="text-white font-montserrat font-[400] text-[16px] min-[1920px]:text-[18px]">
               Login with your Matrica account
                 </p>
 
@@ -79,7 +79,7 @@ const Activate = ({discord, twitter}) => {
                 <h3 className="text-white font-montserrat font-black text-[18px] min-[1920px]:text-[22px] max-w-sm">
                 2. Connect <span className="text-[#FFEC43]">Discord</span> and <span className="text-[#FFEC43]">Twitter</span>
                 </h3>
-                  <p className="text-white font-montserrat font-light text-[16px] min-[1920px]:text-[18px] max-w-sm md:max-w-max lg:max-w-sm md:mt-2 lg:mt-0">
+                  <p className="text-white font-montserrat font-[400] text-[16px] min-[1920px]:text-[18px] max-w-sm md:max-w-max lg:max-w-sm md:mt-2 lg:mt-0">
                   Link your Discord and Twitter to your Matrica account, this is done to make sure we can correctly give you bubbles for your task!
                 </p>
                 </div>
@@ -156,7 +156,7 @@ const Activate = ({discord, twitter}) => {
         </div>
         
       </div>
-    </>
+    </div>
   );
 };
 

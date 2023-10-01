@@ -49,6 +49,7 @@ function classNames() {
 
 export default function NavBar({ page, avatar, hide }) {
   const pathname = usePathname();
+  const [open, setOpen] = React.useState(false)
   const [sheetOpen, setSheetOpen] = React.useState();
   const [active, setActive] = React.useState(
     pathname === "/shop"
@@ -139,10 +140,11 @@ export default function NavBar({ page, avatar, hide }) {
              
             </div>
             <div className="hidden lg:block relative mr-2">
-              <NavigationMenu className="z-50">
+              <NavigationMenu className="z-50" open={open} onOpenChange={setOpen}>
                 <NavigationMenuList>
                   <NavigationMenuItem className="w-[240px]">
                     <NavigationMenuTrigger
+                    as="button"
                     >
                       
                       <div className="flex gap-4 items-center pl-1 text-base"

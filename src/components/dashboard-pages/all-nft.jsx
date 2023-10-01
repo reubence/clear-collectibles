@@ -74,7 +74,6 @@ function AllNFT({ orientation = "vertical", nfts, setBackground, setFavNft, setS
                 height={120}
                 width={120}
                 className="rounded-2xl h-[90] w-[90px] lg:h-[120] lg:w-[120px] aspect-square object-cover"
-                priority
               />
               <div className="uppercase text-sm flex flex-col items-center gap-1">
                 cc #{item.number}

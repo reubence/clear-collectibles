@@ -5,6 +5,7 @@ import { links } from "@/constants";
 import { FaCopy } from "react-icons/fa";
 import { AiFillCheckCircle } from "react-icons/ai";
 import { signOut } from "next-auth/react";
+import { Icons } from "../ui/icons";
 
 
 const DropDown = ({ open, setOpen, code, counter }) => {
@@ -19,14 +20,14 @@ const DropDown = ({ open, setOpen, code, counter }) => {
       } flex flex-col z-50 justify-between items-center px-2 py-2 rounded-lg bg-white top-14 left-0 w-full h-auto transition-opacity ease-in-out duration-200`}
     >
       <div className="flex flex-col justify-between items-center w-full z-50">
-        {router.pathname !== "/activation"
+        {router.pathname !== "/activation" && router.pathname !== "/holder"
         ?
 <>
 {links.map((link) => (
           <div
             key={link.name}
            
-            className={`flex w-full justify-start items-center gap-3 px-2 text-[#1FBCFF] rounded-lg font-semibold text-sm font-montserrat py-4 ${
+            className={`flex w-full justify-start items-center gap-3 px-2 text-black rounded-lg font-semibold text-sm font-montserrat py-4 ${
               router.pathname === link.path ? "bg-[#1FBCFF] text-white" : ""
             }`}
             onClick={() => {
@@ -61,7 +62,7 @@ const DropDown = ({ open, setOpen, code, counter }) => {
             <div
             key={link.name}
            
-            className={`flex w-full justify-start items-center gap-3 px-2 text-[#1FBCFF] rounded-lg font-semibold text-sm font-montserrat py-4 `}
+            className={`flex w-full justify-start items-center gap-3 px-2 text-black rounded-lg font-semibold text-sm font-montserrat py-4 `}
             onClick={() => {
               setOpen(false)
                 localStorage.clear();
@@ -70,7 +71,7 @@ const DropDown = ({ open, setOpen, code, counter }) => {
               
             }
           >
-            {router.pathname === link.path ? link.lightIcon : link.icon}
+            <Icons.disconnect />
             {link.name}
           </div>
           )
@@ -93,58 +94,7 @@ const DropDown = ({ open, setOpen, code, counter }) => {
       
       
      
-      <div className="flex flex-col justify-start items-center w-full gap-3 px-2 pb-3 mt-10">
-       
-      {router.pathname !== "/activation"
-      &&
-        <div className="flex flex-col justify-start items-center w-full py-3 border-t border-b border-[#f2f2f2]">
-          <div className="flex w-full justify-start items-center">
-            <span className="text-[#1FBCFF] font-montserrat font-bold text-base">
-              Referral code:
-            </span>
-          </div>
-          <div className="flex justify-between items-center gap-3 w-full">
-            <div className="flex justify-start items-center gap-3">
-              <span className="text-[#1FBCFF] font-montserrat font-bold text-[20px]">
-                {copied ? "Copied" : code !== null ? code : 'Loading'}
-              </span>
-              {!copied ? (
-                <FaCopy
-                  className="text-[#1FBCFF] w-5 h-5 opacity-80 cursor-pointer"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    navigator.clipboard.writeText(code);
-                    setCopied(true);
-                   
-                    setTimeout(() => {
-                      setCopied(false);
-                    }, 2000);
-                  }}
-                />
-              ) : (
-                <AiFillCheckCircle className="text-[#1FBCFF] w-5 h-5 opacity-80 cursor-pointer" />
-              )}
-            </div>
-            <div className="flex justify-center items-end -mt-2">
-              <div className="text-[#1FBCFF] font-montserrat font-medium text-sm mt-2">
-                {counter !== null ? counter : 0}/3
-              </div>
-            </div>
-          </div>
-        </div>
-         }
-        <a href="https://www.interlace.app/" target="_blank">
-
-
-        
-        <div className="flex justify-center items-center w-full gap-2">
-          <span className="text-[#6cd2ff] font-normal font-montserrat text-xs whitespace-nowrap">
-            Powered by:
-          </span>
-          <Image src="/interlace.png" width={104} height={21} alt="logo"  priority unoptimized />
-        </div>
-        </a>
-      </div>
+     
     </div>
   );
 };

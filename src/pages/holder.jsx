@@ -4,9 +4,11 @@ import React,{useEffect, useState} from 'react'
 import { AnimatePresence, motion } from "framer-motion";
 import { Header, ProgressLottie as Character } from "@/components";
 import Head from "next/head";
+import { Menu } from "@/sections";
 
 const Holder = () => {
     const [animations, setAnimations] = useState([]);
+    const [menuOpen, setMenuOpen] = useState(false);
     const windowSize = useWindowSize()
     const shouldApplyScroll = windowSize.height <= 700
 
@@ -48,11 +50,6 @@ const Holder = () => {
               },
             }))
           );
-        setTimeout(() => {
-         
-      localStorage.clear();
-      signOut({ callbackUrl: "/login" }); 
-        },3000)
     }, [])
 
     return(
@@ -75,15 +72,8 @@ const Holder = () => {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{duration: 1}}
-       className={`flex flex-col w-full justify-start items-end bg-[#6cd2ff] py-6 px-6 relative h-full  lg:h-screen min-h-[700px] overflow-x-hidden ${shouldApplyScroll ? 'overflow-y-auto': 'overflow-y-hidden'}`}>
-               <AnimatePresence>
-                 <motion.div
-                   className={`hidden lg:absolute lg:block left-0 -bottom-[0] z-[1] h-screen w-[50vw] min-h-[700px] max-h-[1080px] max-w-[1080px]`}
-                 
-                 >
-                    <Character percent={0} width="100%" height="100%" loop={true}/>
-                 </motion.div>
-               </AnimatePresence>
+       className={`flex flex-col w-full justify-start items-end !bg-[#C7E5F2] py-6 px-6 relative h-screen min-h-[700px] overflow-x-hidden ${shouldApplyScroll ? 'overflow-y-auto': 'overflow-y-hidden'}`}>
+             
                <div className="hidden lg:block absolute bottom-0 left-0 z-[0] w-screen h-[120px] ">
                  <Image src="/border.png" layout="fill" alt="/" unoptimized />
        
@@ -110,27 +100,51 @@ const Holder = () => {
                    </motion.div>
                  ))}
                </div>
-               <Header hidden={true}/>
-               <div className="lg:hidden flex justify-center w-full relative">
-               <Character percent={0} width="100%" height="100%" loop={true}/>
+               <Header open={menuOpen} setOpen={setMenuOpen}/>
+             <div className="lg:hidden flex justify-center w-full relative">
+
+        {menuOpen && 
+              <AnimatePresence>
+
+                <motion.div className="z-[9999] absolute top-[1.5rem] w-full left-0"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.5 }}
+                >
+
+              <div
+              className="flex flex-col justify-start items-center px-6 py-8 w-full md:hidden   bg-white rounded-[15px] h-full"
             
-               </div>
+            >
+              <Menu />
+            </div>
+            </motion.div>
+            </AnimatePresence>
+             
+              
+              
+              }
+        </div>
+            
                
                <div
-                 className={`flex flex-col relative justify-start items-center pt-8 lg:pb-0 z-20  w-full lg:w-[50%] rounded-2xl mt-0 lg:mr-6  overflow-x-hidden h-full overflow-y-hidden
+                 className={`flex flex-col relative justify-start items-center lg:pb-0 z-20  w-full  rounded-2xl mt-0   overflow-x-hidden h-full overflow-y-hidden
                `}
                  id="tasks-container"
                >
                  
                  <AnimatePresence>
 
-                 <motion.div className="flex justify-center items-center h-full text-center my-8 lg:my-5">
+                 <motion.div 
+                 
+                 className="flex justify-start items-start h-full text-center my-8 lg:my-5">
   <div>
-    <div className="flex justify-center mb-6">  
-    <Image src="/email.png" width={70} height={70} alt="loading" unoptimized />
+    <div className="flex justify-center mb-8">  
+    <Image src="/Gib-transformed.png" width={400} height={400} alt="loading" unoptimized />
     </div>
   <p className="text-white font-montserrat text-[18px] sm:text-[26px] font-bold leading-[1.1]">
-  Error! Please log in <br/> to the system again.
+  To make it clear, time to get one!
   </p>
   </div>
 

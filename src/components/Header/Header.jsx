@@ -59,16 +59,8 @@ const Header = ({ open, setOpen, hidden, counter, code, notConnected }) => {
 
   return (
     <div
-      className={`flex w-full relative 
-    
-      
-      ${
-        router.pathname === "/" ||
-        router.pathname === "/activation" ||
-        router.pathname === "/dashboard"
-          ? "justify-start"
-          : "justify-between"
-      } items-center z-50 ${
+      className={`flex w-full relative justify-between
+      items-center z-50 ${
         router.pathname === "/leaderboard" &&
         "py-6 px-6 bg-transparent sm:bg-[#51caff]"
       }`}
@@ -154,7 +146,7 @@ const Header = ({ open, setOpen, hidden, counter, code, notConnected }) => {
         >
           <div className="flex justify-center items-center w-auto h-auto relative">
 
-          <div className="flex justify-content items-center gap-10">
+          <div className="flex justify-content items-center gap-10 mr-5">
             <div className="flex justify-center items-center gap-4">
                 <a href="https://twitter.com/ClearCollectNFT" target="_blank">
               <Image src="/icons2/twitter_white.png" width={20} height={20} alt="/" unoptimized priority/>
@@ -173,22 +165,7 @@ const Header = ({ open, setOpen, hidden, counter, code, notConnected }) => {
           
           
           
-          {(session?.user?.image && session?.user?.image !== "https://matricalabs.io/people/nakamoto.png") ? 
-                     <img src={session?.user?.image} alt="/" style={{borderRadius:'10px', width:'40px', height:'40px'}}/>
-
-                     :
-              <Image
-              src="/avatar.png"
-              width={40}
-              height={40}
-              alt="avatar"
-              priority
-              unoptimized
-              className="rounded-[10px]"
-            />
-
-
-           } 
+       
 
 
           </div>
@@ -226,27 +203,33 @@ const Header = ({ open, setOpen, hidden, counter, code, notConnected }) => {
             >
               <div className="flex items-start gap-3">
 
-               {router.pathname !== "/activation"
+               {(router.pathname !== "/activation" && router.pathname !== "/holder")
                ?
                <>   {links.filter((link) => link.path === router.pathname)[0].icon}
                <span className="text-[#1fbcff] text-sm sm:text-base font-semibold font-montserrat capitalize">
                  {cleanPathname(router.pathname)}
                </span></>
-               :
+               : router.pathname == "/activation"?
                <> 
-               <span className="text-[#1fbcff] text-sm sm:text-base font-semibold font-montserrat capitalize">
-                 {cleanPathname(router.pathname)}
+               <span className="text-black text-sm sm:text-base font-semibold font-montserrat capitalize">
+                 Connect Socials
+               </span></>
+               : router.pathname == "/holder"
+               &&
+               <> 
+               <span className="text-black text-sm sm:text-base font-semibold font-montserrat capitalize">
+                 No CC Found
                </span></>
                }
            
             </div>
             {dropdownOpen ? (
-              <BsChevronUp className="text-[#1fbcff] w-5 h-5" />
+              <BsChevronUp className="text-black w-5 h-5" />
             ) : (
-              <BsChevronDown className="text-[#1fbcff] w-5 h-5" />
+              <BsChevronDown className="text-black w-5 h-5" />
             )}
             </div>
-           <DropDown open={dropdownOpen} setOpen={setDropdownOpen} counter={counter} code={code} />
+           <DropDown open={dropdownOpen} setOpen={setDropdownOpen} />
           </div>
           
         </div>
