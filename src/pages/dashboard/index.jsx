@@ -83,12 +83,12 @@ export default function Dashboard() {
   const [editProfile, setEditProfile] = useState(false);
   const [editAvatar, setEditAvatar] = useState(false);
   const [profileDetails1, setProfileDetails1] = useState({
-    nickname: "",
-    bio: "",
+    nickname: "Your Name",
+    bio: "Add Your Bio",
     visibility: true,
   });
   const [profileDetails, setProfileDetails] = useState({
-    nickname: "",
+    nickname: "Your Name",
     bio: "",
     visibility: true,
   });
