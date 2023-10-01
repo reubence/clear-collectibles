@@ -841,7 +841,7 @@ export default function Dashboard() {
                   <div className="flex flex-col gap-2">
                     <p className="text-xl 3xl:">Bubbles: {xp}</p>
                     <p className="font-bold flex items-center gap-1.5">
-                      <span className="font-normal">Multiplier:</span> {multiplier}x
+                      <span className="font-normal">Multiplier:</span>Coming Soon
                        {/* MULTIPLIER POP UP */}
                       {/* <span>
                       
@@ -1244,7 +1244,7 @@ export default function Dashboard() {
                       <Separator className="w-full bg-white my-3" />
                       <p className="text-xl">Bubbles: {xp}</p>
                       <p className="font-bold flex items-center gap-1.5">
-                        <span className="font-normal">Multiplier:</span> {multiplier}x
+                        <span className="font-normal">Multiplier:</span>Coming Soon
                         {/* <span>
                           <Dialog className="p-5">
                             <DialogTrigger
