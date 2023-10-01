@@ -176,7 +176,7 @@ export default function Dashboard() {
             });
 
         // Return early if there are no numbers
-        if (numbers.length === 0) return [];
+        if (numbers.length === 0) return router.push('/holder');
 
         const res = await fetch(`${process.env.NEXT_PUBLIC_API}/api/v1/getAsset`, {
             method: "POST",
