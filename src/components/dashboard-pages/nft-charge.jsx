@@ -45,7 +45,7 @@ function NftCharge({ orientation = "vertical", nfts, staked, getData, submitLoad
   return (
     <div className="flex flex-col justify-start gap-4 w-[calc(100vw-80px)] sm:w-[calc(768px-368px)] h-full">
       <span className="uppercase text-xl ml-2 col-span-2 text-left whitespace-nowrap text-foreground">
-        Supercharge Your CC
+        Charge Your CC
       </span>
       <Separator className="col-span-2" />
 

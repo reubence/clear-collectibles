@@ -73,7 +73,7 @@ function ProfileStat({ profileDetails, setProfileDetails, editProfile, mtwitter,
           )}
         </div>
         <Textarea
-          className="w-full disabled:border-none disabled:opacity-100 p-0 pl-1 text-foreground bg-white disabled:cursor-default disabled:text-foreground disabled:bg-transparent"
+          className="w-full disabled:border-none disabled:opacity-100 p-0 pl-1 font-[16px] text-foreground bg-white disabled:cursor-default disabled:text-foreground disabled:bg-transparent"
           rows={7}
           maxLength={200}
           style={{resize:'none'}}

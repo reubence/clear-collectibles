@@ -82,7 +82,6 @@ function Distribute({orientation="horizontal", xp, nfts, profileDetails, getNft,
     }
   }, [nfts, details.number]);
 
-  console.log(nfts)
 
   useEffect(() => {
 
@@ -122,7 +121,7 @@ function Distribute({orientation="horizontal", xp, nfts, profileDetails, getNft,
       }}
       
       className={cn(buttonVariants(), "2xl:text-base text-sm")}>
-        Distribute
+        Level Up
       </DialogTrigger>
 
       <DialogContent className=" p-5 pr-2 lg:py-7 lg:px-10 bg-white/80 rounded-xl lg:rounded-2xl">
@@ -244,7 +243,7 @@ function Distribute({orientation="horizontal", xp, nfts, profileDetails, getNft,
                      fill="currentFill"
                    />
                  </svg>:
-                   "Distribute"
+                   "Level Up"
                    
                    }
                   </PopoverTrigger>

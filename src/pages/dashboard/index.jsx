@@ -620,6 +620,7 @@ export default function Dashboard() {
         />
         <meta name="msapplication-TileColor" content="#6cd2ff" />
         <meta name="theme-color" content="#ffffff" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"></meta>
       </Head>
       <div
         className={cn(
@@ -640,11 +641,11 @@ export default function Dashboard() {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0, duration: 1 }}
               transition={{ duration: 1 }}
-              className="flex flex-col lg:flex-row lg:items-end justify-between p-5 tallXL:mb-20 tallXL:pb-36 tallXL:px-10 relative h-full tallXS:h-[700px]  w-full"
+              className="flex flex-col overflow-hidden lg:flex-row lg:items-end justify-between tallXL:mb-20 tallXL:pb-36 tallXL:px-10 relative h-screen  w-full p-5"
             >
               <div
-                className="block absolute left-1/2 lg:left-0 xl:left-1/2 -translate-x-1/2 lg:translate-x-0  xl:-translate-x-1/2  -mb-10 z-10  
-              w-[90%] h-[90%]
+                className="block absolute left-1/2 xl:left-1/2 -translate-x-1/2  xl:-translate-x-1/2  -mb-10 z-10  
+              w-[100vw] h-[100vw]
               lg:w-[600px] lg:h-[600px]
               xl:w-[calc(100vw-750px)] xl:h-[calc(100vw-750px)] 
               2xl:w-[calc(100vw-700px)] 3xl:h-[calc(100vw-700px)] 
@@ -661,6 +662,8 @@ export default function Dashboard() {
                 />
               </div>
             </motion.div>
+          
+            
           </AnimatePresence>
         ) : (
           <>
@@ -810,8 +813,9 @@ export default function Dashboard() {
                     <p className="text-xl 3xl:">Bubbles: {xp}</p>
                     <p className="font-bold flex items-center gap-1.5">
                       <span className="font-normal">Multiplier:</span> {multiplier}x
-                      <span>
-                        {/* MULTIPLIER POP UP */}
+                       {/* MULTIPLIER POP UP */}
+                      {/* <span>
+                      
                         <Dialog className="p-5">
                           <DialogTrigger
                             className={cn(
@@ -831,7 +835,7 @@ export default function Dashboard() {
                             <Multiplier />
                           </DialogContent>
                         </Dialog>
-                      </span>
+                      </span> */}
                     </p>
                   </div>
 
@@ -1028,7 +1032,7 @@ export default function Dashboard() {
                       </Popover>
                     ))}
                 </div>
-                <div className="z-50 lg:z-0 fixed left-0 right-0 bottom-0 lg:relative w-full lg:w-fit justify-end lg:justify-normal flex gap-3 py-2.5 px-5 lg:p-3 bg-white/50 lg:bg-transparent">
+                <div className={`z-50 lg:z-0 fixed left-0 right-0 bottom-0 lg:relative w-full lg:w-fit justify-end lg:justify-normal flex gap-3 py-2.5 px-5 lg:p-3 bg-white/50 lg:bg-transparent`}>
                   <DropdownMenu>
                     <DropdownMenuTrigger
                       className={cn(
@@ -1091,6 +1095,7 @@ export default function Dashboard() {
                     <Icons.profile className="fill-white w-8 h-8" />
                   </Button>
                 </div>
+               
               </div>
               {/* DESKTOP VIEW ENDS HERE */}
 
