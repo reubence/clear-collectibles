@@ -12,7 +12,7 @@ import { Separator } from "../ui/separator";
 import NftDistribute from "./nft-distribute";
 
 
-function Distribute({xp, nfts, profileDetails, getNft, wallets, getData}) {
+function Distribute({orientation="horizontal", xp, nfts, profileDetails, getNft, wallets, getData}) {
   const [progress, setProgress] = useState(13);
   const [openDialog, setOpenDialog] = useState();
   const [openPopover, setOpenPopover] = useState();
@@ -128,9 +128,19 @@ function Distribute({xp, nfts, profileDetails, getNft, wallets, getData}) {
       <DialogContent className=" p-5 pr-2 lg:py-7 lg:px-10 bg-white/80 rounded-xl lg:rounded-2xl">
         <ScrollArea className="w-full tallXS:h-[calc(100vh-100px)] lg:h-fit">
           <div className="grid grid-cols-1 lg:grid-cols-2 lg:gap-12">
-            <div className="w-full h-full flex flex-col gap-3 text-base text-muted-foreground/50 font-semibold">
+            <div className="hidden lg:flex w-full h-full flex-col gap-3 text-base text-muted-foreground/50 font-semibold">
               <NftDistribute 
               orientation={"horizontal"} 
+              nfts={nfts}
+              setSelectedNft={setSelectedNft}
+              selectedNft={selectedNft}
+              submitLoading={submitLoading}
+              />
+            
+            </div>
+            <div className="flex lg:hidden w-full h-full flex-col gap-3 text-base text-muted-foreground/50 font-semibold">
+              <NftDistribute 
+              orientation={"vertical"} 
               nfts={nfts}
               setSelectedNft={setSelectedNft}
               selectedNft={selectedNft}

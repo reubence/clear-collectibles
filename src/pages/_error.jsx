@@ -51,7 +51,7 @@ const Error = () => {
         setTimeout(() => {
          
       localStorage.clear();
-      signOut({ callbackUrl: "/" }); 
+      signOut({ callbackUrl: "/login" }); 
         },3000)
     }, [])
 
@@ -127,7 +127,7 @@ const Error = () => {
                  <motion.div className="flex justify-center items-center h-full text-center my-8 lg:my-5">
   <div>
     <div className="flex justify-center mb-6">  
-    <Image src="/icons/email.png" width={70} height={70} alt="loading" unoptimized />
+    <Image src="/email.png" width={70} height={70} alt="loading" unoptimized />
     </div>
   <p className="text-white font-montserrat text-[18px] sm:text-[26px] font-bold leading-[1.1]">
   Error! Please log in <br/> to the system again.

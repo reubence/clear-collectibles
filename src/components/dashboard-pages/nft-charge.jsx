@@ -98,12 +98,12 @@ function NftCharge({ orientation = "vertical", nfts, staked, getData, submitLoad
                     <div
                       className={`w-full h-full top-0 absolute left-0 rounded-2xl flex justify-center items-center ${
                         isMatched
-                          ? "!border-[#25f9134d]/30 bg-[#25f9134d]/20"
+                          ? "!border-[#25f9134d]/30 bg-[#25f9134d]/30"
                           : "hidden"
                       }`}>
 
                       {isMatched &&
-                        <p className="text-white font-[600]">
+                        <p className="text-white font-[800]">
                           {
                           staked.filter(stakeitem => stakeitem.number == item.number)[0]?.days === 0
                             ? '0%'
@@ -137,7 +137,7 @@ function NftCharge({ orientation = "vertical", nfts, staked, getData, submitLoad
                     />
                     <div className="uppercase text-sm flex flex-col items-center gap-1">
                       cc #{item.number}
-                      <p className="text-muted-foreground/50 font-normal">
+                      <p className="text-muted-foreground font-[600]">
                         LV.{item.level}
                       </p>
                     </div>

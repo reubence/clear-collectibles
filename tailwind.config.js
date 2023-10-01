@@ -23,6 +23,19 @@ module.exports = {
       fontFamily: {
         g8: ['G8', 'sans-serif'],
       },
+      backgroundImage: {
+        '8877-b': "url('/background/8877-b.png')",
+        '8878-b': "url('/background/8878-b.png')",
+        '8879-b': "url('/background/8879-b.png')",
+        '8880-b': "url('/background/8880-b.png')",
+        '8881-b': "url('/background/8881-b.png')",
+        '8882-b': "url('/background/8882-b.png')",
+        '8883-b': "url('/background/8883-b.png')",
+        '8884-b': "url('/background/8884-b.png')",
+        '8885-b': "url('/background/8885-b.png')",
+        '8886-b': "url('/background/8886-b.png')",
+        '8887-b': "url('/background/8887-b.png')",
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",

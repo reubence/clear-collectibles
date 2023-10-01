@@ -1,5 +1,4 @@
 import { cn } from "@/lib/utils";
-import NFT_3 from "@/public/images/nft-3.png";
 import Image from "next/image";
 import { Button } from "../ui/button";
 import { Icons } from "../ui/icons";
@@ -20,7 +19,7 @@ function StandardConfirmation({ className }) {
 
       <div className="flex gap-x-3 lg:gap-x-4 w-full mt-2">
         <Image
-          src={NFT_3}
+          src="/images/NFT_3"
           alt="NFT"
           height={60}
           width={60}

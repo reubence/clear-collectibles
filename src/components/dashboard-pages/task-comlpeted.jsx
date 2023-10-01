@@ -23,7 +23,7 @@ export default function TaskCompleted({ task, completed, taskLoading }) {
  
     <Tabs
       defaultValue="tasks"
-      className={`w-[calc(100vw-80px)] sm:w-[calc(768px-368px)] lg:w-[35vw] xl:w-[27vw] h-full pt-8`}
+      className={`w-[calc(100vw-80px)] sm:w-[calc(768px-368px)] lg:w-[35vw] xl:w-[27vw] h-[460px] lg:h-full pt-8`}
     >
         <div className="flex flex-col items-start">
       <TabsList className="px-8">
@@ -49,7 +49,7 @@ export default function TaskCompleted({ task, completed, taskLoading }) {
       <Separator className="mt-4 mb-7" />
       <TabsContent
         value="tasks"
-        className={`${activeTab !== "tasks" ? "hidden" : "flex"} pb-3 grow flex-col items-start gap-3 font-normal text-foreground/50 tallXS:max-h-[340px] max-h-[calc(100vh-448px)] overflow-y-auto w-full`}
+        className={`${activeTab !== "tasks" ? "hidden" : "flex"} pb-3 grow flex-col items-start gap-3 font-normal text-foreground/50 tallXS:max-h-[340px] h-[300px] lg:h-full lg:max-h-[calc(100vh-448px)] overflow-y-auto w-full`}
       >
         {taskLoading ? (
           <div>Loading</div>
@@ -230,7 +230,7 @@ export default function TaskCompleted({ task, completed, taskLoading }) {
       </TabsContent>
       <TabsContent
         value="completed"
-        className={`${activeTab !== "completed" ? "hidden" : "flex"} w-full flex-col gap-5 font-normal text-foreground/50 h-[380px] overflow-y-auto`}
+        className={`${activeTab !== "completed" ? "hidden" : "flex"} pb-3 grow flex-col items-start gap-3 font-normal text-foreground/50 tallXS:max-h-[340px] h-[300px] lg:h-full lg:max-h-[calc(100vh-448px)] overflow-y-auto w-full`}
       >
          {taskLoading ? (
           <div>Loading</div>

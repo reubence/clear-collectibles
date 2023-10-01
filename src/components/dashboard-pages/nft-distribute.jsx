@@ -5,7 +5,7 @@ import { cn } from "@/lib/utils";
 import { background } from "@/constants";
 import { useEffect, useState } from "react";
 
-function NftDistribute({ orientation = "vertical", nfts, setSelectedNft, selectedNft, submitLoading}) {
+function NftDistribute({ orientation, nfts, setSelectedNft, selectedNft, submitLoading}) {
 
 
   return (
@@ -18,7 +18,7 @@ function NftDistribute({ orientation = "vertical", nfts, setSelectedNft, selecte
 
       <ScrollArea
         className={cn("lg:pr-2.5", {
-          "h-[430px]": orientation === "vertical",
+          "h-[230px]": orientation === "vertical",
           "h-[calc(360px)] lg:h-[430px]": orientation === "horizontal",
         })}
       >

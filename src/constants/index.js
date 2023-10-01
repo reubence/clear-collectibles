@@ -35589,5 +35589,49 @@ export const background = [
   {
     "number": 8876,
     "background": "#D1C9C3"
+  },
+  {
+    "number": 8877,
+    "background": "8877-b"
+  },
+  {
+    "number": 8878,
+    "background": "8878-b"
+  },
+  {
+    "number": 8879,
+    "background": "8879-b"
+  },
+  {
+    "number": 8880,
+    "background": "8880-b"
+  },
+  {
+    "number": 8881,
+    "background": "8881-b"
+  },
+  {
+    "number": 8882,
+    "background": "8882-b"
+  },
+  {
+    "number": 8883,
+    "background": "8883-b"
+  },
+  {
+    "number": 8884,
+    "background": "8884-b"
+  },
+  {
+    "number": 8885,
+    "background": "8885-b"
+  },
+  {
+    "number": 8886,
+    "background": "8886-b"
+  },
+  {
+    "number": 8887,
+    "background": "8887-b"
   }
 ]

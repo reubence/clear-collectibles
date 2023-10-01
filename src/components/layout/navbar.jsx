@@ -31,13 +31,8 @@ const socialLinks = [
 const navItems = [
   {
     icon: Icons.dashboard,
-    route: "/",
+    route: "/dashboard",
     label: "Dashboard",
-  },
-  {
-    icon: Icons.leaderboard,
-    route: "/leaderboard",
-    label: "Leaderboard",
   },
   {
     icon: Icons.shop,
@@ -60,12 +55,12 @@ export default function NavBar({ page, avatar }) {
       ? "/leaderboard"
       : pathname === "/shop/history"
       ? "/shop"
-      : "/"
+      : "/dashboard"
   );
 
   React.useEffect(() => {
-    if (pathname === "/") {
-      setActive("/");
+    if (pathname === "/dashboard") {
+      setActive("/dashboard");
     } else if (pathname === "/leaderboard") {
       setActive("/leaderboard");
     } else if (pathname === "/shop/history") {

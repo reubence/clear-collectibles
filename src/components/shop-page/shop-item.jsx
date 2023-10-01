@@ -78,7 +78,7 @@ function ShopItem({
         )}
       </div>
       <p className="text-xs font-bold uppercase mt-2.5">{name}</p>
-      <p className="text-xl uppercase">{price}</p>
+      <p className="text-xl uppercase">???</p>
     </div>
   );
 }

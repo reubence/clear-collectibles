@@ -31,7 +31,7 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover";
 import { Separator } from "@/components/ui/separator";
-import { cn } from "@/lib/utils";
+import { cn, getLevel } from "@/lib/utils";
 import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
@@ -70,6 +70,7 @@ export default function Dashboard() {
   const [selectedNft, setSelectedNft] = useState("");
   const [distribute, setDistribute] = useState(false)
   const [multiplier, setMultiplier] = useState(1)
+  const [custombg, setCustombg] = useState(false)
   const [oldFavNft, setOldFavNft] = useState({
     number: null,
     background: "#D7E8EF",
@@ -138,7 +139,13 @@ export default function Dashboard() {
           selectedDesktop !== "tasks" && 
           selectedDesktop !== "charge"
         ) {
+   
           setSelectedDesktop("");
+          if(oldFavNft.number > 8876){
+            setCustombg(true)
+          }else{
+            setCustombg(false)
+          }
           setBackground(oldFavNft.background);
 
           if (oldFavNft.number !== null) {
@@ -186,6 +193,7 @@ export default function Dashboard() {
         }
 
         if (numbers.length > 0) {
+          
           const res = await fetch(
             `${process.env.NEXT_PUBLIC_API}/api/v1/getAsset`,
             {
@@ -203,29 +211,7 @@ export default function Dashboard() {
           for (let info of numbers) {
             for (let asset of assets) {
               if (info.number == asset.number) {
-                let level = 0;
-                if (Number(asset.xp) >= 300 && Number(asset.xp) < 600) {
-                  level = 1;
-                }else if(Number(asset.xp) >= 600 && Number(asset.xp) < 1100){
-                  level = 2
-                }else if(Number(asset.xp) >= 1100 && Number(asset.xp) < 1800){
-                  level = 3
-                }else if(Number(asset.xp) >= 1800 && Number(asset.xp) < 2900){
-                  level = 4
-                }else if(Number(asset.xp) >= 2900 && Number(asset.xp) < 4200){
-                  level = 5
-                }else if(Number(asset.xp) >= 4200 && Number(asset.xp) < 5900){
-                  level = 6
-                }else if(Number(asset.xp) >= 5900 && Number(asset.xp) < 8000){
-                  level = 7
-                }else if(Number(asset.xp) >= 8000 && Number(asset.xp) < 11000){
-                  level = 8
-                }else if(Number(asset.xp) >= 11000 && Number(asset.xp) < 15000){
-                  level = 9
-                }else if(Number(asset.xp) == 15000){
-                  level = 10
-                }
-
+                const level = getLevel(asset.xp)
                 info["xp"] = asset.xp;
                 info["level"] = level;
               }
@@ -234,6 +220,34 @@ export default function Dashboard() {
 
           const finalResult = numbers.sort((a, b) => a.number - b.number);
           setResult(finalResult);
+
+          if( finalResult && finalResult.length > 0){
+            const foundObject = BackgroundNft.find(
+              (b) => b.number === finalResult[0].number
+            );
+
+            if (foundObject) {
+              setBackground(foundObject.background);
+            }
+            if (Number(finalResult[0].number) > 8876 ){
+              setCustombg(true)
+            }else{
+              setCustombg(false)
+            }
+            setFavNft(
+              `https://shdw-drive.genesysgo.net/4ogWuz5n4TB2NFdPdtTT9uAsuudNE242EnpM4VwEmBHM/${finalResult[0].number}.png`
+            );
+            setOldFavNft({
+              number: Number(finalResult[0].number),
+              background: foundObject.background,
+            });
+            
+            setSelectedNft({number:Number(finalResult[0].number), level: Number(finalResult[0].level)})
+            setFavLevel(finalResult[0].level)
+
+          }
+       
+        
         }
       }
     }
@@ -407,7 +421,6 @@ export default function Dashboard() {
       
     }
   
-  
    
   }catch(err){
     console.log(err)
@@ -466,6 +479,11 @@ export default function Dashboard() {
           if (foundObject) {
             setBackground(foundObject.background);
           }
+          if (Number(result.avatar) > 8876){
+            setCustombg(true)
+          }else{
+            setCustombg(false)
+          }
           setFavNft(
             `https://shdw-drive.genesysgo.net/4ogWuz5n4TB2NFdPdtTT9uAsuudNE242EnpM4VwEmBHM/${result.avatar}.png`
           );
@@ -516,12 +534,15 @@ export default function Dashboard() {
 
   useEffect(() => {
 
+   
+
     if (session?.accessToken) {
       getTwitter(session?.accessToken);
       getDiscord(session?.accessToken);
       getWallets(session?.accessToken)
     }
 
+    
     
 
     if (session?.error === "RefreshAccessTokenError") {
@@ -602,10 +623,16 @@ export default function Dashboard() {
       </Head>
       <div
         className={cn(
-          `h-screen font-g8 lg:overflow-y-hidden tallXS:!h-full  overflow-y-auto`
+          `h-screen font-g8 lg:overflow-y-hidden tallXS:!h-full  overflow-y-auto ${taskLoading && "!bg-[#D7E8EF]"}`
         )}
-        style={{ backgroundColor: background }}
-      >
+        style={
+          taskLoading
+            ? { backgroundColor: "#D7E8EF" }
+            :!custombg && !taskLoading 
+            ? {backgroundColor: background}
+            :custombg && !taskLoading && { backgroundImage: `linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.1)), url('/background/${background}.png')` }
+        }      
+        >
         {taskLoading ? (
           <AnimatePresence mode="wait">
             <motion.div
@@ -936,10 +963,18 @@ export default function Dashboard() {
                           }
                         </PopoverTrigger>
                         <PopoverContent
-                          style={{
+                          style={
+                            !custombg
+                            ?{
                             backgroundColor: background,
-                            filter: "brightness(99%)",
-                          }}
+                            filter: "brightness(99%)"
+                            }
+                            :{
+                              backgroundColor: "rgb(255 255 255 / 0.25)"
+                            }
+                        
+                        
+                        }
                           className={cn(
                             `${
                               item.value == "tasks" ? "p-0" : "p-8"
@@ -973,6 +1008,7 @@ export default function Dashboard() {
                               selectedNft={selectedNft}
                               distribute={distribute}
                               submitLoading={submitLoading}
+                              setCustombg={setCustombg}
                               
                             />
                           ) : item.value == "charge" ? (
@@ -1047,6 +1083,7 @@ export default function Dashboard() {
                     </DropdownMenuContent>
                   </DropdownMenu>
                   <Button
+                  disabled={true}
                     size="sm"
                     className="gap-3 lg:py-2.5 lg:px-2.5 text-sm lg:text-xl"
                   >
@@ -1133,6 +1170,7 @@ export default function Dashboard() {
                               selectedNft={selectedNft}
                               distribute={distribute}
                               submitLoading={submitLoading}
+                              setCustombg={setCustombg}
                             />
                           )
                         )}
@@ -1163,11 +1201,11 @@ export default function Dashboard() {
                       }}
                     />{" "}
                         <span className="font-semibold bg-primary text-white px-2 rounded-xl">
-                          Lv.{selected.level}
+                          Lv.{selectedNft.level}
                         </span>
                       </div>
                       <p className="font-medium">
-                        Clear Collectibles #{selected.number}
+                        Clear Collectibles #{selectedNft.number}
                       </p>
                       <Separator className="w-full bg-white my-3" />
                       <p className="text-xl">Bubbles: {xp}</p>
@@ -1200,7 +1238,7 @@ export default function Dashboard() {
                       <Distribute  
                               xp={xp}
                               nfts={nfts} 
-                              profileDetails={profileDetails} 
+                              profileDetails={profileDetails}
                               wallets={mwallets}
                               getNft={getNft}
                               getData={getData}

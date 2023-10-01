@@ -1,4 +1,3 @@
-import NFT_3 from "@/public/images/nft-3.png";
 import { zodResolver } from "@hookform/resolvers/zod";
 import Image from "next/image";
 import { useForm } from "react-hook-form";
@@ -39,7 +38,7 @@ function EmailConfirmation() {
 
           <div className="flex gap-x-3 lg:gap-x-4 w-full mt-2">
             <Image
-              src={NFT_3}
+              src="/images/NFT_3"
               alt="NFT"
               height={60}
               width={60}

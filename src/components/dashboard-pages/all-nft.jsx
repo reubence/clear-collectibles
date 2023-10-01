@@ -5,7 +5,7 @@ import { cn } from "@/lib/utils";
 import { background } from "@/constants";
 import { useEffect, useState } from "react";
 
-function AllNFT({ orientation = "vertical", nfts, setBackground, setFavNft, setSelectedNft, wrapperRef, selectedNft, submitLoading }) {
+function AllNFT({ orientation = "vertical", nfts, setBackground, setFavNft, setSelectedNft, wrapperRef, selectedNft, submitLoading, setCustombg }) {
  const [data, setData] = useState([])
   useEffect(() => {
     if(nfts && nfts.length > 0){
@@ -52,6 +52,12 @@ function AllNFT({ orientation = "vertical", nfts, setBackground, setFavNft, setS
                 if(!submitLoading){
                   const foundObject = background.find(b => b.number === item.number);
                   if(foundObject){
+                    if(item.number > 8876){
+                      setCustombg(true)
+                    }else{
+                      setCustombg(false)
+                    }
+                    
                     setBackground(foundObject.background)
                     setFavNft(`https://shdw-drive.genesysgo.net/4ogWuz5n4TB2NFdPdtTT9uAsuudNE242EnpM4VwEmBHM/${item.number}.png`)
                    
@@ -72,7 +78,7 @@ function AllNFT({ orientation = "vertical", nfts, setBackground, setFavNft, setS
               />
               <div className="uppercase text-sm flex flex-col items-center gap-1">
                 cc #{item.number}
-                <p className="text-muted-foreground/50 font-normal">
+                <p className="text-muted-foreground font-[600]">
     
                   LV.{item.level}</p>
               </div>
