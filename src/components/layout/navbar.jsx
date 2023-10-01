@@ -61,6 +61,10 @@ export default function NavBar({ page, avatar, hide }) {
       : "/dashboard"
   );
 
+  const preventDefault = (event) => {
+    const e = event;
+    e.preventDefault();
+  };
   React.useEffect(() => {
     if (pathname === "/dashboard") {
       setActive("/dashboard");
@@ -144,7 +148,9 @@ export default function NavBar({ page, avatar, hide }) {
                 <NavigationMenuList>
                   <NavigationMenuItem className="w-[240px]">
                     <NavigationMenuTrigger
-                    as="button"
+                    onPointerMove={preventDefault}
+                    onPointerLeave={preventDefault}
+                   
                     >
                       
                       <div className="flex gap-4 items-center pl-1 text-base"
