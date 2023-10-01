@@ -114,12 +114,12 @@ function ProfileStat({ profileDetails, setProfileDetails, editProfile, mtwitter,
               {xp}
             </span>
           </div>
-          <div className="flex w-full justify-between items-center" >
+        {/*   <div className="flex w-full justify-between items-center" >
             <span className="text-sm lg:text-base uppercase">Total Clear Collectibles</span>
             <span className="text-base lg:text-[28px] text-foreground">
               {count}
             </span>
-          </div>
+          </div> */}
           <div className="flex w-full justify-between items-center" >
             <span className="text-sm lg:text-base uppercase">Join Date</span>
             <span className="text-base lg:text-[28px] text-foreground">
