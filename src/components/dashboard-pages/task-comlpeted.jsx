@@ -214,9 +214,9 @@ export default function TaskCompleted({ task, completed, taskLoading }) {
                   /> */}
 
                     </div>
-                    <p className="text-foreground/50 font-montserrat text-[16px] sm:text-[23px] font-bold leading-[1.1]">
-                    Congratulations on
-                    <br />completing all tasks
+                    <p className="text-foreground/50 text-center font-montserrat text-[16px] sm:text-[23px] font-bold leading-[1.1]">
+                    Tasks will be live on Tuesday!
+                    <br />
                   </p>
                   </div>
                
@@ -387,8 +387,8 @@ export default function TaskCompleted({ task, completed, taskLoading }) {
                     className="mb-3"
                   /> */}
 
-                  <p className="text-foreground/50 font-montserrat text-[18px] sm:text-[23px] font-bold leading-[1.1]">
-                  You haven&#39;t completed<br/> any tasks yet!
+                  <p className="text-foreground/50 font-montserrat text-center text-[18px] sm:text-[23px] font-bold leading-[1.1]">
+                  Tasks will be live on Tuesday!
                   </p>
                 </div>
              

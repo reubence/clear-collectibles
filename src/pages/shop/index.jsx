@@ -37,15 +37,61 @@ const filtering = [
 
 const shopData = [
   {
-    image: "/images/nft-2.png",
-    name: "Iphone 15 Pro Max",
-    price: 52343,
-    description: "Iphone 15 Pro Max",
+    image: "/iphonenft.png",
+    name: "Iphone 15 Pro",
+    price: 0,
+    description: "Iphone 15 Pro",
     unreleased: true,
-    unreleasedTimer: new Date("Sep 30, 2023 16:37:52"),
+    unreleasedTimer: new Date("Oct 7, 2023 00:00:00"),
+    label: "items"
+  },
+  {
+    image: "/degodsnft.png",
+    name: "Degod NFT",
+    price: 0,
+    description: "Degod NFT",
+    unreleased: true,
+    unreleasedTimer: new Date("Oct 7, 2023 00:00:00"),
+    label: "items"
+  },
+
+  {
+    image: "/brohallanft.png",
+    name: "Brohalla NFT",
+    price: 0,
+    description: "Brohalla NFT",
+    unreleased: true,
+    unreleasedTimer: new Date("Oct 7, 2023 00:00:00"),
     label: "items"
   },
  
+  {
+    image: "/heistnft.png",
+    name: "Heist NFT",
+    price: 0,
+    description: "Heist NFT",
+    unreleased: true,
+    unreleasedTimer: new Date("Oct 7, 2023 00:00:00"),
+    label: "items"
+  },
+  {
+    image: "/ccnft.png",
+    name: "Clear Collectibles NFT",
+    price: 0,
+    description: "Clear Collectibles NFT",
+    unreleased: true,
+    unreleasedTimer: new Date("Oct 7, 2023 00:00:00"),
+    label: "items"
+  },
+  {
+    image: "/solana.png",
+    name: "$SOL",
+    price: 0,
+    description: "$SOL",
+    unreleased: true,
+    unreleasedTimer: new Date("Oct 7, 2023 00:00:00"),
+    label: "items"
+  },
  
 ];
 
@@ -59,7 +105,7 @@ function Shop() {
   const [avatar, setAvatar] = useState(null);
   const router = useRouter();
   const { data: session, status } = useSession({
-    required: false,
+    required: true,
     onUnauthenticated() {
       router.push("/login");
     },
@@ -247,7 +293,7 @@ function Shop() {
               </ScrollArea>
             </div>
             <div className="h-full rounded-2xl flex flex-grow flex-col">
-              <ScrollArea className="w-full lg:h-[calc(100vh-458px)] lg:border-b pb-44 lg:pb-4 lg:mb-5">
+              <ScrollArea className="w-full lg:h-[calc(100vh-100px)] lg:border-b pb-44 lg:pb-4 lg:mb-5">
                 <div className="p-3 grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 3xl:grid-cols-6 gap-5">
                   {filteredData.map((item, index) => (
                     <ShopItem

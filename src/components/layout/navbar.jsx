@@ -38,14 +38,16 @@ const navItems = [
     icon: Icons.shop,
     route: "/shop",
     label: "Shop",
-  }
+  },
+
+
 ];
 
 function classNames() {
   return classes.filter(Boolean).join(" ");
 }
 
-export default function NavBar({ page, avatar }) {
+export default function NavBar({ page, avatar, hide }) {
   const pathname = usePathname();
   const [sheetOpen, setSheetOpen] = React.useState();
   const [active, setActive] = React.useState(
@@ -115,6 +117,7 @@ export default function NavBar({ page, avatar }) {
           <div className="hidden md:flex items-center gap-6">
             <div className="flex items-center gap-9">
               <div className="flex [&>*:last-child]:!border-none items-center mr-2">
+                
                 {socialLinks.map((item, index) => (
                   <div className="px-4 border-r border-r-white" key={index}>
                     <Link href={item.href}>
@@ -123,12 +126,17 @@ export default function NavBar({ page, avatar }) {
                   </div>
                 ))}
               </div>
+              {pathname !== "/connect-social"
+              &&
               <div className="hidden lg:flex items-center">
-                <Avatar className="h-10 w-10">
-                  <AvatarImage src={avatar} />
-                  <AvatarFallback></AvatarFallback>
-                </Avatar>
-              </div>
+              <Avatar className="h-10 w-10">
+                <AvatarImage src={avatar} />
+                <AvatarFallback></AvatarFallback>
+              </Avatar>
+            </div>
+
+              }
+             
             </div>
             <div className="hidden lg:block relative mr-2">
               <NavigationMenu className="z-50">
@@ -136,13 +144,31 @@ export default function NavBar({ page, avatar }) {
                   <NavigationMenuItem className="w-[240px]">
                     <NavigationMenuTrigger
                     >
+                      
                       <div className="flex gap-4 items-center pl-1 text-base"
                       >
-                        <route.icon className="w-6 h-6 mb-1 fill-foreground" />
+                        {pathname === "/connect-social"
+                      ?
+                      <>
+                        <Icons.disconnect className="w-6 h-6 mb-1 fill-foreground pt-1" />
+                        Disconnect
+                      </>
+                      :
+                      <>
+                      
+                      <route.icon className="w-6 h-6 mb-1 fill-foreground" />
                         {navItems.find((item) => item.route === active)?.label}
+                      </>
+                      
+                      }
+                        
                       </div>
                     </NavigationMenuTrigger>
                     <NavigationMenuContent className="w-full">
+
+                      {pathname !== "/connect-social"
+                      &&
+                      <>
                       {navItems.map((item, index) => (
                         <Link
                           key={index}
@@ -161,6 +187,12 @@ export default function NavBar({ page, avatar }) {
                           </NavigationMenuLink>
                         </Link>
                       ))}
+                      </>
+                      
+                      
+                      
+                      }
+                      
                       <div
                           
                           onClick={() => {
@@ -262,15 +294,17 @@ export default function NavBar({ page, avatar }) {
                 </div>
                 <div className="flex flex-col h-full w-full items-center justify-end mt-28 pb-10">
                   <div className="flex gap-6">
-                    <Link href="#">
-                      <Icons.squareLogo className="w-5 h-5" />
-                    </Link>
-                    <Link href="#">
+                  <a href="https://twitter.com/ClearCollectNFT" target="_blank">
                       <Icons.xLogo className="w-5 h-5" />
-                    </Link>
-                    <Link href="#">
+                    </a>
+                    <a href="https://discord.com/invite/clearcollectibles" target="_blank">
                       <Icons.discordLogo className="w-5 h-5" />
-                    </Link>
+                    </a>
+                    <a href="https://matrica.io/settings" target="_blank">
+                      <Icons.squareLogo className="w-5 h-5" />
+                    </a>
+                 
+                
                   </div>
                 </div>
                

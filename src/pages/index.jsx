@@ -73,7 +73,7 @@ export default function Home() {
                 <meta name="theme-color" content="#ffffff" />
             </Head>
       <main
-        className="!pb-0 min-h-screen flex flex-col w-full justify-start items-center bg-[#6cd2ff] p-6 relative"
+        className="!pb-0 min-h-screen flex flex-col w-full justify-start items-center bg-[#C7E5F2] p-6 relative"
         
       >
         <div className="max-h-screen overflow-hidden h-full grid grid-cols-4 lg:grid-cols-11 xl:grid-cols-9 2xl:grid-cols-11 p-6 place-content-between place-items-center absolute inset-0 w-full gap-5 z-10">
@@ -112,7 +112,7 @@ export default function Home() {
                     onClick={() => router.push('/login')}
                     
                   >
-                    <h3 className="text-[24px]">{title}</h3>
+                    <h3 className="text-[16px] lg:text-[24px] text-center">{title}</h3>
                   </Tab>
                 ))}
 

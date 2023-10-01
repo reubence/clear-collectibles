@@ -41,6 +41,7 @@ import { useSession, signOut } from "next-auth/react";
 import { ProgressLottie as Character } from "@/components";
 import { getParsedNftAccountsByOwner } from "@nfteyez/sol-rayz";
 import { Connection } from "@solana/web3.js";
+import { Connect } from "@/components";
 
 export default function Dashboard() {
   const effectRan = useRef(false);
@@ -71,6 +72,7 @@ export default function Dashboard() {
   const [distribute, setDistribute] = useState(false)
   const [multiplier, setMultiplier] = useState(1)
   const [custombg, setCustombg] = useState(false)
+  const [holder, setHolder] = useState(true)
   const [oldFavNft, setOldFavNft] = useState({
     number: null,
     background: "#D7E8EF",
@@ -94,7 +96,7 @@ export default function Dashboard() {
   const containerRef = useRef(null);
   const router = useRouter();
   const { data: session, status } = useSession({
-    required: false,
+    required: true,
     onUnauthenticated() {
       router.push("/login");
     },
@@ -221,6 +223,9 @@ export default function Dashboard() {
           const finalResult = numbers.sort((a, b) => a.number - b.number);
           setResult(finalResult);
 
+          if(effectRan == false){
+
+          
           if( finalResult && finalResult.length > 0){
             const foundObject = BackgroundNft.find(
               (b) => b.number === finalResult[0].number
@@ -244,10 +249,12 @@ export default function Dashboard() {
             
             setSelectedNft({number:Number(finalResult[0].number), level: Number(finalResult[0].level)})
             setFavLevel(finalResult[0].level)
-
+            console.log('done')
           }
-       
-        
+        }
+        return () => {
+          effectRan.current = true;
+        };
         }
       }
     }
@@ -368,7 +375,9 @@ export default function Dashboard() {
       if (data.length) {
         const result = JSON.parse(data);
         setTwitter(result.externalName);
-
+        if(!result.externalName){
+          setNotConnect(true)
+        }
         localStorage.setItem("twitter", result.externalName);
       }
     } catch (e) {
@@ -389,6 +398,9 @@ export default function Dashboard() {
       const data = await response.text();
       if (data.length) {
         const result = JSON.parse(data);
+        if(!result.externalName){
+          setNotConnect(true)
+        }
         setDiscord(result.externalName);
         localStorage.setItem("discord", result.externalName);
       }
@@ -439,7 +451,7 @@ export default function Dashboard() {
       const data = await res.text();
       if (data.length) {
         const result = JSON.parse(data);
-        setTask(result?.task);
+        /* setTask(result?.task); */
         setXp(result?.totalXp);
         setCompleted(result?.completed);
         setCounter(result?.count);
@@ -472,7 +484,7 @@ export default function Dashboard() {
             bio: result.bio,
           });
         }
-        if (result.avatar !== null) {
+        if (result.avatar) {
           const foundObject = BackgroundNft.find(
             (b) => b.number === result.avatar
           );
@@ -537,9 +549,10 @@ export default function Dashboard() {
    
 
     if (session?.accessToken) {
+      getWallets(session?.accessToken)
       getTwitter(session?.accessToken);
       getDiscord(session?.accessToken);
-      getWallets(session?.accessToken)
+   
     }
 
     
@@ -571,15 +584,17 @@ export default function Dashboard() {
         if(!token || Date.now() > expiry){
           getToken(session.accessToken);
         }
-
-   
       }
+
+
    /*  }
 
     return () => {
       effectRan.current = true;
     }; */
   }, [mtwitter, mdiscord]);
+
+
 
   useEffect(() => {
     containerRef.current = document.body;
@@ -634,7 +649,21 @@ export default function Dashboard() {
             :custombg && !taskLoading && { backgroundImage: `linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.1)), url('/background/${background}.png')` }
         }      
         >
-        {taskLoading ? (
+
+        {notConnected  ?
+        <div className="flex justify-center items-center">
+
+              <Connect />  
+
+        </div>
+       
+      
+          :
+
+          <>
+          
+          
+          {taskLoading ? (
           <AnimatePresence mode="wait">
             <motion.div
               initial={{ opacity: 0 }}
@@ -1216,7 +1245,7 @@ export default function Dashboard() {
                       <p className="text-xl">Bubbles: {xp}</p>
                       <p className="font-bold flex items-center gap-1.5">
                         <span className="font-normal">Multiplier:</span> {multiplier}x
-                        <span>
+                        {/* <span>
                           <Dialog className="p-5">
                             <DialogTrigger
                               className={cn(
@@ -1238,7 +1267,7 @@ export default function Dashboard() {
                               <Multiplier />
                             </DialogContent>
                           </Dialog>
-                        </span>
+                        </span> */}
                       </p>
                       <Distribute  
                               xp={xp}
@@ -1330,6 +1359,15 @@ export default function Dashboard() {
             </main>
           </>
         )}
+          
+          
+          </>
+      
+      }
+
+
+
+     
       </div>
     </>
   );

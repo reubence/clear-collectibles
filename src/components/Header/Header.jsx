@@ -66,7 +66,7 @@ const Header = ({ open, setOpen, hidden, counter, code, notConnected }) => {
         router.pathname === "/" ||
         router.pathname === "/activation" ||
         router.pathname === "/dashboard"
-          ? "justify-between"
+          ? "justify-start"
           : "justify-between"
       } items-center z-50 ${
         router.pathname === "/leaderboard" &&
@@ -76,8 +76,7 @@ const Header = ({ open, setOpen, hidden, counter, code, notConnected }) => {
       
       
       {(router.pathname === "/" ||
-        router.pathname === "/activation" ||
-        router.pathname === "/leaderboard" ||
+
         router.pathname === "/dashboard") && (
           <div
           className="block md:hidden cursor-pointer"

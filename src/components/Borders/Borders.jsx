@@ -12,27 +12,27 @@ const Borders = ({ className }) => {
       <div
         className={`${
           className ? className : ""
-        } border-t-[7px] border-[#6cd2ff] h-[12px] w-full bg-[#7ad6fd]`}
+        } border-t-[7px] border-[#C7E5F2] h-[12px] w-full bg-[#FFFFFF]`}
       ></div>
       <div
         className={`${
           className ? className : ""
-        } border-t-[7px] border-b-[7px] border-[#6cd2ff] h-[25px] w-full bg-[#89dafc]`}
+        } border-t-[7px] border-b-[7px] border-[#C7E5F2] h-[25px] w-full bg-[#FFFFFF]`}
       ></div>
       <div
         className={`${
           className ? className : ""
-        } border-b-[7px] border-[#6cd2ff] h-[30px] w-full bg-[#a6e2f8]`}
+        } border-b-[7px] border-[#C7E5F2] h-[30px] w-full bg-[#FFFFFF]`}
       ></div>
       <div
         className={`${
           className ? className : ""
-        } border-b-[7px] border-[#6cd2ff] h-[40px] w-full bg-[#c2eaf5]`}
+        } border-b-[7px] border-[#C7E5F2] h-[40px] w-full bg-[#FFFFFF]`}
       ></div>
       <div
         className={`${
           className ? className : ""
-        } border-b-[7px] border-[#6cd2ff] h-[70px] w-full bg-[#e1f2f1]`}
+        } border-b-[7px] border-[#C7E5F2] h-[70px] w-full bg-[#FFFFFF]`}
       ></div>
     </>
   );

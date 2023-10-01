@@ -117,7 +117,7 @@ export default function Login() {
  initial={{ opacity: 0 }}
  animate={{ opacity: 1 }}
  transition={{duration: 1}}
-className={`flex flex-col w-full justify-start items-end bg-[#6cd2ff] py-6 px-6 relative  h-screen min-h-[700px] overflow-x-hidden ${shouldApplyScroll ? 'overflow-y-auto': 'overflow-y-hidden'}`}>
+className={`flex flex-col w-full justify-start items-end bg-[#C7E5F2] py-6 px-6 relative  h-screen min-h-[700px] overflow-x-hidden ${shouldApplyScroll ? 'overflow-y-auto': 'overflow-y-hidden'}`}>
         <AnimatePresence>
           <motion.div
             className={`hidden lg:absolute lg:block left-0 -bottom-[0] z-[1] h-screen w-[50vw] min-h-[700px] max-h-[1080px] max-w-[1080px]`}
@@ -153,10 +153,11 @@ className={`flex flex-col w-full justify-start items-end bg-[#6cd2ff] py-6 px-6 
         <Header hidden={true} />
         
         <div
-          className={`flex flex-col justify-between items-center px-6 pt-8 pb-8 lg:pb-0 z-20 h-[56%]  w-full lg:w-[45%] rounded-2xl mt-6 lg:mt-0 lg:mr-6 ${shouldBoxApplyScroll ? 'lg:max-h-[500px] lg:overflow-y-auto': 'max-h-[100%]'} ${
+          className={`flex flex-col  bg-[#15B7FF]/10 justify-between items-center  px-6 pt-8 pb-8 lg:pb-0 z-20 h-[86%]  w-full lg:w-[45%] rounded-2xl mt-6 lg:mt-0 lg:mr-6 ${shouldBoxApplyScroll ? 'lg:max-h-[500px] lg:overflow-y-auto': 'max-h-[100%]'} ${
             menuOpen && "bg-white"
+           
           }`}
-          id="login-container"
+         
         >
           <AnimatePresence>
            

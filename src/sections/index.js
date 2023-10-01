@@ -12,6 +12,6 @@
 
 import Card from "./Login/Card";
 import Menu from "./Login/Menu";
+import Activate from "./Activation/Activate";
 
-
-export { Card, Menu};
+export { Card, Menu, Activate};

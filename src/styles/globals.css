@@ -218,10 +218,5 @@ html,body{
 
 #login-container{
   height:100%;
-  background: linear-gradient(
-    180deg,
-    #51caff 0%,
-    rgba(81, 202, 255, 0.56) 100%
-  );
 
 }

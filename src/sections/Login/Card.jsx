@@ -23,7 +23,7 @@ const Card = () => {
         />
       </div>
       <div className="flex flex-col w-full justify-center items-center gap-5">
-        <h1 className="text-white font-montserrat font-black text-[22px] xl:text-[25px] 2xl:text-[30px] text-center mb-7">
+        <h1 className="text-white font-montserrat font-[800] text-[22px] xl:text-[22px] 2xl:text-[30px] text-center mb-7">
         Login with your matrica account to get started
         </h1>
         {/* leon */}
