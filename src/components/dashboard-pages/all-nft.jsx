@@ -73,7 +73,9 @@ function AllNFT({ orientation = "vertical", nfts, setBackground, setFavNft, setS
                 alt="Clock Icon"
                 height={120}
                 width={120}
-                className="rounded-2xl h-[90] w-[90px] lg:h-[120] lg:w-[120px] aspect-square object-cover"
+                className="transition-opacity opacity-0 duration-[2s] rounded-2xl h-[90] w-[90px] lg:h-[120] lg:w-[120px] aspect-square object-cover "
+                onLoadingComplete={(image) => image.classList.remove("opacity-0")}
+              
               />
               <div className="uppercase text-sm flex flex-col items-center gap-1">
                 cc #{item.number}

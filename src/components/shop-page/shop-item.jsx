@@ -55,7 +55,7 @@ function ShopItem({
           height={176}
           width={176}
           className="rounded-2xl w-[136px] h-[136px] lg:w-[176px] lg:h-[176px] aspect-square object-cover"
-          unoptimized
+          priority
         />
         {unreleased && (
           <div className="bg-foreground/50 backdrop-blur-md absolute left-0 top-0 rounded-xl lg:rounded-2xl w-full h-full text-white flex flex-col gap-1 items-center justify-center z-30">
