@@ -28,7 +28,7 @@ import { useSession, signOut } from "next-auth/react";
 import { useRouter } from "next/router";
 const filtering = [
   {
-    name: "Items",
+    name: "All",
     label: "items",
   },
  
