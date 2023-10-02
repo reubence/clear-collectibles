@@ -21,10 +21,7 @@ function Distribute({orientation="horizontal", xp, nfts, profileDetails, getNft,
   const [submitLoading, setSubmitLoading] = useState(false)
   const [selectedNft, setSelectedNft] = useState("")
   const [level, setLevel] = useState(0)
-  const [details, setDetails] = useState({
-    number: null,
-    xp: 0
-  });
+  const [details, setDetails] = useState(0);
 
   async function handleSubmit(){
     const token = localStorage.getItem("token");
@@ -39,8 +36,8 @@ function Distribute({orientation="horizontal", xp, nfts, profileDetails, getNft,
             method: "POST",
   
             body: JSON.stringify({
-              number: Number(details.number),
-              xp: Number(details.xp),
+              number: Number(selectedNft.number),
+              xp: Number(details),
             }),
   
             headers: {
@@ -57,7 +54,7 @@ function Distribute({orientation="horizontal", xp, nfts, profileDetails, getNft,
           await getData(token)
           await getNft(wallets)
           setSubmitLoading(false);
-          setDetails({...details, xp: 0})
+          setDetails(0)
         }
       } catch (error) {
         console.log(error);
@@ -70,7 +67,7 @@ function Distribute({orientation="horizontal", xp, nfts, profileDetails, getNft,
   }
 
   async function dynamicLevel(){
-    const level = getLevel(Number(details.xp) + Number(selectedNft.xp))
+    const level = getLevel(Number(details) + Number(selectedNft.xp))
     setLevel(level)
   }
 
@@ -81,11 +78,11 @@ function Distribute({orientation="horizontal", xp, nfts, profileDetails, getNft,
 
   useEffect(() => {
     // This code will run whenever nfts changes.
-    const set = nfts.filter((item) => item.number === details.number);
+    const set = nfts.filter((item) => item.number === selectedNft.number);
     if (set.length > 0) {
       setSelectedNft(set[0]);
     }
-  }, [nfts, details.number]);
+  }, [nfts]);
 
 
   useEffect(() => {
@@ -187,10 +184,10 @@ function Distribute({orientation="horizontal", xp, nfts, profileDetails, getNft,
                     )}
                     min={0}
                     max={xp}
-                    value={details.xp}
+                    value={details}
                     onChange={(e) => {
                       if ((e.target.value == '' || e.target.value == 0) || (Number(e.target.value) <= Number(xp) && Number(e.target.value) > 0)) {
-                        setDetails({ number: selectedNft.number, xp: e.target.value });
+                        setDetails(e.target.value);
                       }
                     }}
                     
@@ -208,7 +205,7 @@ function Distribute({orientation="horizontal", xp, nfts, profileDetails, getNft,
               >
                 
                   <PopoverTrigger 
-                  disabled={Number(details.xp) <= 0 || submitLoading}
+                  disabled={Number(details) <= 0 || submitLoading}
                   className={cn(
                     buttonVariants(),
                     "text-base lg:text-xl lg:w-fit lg:ml-auto"

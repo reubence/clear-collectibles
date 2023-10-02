@@ -9,7 +9,7 @@ function NftCharge({ orientation = "vertical", nfts, staked, getData, submitLoad
   const [selectedNft, setSelectedNft] = useState([]);
   const [selectAll, setSelectAll] = useState(false);
 
-
+  console.log(staked)
   async function handleSubmit() {
     const token = localStorage.getItem("token");
     const expiry = localStorage.getItem("expiry");
@@ -69,6 +69,10 @@ function NftCharge({ orientation = "vertical", nfts, staked, getData, submitLoad
                 const isMatched = staked.some(
                   (stakedNft) => stakedNft.number === item.number
                 );
+                let number = 0
+                if(isMatched){
+                  number = ((Number(staked.filter(stakeitem => stakeitem.number == item.number)[0]?.hours) / 120) *100).toFixed(2)
+                }
                 return (
                   <div
                     key={i}
@@ -104,21 +108,7 @@ function NftCharge({ orientation = "vertical", nfts, staked, getData, submitLoad
 
                       {isMatched &&
                         <p className="text-white font-[800]">
-                          {
-                          staked.filter(stakeitem => stakeitem.number == item.number)[0]?.days === 0
-                            ? '0%'
-                            : staked.filter(stakeitem => stakeitem.number == item.number)[0]?.days === 1
-                            ? '20%'
-                            : staked.filter(stakeitem => stakeitem.number == item.number)[0]?.days === 2
-                            ? '40%'
-                            : staked.filter(stakeitem => stakeitem.number == item.number)[0]?.days === 3
-                            ? '60%'
-                            : staked.filter(stakeitem => stakeitem.number == item.number)[0]?.days === 4
-                            ? '80%'
-                            : staked.filter(stakeitem => stakeitem.number == item.number)[0]?.days === 5
-                            && '100%'
-         
-                        }
+                          {number}%
                         
                         </p>
                       
