@@ -10,6 +10,7 @@ import { Progress } from "../ui/progress";
 import { ScrollArea } from "../ui/scroll-area";
 import { Separator } from "../ui/separator";
 import NftDistribute from "./nft-distribute";
+import { getLevel } from "@/lib/utils";
 
 
 function Distribute({orientation="horizontal", xp, nfts, profileDetails, getNft, wallets, getData}) {
@@ -68,6 +69,10 @@ function Distribute({orientation="horizontal", xp, nfts, profileDetails, getNft,
 
   }
 
+  async function dynamicLevel(){
+    const level = getLevel(Number(details.xp) + Number(selectedNft.xp))
+    setLevel(level)
+  }
 
   useEffect(() => {
     const timer = setTimeout(() => setProgress(40), 500);
@@ -85,35 +90,9 @@ function Distribute({orientation="horizontal", xp, nfts, profileDetails, getNft,
 
   useEffect(() => {
 
-    if ((Number(details.xp) + Number(selectedNft.xp)) >= 300 && (Number(details.xp) + Number(selectedNft.xp)) < 800) {
-      setLevel(1);
-    }else if((Number(details.xp) + Number(selectedNft.xp)) >= 800 && (Number(details.xp) + Number(selectedNft.xp)) < 1600){
-      setLevel(2);
-    }else if((Number(details.xp) + Number(selectedNft.xp)) >= 1600 && (Number(details.xp) + Number(selectedNft.xp)) < 2700){
-      setLevel(3);
-    }else if((Number(details.xp) + Number(selectedNft.xp)) >= 2700 && (Number(details.xp) + Number(selectedNft.xp)) < 4200){
-      setLevel(4);
-    }else if((Number(details.xp) + Number(selectedNft.xp)) >= 4200 && (Number(details.xp) + Number(selectedNft.xp)) < 6300){
-      setLevel(5);
-    }else if((Number(details.xp) + Number(selectedNft.xp)) >= 6300 && (Number(details.xp) + Number(selectedNft.xp)) < 9200){
-      setLevel(6);
-    }else if((Number(details.xp) + Number(selectedNft.xp)) >= 9200 && (Number(details.xp) + Number(selectedNft.xp)) < 13000){
-      setLevel(7);
-    }else if((Number(details.xp) + Number(selectedNft.xp)) >= 13000 && (Number(details.xp) + Number(selectedNft.xp)) < 17000){
-      setLevel(8);
-    }else if((Number(details.xp) + Number(selectedNft.xp)) >= 17000 && (Number(details.xp) + Number(selectedNft.xp)) < 23000){
-      setLevel(9);
-    }else if((Number(details.xp) + Number(selectedNft.xp)) == 23000){
-      setLevel(10);
-    }else if((Number(details.xp) + Number(selectedNft.xp)) < 300){
-      setLevel(0)
-    }else{
-      setLevel(0)
-    }
-
-  
-
-  }, [details, selectedNft, level])
+    dynamicLevel()
+   
+  }, [details, selectedNft])
 
   return (
    
