@@ -132,8 +132,8 @@ function NftCharge({ orientation = "vertical", nfts, staked, getData, submitLoad
                       alt="Clock Icon"
                       height={120}
                       width={120}
-                      className="rounded-2xl h-[90px] w-[90px] aspect-square object-cover"
-                      unoptimized
+                      className="transition-opacity opacity-0 duration-[2s] rounded-2xl h-[90px] w-[90px] aspect-square object-cover"
+                      onLoadingComplete={(image) => image.classList.remove("opacity-0")}
                     />
                     <div className="uppercase text-sm flex flex-col items-center gap-1">
                       cc #{item.number}
