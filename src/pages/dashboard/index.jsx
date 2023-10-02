@@ -784,9 +784,10 @@ export default function Dashboard() {
                     alt="Dashboard Nft Image"
                     fill
                     style={{ objectFit: "cover" }}
-                    className=""
-                    priority
+                  
                   />
+                 
+                  
                 </div>
               </motion.div>
               {/* BROOM PROFILE SECTION */}

@@ -9,12 +9,6 @@ import { Separator } from "../ui/separator";
 import { Textarea } from "../ui/textarea";
 import { Toggle } from "../ui/toggle";
 
-const stats = [
-  { label: "Total Bubbles", value: 9921 },
-  { label: "Total Clear Collectibles", value: 97 },
-  { label: "Rank", value: 7 },
-  { label: "Join Date", value: "23.09.08" },
-];
 let tabs = [
   { id: "profile", label: "Profile" },
   { id: "stat", label: "Stat" },

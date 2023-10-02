@@ -85,29 +85,35 @@ function Distribute({orientation="horizontal", xp, nfts, profileDetails, getNft,
 
   useEffect(() => {
 
-    if ((Number(details.xp) + Number(selectedNft.xp)) >= 300 && (Number(details.xp) + Number(selectedNft.xp)) < 600) {
+    if ((Number(details.xp) + Number(selectedNft.xp)) >= 300 && (Number(details.xp) + Number(selectedNft.xp)) < 800) {
       setLevel(1);
-    }else if((Number(details.xp) + Number(selectedNft.xp)) >= 600 && (Number(details.xp) + Number(selectedNft.xp)) < 1100){
+    }else if((Number(details.xp) + Number(selectedNft.xp)) >= 800 && (Number(details.xp) + Number(selectedNft.xp)) < 1600){
       setLevel(2);
-    }else if((Number(details.xp) + Number(selectedNft.xp)) >= 1100 && (Number(details.xp) + Number(selectedNft.xp)) < 1800){
+    }else if((Number(details.xp) + Number(selectedNft.xp)) >= 1600 && (Number(details.xp) + Number(selectedNft.xp)) < 2700){
       setLevel(3);
-    }else if((Number(details.xp) + Number(selectedNft.xp)) >= 1800 && (Number(details.xp) + Number(selectedNft.xp)) < 2900){
+    }else if((Number(details.xp) + Number(selectedNft.xp)) >= 2700 && (Number(details.xp) + Number(selectedNft.xp)) < 4200){
       setLevel(4);
-    }else if((Number(details.xp) + Number(selectedNft.xp)) >= 2900 && (Number(details.xp) + Number(selectedNft.xp)) < 4200){
+    }else if((Number(details.xp) + Number(selectedNft.xp)) >= 4200 && (Number(details.xp) + Number(selectedNft.xp)) < 6300){
       setLevel(5);
-    }else if((Number(details.xp) + Number(selectedNft.xp)) >= 4200 && (Number(details.xp) + Number(selectedNft.xp)) < 5900){
+    }else if((Number(details.xp) + Number(selectedNft.xp)) >= 6300 && (Number(details.xp) + Number(selectedNft.xp)) < 9200){
       setLevel(6);
-    }else if((Number(details.xp) + Number(selectedNft.xp)) >= 5900 && (Number(details.xp) + Number(selectedNft.xp)) < 8000){
+    }else if((Number(details.xp) + Number(selectedNft.xp)) >= 9200 && (Number(details.xp) + Number(selectedNft.xp)) < 13000){
       setLevel(7);
-    }else if((Number(details.xp) + Number(selectedNft.xp)) >= 8000 && (Number(details.xp) + Number(selectedNft.xp)) < 11000){
+    }else if((Number(details.xp) + Number(selectedNft.xp)) >= 13000 && (Number(details.xp) + Number(selectedNft.xp)) < 17000){
       setLevel(8);
-    }else if((Number(details.xp) + Number(selectedNft.xp)) >= 11000 && (Number(details.xp) + Number(selectedNft.xp)) < 15000){
+    }else if((Number(details.xp) + Number(selectedNft.xp)) >= 17000 && (Number(details.xp) + Number(selectedNft.xp)) < 23000){
       setLevel(9);
-    }else if((Number(details.xp) + Number(selectedNft.xp)) == 15000){
+    }else if((Number(details.xp) + Number(selectedNft.xp)) == 23000){
       setLevel(10);
+    }else if((Number(details.xp) + Number(selectedNft.xp)) < 300){
+      setLevel(0)
+    }else{
+      setLevel(0)
     }
 
-  }, [details.xp, selectedNft.xp])
+  
+
+  }, [details, selectedNft, level])
 
   return (
    
@@ -159,7 +165,9 @@ function Distribute({orientation="horizontal", xp, nfts, profileDetails, getNft,
                     Lv.{selectedNft.level}
                   </span>
                   <span className="bg-primary/70 text-white font-bold px-2 py-1 rounded-r-md">
-                    +{Number(level) - Number(selectedNft.level)}
+                    +{
+                    
+                    (Number(level) - Number(selectedNft.level))}
                   </span>
                 </div>
               </div>
