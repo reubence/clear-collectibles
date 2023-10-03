@@ -219,7 +219,7 @@ export default function Dashboard() {
   
   setResult(finalResult);
   console.log(finalResult[0])
-  
+          if (effectRan == false) {
             console.log(`check`)
             if (finalResult.length > 0) {
               const foundObject = BackgroundNft.find(
@@ -254,7 +254,9 @@ export default function Dashboard() {
               setFavLevel(finalResult[0].level);
   
             }
-      
+          }
+
+
   }
 
   async function handleSubmit() {
@@ -518,6 +520,7 @@ export default function Dashboard() {
             level: Number(result.avatarLevel),
           });
           setFavLevel(result.avatarLevel);
+          effectRan.current = true;
         }
 
         setTimeout(() => {
