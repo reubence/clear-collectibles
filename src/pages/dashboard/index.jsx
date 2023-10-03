@@ -207,14 +207,26 @@ export default function Dashboard() {
     // Flatten the array of arrays into a single array
     const data = [].concat(...allWalletData);
 
-          const finalResult = data.sort((a, b) => a.number - b.number);
-          setResult(finalResult);
-
-          if (effectRan == false) {
-            if (finalResult && finalResult.length > 0) {
+    const finalResult = data.sort((a, b) => {
+      // First, compare levels in descending order (higher levels come first)
+      if (a.level !== b.level) {
+          return b.level - a.level;
+      }
+  
+      // If levels are the same, compare numbers in ascending order (lower numbers come first)
+      return a.number - b.number;
+  });
+  
+  setResult(finalResult);
+  console.log(finalResult[0])
+  
+            console.log(`check`)
+            if (finalResult.length > 0) {
               const foundObject = BackgroundNft.find(
                 (b) => b.number === finalResult[0].number
               );
+
+              console.log(foundObject)
 
               if (foundObject) {
                 setBackground(foundObject.background);
@@ -227,6 +239,7 @@ export default function Dashboard() {
               setFavNft(
                 `https://shdw-drive.genesysgo.net/4ogWuz5n4TB2NFdPdtTT9uAsuudNE242EnpM4VwEmBHM/${finalResult[0].number}.png`
               );
+              console.log(`https://shdw-drive.genesysgo.net/4ogWuz5n4TB2NFdPdtTT9uAsuudNE242EnpM4VwEmBHM/${finalResult[0].number}.png`)
               setOldFavNft({
                 number: Number(finalResult[0].number),
                 background: foundObject.background,
@@ -236,14 +249,12 @@ export default function Dashboard() {
                 number: Number(finalResult[0].number),
                 level: Number(finalResult[0].level),
               });
-              setFavLevel(finalResult[0].level);
-              console.log("done");
-            }
-          }
-          return () => {
-            effectRan.current = true;
-          };
 
+              
+              setFavLevel(finalResult[0].level);
+  
+            }
+      
   }
 
   async function handleSubmit() {

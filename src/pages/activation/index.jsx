@@ -93,7 +93,12 @@ export default function Activation() {
   }, [session]);
 
 
+  useEffect(() => {
+    if(mdiscord !== null && mtwitter !== null){
+      router.push('/dashboard')
+    }
 
+  }, [mdiscord, mtwitter])
 
 
 
@@ -127,21 +132,6 @@ export default function Activation() {
     return windowSize
   }
 
-  async function getSpots(){
-try{
-  const res = await fetch(
-    `${process.env.NEXT_PUBLIC_API}/api/v1/avaliableSpots`);
-
-  const data = await res.text();
-  if(data.length){
-    const result = JSON.parse(data);
-    setSpots(result.userCount)
-  }
-}catch(err){
-  console.log(err)
-}
-
-  }
 
   useEffect(() => {
     setAnimations(
@@ -155,7 +145,6 @@ try{
         },
       }))
     );
-    getSpots()
     
   }, []);
 

@@ -21,12 +21,15 @@ import {
 import { Separator } from "@/components/ui/separator";
 import { Icons } from "../ui/icons";
 import { signOut } from "next-auth/react";
+import { Router } from "lucide-react";
+import { useRouter } from "next/router";
 
 const socialLinks = [
   { name: "X", href: "https://twitter.com/ClearCollectNFT", icon: Icons.xLogo },
   { name: "Discord", href: "https://discord.com/invite/clearcollectibles", icon: Icons.discordLogo },
   { name: "Square", href: "https://matrica.io/settings", icon: Icons.squareLogo },
 ];
+
 
 const navItems = [
   {
@@ -51,6 +54,7 @@ export default function NavBar({ page, avatar, hide }) {
   const pathname = usePathname();
   const [open, setOpen] = React.useState(false)
   const [sheetOpen, setSheetOpen] = React.useState();
+  const router = useRouter()
   const [active, setActive] = React.useState(
     pathname === "/shop"
       ? "/shop"
@@ -86,7 +90,12 @@ export default function NavBar({ page, avatar, hide }) {
   return (
     <nav className="w-full">
       <div className="px-6 lg:px-[40px] pb-3 pt-6 relative justify-between flex items-center">
-        <div className="lg:hidden">
+        
+        <div className="lg:hidden cursor-pointer"
+        onClick={() => {
+          router.push('/dashboard')
+        }}
+        >
           <Image
             src="/images/logo-mobile.svg"
             alt="Logo"
@@ -96,7 +105,11 @@ export default function NavBar({ page, avatar, hide }) {
             unoptimized
           />
         </div>
-        <div className="flex items-center text-2xl gap-2 font-waves">
+        <div className="flex items-center text-2xl gap-2 font-waves cursor-pointer"
+        onClick={() => {
+          router.push('/dashboard')
+        }}
+        >
           {page === "leaderboard" ? (
             <Image
               src={`/images/logo-mobile.svg`}
