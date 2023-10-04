@@ -218,7 +218,7 @@ export default function Dashboard() {
   });
   
   setResult(finalResult);
-  console.log(finalResult[0])
+
           if (effectRan == false) {
             console.log(`check`)
             if (finalResult.length > 0) {
@@ -226,7 +226,7 @@ export default function Dashboard() {
                 (b) => b.number === finalResult[0].number
               );
 
-              console.log(foundObject)
+       
 
               if (foundObject) {
                 setBackground(foundObject.background);
@@ -239,7 +239,6 @@ export default function Dashboard() {
               setFavNft(
                 `https://shdw-drive.genesysgo.net/4ogWuz5n4TB2NFdPdtTT9uAsuudNE242EnpM4VwEmBHM/${finalResult[0].number}.png`
               );
-              console.log(`https://shdw-drive.genesysgo.net/4ogWuz5n4TB2NFdPdtTT9uAsuudNE242EnpM4VwEmBHM/${finalResult[0].number}.png`)
               setOldFavNft({
                 number: Number(finalResult[0].number),
                 background: foundObject.background,
@@ -468,11 +467,11 @@ export default function Dashboard() {
       const data = await res.text();
       if (data.length) {
         const result = JSON.parse(data);
-        /* setTask(result?.task); */
+        setTask(result?.task);
         setXp(result?.totalXp);
         setCompleted(result?.completed);
         setCounter(result?.count);
-        setMultiplier(result?.multiplier);
+        setMultiplier(result?.multiplier1);
 
         if (result.assets && result.assets.length > 0) {
           setStaked(result.assets);
@@ -857,8 +856,7 @@ export default function Dashboard() {
                   <div className="flex flex-col gap-2">
                     <p className="text-xl 3xl:">Bubbles: {xp}</p>
                     <p className="font-bold flex items-center gap-1.5">
-                      <span className="font-normal">Multiplier:</span>Coming
-                      Soon
+                      <span className="font-normal">Multiplier:</span>{multiplier}
                       {/* MULTIPLIER POP UP */}
                       {/* <span>
                       

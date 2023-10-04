@@ -62,7 +62,7 @@ export default function TaskCompleted({ task, completed, taskLoading }) {
                     
                         <div 
                         key={`Task-${index}`}
-                        className="flex flex-col gap-3 px-8 ">
+                        className={`${(item.name == "retweet" || item.name == "likes") && "hidden"} flex flex-col gap-3 px-8`}>
                           <div
                             
                             className="flex gap-3 items-center text-base !p-0 font-bold"
@@ -154,12 +154,12 @@ export default function TaskCompleted({ task, completed, taskLoading }) {
 
            {item.name === "PFP"
             &&
-            `Automatically earn ${item.multiplier}% Multiplier a day for having one of the selected PFPs as your Twitter profile picture`
+            `Automatically earn ${item.multiplier*100}% Multiplier a day for having one of the selected PFPs as your Twitter profile picture`
             }
 
             {item.name === "name"
             &&
-            `Automatically earn ${item.multiplier}% Multiplier a day for having 🧊 in your Twitter handle.`
+            `Automatically earn ${item.multiplier*100}% Multiplier a day for having 🧊 in your Twitter handle.`
             }
 
           
@@ -167,7 +167,9 @@ export default function TaskCompleted({ task, completed, taskLoading }) {
 
 
                           </span>
-                          <div className={`flex w-full gap-2 ${item.name !== "PFP" && "w-[63%]"}`} >
+
+
+                          <div className={` flex w-full gap-2 ${item.name !== "PFP" && "w-[63%]"}`} >
                           
                             <>
                             <Button
@@ -175,13 +177,17 @@ export default function TaskCompleted({ task, completed, taskLoading }) {
                             variant="secondary"
                             className="text-primary w-full justify-start px-5 pointer-events-none "
                           >
+                        
+                            
                             <Icons.skullLogo className="w-4 lg:w-6 h-4 lg:h-6 fill-primary" />
+                            
                             {item.name == "PFP" || item.name == "name" ?
-                            <>{item.multiplier}% Multiplier</>
-                            :
-                            <>{item.xp} Bubbles{" "}</>
+                            <>{item.multiplier*100}% Multiplier</>
+                            : <>{item.xp} Bubbles{" "}</>
+                            
                             }
                            
+                     
                           </Button>
                          
                             
@@ -191,7 +197,12 @@ export default function TaskCompleted({ task, completed, taskLoading }) {
                             
                             
                           </div>
-                          <Separator className="my-2" />
+                          
+                            
+                            <Separator className="my-2" />
+
+                       
+                        
                         </div>
                       
                      
@@ -215,8 +226,8 @@ export default function TaskCompleted({ task, completed, taskLoading }) {
 
                     </div>
                     <p className="text-foreground/50 text-center font-montserrat text-[16px] sm:text-[23px] font-bold leading-[1.1]">
-                    Tasks will be live on Tuesday!
-                    <br />
+                    Congratulations on<br/> completing all tasks
+                   
                   </p>
                   </div>
                
@@ -230,7 +241,7 @@ export default function TaskCompleted({ task, completed, taskLoading }) {
       </TabsContent>
       <TabsContent
         value="completed"
-        className={`${activeTab !== "completed" ? "hidden" : "flex"} pb-3 grow flex-col items-start gap-3 font-normal text-foreground/50 tallXS:max-h-[340px] h-[300px] lg:h-full lg:max-h-[calc(100vh-448px)] overflow-y-auto w-full`}
+        className={`${activeTab !== "completed" ? "hidden" : "flex"} pb-3 grow flex-col items-start gap-3 font-normal text-foreground/50 tallXS:max-h-[340px] h-[300px] lg:h-full lg:max-h-[calc(100vh-448px)] overflow-y-auto w-full `}
       >
          {taskLoading ? (
           <div>Loading</div>
@@ -244,7 +255,7 @@ export default function TaskCompleted({ task, completed, taskLoading }) {
                      
                         <div 
                         key={`Completed-${index}`}
-                        className="flex flex-col gap-4">
+                        className="flex flex-col gap-4 px-8">
                           <div
                             className="flex gap-3 items-center text-base !p-0 font-bold"
                           >
@@ -334,12 +345,12 @@ export default function TaskCompleted({ task, completed, taskLoading }) {
 
            {item.name === "PFP"
             &&
-            `Automatically earn ${item.multiplier}% Multiplier a day for having one of the selected PFPs as your Twitter profile picture`
+            `Automatically earn ${Number(item.multiplier)*100}% Multiplier a day for having one of the selected PFPs as your Twitter profile picture`
             }
 
             {item.name === "name"
             &&
-            `Automatically earn ${item.multiplier}% Multiplier a day for having 🧊 in your Twitter handle.`
+            `Automatically earn ${Number(item.multiplier)*100}% Multiplier a day for having 🧊 in your Twitter handle.`
             }
 
 
@@ -356,7 +367,7 @@ export default function TaskCompleted({ task, completed, taskLoading }) {
                           >
                             <Icons.skullLogo className="w-4 lg:w-6 h-4 lg:h-6 fill-primary" />
                             {item.name == "PFP" || item.name == "name" ?
-                            <>{item.multiplier}% Multiplier</>
+                            <>{Number(item.multiplier)*100}% Multiplier</>
                             :
                             <>{item.xp} Bubbles{" "}</>
                             }
@@ -388,7 +399,7 @@ export default function TaskCompleted({ task, completed, taskLoading }) {
                   /> */}
 
                   <p className="text-foreground/50 font-montserrat text-center text-[18px] sm:text-[23px] font-bold leading-[1.1]">
-                  Tasks will be live on Tuesday!
+                  You haven't done any daily task yet!
                   </p>
                 </div>
              

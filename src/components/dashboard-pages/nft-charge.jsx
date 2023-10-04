@@ -9,7 +9,6 @@ function NftCharge({ orientation = "vertical", nfts, staked, getData, submitLoad
   const [selectedNft, setSelectedNft] = useState([]);
   const [selectAll, setSelectAll] = useState(false);
 
-  console.log(staked)
   async function handleSubmit() {
     const token = localStorage.getItem("token");
     const expiry = localStorage.getItem("expiry");
