@@ -62,7 +62,7 @@ export default function TaskCompleted({ task, completed, taskLoading }) {
                     
                         <div 
                         key={`Task-${index}`}
-                        className={`${(item.name == "retweet" || item.name == "likes") && "hidden"} flex flex-col gap-3 px-8`}>
+                        className={`${(item.name == "retweet" || item.name == "likes" || item.name == "voice") && "hidden"} flex flex-col gap-3 px-8`}>
                           <div
                             
                             className="flex gap-3 items-center text-base !p-0 font-bold"
