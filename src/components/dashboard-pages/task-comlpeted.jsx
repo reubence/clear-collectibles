@@ -399,7 +399,7 @@ export default function TaskCompleted({ task, completed, taskLoading }) {
                   /> */}
 
                   <p className="text-foreground/50 font-montserrat text-center text-[18px] sm:text-[23px] font-bold leading-[1.1]">
-                  You haven't done any daily task yet!
+                  You havent done any daily task yet!
                   </p>
                 </div>
              
