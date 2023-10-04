@@ -62,7 +62,7 @@ export default function TaskCompleted({ task, completed, taskLoading }) {
                     
                         <div 
                         key={`Task-${index}`}
-                        className={`${(item.name == "retweet" || item.name == "likes" || item.name == "voice") && "hidden"} flex flex-col gap-3 px-8`}>
+                        className={`${(item.name == "retweet" || item.name == "likes" ) && "hidden"} flex flex-col gap-3 px-8`}>
                           <div
                             
                             className="flex gap-3 items-center text-base !p-0 font-bold"
@@ -116,14 +116,24 @@ export default function TaskCompleted({ task, completed, taskLoading }) {
 
                             :item.name == "name"
                             
-                            &&
+                            ?
 
                             <>
                             <Icons.twitterLogo className="w-4 h-4 fill-foreground" />
                             Earn more from your twitter handle
                            </>
                             
+                            :item.name == "voice"
 
+                            &&
+  
+                            
+                            <>
+                              <Icons.discordLogo className="w-4 h-4 fill-foreground" />
+                              Discord AMA
+                             </>
+                            
+                              
                             
                         
                             
@@ -163,6 +173,13 @@ export default function TaskCompleted({ task, completed, taskLoading }) {
             }
 
           
+{item.name === "voice"
+            &&
+
+            `Join our Discord AMA on Wednesday 12:00 EST. Make sure you are connected for at least 20 minutes!`
+            
+            
+            }
 
 
 
@@ -308,12 +325,24 @@ export default function TaskCompleted({ task, completed, taskLoading }) {
 
                             :item.name == "name"
                             
-                            &&
+                            ?
 
                             <>
                             <Icons.twitterLogo className="w-4 h-4 fill-foreground" />
                             Earn more from your twitter handle
                            </>
+
+
+                          :item.name == "voice"
+
+                          &&
+
+                          
+                          <>
+                            <Icons.discordLogo className="w-4 h-4 fill-foreground" />
+                            Discord AMA
+                           </>
+                          
                             
 
                             
@@ -352,6 +381,19 @@ export default function TaskCompleted({ task, completed, taskLoading }) {
             &&
             `Automatically earn ${Number(item.multiplier)*100}% Multiplier a day for having 🧊 in your Twitter handle.`
             }
+
+
+            {item.name === "voice"
+            &&
+
+            `Join our Discord AMA on Wednesday 12:00 EST. Make sure you are connected for at least 20 minutes!`
+            
+            
+            }
+
+
+
+
 
 
 
