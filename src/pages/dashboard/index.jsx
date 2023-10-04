@@ -1258,8 +1258,7 @@ export default function Dashboard() {
                       <Separator className="w-full bg-white my-3" />
                       <p className="text-xl">Bubbles: {xp}</p>
                       <p className="font-bold flex items-center gap-1.5">
-                        <span className="font-normal">Multiplier:</span>Coming
-                        Soon
+                        <span className="font-normal">Multiplier:</span>{multiplier}
                         {/* <span>
                           <Dialog className="p-5">
                             <DialogTrigger
