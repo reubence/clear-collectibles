@@ -164,7 +164,7 @@ export default function TaskCompleted({ task, completed, taskLoading }) {
 
            {item.name === "PFP"
             &&
-            `Automatically earn ${item.multiplier*100}% Multiplier a day for having one of the selected PFPs as your Twitter profile picture`
+            `Automatically earn ${item.multiplier*100}% Multiplier a day for having one of Clear Collectibles as your Twitter/X profile picture`
             }
 
             {item.name === "name"
@@ -374,8 +374,9 @@ export default function TaskCompleted({ task, completed, taskLoading }) {
 
            {item.name === "PFP"
             &&
-            `Automatically earn ${Number(item.multiplier)*100}% Multiplier a day for having one of the selected PFPs as your Twitter profile picture`
-            }
+            `Automatically earn ${item.multiplier*100}% Multiplier a day for having one of Clear Collectibles as your Twitter/X profile picture`
+
+          }
 
             {item.name === "name"
             &&
