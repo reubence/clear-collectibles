@@ -70,7 +70,13 @@ function NftCharge({ orientation = "vertical", nfts, staked, getData, submitLoad
                 );
                 let number = 0
                 if(isMatched){
-                  number = ((Number(staked.filter(stakeitem => stakeitem.number == item.number)[0]?.hours) / 120) *100).toFixed(2)
+                  if(((Number(staked.filter(stakeitem => stakeitem.number == item.number)[0]?.hours) / 120) *100).toFixed(2) > 100){
+                    number = 100
+                  }else{
+                    number = ((Number(staked.filter(stakeitem => stakeitem.number == item.number)[0]?.hours) / 120) *100).toFixed(2)
+
+                  }
+
                 }
                 return (
                   <div
