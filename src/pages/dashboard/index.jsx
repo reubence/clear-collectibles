@@ -43,6 +43,7 @@ export default function Dashboard() {
   const [loading, setLoading] = useState(true);
   const [avatar, setAvatar] = useState(null);
   const [completed, setCompleted] = useState([]);
+  const [booster, setBooster] = useState(0)
   const [xp, setXp] = useState(0);
   const [task, setTask] = useState([]);
   const [taskLoading, setTaskLoading] = useState(true);
@@ -58,6 +59,8 @@ export default function Dashboard() {
   const [selectedNft, setSelectedNft] = useState("");
   const [distribute, setDistribute] = useState(false);
   const [multiplier, setMultiplier] = useState(1);
+  const [pfp, setPfp] = useState(false)
+  const [handle, setHandle] = useState(false)
   const [errorProfile, setErrorProfile] = useState('')
   const [custombg, setCustombg] = useState(false);
   const [holder, setHolder] = useState(true);
@@ -125,7 +128,7 @@ export default function Dashboard() {
         if (
           ref?.current !== null &&
           !ref.current.contains(event.target) &&
-          !editAvatar &&
+          !submitLoading &&
           selectedDesktop !== "tasks" &&
           selectedDesktop !== "charge"
         ) {
@@ -154,7 +157,7 @@ export default function Dashboard() {
         // Unbind the event listener on clean up
         document.removeEventListener("mousedown", handleClickOutside);
       };
-    }, [ref, oldFavNft, editAvatar, selectedDesktop]);
+    }, [ref, oldFavNft, submitLoading, selectedDesktop]);
   }
   async function getNft(walletsArray) {
     const rpc = new Connection(process.env.NEXT_PUBLIC_RPC_URL);
@@ -344,11 +347,13 @@ export default function Dashboard() {
       if (data.length) {
         setEditProfile(false);
         setEditAvatar(false);
-        setSubmitLoading(false);
+       
         setOldFavNft({
           number: selectedNft.number,
           background: background,
         });
+
+        setSubmitLoading(false);
       }
     } catch (error) {
       console.log(error);
@@ -472,6 +477,9 @@ export default function Dashboard() {
         setCompleted(result?.completed);
         setCounter(result?.count);
         setMultiplier(result?.multiplier1);
+        setBooster(result?.boostMultiplier)
+        setPfp(result?.pfp)
+        setHandle(result?.handle)
 
         if (result.assets && result.assets.length > 0) {
           setStaked(result.assets);
@@ -727,9 +735,8 @@ export default function Dashboard() {
                         }else{
                           setErrorProfile('')
                         }
-                        if (editAvatar && !editProfile) {
-                          handleSubmitAvatar();
-                        } else if (editProfile && !editAvatar) {
+                       
+                        if (editProfile) {
                           handleSubmit();
                         }
                      
@@ -738,7 +745,7 @@ export default function Dashboard() {
                       {submitLoading ? (
                         <svg
                           aria-hidden="true"
-                          class="inline w-8 h-8 text-gray-200 animate-spin dark:text-gray-600 fill-blue-600"
+                          class="inline w-6 h-6 text-gray-200 animate-spin dark:text-gray-600 fill-blue-600"
                           viewBox="0 0 100 101"
                           fill="none"
                           xmlns="http://www.w3.org/2000/svg"
@@ -856,7 +863,16 @@ export default function Dashboard() {
                   <div className="flex flex-col gap-2">
                     <p className="text-xl 3xl:">Bubbles: {xp}</p>
                     <p className="font-bold flex items-center gap-1.5">
-                      <span className="font-normal">Multiplier:</span>{multiplier}
+                      <span className="font-normal">Multiplier:</span>{multiplier} {Number(booster) !== 0 
+                        && <>
+                       
+                        
+                        <span>+ {booster}</span>
+                        <svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M16.849 20.5984L22.699 11.8484C22.949 11.4984 22.849 11.0484 22.499 10.7984C22.399 10.6984 22.249 10.6484 22.099 10.6484H17.499V5.14844C17.499 4.74844 17.149 4.39844 16.749 4.39844C16.499 4.39844 16.249 4.54844 16.149 4.74844L10.299 13.4984C10.049 13.8484 10.149 14.2984 10.499 14.5484C10.599 14.6484 10.749 14.6984 10.899 14.6984H15.499V20.1984C15.499 20.5984 15.849 20.9484 16.249 20.9484C16.499 20.9484 16.749 20.7984 16.849 20.5984Z" fill="#FFC700"/>
+                        <path d="M3.5 6H8.5C9.35 6 10 6.65 10 7.5C10 8.35 9.35 9 8.5 9H3.5C2.65 9 2 8.35 2 7.5C2 6.65 2.65 6 3.5 6ZM3.5 18H8.5C9.35 18 10 18.65 10 19.5C10 20.35 9.35 21 8.5 21H3.5C2.65 21 2 20.35 2 19.5C2 18.65 2.65 18 3.5 18ZM1.5 12H5.5C6.35 12 7 12.65 7 13.5C7 14.35 6.35 15 5.5 15H1.5C0.65 15 0 14.35 0 13.5C0 12.65 0.65 12 1.5 12Z" fill="#FFC700" fillOpacity="0.4"/>
+                        </svg>
+                        </>}
                       {/* MULTIPLIER POP UP */}
                       {/* <span>
                       
@@ -1046,6 +1062,8 @@ export default function Dashboard() {
                               task={task}
                               completed={completed}
                               taskLoading={taskLoading}
+                              pfp={pfp}
+                              handle={handle}
                             />
                           ) : item.value == "nfts" ? (
                             <AllNFT
@@ -1058,6 +1076,7 @@ export default function Dashboard() {
                               distribute={distribute}
                               submitLoading={submitLoading}
                               setCustombg={setCustombg}
+                              handleSubmitAvatar={handleSubmitAvatar}
                             />
                           ) : item.value == "charge" ? (
                             <NftCharge
@@ -1079,8 +1098,9 @@ export default function Dashboard() {
                 <div
                   className={`z-50 lg:z-0 fixed left-0 right-0 bottom-0 lg:relative w-full lg:w-fit justify-end lg:justify-normal flex gap-3 py-2.5 px-5 lg:p-3 bg-white/50 lg:bg-transparent`}
                 >
-                  <DropdownMenu>
-                    <DropdownMenuTrigger
+             
+                    <button
+                    disabled={submitLoading}
                       className={cn(
                         buttonVariants({
                           variant: "secondary",
@@ -1089,10 +1109,14 @@ export default function Dashboard() {
                             "lg:bg-primary lg:hover:bg-primary/70 group lg:p-2.5",
                         })
                       )}
+                      onClick={() => {
+                        setEditProfile(true);
+                        setSelectedDesktop("");
+                      }}
                     >
-                      <Icons.hexagon className="lg:fill-current lg:text-white" />
-                    </DropdownMenuTrigger>
-                    <DropdownMenuContent
+                      <Icons.settings className="lg:fill-current lg:text-white" />
+                    </button>
+                    {/* <DropdownMenuContent
                       sideOffset={20}
                       className="w-80 bg-[#E7F1F5] flex flex-col gap-3 p-2"
                     >
@@ -1130,8 +1154,8 @@ export default function Dashboard() {
                       >
                         Avatar
                       </DropdownMenuItem>
-                    </DropdownMenuContent>
-                  </DropdownMenu>
+                    </DropdownMenuContent> */}
+                 
                   <Button
                     disabled={true}
                     size="sm"
@@ -1195,6 +1219,8 @@ export default function Dashboard() {
                             task={task}
                             completed={completed}
                             taskLoading={taskLoading}
+                            pfp={pfp}
+                            handle={handle}
                           />
                         ) : item.value == "charge" ? (
                           <NftCharge
@@ -1217,6 +1243,7 @@ export default function Dashboard() {
                               distribute={distribute}
                               submitLoading={submitLoading}
                               setCustombg={setCustombg}
+                              handleSubmitAvatar={handleSubmitAvatar}
                             />
                           )
                         )}
@@ -1258,7 +1285,16 @@ export default function Dashboard() {
                       <Separator className="w-full bg-white my-3" />
                       <p className="text-xl">Bubbles: {xp}</p>
                       <p className="font-bold flex items-center gap-1.5">
-                        <span className="font-normal">Multiplier:</span>{multiplier}
+                        <span className="font-normal">Multiplier:</span>{multiplier} {Number(booster) !== 0 
+                        && <>
+                       
+                        
+                        <span>+ {booster}</span>
+                        <svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M16.849 20.5984L22.699 11.8484C22.949 11.4984 22.849 11.0484 22.499 10.7984C22.399 10.6984 22.249 10.6484 22.099 10.6484H17.499V5.14844C17.499 4.74844 17.149 4.39844 16.749 4.39844C16.499 4.39844 16.249 4.54844 16.149 4.74844L10.299 13.4984C10.049 13.8484 10.149 14.2984 10.499 14.5484C10.599 14.6484 10.749 14.6984 10.899 14.6984H15.499V20.1984C15.499 20.5984 15.849 20.9484 16.249 20.9484C16.499 20.9484 16.749 20.7984 16.849 20.5984Z" fill="#FFC700"/>
+                        <path d="M3.5 6H8.5C9.35 6 10 6.65 10 7.5C10 8.35 9.35 9 8.5 9H3.5C2.65 9 2 8.35 2 7.5C2 6.65 2.65 6 3.5 6ZM3.5 18H8.5C9.35 18 10 18.65 10 19.5C10 20.35 9.35 21 8.5 21H3.5C2.65 21 2 20.35 2 19.5C2 18.65 2.65 18 3.5 18ZM1.5 12H5.5C6.35 12 7 12.65 7 13.5C7 14.35 6.35 15 5.5 15H1.5C0.65 15 0 14.35 0 13.5C0 12.65 0.65 12 1.5 12Z" fill="#FFC700" fillOpacity="0.4"/>
+                        </svg>
+                        </>}
                         {/* <span>
                           <Dialog className="p-5">
                             <DialogTrigger
@@ -1316,18 +1352,25 @@ export default function Dashboard() {
 
                 {/* MOBILE BOTTOM STICKY SHOP NAV */}
                 <div className="z-50 fixed left-0 right-0 bottom-0 w-full justify-end flex gap-3 py-2.5 px-5 bg-[#E7F1F5]">
-                  <DropdownMenu>
-                    <DropdownMenuTrigger
+                 
+                <button
+                    disabled={submitLoading}
                       className={cn(
                         buttonVariants({
                           variant: "secondary",
                           size: "sm",
+                          className:
+                            "bg-primary hover:bg-primary/70 group lg:p-2.5",
                         })
                       )}
+                      onClick={() => {
+                        setEditProfile(true);
+                        setSelectedDesktop("");
+                      }}
                     >
-                      <Icons.hexagon className="fill-primary" />
-                    </DropdownMenuTrigger>
-                    <DropdownMenuContent
+                      <Icons.settings className="lg:fill-current lg:text-white" />
+                    </button>
+                   {/*  <DropdownMenuContent
                       sideOffset={20}
                       className="w-80 bg-[#E7F1F5] flex flex-col gap-3 p-2"
                     >
@@ -1363,9 +1406,9 @@ export default function Dashboard() {
                       >
                         Avatar
                       </DropdownMenuItem>
-                    </DropdownMenuContent>
-                  </DropdownMenu>
-                  <Button size="sm" className="gap-3 text-sm px-4">
+                    </DropdownMenuContent> */}
+             
+                  <Button size="sm" disabled={true} className="gap-3 text-sm px-4">
                     Share Profile
                     <Icons.profile className="fill-white w-7 h-7" />
                   </Button>

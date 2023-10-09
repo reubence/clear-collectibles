@@ -26,30 +26,59 @@ function ListItem({
   email,
   details,
   redeemCode,
+  solscan
 }) {
   const [openDetails, setOpenDetails] = React.useState(false);
+  const [copy, setCopy] = React.useState(false)
+  function shortenWalletAddress(address, startLength = 5, endLength = 5) {
+    const start = address.substring(0, startLength);
+    const end = address.substring(address.length - endLength);
+    return `${start}...${end}`;
+}
+
+const formattedNumber = (value) => {
+  const number = Number(value).toLocaleString();
+  return number
+  
+ }
+
+function shortenTxid(address, startLength = 16) {
+  const start = address.substring(0, startLength);
+  return `${start}...`;
+}
+
+  function getDate(dates){
+    const date = new Date(dates * 1000)
+    const newDate = date.toLocaleString()
+    
+    return newDate
+  }
+
+
   return (
     <div className="bg-white p-4 lg:p-0 lg:bg-none rounded-xl lg:rounded-none">
       <div className="hidden lg:flex flex-col w-full border-t-2 border-t-primary border-b">
-        <div className="flex md:flex-col lg:flex-row lg:flex-wrap bg-primary/10 p-5 justify-between items-start gap-3">
+   
+        <div className="flex md:flex-col lg:flex-row lg:flex-wrap  justify-between bg-primary/10 p-5 items-start gap-3">
           {/* ORDER PLACED */}
+          
           <div className="flex flex-col gap-1.5">
             <h2 className="font-normal text-muted-foreground/50">
               Order placed
             </h2>
-            <p className="font-semibold">{orderPlaced}</p>
+            <p className="font-semibold">{getDate(orderPlaced)}</p>
           </div>
           {/* Total */}
           <div className="flex flex-col gap-1.5">
             <h2 className="font-normal text-muted-foreground/50">Total</h2>
-            <p className="font-semibold">{total}</p>
+            <p className="font-semibold">{formattedNumber(total)}</p>
           </div>
           {/* Quantity purchased */}
           <div className="flex flex-col gap-1.5">
             <h2 className="font-normal text-muted-foreground/50">
               Quantity purchased
             </h2>
-            <p className="font-semibold">{quantityPurchased}</p>
+            <p className="font-semibold">{formattedNumber(quantityPurchased)}</p>
           </div>
           {/* Delivery method */}
           <div className="flex flex-col gap-1.5">
@@ -60,13 +89,14 @@ function ListItem({
           </div>
           {/* Support Ticket */}
           <div className="flex flex-col items-end gap-1.5 2xl:w-48">
-            <h2 className="font-semibold text-primary">{supportTicket}</h2>
+          <a href="https://discord.com/invite/clearcollectibles" target="_blank">
             <Button size="sm" className="uppercase lg:rounded-lg">
               Get Support
             </Button>
+            </a>
           </div>
         </div>
-
+        <h2 className="font-semibold text-primary pl-5 py-1 text-sm">TxID:{shortenTxid(supportTicket)} {solscan && <> | <a href={solscan} target="_blank">Signature: {shortenTxid(solscan)}</a></> }</h2>
         <div className="flex flex-col xl:flex-row h-full items-start gap-5 justify-between p-5">
           <div className="flex gap-5">
             <Image
@@ -87,31 +117,20 @@ function ListItem({
                 </div>
                 {/* CODE, EMAIL, AIRDROP WITH COPY ICON */}
                 <div className="flex flex-col gap-2">
-                  {code && (
-                    <p className="flex items-center font-normal gap-3">
-                      Code:{" "}
-                      <span className="font-semibold">
-                        0382chjidwliajd012jn39123
-                      </span>
-                      <Button variant="ghost" size="ghost">
-                        <Icons.copy className="mb-1.5 fill-primary" />
-                      </Button>
-                    </p>
-                  )}
-                  {email && (
-                    <p className="flex items-center font-normal gap-3">
-                      Email: <span className="font-semibold">{email}</span>
-                      <Button variant="ghost" size="ghost">
-                        <Icons.copy className="mb-1.5 fill-primary" />
-                      </Button>
-                    </p>
-                  )}
+               
+              
                   {airdropWallet && (
                     <p className="flex items-center font-normal gap-3">
-                      Airdrop Wallet:{" "}
-                      <span className="font-semibold">{airdropWallet}</span>
+                      Airdrop Wallet:{" "} 
+                      <span className="font-semibold">{copy ? "Copied" : shortenWalletAddress(airdropWallet)}</span>
                       <Button variant="ghost" size="ghost">
-                        <Icons.copy className="mb-1.5 fill-primary" />
+                        <Icons.copy className="mb-1.5 fill-primary" onClick={() => {
+                    setCopy(true)
+                    navigator.clipboard.writeText(airdropWallet);
+                    setTimeout(()=> {
+                      setCopy(false)
+                    },3000)
+                  }}/>
                       </Button>
                     </p>
                   )}
@@ -124,58 +143,22 @@ function ListItem({
           </div>
           <div className="flex xl:flex-col gap-4 xl:w-56 2xl:w-72 h-full items-end justify-center">
             {/* ORDER STATUS PENDING */}
-            {status === "pending" && (
+            {status === "Pending" && (
               <p className="whitespace-nowrap capitalize px-4 py-2 text-[#F90] bg-[#FFF5E5] rounded-lg">
                 {status}
               </p>
             )}
             {/* ORDER STATUS FULFILLED */}
-            {status === "fulfilled" && (
+            {status === "Fulfilled" && (
               <p className="whitespace-nowrap capitalize px-4 py-2 text-[#02B58A] bg-[#E6F8F3] rounded-lg">
                 {status}
               </p>
             )}
             {/* ORDER STATUS REFUNDED */}
-            {status === "refunded" && (
+            {status === "Refunded" && (
               <p className="whitespace-nowrap capitalize px-4 py-2 text-foreground/50 bg-foreground/10 rounded-lg">
                 {status}
               </p>
-            )}
-
-            {/* REEDEEM CODE BUTTON */}
-            {redeemCode && (
-              <Popover>
-                <PopoverTrigger
-                  className={cn(
-                    buttonVariants({ variant: "outline", size: "sm" }),
-                    "uppercase lg:rounded-lg"
-                  )}
-                >
-                  Redeem code
-                </PopoverTrigger>
-                <PopoverContent
-                  sideOffset={8}
-                  className="border border-muted shadow-lg"
-                >
-                  <RedeemCode />
-                </PopoverContent>
-              </Popover>
-            )}
-            {/* DETAILS BUTTON */}
-            {details && (
-              <Dialog>
-                <DialogTrigger
-                  className={cn(
-                    buttonVariants({ variant: "outline", size: "sm" }),
-                    "uppercase lg:rounded-lg"
-                  )}
-                >
-                  Details
-                </DialogTrigger>
-                <DialogContent className="bg-white">
-                  <AddressConfirmation className="lg:max-w-full" />
-                </DialogContent>
-              </Dialog>
             )}
           </div>
         </div>
@@ -190,14 +173,14 @@ function ListItem({
             "": openDetails,
           }
         )}
-        onClick={() => setOpenDetails(!openDetails)}
+        onClick={() => setOpenDetails(true)}
       >
         {/* ORDER PLACED */}
         <div className="flex gap-1 text-xs whitespace-nowrap uppercase">
           <h2 className="font-normal text-muted-foreground/50">
             Order placed:
           </h2>
-          <p className="font-semibold">{orderPlaced}</p>
+          <p className="font-semibold">{getDate(orderPlaced)}</p>
         </div>
         <Separator className="bg-muted my-4" />
         <div className="flex gap-4">
@@ -219,19 +202,19 @@ function ListItem({
               <p className="font-semibold">{total}</p>
             </div>
             {/* ORDER STATUS PENDING */}
-            {status === "pending" && (
+            {status === "Pending" && (
               <p className="whitespace-nowrap capitalize px-4 py-2 text-[#F90] bg-[#FFF5E5] rounded-lg w-fit text-sm font-bold mt-1">
                 {status}
               </p>
             )}
             {/* ORDER STATUS FULFILLED */}
-            {status === "fulfilled" && (
+            {status === "Fulfilled" && (
               <p className="whitespace-nowrap capitalize px-4 py-2 text-[#02B58A] bg-[#E6F8F3] rounded-lg w-fit text-sm font-bold mt-1">
                 {status}
               </p>
             )}
             {/* ORDER STATUS REFUNDED */}
-            {status === "refunded" && (
+            {status === "Refunded" && (
               <p className="whitespace-nowrap capitalize px-4 py-2 text-foreground/50 bg-foreground/10 rounded-lg w-fit text-sm font-bold mt-1">
                 {status}
               </p>
@@ -260,39 +243,34 @@ function ListItem({
           </div>
           {/* CODE, EMAIL, AIRDROP WITH COPY ICON */}
           <div className="flex flex-col gap-2 text-xs">
-            {code && (
-              <p className="flex items-center justify-between font-normal">
-                Code:{" "}
-                <span className="flex items-center gap-1.5">
-                  <span className="font-semibold">
-                    0382chjidwliajd012jn39123
-                  </span>
-                  <Button variant="ghost" size="ghost">
-                    <Icons.copy className="mb-1 fill-primary" />
-                  </Button>
-                </span>
-              </p>
-            )}
-            {email && (
+
+          {supportTicket && (
               <p className="flex items-center justify-between font-normal gap-2.5">
-                Email:{" "}
+                TxID:
                 <span className="flex items-center gap-1.5">
-                  <span className="font-semibold">{email}</span>
-                  <Button variant="ghost" size="ghost">
-                    <Icons.copy className="mb-1 fill-primary" />
-                  </Button>
+                  <span className="font-semibold">{shortenTxid(supportTicket)}</span>
                 </span>
               </p>
             )}
+
+            
             {airdropWallet && (
               <p className="flex items-center justify-between font-normal gap-2.5">
                 Airdrop Wallet:
                 <span className="flex items-center gap-1.5">
-                  <span className="font-semibold">{airdropWallet}</span>
-                  <Button variant="ghost" size="ghost">
-                    <Icons.copy className="mb-1 fill-primary" />
-                  </Button>
+                  <span className="font-semibold">{shortenWalletAddress(airdropWallet)}</span>
+             
                 </span>
+              </p>
+            )}
+
+            {solscan && (
+              <p className="flex items-center justify-between font-normal gap-2.5">
+                Signature:
+                <a className="flex items-center gap-1.5" href={solscan} target="_blank">
+                  <span className="font-semibold">{shortenTxid(solscan)}</span>
+                
+                </a>
               </p>
             )}
           </div>
@@ -300,45 +278,17 @@ function ListItem({
           <Separator className="bg-muted my-4" />
         </div>
         <div className="flex justify-end w-full gap-1.5">
+          <a href="https://discord.com/invite/clearcollectibles" target="_blank">
           <Button
             size="sm"
             className={cn("uppercase rounded-lg p-4 text-xs w-full")}
-            onClick={() => console.log("Get Support")}
           >
             Get Support
           </Button>
+          </a>
+         
 
-          {redeemCode && (
-            <Sheet>
-              <SheetTrigger
-                className={cn(
-                  buttonVariants({ variant: "outline", size: "sm" }),
-                  "uppercase rounded-lg p-4 text-xs w-full lg:hidden gap-1 py-3"
-                )}
-              >
-                Redeem code
-              </SheetTrigger>
-              <SheetContent side="bottom" className="">
-                <RedeemCode />
-              </SheetContent>
-            </Sheet>
-          )}
-
-          {details && (
-            <Sheet>
-              <SheetTrigger
-                className={cn(
-                  buttonVariants({ variant: "outline", size: "sm" }),
-                  "uppercase rounded-lg p-4 text-xs w-full lg:hidden gap-1 py-3"
-                )}
-              >
-                Details
-              </SheetTrigger>
-              <SheetContent side="bottom" className="">
-                <AddressConfirmation className="lg:max-w-full" />
-              </SheetContent>
-            </Sheet>
-          )}
+      
         </div>
       </div>
     </div>

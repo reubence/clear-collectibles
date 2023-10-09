@@ -28,7 +28,7 @@ import ConnectSocialModal from "./Modal/ConnectSocialModal"; */
 import ProgressLottie from "./Lottie/ProgressLottie";
 import DropDown from "./Header/DropDown";
 import Connect from "./Connect/connect"
-/*import Toast from './Toast/Toast' */
+import Toast from './Toast/Toast'
 
 export {
   Borders,
@@ -36,13 +36,14 @@ export {
   Header,
   ProgressLottie,
   DropDown,
-  Connect
+  Connect,
+  Toast 
 /*Task,
   Claim,
   WhitelistModal,
   TensorModal,
   ConnectSocialModal,
   TwitterTaskModal,
-  NameModal,
-  Toast */
+  NameModal,*/
+  
 };
