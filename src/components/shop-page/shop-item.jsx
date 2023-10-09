@@ -130,7 +130,7 @@ function ShopItem({
         }
        
       </div>
-      <p className="text-xs font-bold uppercase mt-2.5">{name}</p>
+      <p className="text-xs font-bold uppercase mt-2.5 lg:text-left text-center">{name}</p>
       <div className="flex lg:flex-row flex-col justify-between items-center">
       <p className="text-xl uppercase">{formattedNumber(price)}</p>
       <p className={`text-sm ${item.remain == 0 && 'hidden'} font-[400] text-[#999999]`}><span className="font-[500]">{formattedNumber(item.remain)}</span>/{formattedNumber(Number(item.stock))}</p>
