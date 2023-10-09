@@ -167,7 +167,7 @@ function CheckboxConfirmation({item, setPopoverOpen ,process1, setProcess, walle
       htmlFor={item.id}
       className="font-medium peer-disabled:cursor-not-allowed peer-disabled:opacity-70 whitespace-nowrap"
     >
-      {item.id}
+      {shortenWalletAddress(item.id)}
     </Label>
     <input id={item.id} value={item.id} type="radio" checked={selectedWallet == item.id} className="h-5 w-5"
        onChange={(e) => setSelectedWallet(e.target.value)} />
