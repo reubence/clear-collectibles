@@ -569,7 +569,6 @@ export default function Dashboard() {
 
   useEffect(() => {
     if (session?.accessToken) {
-      console.log(session.accessToken)
       getTwitter(session?.accessToken);
       getDiscord(session?.accessToken);
       getWallets(session?.accessToken);
