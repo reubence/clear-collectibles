@@ -5,7 +5,7 @@ import { cn } from "@/lib/utils";
 import { useEffect, useState } from "react";
 import { Button } from "../ui/button";
 
-function NftCharge({ orientation = "vertical", nfts, staked, getData, submitLoading, setSubmitLoading }) {
+function NftCharge({ orientation = "vertical", nfts, staked, getData, submitLoading, setSubmitLoading, accessToken }) {
   const [selectedNft, setSelectedNft] = useState([]);
   const [selectAll, setSelectAll] = useState(false);
 
@@ -20,7 +20,7 @@ function NftCharge({ orientation = "vertical", nfts, staked, getData, submitLoad
 
           {
             method: "POST",
-            body: JSON.stringify({ assetNumbers: selectedNft }),
+            body: JSON.stringify({ assetNumbers: selectedNft, accessToken: accessToken }),
             headers: {
               Authorization: `Bearer ${token}`,
               "Content-Type": "application/json",

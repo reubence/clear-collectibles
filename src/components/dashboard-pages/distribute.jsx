@@ -13,7 +13,7 @@ import NftDistribute from "./nft-distribute";
 import { getLevel } from "@/lib/utils";
 
 
-function Distribute({orientation="horizontal", xp, nfts, profileDetails, getNft, wallets, getData}) {
+function Distribute({orientation="horizontal", xp, nfts, accessToken,profileDetails, getNft, wallets, getData}) {
   const [progress, setProgress] = useState(13);
   const [openDialog, setOpenDialog] = useState();
   const [openPopover, setOpenPopover] = useState();
@@ -38,6 +38,7 @@ function Distribute({orientation="horizontal", xp, nfts, profileDetails, getNft,
             body: JSON.stringify({
               number: Number(selectedNft.number),
               xp: Number(details),
+              accessToken: accessToken
             }),
   
             headers: {
@@ -52,7 +53,7 @@ function Distribute({orientation="horizontal", xp, nfts, profileDetails, getNft,
   
         if (data.length) {
           await getData(token)
-          await getNft(wallets)
+          await getNft(accessToken)
           setSubmitLoading(false);
           setDetails(0)
         }

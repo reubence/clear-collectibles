@@ -159,58 +159,60 @@ export default function Dashboard() {
       };
     }, [ref, oldFavNft, submitLoading, selectedDesktop]);
   }
-  async function getNft(walletsArray) {
-    const rpc = new Connection(process.env.NEXT_PUBLIC_RPC_URL);
+
+  
+  async function getNft(token) {
     
-    // Using Promise.all to handle all the wallets in parallel
-    const allWalletData = await Promise.all(walletsArray.map(async wallet => {
-        const nftArray = await getParsedNftAccountsByOwner({
-            publicAddress: wallet.id,
-            connection: rpc,
-        });
-        
-        const numbers = nftArray.filter(nft => nft.updateAuthority === process.env.NEXT_PUBLIC_AUTHORITY)
-            .map(nft => {
-                const number = nft.data.name.replace("Clear Collectibles #", "");
-                return {
-                    number: Number(number),
-                    img: `https://shdw-drive.genesysgo.net/4ogWuz5n4TB2NFdPdtTT9uAsuudNE242EnpM4VwEmBHM/${number}-b.png`
-                };
-            });
+    const response = await fetch(
+      "https://api.matrica.io/oauth2/user/nfts",
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
 
-        // Return early if there are no numbers
-       
+    const data = await response.json()
 
-        const res = await fetch(`${process.env.NEXT_PUBLIC_API}/api/v1/getAsset`, {
-            method: "POST",
-            headers: {
-                "Access-Control-Allow-Origin": "*",
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({ number: numbers.map(info => info.number) }),
-        });
-        
-        const assets = await res.json();
+      const numbers = data.filter(nft => nft.updateAuthority === process.env.NEXT_PUBLIC_AUTHORITY)
+      .map(nft => {
+          const number = nft.name.replace("Clear Collectibles #", "");
+          return {
+              number: Number(number),
+              img: `https://shdw-drive.genesysgo.net/4ogWuz5n4TB2NFdPdtTT9uAsuudNE242EnpM4VwEmBHM/${number}-b.png`
+          };
+      });
 
-        // map instead of nested loops
-        return numbers.map(info => {
-            const asset = assets.find(asset => info.number == asset.number);
-            if (asset) {
-                const level = getLevel(asset.xp);
-                return {
-                    ...info,
-                    xp: asset.xp,
-                    level: level,
-                };
-            }
-            return info;  // If no matching asset is found, return info unchanged
-        });
-    }));
+  // Return early if there are no numbers
+ 
 
-    // Flatten the array of arrays into a single array
-    const data = [].concat(...allWalletData);
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API}/api/v1/getAsset`, {
+      method: "POST",
+      headers: {
+          "Access-Control-Allow-Origin": "*",
+          "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ number: numbers.map(info => info.number) }),
+  });
+  
+  const assets = await res.json();
 
-    const finalResult = data.sort((a, b) => {
+  // map instead of nested loops
+ const nftArray = numbers.map(info => {
+      const asset = assets.find(asset => info.number == asset.number);
+      if (asset) {
+          const level = getLevel(asset.xp);
+          return {
+              ...info,
+              xp: asset.xp,
+              level: level,
+          };
+      }
+      return info;  // If no matching asset is found, return info unchanged
+  });
+  
+
+    const finalResult = nftArray.sort((a, b) => {
       // First, compare levels in descending order (higher levels come first)
       if (a.level !== b.level) {
           return b.level - a.level;
@@ -452,7 +454,7 @@ export default function Dashboard() {
           wallets.push({ id: result.id });
         }
         setWallets(wallets);
-        getNft(wallets);
+        getNft(token);
          
       }
     } catch (err) {
@@ -567,7 +569,7 @@ export default function Dashboard() {
 
   useEffect(() => {
     if (session?.accessToken) {
-  
+      console.log(session.accessToken)
       getTwitter(session?.accessToken);
       getDiscord(session?.accessToken);
       getWallets(session?.accessToken);
@@ -577,6 +579,7 @@ export default function Dashboard() {
       localStorage.clear();
       signOut({ callbackUrl: "/login" });
     }
+
   }, [session]);
 
   useEffect(() => {
@@ -907,6 +910,7 @@ export default function Dashboard() {
                     wallets={mwallets}
                     getNft={getNft}
                     getData={getData}
+                    accessToken={session?.accessToken || null}
                   />
                 </div>
                 {/* PROFILE / STAT COMPONENT */}
@@ -1086,6 +1090,7 @@ export default function Dashboard() {
                               getData={(token) => getData(token)}
                               submitLoading={submitLoading}
                               setSubmitLoading={setSubmitLoading}
+                              accessToken={session?.accessToken || null}
                             />
                           ) : (
                             <>{item.children}</>
@@ -1230,6 +1235,7 @@ export default function Dashboard() {
                             getData={(token) => getData(token)}
                             submitLoading={submitLoading}
                             setSubmitLoading={setSubmitLoading}
+                            accessToken={session?.accessToken || null}
                           />
                         ) : (
                           item.value == "nfts" && (
@@ -1326,6 +1332,7 @@ export default function Dashboard() {
                         wallets={mwallets}
                         getNft={getNft}
                         getData={getData}
+                        accessToken={session?.accessToken || null}
                       />
                     </div>
                   )}
