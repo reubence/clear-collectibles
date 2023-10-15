@@ -221,7 +221,7 @@ export default function TaskCompleted({ task, completed, taskLoading, pfp, handl
 {item.name === "voice"
             &&
 
-            `Join our Discord AMA on Sunday 23:00 EST. Make sure you are connected for at least 20 minutes!`
+            `Join our Discord AMA on Saturday 23:00 EST. Make sure you are connected for at least 20 minutes!`
             
             
             }
@@ -432,7 +432,7 @@ export default function TaskCompleted({ task, completed, taskLoading, pfp, handl
             {item.name === "voice"
             &&
 
-            `Join our Discord AMA on Sunday 23:00 EST. Make sure you are connected for at least 20 minutes!`
+            `Join our Discord AMA on Saturday 23:00 EST. Make sure you are connected for at least 20 minutes!`
             
             
             }
