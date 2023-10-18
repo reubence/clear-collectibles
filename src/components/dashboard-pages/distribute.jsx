@@ -10,7 +10,7 @@ import { Progress } from "../ui/progress";
 import { ScrollArea } from "../ui/scroll-area";
 import { Separator } from "../ui/separator";
 import NftDistribute from "./nft-distribute";
-import { getLevel } from "@/lib/utils";
+import { getLevel, getMax } from "@/lib/utils";
 
 
 function Distribute({orientation="horizontal", xp, nfts, accessToken,profileDetails, getNft, wallets, getData}) {
@@ -89,8 +89,12 @@ function Distribute({orientation="horizontal", xp, nfts, accessToken,profileDeta
   useEffect(() => {
 
     dynamicLevel()
+    setMax(Number(getMax(Number(selectedNft.level))))
+    
    
   }, [details, selectedNft])
+
+  console.log(Number(getMax(Number(selectedNft.level))))
 
   return (
    

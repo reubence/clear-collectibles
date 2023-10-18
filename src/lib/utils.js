@@ -33,3 +33,32 @@ export function getLevel(xp){
   }
   return 0
 }
+
+export function getMax(level){
+
+ if (level == 0) {
+    return 300
+  }else if(level == 1){
+    return 800
+  }else if(level == 2){
+    return 1600
+  }else if(level == 3){
+    return 2700
+  }else if(level == 4){
+    return 4200
+  }else if(level == 5){
+    return 6300
+  }else if(level == 6){
+    return 9200
+  }else if(level == 7){
+    return 13000
+  }else if(level == 8){
+    return 17000
+  }else if(level == 9 || level == 10){
+    return 23000
+  }
+
+  return 0
+
+
+}
