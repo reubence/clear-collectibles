@@ -210,7 +210,7 @@ function Distribute({orientation="horizontal", xp, nfts, accessToken,profileDeta
               >
                 
                   <PopoverTrigger 
-                  disabled={Number(details) <= 0 || submitLoading}
+                  disabled={Number(details) <= 0 || submitLoading || (Number(details) + Number(selectedNft.xp)) > 23000 }
                   className={cn(
                     buttonVariants(),
                     "text-base lg:text-xl lg:w-fit lg:ml-auto"

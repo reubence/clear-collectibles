@@ -28,7 +28,7 @@ export function getLevel(xp){
     return 8
   }else if(Number(xp) >= 17000 && Number(xp) < 23000){
     return 9
-  }else if(Number(xp) == 23000){
+  }else if(Number(xp) >= 23000){
     return 10
   }
   return 0
