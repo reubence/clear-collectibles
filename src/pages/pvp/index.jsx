@@ -17,95 +17,92 @@ export default function PVP() {
   const [activeNFTIndex, setActiveNFTIndex] = useState(2); // null indicates no active div
 
   return (
-    <main className="h-screen w-screen bg-gradient-to-b from-[#7E2EF7] to-[#9C93FF]">
+    <main className="h-screen w-screen overflow-clip bg-gradient-to-b relative from-[#7E2EF7] to-[#9C93FF]">
       {/* BACKGROUND ELLIPSE SVGs */}
-      <div className="absolute -z-0">
-        <svg
-          width="1920"
-          height="1080"
-          viewBox="0 0 1920 1080"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-          className="object-cover"
-        >
-          <g filter="url(#filter0_f_1_8072)">
-            <circle cx="959.5" cy="581.5" r="374.5" fill="#C5ACFF" />
-          </g>
-          <circle
-            cx="959.5"
-            cy="567.5"
-            r="464"
-            stroke="white"
-            stroke-opacity="0.1"
-            stroke-width="41"
-          />
-          <circle
-            cx="960"
-            cy="585"
-            r="602.5"
-            stroke="white"
-            stroke-opacity="0.06"
-            stroke-width="9"
-          />
-          <circle
-            cx="960"
-            cy="585"
-            r="958"
-            stroke="white"
-            stroke-opacity="0.05"
-            stroke-width="90"
-          />
-          <defs>
-            <filter
-              id="filter0_f_1_8072"
-              x="367"
-              y="-11"
-              width="1185"
-              height="1185"
-              filterUnits="userSpaceOnUse"
-              color-interpolation-filters="sRGB"
-            >
-              <feFlood flood-opacity="0" result="BackgroundImageFix" />
-              <feBlend
-                mode="normal"
-                in="SourceGraphic"
-                in2="BackgroundImageFix"
-                result="shape"
-              />
-              <feGaussianBlur
-                stdDeviation="109"
-                result="effect1_foregroundBlur_1_8072"
-              />
-            </filter>
-          </defs>
-        </svg>
-      </div>
+      <svg
+        width="2006"
+        height="2007"
+        viewBox="0 0 2006 2007"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        className="absolute left-1/2 transform -translate-x-1/2 -top-[60%] scale-75 xl:-top-[40%] 2xl:-top-[15%] 2xl:scale-100 3xl:-top-[5%] z-0"
+      >
+        <g filter="url(#filter0_f_1_7903)">
+          <circle cx="1002.5" cy="999.755" r="374.5" fill="#C5ACFF" />
+        </g>
+        <circle
+          cx="1002.5"
+          cy="985.755"
+          r="464"
+          stroke="white"
+          stroke-opacity="0.1"
+          stroke-width="41"
+        />
+        <circle
+          cx="1003"
+          cy="1003.25"
+          r="602.5"
+          stroke="white"
+          strokeOpacity="0.06"
+          strokeWidth="9"
+        />
+        <circle
+          cx="1003"
+          cy="1003.25"
+          r="958"
+          stroke="white"
+          strokeOpacity="0.05"
+          strokeWidth="90"
+        />
+        <defs>
+          <filter
+            id="filter0_f_1_7903"
+            x="410"
+            y="407.255"
+            width="1185"
+            height="1185"
+            filterUnits="userSpaceOnUse"
+            colorInterpolationFilters="sRGB"
+          >
+            <feFlood floodOpacity="0" result="BackgroundImageFix" />
+            <feBlend
+              mode="normal"
+              in="SourceGraphic"
+              in2="BackgroundImageFix"
+              result="shape"
+            />
+            <feGaussianBlur
+              stdDeviation="109"
+              result="effect1_foregroundBlur_1_7903"
+            />
+          </filter>
+        </defs>
+      </svg>
+
       {/* DESKTOP NFT IMAGE  */}
       <Image
         src="/images/nft-pvp.png"
         alt="Dashboard Nft Image"
         width={1000}
         height={1000}
-        className="hidden lg:block absolute left-0 xl:left-1/2  xl:-translate-x-1/2 -mb-10 z-10 w-[600px] h-[600px] 
-                  lg:bottom-[262px]
-                  xl:w-[calc(100vw-750px)] xl:h-[calc(100vw-750px)] xl:bottom-[136px]
-                  2xl:w-[calc(100vw-700px)] 2xl:max-w-[800px] 2xl:max-h-[800px] 2xl:bottom-[40px]
+        className="hidden lg:block absolute left-0 xl:left-1/2  xl:-translate-x-1/2 xl:-mb-10 z-40 w-[600px] h-[600px] 
+                  xl:w-[calc(100vw-750px)] xl:h-[calc(100vw-750px)] lg:bottom-[40px]
+                  2xl:w-[calc(100vw-700px)] 2xl:max-w-[800px] 2xl:max-h-[800px]
                   3xl:h-[calc(100vw-700px)] 3xl:max-w-[850px] 3xl:max-h-[850px] 
-                  tallXS:!bottom-[138px]"
+                  "
       />
 
       {/* SELECT FROM AVAILABLE NFTs */}
-      <div className=" pl-6 space-y-6 lg:pl-[40px] h-fit absolute w-fit xl:top-1/2  xl:-translate-y-1/2">
+      <div className="tallXL:scale-75 tallXL:2xl:scale-90 tallXL:3xl:scale-100 pl-6 space-y-6 lg:pl-[40px] h-fit absolute w-fit xl:top-1/2  xl:-translate-y-1/2">
         {Array.from({ length: 5 }).map((_, i) => (
           <div
             key={i}
             className={cn(
-              "rounded-2xl transition-colors duration-300 ease-in hover:opacity-100 cursor-pointer p-1",
+              "rounded-2xl transition-transform duration-150 ease-in cursor-pointer p-1 bg-gradient-to-r border-yellow-400",
               {
-                "opacity-100 border-4 bg-clip-content border-yellow-400 bg-white":
+                "border-4 bg-clip-content inset-0 from-white to-white scale-105":
                   activeNFTIndex === i,
-                " inset-0 bg-gradient-to-r from-white to-transparent ":
-                  activeNFTIndex !== i,
+                "inset-0 from-white to-transparent": activeNFTIndex !== i,
               }
             )} // Adjust hover and border color as needed
             onClick={() => setActiveNFTIndex(i)}
