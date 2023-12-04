@@ -7,6 +7,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
 import { useState } from "react";
@@ -120,25 +121,28 @@ export default function PVP() {
           <Button
             variant="game"
             className={cn(
-              "text-[40px] font-semibold font-g8 text-[#353533] !rounded-r-none"
+              "text-[40px] font-semibold font-g8 text-[#353533] !rounded-r-none z-10"
             )}
           >
             <Icons.controller className="w-14 h-14 mr-2" />
             PVP
           </Button>
-          <Select>
+          <Select className="relative">
             <SelectTrigger
               className={cn(
-                "w-[180px] !rounded-l-none",
-                "border-b-8 border-b-blue-500 ",
+                "!rounded-l-none",
                 buttonVariants(),
-                "bg-[#11A7FC] !w-fit"
+                "!bg-[#11A7FC] !w-fit transform !border-b-8 !border-blue-500",
+                "transform active:translate-y-0.5 active:border-none transition duration-150 ease-in-out z-10"
               )}
             ></SelectTrigger>
-            <SelectContent>
-              <SelectItem value="light">Light</SelectItem>
-              <SelectItem value="dark">Dark</SelectItem>
-              <SelectItem value="system">System</SelectItem>
+            <SelectContent className="pb-6">
+              <Tabs>
+                <TabsList className="grid w-full grid-cols-2">
+                  <TabsTrigger value="account">Account</TabsTrigger>
+                  <TabsTrigger value="password">Password</TabsTrigger>
+                </TabsList>
+              </Tabs>
             </SelectContent>
           </Select>
         </div>

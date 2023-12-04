@@ -14,7 +14,7 @@ module.exports = {
     },
     extend: {
       screens: {
-        xs: {raw: "(max-width:370px)"},
+        xs: { raw: "(max-width:370px)" },
         tallXS: { raw: "(max-height: 800px) and (min-width: 1024px)" },
         tallXL: { raw: "(min-height: 800px) and (min-width: 1024px)" },
         tall2XL: { raw: "(min-height: 873px) and (min-width: 1024px)" },
@@ -22,20 +22,20 @@ module.exports = {
         "3xl": "1920px",
       },
       fontFamily: {
-        g8: ['G8', 'sans-serif'],
+        g8: ["G8", "sans-serif"],
       },
       backgroundImage: {
-        '8877-b': "url('/background/8877-b.png')",
-        '8878-b': "url('/background/8878-b.png')",
-        '8879-b': "url('/background/8879-b.png')",
-        '8880-b': "url('/background/8880-b.png')",
-        '8881-b': "url('/background/8881-b.png')",
-        '8882-b': "url('/background/8882-b.png')",
-        '8883-b': "url('/background/8883-b.png')",
-        '8884-b': "url('/background/8884-b.png')",
-        '8885-b': "url('/background/8885-b.png')",
-        '8886-b': "url('/background/8886-b.png')",
-        '8887-b': "url('/background/8887-b.png')",
+        "8877-b": "url('/background/8877-b.png')",
+        "8878-b": "url('/background/8878-b.png')",
+        "8879-b": "url('/background/8879-b.png')",
+        "8880-b": "url('/background/8880-b.png')",
+        "8881-b": "url('/background/8881-b.png')",
+        "8882-b": "url('/background/8882-b.png')",
+        "8883-b": "url('/background/8883-b.png')",
+        "8884-b": "url('/background/8884-b.png')",
+        "8885-b": "url('/background/8885-b.png')",
+        "8886-b": "url('/background/8886-b.png')",
+        "8887-b": "url('/background/8887-b.png')",
       },
       colors: {
         border: "hsl(var(--border))",
@@ -90,7 +90,7 @@ module.exports = {
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
-        "custom": 'pulse 1s ease-in-out infinite'
+        custom: "pulse 1s ease-in-out infinite",
       },
     },
   },
