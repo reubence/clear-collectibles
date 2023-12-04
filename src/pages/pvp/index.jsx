@@ -107,7 +107,19 @@ export default function PVP() {
             )} // Adjust hover and border color as needed
             onClick={() => setActiveNFTIndex(i)}
           >
-            <div className={cn("w-[460px] h-[150px] rounded-2xl")}></div>
+            <div
+              className={cn("w-[460px] h-[150px] rounded-2xl overflow-hidden")}
+            >
+              <Image
+                src={`/images/nft-${
+                  i == 3 ? 3 : i == 1 ? 1 : i == 2 ? "pvp" : 1
+                }.png`}
+                alt="Dashboard Nft Image"
+                width={900}
+                height={900}
+                className="-translate-y-1/4"
+              />
+            </div>
           </div>
         ))}
       </div>
