@@ -1,136 +1,16 @@
-import AllNFT from "@/components/dashboard-pages/all-nft";
-import Distribute from "@/components/dashboard-pages/distribute";
-import Multiplier from "@/components/dashboard-pages/multiplier";
-import ProfileStat from "@/components/dashboard-pages/profile-stat";
-import TaskCompleted from "@/components/dashboard-pages/task-comlpeted";
 import { Button, buttonVariants } from "@/components/ui/button";
-import {
-  Dialog,
-  DialogContent,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from "@/components/ui/dialog";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
 import { Icons } from "@/components/ui/icons";
-import { Input } from "@/components/ui/input";
 import {
-  Popover,
-  PopoverArrow,
-  PopoverContent,
-  PopoverTrigger,
-} from "@/components/ui/popover";
-import { Separator } from "@/components/ui/separator";
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import { cn } from "@/lib/utils";
-import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
 
-const emblemData = [
-  {
-    icon: "/images/emblem.svg",
-    label: "SMB Inception",
-    subheading: "subheading",
-  },
-  {
-    icon: "/images/emblem.svg",
-    label: "SMB Inception",
-    subheading: "subheading",
-  },
-  {
-    icon: "/images/emblem.svg",
-    label: "SMB Inception",
-    subheading: "subheading",
-  },
-  {
-    icon: "/images/emblem.svg",
-    label: "SMB Inception",
-    subheading: "subheading",
-  },
-  {
-    icon: "/images/emblem.svg",
-    label: "SMB Inception",
-    subheading: "subheading",
-  },
-  {
-    icon: "/images/emblem.svg",
-    label: "SMB Inception",
-    subheading: "subheading",
-  },
-  {
-    icon: "/images/emblem.svg",
-    label: "SMB Inception",
-    subheading: "subheading",
-  },
-  {
-    icon: "/images/emblem.svg",
-    label: "SMB Inception",
-    subheading: "subheading",
-  },
-  {
-    icon: "/images/emblem.svg",
-    label: "SMB Inception",
-    subheading: "subheading",
-  },
-];
-const data = [
-  {
-    icon: Icons.profile,
-    label: "Profile",
-    children: <ProfileStat />,
-    value: "profile",
-  },
-  {
-    icon: Icons.tasks,
-    label: "Tasks",
-    children: <TaskCompleted />,
-    value: "tasks",
-  },
-  {
-    icon: Icons.allNFT,
-    label: "All NFTs",
-    children: <AllNFT />,
-    value: "nfts",
-  },
-  {
-    icon: Icons.emblems,
-    label: "Emblems",
-    children: <AllNFT />,
-    value: "emblems",
-  },
-];
-let tabs = [
-  { id: "level", label: "Level" },
-  { id: "booster", label: "Booster Pack" },
-];
-
-let tableData = [
-  {
-    level: "5",
-    booster: "5%",
-  },
-  {
-    level: "10",
-    booster: "10%",
-  },
-  {
-    level: "15",
-    booster: "15%",
-  },
-  {
-    level: "20",
-    booster: "20%",
-  },
-  {
-    level: "25",
-    booster: "25%",
-  },
-];
 export default function PVP() {
   const [editProfile, setEditProfile] = useState(false);
   const [activeNFTIndex, setActiveNFTIndex] = useState(2); // null indicates no active div
@@ -206,11 +86,11 @@ export default function PVP() {
         width={1000}
         height={1000}
         className="hidden lg:block absolute left-0 xl:left-1/2  xl:-translate-x-1/2 -mb-10 z-10 w-[600px] h-[600px] 
-                    lg:bottom-[262px]
-                    xl:w-[calc(100vw-750px)] xl:h-[calc(100vw-750px)] xl:bottom-[136px]
-                    2xl:w-[calc(100vw-700px)] 2xl:max-w-[800px] 2xl:max-h-[800px] 2xl:bottom-[40px]
-                    3xl:h-[calc(100vw-700px)] 3xl:max-w-[850px] 3xl:max-h-[850px] 
-                    tallXS:!bottom-[138px]"
+                  lg:bottom-[262px]
+                  xl:w-[calc(100vw-750px)] xl:h-[calc(100vw-750px)] xl:bottom-[136px]
+                  2xl:w-[calc(100vw-700px)] 2xl:max-w-[800px] 2xl:max-h-[800px] 2xl:bottom-[40px]
+                  3xl:h-[calc(100vw-700px)] 3xl:max-w-[850px] 3xl:max-h-[850px] 
+                  tallXS:!bottom-[138px]"
       />
 
       {/* SELECT FROM AVAILABLE NFTs */}
@@ -232,6 +112,36 @@ export default function PVP() {
             <div className={cn("w-[460px] h-[150px] rounded-2xl")}></div>
           </div>
         ))}
+      </div>
+
+      {/* BUTTONS */}
+      <div className="absolute flex gap-3 right-12 bottom-12 ">
+        <div className="flex">
+          <Button
+            variant="game"
+            className={cn(
+              "text-[40px] font-semibold font-g8 text-[#353533] !rounded-r-none"
+            )}
+          >
+            <Icons.controller className="w-14 h-14 mr-2" />
+            PVP
+          </Button>
+          <Select>
+            <SelectTrigger
+              className={cn(
+                "w-[180px] !rounded-l-none",
+                "border-b-8 border-b-blue-500 ",
+                buttonVariants(),
+                "bg-[#11A7FC] !w-fit"
+              )}
+            ></SelectTrigger>
+            <SelectContent>
+              <SelectItem value="light">Light</SelectItem>
+              <SelectItem value="dark">Dark</SelectItem>
+              <SelectItem value="system">System</SelectItem>
+            </SelectContent>
+          </Select>
+        </div>
       </div>
     </main>
   );
