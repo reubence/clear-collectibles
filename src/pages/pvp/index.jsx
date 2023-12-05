@@ -174,12 +174,18 @@ export default function PVP() {
             ></SelectTrigger>
             <SelectContent>
               <Tabs className="">
-                <TabsList className="grid w-full grid-cols-2">
-                  <TabsTrigger value="pvp">
+                <TabsList className="grid w-full grid-cols-2 h-full gap-2 rounded-[10px] p-2 text-white bg-[#0085CF]">
+                  <TabsTrigger
+                    value="pvp"
+                    className="gap-2 p-1 rounded-[10px] data-[state=active]:text-primary data-[state=active]:bg-white"
+                  >
                     <Icons.controller className="w-7 h-7 rotate-12 fill-primary" />
                     PVP
                   </TabsTrigger>
-                  <TabsTrigger value="coin-flip">
+                  <TabsTrigger
+                    value="coin-flip"
+                    className="gap-2 p-1 px-2 rounded-[10px] data-[state=active]:text-primary data-[state=active]:bg-white"
+                  >
                     <Icons.coin className="w-full h-full mr-2.5" />
                     Coin Flip
                   </TabsTrigger>
