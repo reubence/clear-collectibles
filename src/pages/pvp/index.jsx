@@ -129,7 +129,7 @@ export default function PVP() {
         <Button
           variant="game"
           className={cn(
-            "text-xl font-semibold font-g8 bg-[#E8ECF9] hover:bg-gray-300 border-[#ABB2CB] text-[#B28AF8] relative z-40 !pt-3 !pb-5 group"
+            "text-xl font-semibold font-g8 bg-[#E8ECF9] hover:bg-gray-300 border-[#ABB2CB] text-[#B28AF8] relative z-40 !pt-2 !pb-4 group"
           )}
         >
           {/* grid background mask */}
@@ -148,7 +148,7 @@ export default function PVP() {
             height={70}
             className="w-full h-full z-10"
           />
-          <span className="absolute top-[43px] transform group-active:translate-y-1 z-20">
+          <span className="absolute top-10 transform group-active:translate-y-1 z-20">
             Mythic
           </span>
         </Button>
