@@ -146,9 +146,9 @@ export default function PVP() {
             alt="Dashboard Nft Image"
             width={220}
             height={70}
-            className="w-full h-full"
+            className="w-full h-full z-10"
           />
-          <span className="absolute top-[43px] transform group-active:translate-y-1">
+          <span className="absolute top-[43px] transform group-active:translate-y-1 z-20">
             Mythic
           </span>
         </Button>
@@ -160,7 +160,7 @@ export default function PVP() {
               "text-[40px] font-semibold font-g8 text-[#353533] !rounded-r-none z-40"
             )}
           >
-            <Icons.controller className="w-14 h-14 mr-2" />
+            <Icons.controller className="w-16 h-16 fill-[#353533]" />
             PVP
           </Button>
           <Select className="relative">
@@ -168,15 +168,21 @@ export default function PVP() {
               className={cn(
                 "!rounded-l-none",
                 buttonVariants(),
-                "!bg-[#11A7FC] !w-fit transform !border-b-8 !border-blue-500",
+                "!bg-[#11A7FC] !w-fit transform !border-b-8 !border-blue-500 ",
                 "transform active:translate-y-0.5 active:border-none transition duration-150 ease-in-out z-10"
               )}
             ></SelectTrigger>
-            <SelectContent className="pb-6">
-              <Tabs>
+            <SelectContent>
+              <Tabs className="">
                 <TabsList className="grid w-full grid-cols-2">
-                  <TabsTrigger value="account">Account</TabsTrigger>
-                  <TabsTrigger value="password">Password</TabsTrigger>
+                  <TabsTrigger value="pvp">
+                    <Icons.controller className="w-7 h-7 rotate-12 fill-primary" />
+                    PVP
+                  </TabsTrigger>
+                  <TabsTrigger value="coin-flip">
+                    <Icons.coin className="w-full h-full mr-2.5" />
+                    Coin Flip
+                  </TabsTrigger>
                 </TabsList>
               </Tabs>
             </SelectContent>
