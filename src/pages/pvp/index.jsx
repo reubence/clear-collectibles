@@ -126,11 +126,38 @@ export default function PVP() {
 
       {/* BUTTONS */}
       <div className="absolute flex gap-3 right-12 bottom-12 ">
+        <Button
+          variant="game"
+          className={cn(
+            "text-xl font-semibold font-g8 bg-[#E8ECF9] hover:bg-gray-300 border-[#ABB2CB] text-[#B28AF8] relative z-40 !pt-3 !pb-5 group"
+          )}
+        >
+          {/* grid background mask */}
+          <Image
+            src="/background/grid-mask.png"
+            alt="Dashboard Nft Image"
+            width={234}
+            height={234}
+            className="absolute right-0 bottom-0 w-full h-full object-cover"
+          />
+          {/* mythic badge bg */}
+          <Image
+            src="/background/mythic-badge.svg"
+            alt="Dashboard Nft Image"
+            width={220}
+            height={70}
+            className="w-full h-full"
+          />
+          <span className="absolute top-[43px] transform group-active:translate-y-1">
+            Mythic
+          </span>
+        </Button>
+
         <div className="flex">
           <Button
             variant="game"
             className={cn(
-              "text-[40px] font-semibold font-g8 text-[#353533] !rounded-r-none z-10"
+              "text-[40px] font-semibold font-g8 text-[#353533] !rounded-r-none z-40"
             )}
           >
             <Icons.controller className="w-14 h-14 mr-2" />
