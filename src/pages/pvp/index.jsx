@@ -11,10 +11,14 @@ import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
 import { useState } from "react";
+import { TourProvider, useTour } from "@reactour/tour";
+import { set } from "react-hook-form";
 
 export default function PVP() {
   const [editProfile, setEditProfile] = useState(false);
   const [activeNFTIndex, setActiveNFTIndex] = useState(2); // null indicates no active div
+  const { setIsOpen } = useTour();
+  setIsOpen(true);
 
   return (
     <main className="h-screen w-screen overflow-clip bg-gradient-to-b relative from-[#7E2EF7] to-[#9C93FF]">
@@ -85,7 +89,7 @@ export default function PVP() {
         alt="Dashboard Nft Image"
         width={1000}
         height={1000}
-        className="hidden lg:block absolute left-0 xl:left-1/2  xl:-translate-x-1/2 xl:-mb-10 z-40 w-[600px] h-[600px] 
+        className="step3 hidden lg:block absolute left-0 xl:left-1/2  xl:-translate-x-1/2 xl:-mb-10 z-40 w-[600px] h-[600px] 
                   xl:w-[calc(100vw-750px)] xl:h-[calc(100vw-750px)] lg:bottom-[40px]
                   2xl:w-[calc(100vw-700px)] 2xl:max-w-[800px] 2xl:max-h-[800px]
                   3xl:h-[calc(100vw-700px)] 3xl:max-w-[850px] 3xl:max-h-[850px] 
@@ -103,6 +107,7 @@ export default function PVP() {
                 "border-4 bg-clip-content inset-0 from-white to-white scale-105":
                   activeNFTIndex === i,
                 "inset-0 from-white to-transparent": activeNFTIndex !== i,
+                step1: i == 2,
               }
             )} // Adjust hover and border color as needed
             onClick={() => setActiveNFTIndex(i)}
@@ -117,7 +122,7 @@ export default function PVP() {
                 alt="Dashboard Nft Image"
                 width={900}
                 height={900}
-                className="-translate-y-1/4"
+                className={cn("-translate-y-1/4", { step1: i == 2 })}
               />
             </div>
           </div>
@@ -157,7 +162,7 @@ export default function PVP() {
           <Button
             variant="game"
             className={cn(
-              "text-[40px] font-semibold font-g8 text-[#353533] !rounded-r-none z-40"
+              "step2 text-[40px] font-semibold font-g8 text-[#353533] !rounded-r-none z-40"
             )}
           >
             <Icons.controller className="w-16 h-16 fill-[#353533]" />
