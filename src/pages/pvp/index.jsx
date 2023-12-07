@@ -11,14 +11,13 @@ import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
 import { useState } from "react";
-import { TourProvider, useTour } from "@reactour/tour";
-import { set } from "react-hook-form";
+import { TourProvider, useTour, withTour } from "@reactour/tour";
+import TourButton from "@/components/ui/tour-button";
 
 export default function PVP() {
   const [editProfile, setEditProfile] = useState(false);
   const [activeNFTIndex, setActiveNFTIndex] = useState(2); // null indicates no active div
-  const { setIsOpen } = useTour();
-  setIsOpen(true);
+  const { setIsOpen, isOpen } = useTour();
 
   return (
     <main className="h-screen w-screen overflow-clip bg-gradient-to-b relative from-[#7E2EF7] to-[#9C93FF]">
@@ -123,6 +122,8 @@ export default function PVP() {
                 width={900}
                 height={900}
                 className={cn("-translate-y-1/4", { step1: i == 2 })}
+                // dummy interaction to start tour guide - delete later
+                onClick={i == 2 ? () => setIsOpen(true) : null}
               />
             </div>
           </div>
@@ -200,6 +201,9 @@ export default function PVP() {
           </Select>
         </div>
       </div>
+
+      {/* REACT-TOURS BUTTONS */}
+      <TourButton />
     </main>
   );
 }

@@ -11,6 +11,8 @@ import "swiper/css/navigation";
 import "swiper/css/effect-coverflow";
 import "swiper/css/pagination";
 import "../styles/styles.css";
+import { Button } from "@/components/ui/button";
+import { ArrowRight } from "lucide-react";
 
 // Font files can be colocated inside of `app`
 const styles = {
@@ -61,21 +63,22 @@ export default function App({
         <TourProvider
           steps={steps}
           styles={{
-            maskArea: (base) => ({ ...base, rx: "16px" }),
+            maskArea: (base) => ({
+              ...base,
+              rx: "16px",
+            }),
             popover: (base) => ({
               ...base,
               "--reactour-accent": "#FCD111",
               backgroundColor: "transparent",
               color: "#000000",
               fontFamily: "g8",
-              fontSize: "28px",
-              maxWidth: "585px",
               boxShadow: "none",
-              marginLeft: "50px",
+              maxWidth: "600px",
+              margin: "0 0 40px 40px",
             }),
           }}
           ContentComponent={ContentComponent}
-          components={{ Badge, Close }}
         >
           <div className={cn(`min-h-screen  lg:w-full relative`)}>
             <Component {...pageProps} />
@@ -88,45 +91,35 @@ export default function App({
 }
 
 function ContentComponent(props) {
-  const isLastStep = props.currentStep === props.steps.length - 1;
   const content = props.steps[props.currentStep].content;
   return (
-    <div style={{ border: "5px solid red", padding: 10, background: "white" }}>
-      {/* Check if the step.content is a function or a string */}
-      {typeof content === "function"
-        ? content({ ...props, someOtherStuff: "Custom Text" })
-        : content}
-      <button
-        onClick={() => {
-          if (isLastStep) {
-            props.setIsOpen(false);
-          } else {
-            props.setCurrentStep((s) => s + 1);
-          }
-        }}
+    <>
+      <div
+        className={cn(
+          "absolute -left-7",
+          "bg-yellow-400 rounded-full px-3.5 py-1 text-3xl font-semibold font-g8 w-fit"
+        )}
       >
-        {isLastStep ? "x" : ">"}
-      </button>
-    </div>
-  );
-}
-function Badge({ children }) {
-  return (
-    <components.Badge
-      styles={{ badge: (base) => ({ ...base, backgroundColor: "red" }) }}
-    >
-      👉 {children} 👈
-    </components.Badge>
-  );
-}
+        {props.currentStep + 1}{" "}
+      </div>
+      <h2 className="font-bold text-[32px] font-g8 text-white">
+        {props.currentStep == 0
+          ? "First Step"
+          : props.currentStep == 1
+          ? "Second Step"
+          : "Third Step"}
+      </h2>
 
-function Close({ onClick }) {
-  return (
-    <button
-      onClick={onClick}
-      style={{ position: "absolute", right: 0, top: 0 }}
-    >
-      x
-    </button>
+      <div
+        className={cn("font-g8 text-[28px] text-white font-semibold", {
+          "": props.currentStep == 0,
+        })}
+      >
+        {/* Check if the step.content is a function or a string */}
+        {typeof content === "function"
+          ? content({ ...props, someOtherStuff: "Custom Text" })
+          : content}
+      </div>
+    </>
   );
 }
