@@ -18,9 +18,15 @@ export default function PVP() {
   const [editProfile, setEditProfile] = useState(false);
   const [activeNFTIndex, setActiveNFTIndex] = useState(2); // null indicates no active div
   const { setIsOpen, isOpen } = useTour();
-
+  if (window.innerWidth <= 1024) {
+    screen.orientation.lock("landscape");
+  }
   return (
-    <main className="h-screen w-screen overflow-clip bg-gradient-to-b relative from-[#7E2EF7] to-[#9C93FF]">
+    <main
+      className={
+        "h-screen w-screen overflow-clip bg-gradient-to-b relative from-[#7E2EF7] to-[#9C93FF]"
+      }
+    >
       {/* BACKGROUND ELLIPSE SVGs */}
       <svg
         width="2006"

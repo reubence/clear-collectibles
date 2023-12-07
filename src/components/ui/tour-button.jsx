@@ -18,7 +18,7 @@ class TourButton extends Component {
       >
         <Button
           className={cn(
-            "!bg-[#11A7FC] !w-fit transform !border-b-8 !border-blue-500",
+            "!bg-[#11A7FC] !w-fit transform !border-b-8 !border-blue-500 !py-8",
             "transform active:translate-y-1 active:border-none transition duration-150 ease-in-out z-10",
             { hidden: this.props.currentStep === 0 }
           )}
