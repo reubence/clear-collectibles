@@ -61,6 +61,7 @@ export default function App({
   } else {
     return (
       <SessionProvider session={session}>
+        {/* STEP BY STEP TUTORIAL WRAPPER - this component needs to wrap around the root of the app */}
         <TourProvider
           steps={steps}
           styles={{

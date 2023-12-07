@@ -13,6 +13,7 @@ import Image from "next/image";
 import { useState } from "react";
 import { TourProvider, useTour, withTour } from "@reactour/tour";
 import TourButton from "@/components/ui/tour-button";
+import PVPBackgroundLottie from "@/components/Lottie/PVPBackgroundLottie";
 
 export default function PVP() {
   const [editProfile, setEditProfile] = useState(false);
@@ -27,66 +28,8 @@ export default function PVP() {
         "h-screen w-screen overflow-clip bg-gradient-to-b relative from-[#7E2EF7] to-[#9C93FF]"
       }
     >
-      {/* BACKGROUND ELLIPSE SVGs */}
-      <svg
-        width="2006"
-        height="2007"
-        viewBox="0 0 2006 2007"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-        className="absolute left-1/2 transform -translate-x-1/2 -top-[60%] scale-75 xl:-top-[40%] 2xl:-top-[15%] 2xl:scale-100 3xl:-top-[5%] z-0"
-      >
-        <g filter="url(#filter0_f_1_7903)">
-          <circle cx="1002.5" cy="999.755" r="374.5" fill="#C5ACFF" />
-        </g>
-        <circle
-          cx="1002.5"
-          cy="985.755"
-          r="464"
-          stroke="white"
-          stroke-opacity="0.1"
-          stroke-width="41"
-        />
-        <circle
-          cx="1003"
-          cy="1003.25"
-          r="602.5"
-          stroke="white"
-          strokeOpacity="0.06"
-          strokeWidth="9"
-        />
-        <circle
-          cx="1003"
-          cy="1003.25"
-          r="958"
-          stroke="white"
-          strokeOpacity="0.05"
-          strokeWidth="90"
-        />
-        <defs>
-          <filter
-            id="filter0_f_1_7903"
-            x="410"
-            y="407.255"
-            width="1185"
-            height="1185"
-            filterUnits="userSpaceOnUse"
-            colorInterpolationFilters="sRGB"
-          >
-            <feFlood floodOpacity="0" result="BackgroundImageFix" />
-            <feBlend
-              mode="normal"
-              in="SourceGraphic"
-              in2="BackgroundImageFix"
-              result="shape"
-            />
-            <feGaussianBlur
-              stdDeviation="109"
-              result="effect1_foregroundBlur_1_7903"
-            />
-          </filter>
-        </defs>
-      </svg>
+      {/* BACKGROUND VIDEO ANIMATION */}
+      <PVPBackgroundLottie />
 
       {/* DESKTOP NFT IMAGE  */}
       <Image
@@ -213,3 +156,21 @@ export default function PVP() {
     </main>
   );
 }
+
+// components/BackgroundVideo.js
+const BackgroundVideo = ({ src }) => {
+  return (
+    <div className="fixed top-0 left-0 w-full h-full z-[-1] overflow-hidden">
+      <video
+        autoPlay
+        loop
+        muted
+        playsInline
+        className="min-w-full min-h-full max-w-none"
+        src={src}
+      >
+        Your browser does not support HTML5 video.
+      </video>
+    </div>
+  );
+};
