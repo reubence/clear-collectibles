@@ -6,7 +6,7 @@ import * as ProgressPrimitive from "@radix-ui/react-progress";
 import { cn } from "@/lib/utils";
 
 const Progress = React.forwardRef(
-  ({ className, value, max, ...props }, ref) => (
+  ({ className, value, max, fill, placeholder, ...props }, ref) => (
     <ProgressPrimitive.Root
       ref={ref}
       className={cn(
@@ -15,8 +15,16 @@ const Progress = React.forwardRef(
       )}
       {...props}
     >
+      <span
+        className={cn(
+          "absolute text-white text-[26px] left-1/2 -translate-x-1/2 whitespace-nowrap top-1/2 -translate-y-1/2 z-10 animate-pulse ",
+          { hidden: !placeholder }
+        )}
+      >
+        {placeholder}
+      </span>
       <ProgressPrimitive.Indicator
-        className="h-full w-full flex-1 bg-primary transition-all"
+        className={cn("h-full w-full flex-1 bg-primary transition-all", fill)}
         style={{
           transform: `translateX(-${(max - (value || 0)) / (max / 100)}%)`,
         }}
