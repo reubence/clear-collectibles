@@ -4,8 +4,7 @@
 
 @font-face {
   font-family: G8;
-  src:
-       url('/fonts/G8321GX.ttf') format('truetype');
+  src: url("/fonts/G8321GX.ttf") format("truetype");
   font-weight: 100, 900;
   font-style: normal;
   font-display: swap;
@@ -17,7 +16,7 @@
   }
 
   ::-webkit-scrollbar-track {
-    background: #FFFFFF;
+    background: #ffffff;
   }
 
   ::-webkit-scrollbar-thumb {
@@ -161,15 +160,23 @@
         inset #fff 0 -0.75em 0 0;
     }
   }
+
+  .font-outline-2 {
+    -webkit-text-stroke: 2px #f7ab16;
+  }
+  .font-outline-4 {
+    -webkit-text-stroke: 4px black;
+  }
 }
 
-html,body{
-  min-height: 100vh!important;
+html,
+body {
+  min-height: 100vh !important;
   height: 100%;
-  background-color: #D7E8EF;
+  background-color: #d7e8ef;
 }
 
-{
+ {
   --swiper-navigation-size: 44px;
   --swiper-navigation-top-offset: 50%;
   --swiper-navigation-sides-offset: 10px;
@@ -180,9 +187,9 @@ html,body{
   height: 100%;
 }
 
-@media(max-width: 1024px){
-  html{
-    overflow-y: hidden!important;
+@media (max-width: 1024px) {
+  html {
+    overflow-y: hidden !important;
   }
 }
 
@@ -203,8 +210,6 @@ html,body{
   }
 }
 
-
-
 .swiper-slide img {
   display: block;
   width: 100%;
@@ -216,7 +221,6 @@ html,body{
   }
 }
 
-#login-container{
-  height:100%;
-
+#login-container {
+  height: 100%;
 }
