@@ -37,11 +37,35 @@ const steps = [
   {
     selector: ".step3",
     content: "Losing the game means losing the nft",
-    position: "right",
-    padding: -120,
+    position: (positionProps, prevRect) => [
+      positionProps.windowWidth / 2 + 340,
+      positionProps.windowHeight / 2 - 340,
+    ],
+    padding: { mask: [0, -70, -170, -70] },
   },
-
-  // ...
+  // MOBILE STEPS
+  {
+    selector: ".step1m",
+    content: "Before entering the game you need to select your nft",
+    position: (positionProps, prevRect) => [
+      positionProps.windowWidth / 4 - 10,
+      positionProps.windowHeight / 2 - 100,
+    ],
+  },
+  {
+    selector: ".step2m",
+    content: "Each game costs a little Bubbles",
+    position: "top",
+  },
+  {
+    selector: ".step3m",
+    content: "Losing the game means losing the nft",
+    position: (positionProps, prevRect) => [
+      positionProps.windowWidth / 2 + 110,
+      positionProps.windowHeight / 2 - 80,
+    ],
+    padding: { mask: [0, -50, -100, -50] },
+  },
 ];
 
 export default function App({
@@ -49,6 +73,7 @@ export default function App({
   pageProps: { session, ...pageProps },
 }) {
   const [mounted, setMounted] = useState(false);
+  const isWindowxl = typeof window !== "undefined" && window.innerWidth > 1536;
 
   useEffect(() => {
     setMounted(true);
@@ -63,7 +88,8 @@ export default function App({
       <SessionProvider session={session}>
         {/* STEP BY STEP TUTORIAL WRAPPER - this component needs to wrap around the root of the app */}
         <TourProvider
-          steps={steps}
+          steps={isWindowxl ? steps.slice(0, 3) : steps.slice(3, 6)}
+          position={"right"}
           styles={{
             maskArea: (base) => ({
               ...base,
@@ -71,13 +97,10 @@ export default function App({
             }),
             popover: (base) => ({
               ...base,
-              "--reactour-accent": "#FCD111",
               backgroundColor: "transparent",
-              color: "#000000",
-              fontFamily: "g8",
               boxShadow: "none",
-              maxWidth: "600px",
-              margin: "0 0 40px 40px",
+              maxWidth: isWindowxl ? "544px" : "344px",
+              margin: isWindowxl ? "0 0 40px 40px" : "0 0 0px 40px",
             }),
           }}
           ContentComponent={ContentComponent}

@@ -5,7 +5,7 @@ import { Icons } from "./icons";
 
 function RewardItem({ claimable = false, onClick, reward, ...props }) {
   return (
-    <div className="relative font-g8 overflow-visible m-6">
+    <div className="relative font-g8 overflow-visible m-6 translate-x-full">
       <div
         className={cn(
           "relative w-[236px] h-[304px] rounded-2xl lg:rounded-3xl p-1 overflow-hidden",

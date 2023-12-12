@@ -3,7 +3,7 @@ import { Icons } from "./icons";
 import { Progress } from "./progress";
 import { Button } from "./button";
 
-function ({ timer }) {
+function GameSearching({ timer }) {
   return (
     <>
       <Icons.gamepad className="" />
