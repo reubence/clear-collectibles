@@ -16,6 +16,7 @@ import TourButton from "@/components/ui/tour-button";
 import PVPBackgroundLottie from "@/components/Lottie/PVPBackgroundLottie";
 import { Separator } from "@/components/ui/separator";
 import NavBar from "@/components/layout/navbar";
+import Link from "next/link";
 
 const data = [
   {
@@ -55,10 +56,12 @@ export default function PVP() {
   const [gameMode, setGameMode] = useState("PVP");
   const [rarity, setRarity] = useState("Mythic");
   const [rewardPointsNeeded, setRewardPointsNeeded] = useState(300);
-  const [rewardProgress, setRewardProgress] = useState(146);
+  const [rewardProgress, setRewardProgress] = useState(346);
   const [claimable, setClaimable] = useState(
     rewardPointsNeeded <= rewardProgress
   );
+  const [rewardsLevel, setRewardsLevel] = useState(6);
+
   const [avatar, setAvatar] = useState(null);
   const { setIsOpen, isOpen } = useTour();
 
@@ -156,9 +159,11 @@ export default function PVP() {
       </div>
 
       {/* REWARD HEXAGON BADGE */}
-      <div
+      <Link
+        href="/reward"
         className={cn(
-          "absolute w-fit flex items-center right-8 top-8 2xl:right-12 2xl:top-[16%] translate-x-14"
+          "group absolute w-fit flex items-center right-8 top-8 2xl:right-12 2xl:top-[16%] translate-x-6 2xl:translate-x-12 transition-all duration-75 ease-in cursor-pointer",
+          "hover:scale-105 active:scale-95"
         )}
       >
         <Image
@@ -166,28 +171,42 @@ export default function PVP() {
           alt="Dashboard Nft Image"
           width={116}
           height={110}
-          className={cn("w-32 h-28 z-40")}
+          className={cn(
+            "w-1/2 h-1/2 2xl:w-32 2xl:h-28 z-40 transition-all duration-150 ease-in-out",
+            "group-hover:rotate-12 group-hover:scale-110 2xl:group-hover:scale-125"
+          )}
         />
 
         <div
           className={cn(
-            "relative bg-black/25 p-2 w-full h-fit flex flex-col text-white text-2xl font-bold rounded-lg lg:rounded-2xl -translate-x-14",
+            "relative bg-black/25 p-1 2xl:p-2 w-full h-fit flex flex-col text-white text-xs 2xl:text-2xl font-bold rounded-lg lg:rounded-2xl -translate-x-6 2xl:-translate-x-12",
             {
-              "border-2 border-green-500 bg-clip-content inset-0 p-[3px] bg-[#56E600] gap-0":
+              "border 2xl:border-2 border-green-500 bg-clip-content inset-0 p-0.5 2xl:p-[3px] bg-[#56E600] gap-0":
                 claimable,
             }
           )}
         >
-          <div className="ml-12 flex place-items-end p-0.5">
-            {rewardProgress}/{rewardPointsNeeded}
+          {/* LEVEL BADGE */}
+          <div className="absolute right-0 -translate-y-1/2 px-2 py-1 2xl:px-4 2xl:py-2.5 rounded-full bg-white text 2xl:text-3xl text-primary">
+            {rewardsLevel}
+          </div>
+
+          <div className="ml-5 2xl:ml-11 flex place-items-end p-[1px] 2xl:p-1">
+            <span className={cn({ "text-yellow-400": !claimable })}>
+              {rewardProgress}
+            </span>
+            /{rewardPointsNeeded}
           </div>
 
           {/* progress bar */}
-          <div className="min-w-[267px] h-8 bg-black/30 relative rounded-xl">
+          <div className="min-w-[124px] 2xl:min-w-[267px] h-4 2xl:h-8 bg-black/30 relative rounded-md 2xl:rounded-xl">
             <div
               className={cn(
-                "absolute top-0 left-0 h-full bg-yellow-400 rounded-xl overflow-hidden",
-                { "rounded-tr-none bg-green-500 p-0.5": claimable }
+                "absolute top-0 left-0 h-full bg-yellow-400 rounded-md 2xl:rounded-xl overflow-hidden",
+                {
+                  "!rounded-tr-none bg-green-500 pl-5 2xl:pb-2.5 2xl:pl-12":
+                    claimable,
+                }
               )}
               style={{
                 width: `${
@@ -195,7 +214,6 @@ export default function PVP() {
                     ? 100
                     : (rewardProgress / rewardPointsNeeded) * 100
                 }%`,
-                paddingLeft: "48px",
               }}
             >
               {claimable && "Claim Reward"}
@@ -208,7 +226,7 @@ export default function PVP() {
             </div>
           </div>
         </div>
-      </div>
+      </Link>
 
       {/* GAME MODE BUTTONS */}
       <div className="absolute flex gap-3 right-8 bottom-8 2xl:right-12 2xl:bottom-12 ">
