@@ -28,7 +28,7 @@ const data = [
     id: 443,
     bubbles: 4952,
     level: 1,
-    src: "/images/nft-3.png",
+    src: "/images/nft-1.png",
   },
   {
     id: 543,
@@ -40,19 +40,25 @@ const data = [
     id: 643,
     bubbles: 6952,
     level: 10,
-    src: "/images/nft-3.png",
+    src: "/images/nft-1.png",
   },
   {
     id: 743,
     bubbles: 7952,
     level: 4,
-    src: "/images/nft-2.png",
+    src: "/images/nft-1.png",
   },
 ];
 
 export default function PVP() {
   const [activeNFT, setActiveNFT] = useState(data[2]);
   const [gameMode, setGameMode] = useState("PVP");
+  const [rarity, setRarity] = useState("Mythic");
+  const [rewardPointsNeeded, setRewardPointsNeeded] = useState(300);
+  const [rewardProgress, setRewardProgress] = useState(146);
+  const [claimable, setClaimable] = useState(
+    rewardPointsNeeded <= rewardProgress
+  );
   const [avatar, setAvatar] = useState(null);
   const { setIsOpen, isOpen } = useTour();
 
@@ -149,6 +155,61 @@ export default function PVP() {
         ))}
       </div>
 
+      {/* REWARD HEXAGON BADGE */}
+      <div
+        className={cn(
+          "absolute w-fit flex items-center right-8 top-8 2xl:right-12 2xl:top-[16%] translate-x-14"
+        )}
+      >
+        <Image
+          src="/icons2/hexagon_rewards.png"
+          alt="Dashboard Nft Image"
+          width={116}
+          height={110}
+          className={cn("w-32 h-28 z-40")}
+        />
+
+        <div
+          className={cn(
+            "relative bg-black/25 p-2 w-full h-fit flex flex-col text-white text-2xl font-bold rounded-lg lg:rounded-2xl -translate-x-14",
+            {
+              "border-2 border-green-500 bg-clip-content inset-0 p-[3px] bg-[#56E600] gap-0":
+                claimable,
+            }
+          )}
+        >
+          <div className="ml-12 flex place-items-end p-0.5">
+            {rewardProgress}/{rewardPointsNeeded}
+          </div>
+
+          {/* progress bar */}
+          <div className="min-w-[267px] h-8 bg-black/30 relative rounded-xl">
+            <div
+              className={cn(
+                "absolute top-0 left-0 h-full bg-yellow-400 rounded-xl overflow-hidden",
+                { "rounded-tr-none bg-green-500 p-0.5": claimable }
+              )}
+              style={{
+                width: `${
+                  rewardPointsNeeded <= rewardProgress
+                    ? 100
+                    : (rewardProgress / rewardPointsNeeded) * 100
+                }%`,
+                paddingLeft: "48px",
+              }}
+            >
+              {claimable && "Claim Reward"}
+              <div
+                className={cn(
+                  "absolute bottom-0 left-0 w-full h-1/2 bg-yellow-600/50",
+                  { hidden: claimable }
+                )}
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+
       {/* GAME MODE BUTTONS */}
       <div className="absolute flex gap-3 right-8 bottom-8 2xl:right-12 2xl:bottom-12 ">
         <div className="absolute flex flex-col gap-1.5 2xl:gap-2.5 items-end bottom-36 2xl:bottom-60 right-0 z-40">
@@ -178,7 +239,7 @@ export default function PVP() {
             height={234}
             className="absolute right-0 bottom-0 w-full h-full object-cover"
           />
-          {/* mythic badge bg */}
+          {/* rarity badge bg */}
           <Image
             src="/background/mythic-badge.svg"
             alt="Dashboard Nft Image"
@@ -187,7 +248,7 @@ export default function PVP() {
             className="w-32 h-10 2xl:w-full 2xl:h-full z-10"
           />
           <span className="absolute top-6 2xl:top-10 transform group-active:translate-y-[1px] 2xl:group-active:translate-y-1 z-20">
-            Mythic
+            {rarity}
           </span>
         </Button>
 
@@ -235,6 +296,7 @@ export default function PVP() {
                     value="coin-flip"
                     className="gap-2 p-1 px-2 rounded-[10px] data-[state=active]:text-primary data-[state=active]:bg-white"
                     onClick={() => setGameMode("Coin Flip")}
+                    data-state={gameMode === "Coin Flip" ? "active" : ""}
                   >
                     <Icons.coin className="w-full h-full mr-2.5" />
                     Coin Flip
