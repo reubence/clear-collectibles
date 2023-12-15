@@ -17,9 +17,42 @@ import PVPBackgroundLottie from "@/components/Lottie/PVPBackgroundLottie";
 import { Separator } from "@/components/ui/separator";
 import NavBar from "@/components/layout/navbar";
 
+const data = [
+  {
+    id: 842,
+    bubbles: 8952,
+    level: 2,
+    src: "/images/nft-1.png",
+  },
+  {
+    id: 443,
+    bubbles: 4952,
+    level: 1,
+    src: "/images/nft-3.png",
+  },
+  {
+    id: 543,
+    bubbles: 5952,
+    level: 3,
+    src: "/images/nft-pvp.png",
+  },
+  {
+    id: 643,
+    bubbles: 6952,
+    level: 10,
+    src: "/images/nft-3.png",
+  },
+  {
+    id: 743,
+    bubbles: 7952,
+    level: 4,
+    src: "/images/nft-2.png",
+  },
+];
+
 export default function PVP() {
-  const [editProfile, setEditProfile] = useState(false);
-  const [activeNFTIndex, setActiveNFTIndex] = useState(2); // null indicates no active div
+  const [activeNFT, setActiveNFT] = useState(data[2]); // null indicates no active div
+
   const [avatar, setAvatar] = useState(null);
   const { setIsOpen, isOpen } = useTour();
 
@@ -39,9 +72,9 @@ export default function PVP() {
       {/* BACKGROUND VIDEO ANIMATION */}
       <PVPBackgroundLottie />
 
-      {/* DESKTOP NFT IMAGE  */}
+      {/* NFT IMAGE  */}
       <Image
-        src="/images/nft-pvp.png"
+        src={activeNFT?.src}
         alt="Dashboard Nft Image"
         width={1000}
         height={1000}
@@ -54,56 +87,57 @@ export default function PVP() {
 
       {/* SELECT FROM AVAILABLE NFTs MOBILE */}
       <div className="step1m absolute 2xl:hidden grid grid-cols-2 gap-3 w-fit ml-10 top-1/2 -translate-y-1/2">
-        {Array.from({ length: 8 }).map((_, i) => (
-          <div
-            className={cn(
-              "w-20 h-20 rounded-xl border border-black/30 bg-black/20 relative overflow-hidden transition-all duration-150 ease-in cursor-pointer",
-              {
-                "border-2 bg-clip-content inset-0 p-0.5 bg-transparent border-yellow-400":
-                  activeNFTIndex === i,
-                "pointer-events-none": i > 2,
-              }
-            )}
-            key={i}
-            onClick={() => setActiveNFTIndex(i)}
-          >
-            <Image
-              src={"/images/nft-pvp.png"}
-              alt="Dashboard Nft Image"
-              width={70}
-              height={70}
+        {
+          //adding 3 empty divs to make the grid 2x3
+          data.concat(Array.from({ length: 3 })).map((nft, i) => (
+            <div
+              className={cn(
+                "w-20 h-20 rounded-xl border border-black/30 bg-black/20 relative overflow-hidden transition-all duration-150 ease-in cursor-pointer",
+                {
+                  "border-2 bg-clip-content inset-0 p-0.5 bg-transparent border-yellow-400":
+                    activeNFT.id === nft?.id,
+                  "pointer-events-none": i > 2,
+                }
+              )}
               key={i}
-              className={cn("w-full h-full rounded-lg", "bg-white/90", {
-                hidden: i > 2,
-              })}
-            />
-          </div>
-        ))}
+              onClick={() => setActiveNFT(nft)}
+            >
+              <Image
+                src={nft?.src || "/images/nft-pvp.png"}
+                alt="Dashboard Nft Image"
+                width={70}
+                height={70}
+                key={i}
+                className={cn("w-full h-full rounded-lg", "bg-white/90", {
+                  hidden: i > 2,
+                })}
+              />
+            </div>
+          ))
+        }
       </div>
 
       {/* SELECT FROM AVAILABLE NFTs DESKTOP */}
       <div className="hidden 2xl:block tallXL:scale-90 tallXL:3xl:scale-100 space-y-6 pl-[40px] tallXL:pt-20 h-fit absolute w-fit top-1/2  -translate-y-1/2">
-        {Array.from({ length: 5 }).map((_, i) => (
+        {data.map((nft, i) => (
           <div
             key={i}
             className={cn(
               "rounded-2xl transition-transform duration-150 ease-in cursor-pointer p-1 bg-gradient-to-r border-yellow-400",
               {
                 "border-4 bg-clip-content inset-0 from-white to-white scale-105":
-                  activeNFTIndex === i,
-                "inset-0 from-white to-transparent": activeNFTIndex !== i,
+                  activeNFT.id === nft?.id,
+                "inset-0 from-white to-transparent": activeNFT.id !== nft?.id,
                 step1: i == 2,
               }
             )} // Adjust hover and border color as needed
-            onClick={() => setActiveNFTIndex(i)}
+            onClick={() => setActiveNFT(nft)}
           >
             <div
               className={cn("w-[460px] h-[150px] rounded-2xl overflow-hidden")}
             >
               <Image
-                src={`/images/nft-${
-                  i == 3 ? 3 : i == 1 ? 1 : i == 2 ? "pvp" : 1
-                }.png`}
+                src={nft?.src || "/images/nft-pvp.png"}
                 alt="Dashboard Nft Image"
                 width={900}
                 height={900}
@@ -119,12 +153,14 @@ export default function PVP() {
       <div className="absolute flex gap-3 right-8 bottom-8 2xl:right-12 2xl:bottom-12 ">
         <div className="absolute flex flex-col gap-1.5 2xl:gap-2.5 items-end bottom-36 2xl:bottom-60 right-0 z-40">
           <div className="flex gap-4 items-baseline font-bold text-3xl 2xl:text-6xl text-white">
-            <span className="text-base 2xl:text-3xl font-normal">LV.2</span>
+            <span className="text-base 2xl:text-3xl font-normal">
+              LV.{activeNFT.level}
+            </span>
             <Separator className="h-4 2xl:h-6 rounded-full w-0.5 bg-white/80" />
-            #852
+            #{activeNFT.id}
           </div>
           <div className="bg-black/30 rounded-lg 2xl:rounded-2xl py-2.5 px-4 font-bold text-xs 2xl:text-2xl text-white">
-            Total Bubbles 🫧: 8,952
+            Total Bubbles 🫧: {activeNFT.bubbles.toLocaleString()}
           </div>
         </div>
 
@@ -161,6 +197,7 @@ export default function PVP() {
           PLAY!
         </Button>
 
+        {/* DESKTOP PLAY BUTTON */}
         <div className="hidden 2xl:flex">
           <Button
             variant="game"
