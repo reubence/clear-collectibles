@@ -277,7 +277,12 @@ export default function PVP() {
         </Button>
 
         {/* DESKTOP PLAY BUTTON */}
-        <div className="hidden 2xl:flex">
+        <div className="hidden 2xl:flex relative">
+          <div className="hidden w-full 2xl:block whitespace-nowrap absolute -top-11 text-xl font-bold text-white bg-green-500 pt-2 pb-6 px-3 rounded-t-2xl">
+            Bubbles required:{" "}
+            <span className="px-3 py-1.5 bg-black/30 rounded-lg">🫧234</span>
+          </div>
+
           <Button
             variant="game"
             className={cn(
