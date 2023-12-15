@@ -51,8 +51,8 @@ const data = [
 ];
 
 export default function PVP() {
-  const [activeNFT, setActiveNFT] = useState(data[2]); // null indicates no active div
-
+  const [activeNFT, setActiveNFT] = useState(data[2]);
+  const [gameMode, setGameMode] = useState("PVP");
   const [avatar, setAvatar] = useState(null);
   const { setIsOpen, isOpen } = useTour();
 
@@ -125,7 +125,7 @@ export default function PVP() {
             className={cn(
               "rounded-2xl transition-transform duration-150 ease-in cursor-pointer p-1 bg-gradient-to-r border-yellow-400",
               {
-                "border-4 bg-clip-content inset-0 from-white to-white scale-105":
+                "border-4 bg-clip-content inset-0 p-0.5 from-white to-white scale-105":
                   activeNFT.id === nft?.id,
                 "inset-0 from-white to-transparent": activeNFT.id !== nft?.id,
                 step1: i == 2,
@@ -206,7 +206,7 @@ export default function PVP() {
             )}
           >
             <Icons.controller className="w-16 h-16 fill-[#353533]" />
-            PVP
+            {gameMode}
           </Button>
           <Select className="relative">
             <SelectTrigger
@@ -215,12 +215,18 @@ export default function PVP() {
                 buttonVariants({ variant: "gameSecondary" })
               )}
             ></SelectTrigger>
-            <SelectContent>
+            <SelectContent
+              className={cn({
+                "data-[side=top]:!w-[428px]": gameMode === "Coin Flip",
+              })}
+            >
               <Tabs className="">
                 <TabsList className="grid w-full grid-cols-2 h-full gap-2 rounded-[10px] p-2 text-white bg-[#0085CF]">
                   <TabsTrigger
                     value="pvp"
                     className="gap-2 p-1 rounded-[10px] data-[state=active]:text-primary data-[state=active]:bg-white"
+                    onClick={() => setGameMode("PVP")}
+                    data-state={gameMode === "PVP" ? "active" : ""}
                   >
                     <Icons.controller className="w-7 h-7 rotate-12 fill-primary" />
                     PVP
@@ -228,6 +234,7 @@ export default function PVP() {
                   <TabsTrigger
                     value="coin-flip"
                     className="gap-2 p-1 px-2 rounded-[10px] data-[state=active]:text-primary data-[state=active]:bg-white"
+                    onClick={() => setGameMode("Coin Flip")}
                   >
                     <Icons.coin className="w-full h-full mr-2.5" />
                     Coin Flip
