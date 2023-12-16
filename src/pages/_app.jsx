@@ -38,8 +38,8 @@ const steps = [
     selector: ".step3",
     content: "Losing the game means losing the nft",
     position: (positionProps, prevRect) => [
-      positionProps.windowWidth / 2 + 340,
-      positionProps.windowHeight / 2 - 340,
+      positionProps.windowWidth * 0.7,
+      positionProps.windowHeight * 0.4,
     ],
     padding: { mask: [0, -70, -170, -70] },
   },
@@ -48,8 +48,12 @@ const steps = [
     selector: ".step1m",
     content: "Before entering the game you need to select your nft",
     position: (positionProps, prevRect) => [
-      positionProps.windowWidth / 4 - 10,
-      positionProps.windowHeight / 2 - 100,
+      positionProps.windowWidth <= 1024
+        ? 230
+        : positionProps.windowWidth > 1280
+        ? 400
+        : 300,
+      positionProps.windowHeight * 0.35,
     ],
   },
   {
@@ -61,10 +65,12 @@ const steps = [
     selector: ".step3m",
     content: "Losing the game means losing the nft",
     position: (positionProps, prevRect) => [
-      positionProps.windowWidth / 2 + 110,
-      positionProps.windowHeight / 2 - 80,
+      positionProps.windowWidth >= 1024
+        ? positionProps.windowWidth / 2 + 230
+        : positionProps.windowWidth / 2 + 100,
+      positionProps.windowHeight * 0.4,
     ],
-    padding: { mask: [0, -50, -100, -50] },
+    padding: { mask: [0, -50, -110, -50] },
   },
 ];
 

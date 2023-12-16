@@ -224,7 +224,3 @@ body {
 #login-container {
   height: 100%;
 }
-
-.yolo {
-  @apply animate-sh;
-}

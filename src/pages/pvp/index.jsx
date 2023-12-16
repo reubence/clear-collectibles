@@ -95,13 +95,13 @@ export default function PVP() {
       />
 
       {/* SELECT FROM AVAILABLE NFTs MOBILE */}
-      <div className="step1m absolute 2xl:hidden grid grid-cols-2 gap-3 w-fit ml-10 top-1/2 -translate-y-1/2">
+      <div className="step1m absolute 2xl:hidden grid grid-cols-2 gap-3 w-fit ml-7 sm:ml-14 top-1/2 -translate-y-1/2">
         {
           //adding 3 empty divs to make the grid 2x3
           data.concat(Array.from({ length: 3 })).map((nft, i) => (
             <div
               className={cn(
-                "w-20 h-20 rounded-xl border border-black/30 bg-black/20 relative overflow-hidden transition-all duration-150 ease-in cursor-pointer",
+                "w-20 h-20 lg:w-28 lg:h-28 xl:w-40 xl:h-40 rounded-xl border border-black/30 bg-black/20 relative overflow-hidden transition-all duration-150 ease-in cursor-pointer",
                 {
                   "border-2 bg-clip-content inset-0 p-0.5 bg-transparent border-yellow-400":
                     activeNFT.id === nft?.id,
@@ -278,9 +278,10 @@ export default function PVP() {
 
         {/* DESKTOP PLAY BUTTON */}
         <div className="hidden 2xl:flex relative">
+          {/* bubbles required green */}
           <div className="hidden w-full 2xl:block whitespace-nowrap absolute -top-11 text-xl font-bold text-white bg-green-500 pt-2 pb-6 px-3 rounded-t-2xl">
             Bubbles required:{" "}
-            <span className="px-3 py-1.5 bg-black/30 rounded-lg">🫧234</span>
+            <span className="px-2.5 py-1.5 bg-black/30 rounded-lg">🫧234</span>
           </div>
 
           <Button
