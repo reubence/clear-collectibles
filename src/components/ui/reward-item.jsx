@@ -48,18 +48,20 @@ function RewardItem({
             className="w-full h-full"
           />
         </div>
+        {/* bg accent divs start */}
         <div
           className={cn(
-            "bg-[#FFDC30] w-3.5 h-96 absolute rotate-45 -bottom-20 -right-12",
+            "bg-[#FFDC30] w-1 lg:w-3.5 h-96 absolute rotate-45 -bottom-20 -right-24 lg:-right-12",
             { hidden: !claimable }
           )}
         />
         <div
           className={cn(
-            "bg-[#FFDC30] w-14 h-96 absolute rotate-45 -bottom-28 right-7",
+            "bg-[#FFDC30] w-7 lg:w-14 h-96 absolute rotate-45 -bottom-28 -right-12 lg:right-7",
             { hidden: !claimable }
           )}
         />
+        {/* bg accent divs end */}
         {/* TEXT */}
         <span className="text-base lg:text-[28px] text-white font-bold absolute left-1/2 -translate-x-1/2 whitespace-nowrap bottom-1 lg:bottom-4">
           {window.innerWidth >= 1536 ? reward.name : "#" + reward.id}
