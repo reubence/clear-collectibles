@@ -74,10 +74,22 @@ export default function PVP() {
         "h-screen w-screen overflow-clip bg-gradient-to-b relative from-[#7E2EF7] to-[#9C93FF]"
       }
     >
+      {/* DESKTOP NAVIGATION */}
       <div className="hidden 2xl:block">
         <NavBar avatar={avatar} />
       </div>
-
+      {/* MOBILE NAVIGATION */}
+      <div
+        className={cn(
+          "group absolute w-fit flex gap-4 2xl:hidden items-center right-8 top-8 transition-all duration-150 ease-in cursor-pointer",
+          "hover:scale-105 active:scale-95"
+        )}
+      >
+        <Button className={cn("!py-2 !px-5")} variant="gameSecondary">
+          Home
+        </Button>
+        <Icons.skullLogo className="w-12 h-12 fill-white" />
+      </div>
       {/* BACKGROUND VIDEO ANIMATION */}
       <PVPBackgroundLottie />
 
@@ -103,7 +115,7 @@ export default function PVP() {
               className={cn(
                 "w-20 h-20 lg:w-28 lg:h-28 xl:w-40 xl:h-40 rounded-xl border border-black/30 bg-black/20 relative overflow-hidden transition-all duration-150 ease-in cursor-pointer",
                 {
-                  "border-2 bg-clip-content inset-0 p-0.5 bg-transparent border-yellow-400":
+                  "border-2 bg-clip-content inset-0 p-1 bg-transparent border-yellow-400":
                     activeNFT.id === nft?.id,
                   "pointer-events-none": i > 2,
                 }
@@ -132,9 +144,9 @@ export default function PVP() {
           <div
             key={i}
             className={cn(
-              "rounded-2xl transition-transform duration-150 ease-in cursor-pointer p-1 bg-gradient-to-r border-yellow-400",
+              "rounded-2xl transition-all duration-150 ease-in cursor-pointer p-1 bg-gradient-to-r border-yellow-400 hover:scale-110",
               {
-                "border-4 bg-clip-content inset-0 p-0.5 from-white to-white scale-105":
+                "border-4 bg-clip-content inset-0 p-1 from-white to-white hover:scale-100":
                   activeNFT.id === nft?.id,
                 "inset-0 from-white to-transparent": activeNFT.id !== nft?.id,
                 step1: i == 2,
@@ -158,11 +170,11 @@ export default function PVP() {
         ))}
       </div>
 
-      {/* REWARD HEXAGON BADGE */}
+      {/* REWARD BUTTON */}
       <Link
         href="/reward"
         className={cn(
-          "group absolute w-fit flex items-center right-8 top-8 2xl:right-12 2xl:top-[16%] translate-x-6 2xl:translate-x-12 transition-all duration-75 ease-in cursor-pointer",
+          "group absolute w-fit flex items-center right-8 top-28 lg:top-36 2xl:right-12 2xl:top-[16%] translate-x-6 2xl:translate-x-12 transition-all duration-75 ease-in cursor-pointer",
           "hover:scale-105 active:scale-95"
         )}
       >
@@ -179,7 +191,7 @@ export default function PVP() {
 
         <div
           className={cn(
-            "relative bg-black/25 p-1 2xl:p-2 w-full h-fit flex flex-col text-white text-xs 2xl:text-2xl font-bold rounded-lg lg:rounded-2xl -translate-x-6 2xl:-translate-x-12",
+            "relative bg-black/25 p-1 2xl:p-2 w-full h-fit flex flex-col text-white text-xs 2xl:text-2xl font-bold rounded-lg lg:rounded-lg 2xl:rounded-2xl -translate-x-6 2xl:-translate-x-12",
             {
               "border 2xl:border-2 border-green-500 bg-clip-content inset-0 p-0.5 2xl:p-[3px] bg-[#56E600] gap-0":
                 claimable,
@@ -230,7 +242,7 @@ export default function PVP() {
 
       {/* GAME MODE BUTTONS */}
       <div className="absolute flex gap-3 right-8 bottom-8 2xl:right-12 2xl:bottom-12 ">
-        <div className="absolute flex flex-col gap-1.5 2xl:gap-2.5 items-end bottom-36 2xl:bottom-60 right-0 z-40">
+        <div className="absolute flex flex-col gap-1.5 2xl:gap-2.5 items-end bottom-20 md:bottom-28 lg:bottom-36 2xl:bottom-60 right-0 z-40">
           <div className="flex gap-4 items-baseline font-bold text-3xl 2xl:text-6xl text-white">
             <span className="text-base 2xl:text-3xl font-normal">
               LV.{activeNFT.level}
