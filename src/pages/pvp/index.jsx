@@ -82,15 +82,15 @@ export default function PVP() {
       {/* MOBILE NAVIGATION */}
       <div
         className={cn(
-          "group absolute w-fit flex gap-4 2xl:hidden items-center right-8 top-8 transition-all duration-150 ease-in cursor-pointer",
-          "hover:scale-105 active:scale-95"
+          "group absolute w-fit flex gap-4 2xl:hidden items-center right-8 top-8 transition-all duration-150 ease-in cursor-pointer"
         )}
       >
         <Link
-          href={"/"}
+          href={"/dashboard"}
           className={cn(
             buttonVariants({ variant: "gameSecondary" }),
-            "!py-2 !px-5"
+            "!py-2 !px-5 ",
+            "active:scale-95"
           )}
         >
           Home
