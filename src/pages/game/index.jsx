@@ -37,17 +37,17 @@ function Game() {
   }, [seconds]); // Dependency array, so the effect reruns when 'seconds' changes
 
   return (
-    <main className="h-screen w-screen px-10 pb-12 pt-10 flex gap-6 bg-gradient-to-b from-[#5E58FF] to-[#00C6FF]">
+    <main className="h-screen w-screen px-10 pb-12 pt-10 flex gap-3.5 2xl:gap-6 bg-gradient-to-b from-[#5E58FF] to-[#00C6FF]">
       {/* LEFT SIDEBAR */}
       <div
         className={cn(
-          "w-full h-full flex flex-col-reverse justify-start rounded-lg lg:rounded-2xl border-4 border-gray-700/20 relative",
+          "w-full h-full flex flex-col-reverse justify-start rounded-lg 2xl:rounded-2xl border-4 border-gray-700/20 relative overflow-y-hidden",
           { "justify-between flex-col": playerFound }
         )}
       >
         <div
           className={cn(
-            "w-full flex flex-col relative p-8 bg-gray-800/50 left-0 bottom-0 h-64 rounded-b-lg lg:rounded-b-2xl",
+            "w-full flex flex-col relative p-4 2xl:p-8 bg-gray-800/50 left-0 bottom-0 h-64 rounded-b-lg 2xl:rounded-b-2xl",
             { "bg-transparent mt-0": playerFound }
           )}
         >
@@ -57,21 +57,21 @@ function Game() {
               alt="Dashboard Nft Image"
               width={220}
               height={70}
-              className="z-10"
+              className="w-28 h-8 xl:w-56 xl:h-20 z-10"
             />
-            <span className="absolute translate-x-20 top-8 text-[#B28AF8]">
+            <span className="absolute translate-x-10 top-3 xl:translate-x-20 xl:top-9 text-[#B28AF8] text-[10px] xl:text-base">
               Mythic
             </span>
           </div>
 
-          <div className="flex gap-4 my-4 font-g8 font-bold text-6xl text-white items-baseline z-40">
+          <div className="flex gap-2 xl:gap-4 my-3 xl:my-4 font-g8 font-bold text-xl xl:text-6xl text-white items-baseline z-40">
             #852
-            <Separator className="h-6 rounded-full w-0.5 bg-white/80" />
-            <span className="text-3xl font-normal">LV.2</span>
+            <Separator className="h-4 xl:h-6 rounded-full w-0.5 bg-white/80" />
+            <span className="text-base xl:text-3xl font-normal">LV.2</span>
           </div>
           <Separator
             className={cn(
-              "h-0.5 rounded-full w-full bg-gray-700/20 absolute left-0 bottom-6",
+              "h-0.5 rounded-full w-full bg-gray-700/20 absolute left-0 bottom-2.5 xl:bottom-6",
               {
                 hidden: !playerFound,
               }
@@ -86,12 +86,12 @@ function Game() {
           width={1000}
           height={1000}
           // mirrored
-          className={cn("", { "": !playerFound })}
+          className={cn({ relative: !playerFound })}
         />
       </div>
 
       {/* GAME SQUARE */}
-      <div className="w-full h-full p-12 rounded-lg lg:rounded-2xl border-4 border-gray-700/20 aspect-square">
+      <div className="w-full h-full p-5 2xl:p-12 rounded-lg 2xl:rounded-2xl border-4 border-gray-700/20 aspect-square">
         {/* PLAYER SEARCHING STARTS*/}
         <div
           className={cn(
@@ -124,7 +124,7 @@ function Game() {
             { hidden: !playerFound || goFirst !== null || goFirst }
           )}
         >
-          <div className="w-96 h-16 rounded-xl text-[28px] font-bold overflow-hidden">
+          <div className="w-full 2xl:w-9 h-16 rounded-xl text-sm 2xl:text-[28px] font-bold overflow-hidden">
             <div
               className={cn(
                 "bg-white w-full h-full flex flex-col justify-center items-center text-center text-blue-700",
@@ -155,8 +155,6 @@ function Game() {
               You lost the coin flip{" "}
             </div>
           </div>
-
-          <Icons.gameCoin className="" />
 
           <div className="flex gap-6">
             <Button
@@ -220,7 +218,7 @@ function Game() {
             </div>
           </div>
 
-          <Icons.gameCoin className="" />
+          <Icons.gameCoin className="w-24 h-24 2xl:w-full 2xl:h-full" />
 
           <div className="flex gap-6">
             <Button
@@ -245,13 +243,13 @@ function Game() {
       {/* RIGHT SIDEBAR */}
       <div
         className={cn(
-          "w-full h-full flex flex-col-reverse justify-start rounded-lg lg:rounded-2xl border-4 border-gray-700/20 relative",
+          "relative w-full h-full flex flex-col-reverse justify-start rounded-lg 2xl:rounded-2xl border-4 border-gray-700/20 overflow-y-hidden",
           { "justify-between flex-col": playerFound }
         )}
       >
         <div
           className={cn(
-            "w-full flex flex-col relative p-8 bg-gray-800/50 left-0 bottom-0 h-64 rounded-b-lg lg:rounded-b-2xl",
+            "w-full flex flex-col relative p-4 2xl:p-8 bg-gray-800/50 left-0 bottom-0 h-64 rounded-b-lg 2xl:rounded-b-2xl",
             {
               "bg-transparent mt-0 items-end": playerFound,
               "animate-pulse justify-center": !playerFound,
@@ -271,26 +269,26 @@ function Game() {
               alt="Dashboard Nft Image"
               width={220}
               height={70}
-              className="z-10"
+              className="w-28 h-8 xl:w-56 xl:h-20 z-10"
             />
-            <span className="absolute translate-x-20 top-8 text-[#B28AF8]">
+            <span className="absolute translate-x-10 top-3 xl:translate-x-20 xl:top-9 text-[#B28AF8] text-[10px] xl:text-base">
               Mythic
             </span>
           </div>
 
           <div
             className={cn(
-              "flex gap-4 my-4 font-g8 font-bold text-6xl text-white items-baseline z-40",
+              "flex gap-2 2xl:gap-4 my-3 xl:my-4 font-g8 font-bold text-xl xl:text-6xl text-white items-baseline z-40",
               { hidden: !playerFound }
             )}
           >
             #852
-            <Separator className="h-6 rounded-full w-0.5 bg-white/80" />
-            <span className="text-3xl font-normal">LV.2</span>
+            <Separator className="h-4 xl:h-6 rounded-full w-0.5 bg-white/80" />
+            <span className="text-base xl:text-3xl font-normal">LV.2</span>
           </div>
           <Separator
             className={cn(
-              "h-0.5 rounded-full w-full bg-gray-700/20 absolute left-0 bottom-6",
+              "h-0.5 rounded-full w-full bg-gray-700/20 absolute left-0 bottom-2.5 xl:bottom-6",
               {
                 hidden: !playerFound,
               }
@@ -299,19 +297,21 @@ function Game() {
         </div>
 
         {/* nft-image */}
-        <Image
-          src={
-            playerFound ? "/images/nft-pvp.png" : "/images/nft-searching.png"
-          }
-          alt="Dashboard Nft Image"
-          width={1000}
-          height={1000}
-          // mirrored
-          className={cn("", {
-            "-scale-x-100": playerFound,
-            "animate-pulse": !playerFound,
-          })}
-        />
+        <div className="relative flex">
+          <Image
+            src={
+              playerFound ? "/images/nft-pvp.png" : "/images/nft-searching.png"
+            }
+            alt="Dashboard Nft Image"
+            width={1000}
+            height={1000}
+            // mirrored
+            className={cn({
+              "-scale-x-100": playerFound,
+              "animate-pulse": !playerFound,
+            })}
+          />
+        </div>
       </div>
     </main>
   );
