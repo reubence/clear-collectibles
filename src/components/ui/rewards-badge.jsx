@@ -14,7 +14,7 @@ function RewardsPointsButton({
     <Link
       href="/reward"
       className={cn(
-        "group absolute w-fit flex items-center transition-all duration-75 ease-in cursor-pointer",
+        "group absolute w-fit flex items-center transition-all duration-75 ease-in cursor-pointer z-40",
         "hover:scale-105 active:scale-95",
         {
           "right-8 top-28 lg:top-36 2xl:right-12 2xl:top-[16%] translate-x-6 2xl:translate-x-12 ":
