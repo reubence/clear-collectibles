@@ -82,6 +82,11 @@ function RewardSlider() {
         <SwiperButton nextSlide={false} />
         <SwiperButton nextSlide={true} />
       </div>
+      <div
+        className={cn({
+          "sticky bg-[#1815B647] h-screen w-screen": true,
+        })}
+      />
 
       {/* reward item goes here - one per slide */}
       {Array.from({ length: 15 }).map((_, i) => (
@@ -101,7 +106,7 @@ function RewardSlider() {
           {/* PROGRESS BAR */}
           <div
             className={cn(
-              "w-full h-8 lg:h-[60px] relative translate-x-14 translate-y-5 tall2XL:translate-y-28 2xl:translate-y-28 2xl:translate-x-36 bg-[#252525] border-t-[5px] border-r-[4px] border-r-[#353533] border-t-[#353533] ",
+              "w-full h-8 lg:h-[60px] relative translate-x-14 translate-y-5 tall2XL:translate-y-14 2xl:translate-y-14 2xl:translate-x-36 bg-[#252525] border-t-[5px] border-r-[4px] border-r-[#353533] border-t-[#353533] ",
               {
                 "rounded-l-xl overflow-x-hidden overflow-y-auto": i === 0,
                 // selecting last item, replace arr with data source

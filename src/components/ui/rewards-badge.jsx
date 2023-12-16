@@ -19,6 +19,7 @@ function RewardsPointsButton({
         {
           "right-8 top-28 lg:top-36 2xl:right-12 2xl:top-[16%] translate-x-6 2xl:translate-x-12 ":
             position === "right",
+          // when button is in center - for rewards page
           "left-1/2 -translate-x-1/2 top-7 lg:top-36 2xl:top-24":
             position === "center",
         }

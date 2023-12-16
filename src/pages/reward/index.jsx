@@ -18,7 +18,7 @@ function Reward() {
 
   const [avatar, setAvatar] = React.useState(null);
   return (
-    <main className="relative h-screen w-screen bg-gradient-to-b from-[#5E58FF] to-[#00C6FF] ">
+    <main className="relative h-screen w-screen overflow-hidden bg-gradient-to-b from-[#5E58FF] to-[#00C6FF] ">
       {/* DESKTOP NAVIGATION */}
       <div className="hidden lg:block">
         <NavBar avatar={avatar} />
