@@ -78,6 +78,7 @@ export default function PVP() {
       <div className="hidden 2xl:block">
         <NavBar avatar={avatar} />
       </div>
+
       {/* MOBILE NAVIGATION */}
       <div
         className={cn(
@@ -85,9 +86,15 @@ export default function PVP() {
           "hover:scale-105 active:scale-95"
         )}
       >
-        <Button className={cn("!py-2 !px-5")} variant="gameSecondary">
+        <Link
+          href={"/"}
+          className={cn(
+            buttonVariants({ variant: "gameSecondary" }),
+            "!py-2 !px-5"
+          )}
+        >
           Home
-        </Button>
+        </Link>
         <Icons.skullLogo className="w-12 h-12 fill-white" />
       </div>
       {/* BACKGROUND VIDEO ANIMATION */}
@@ -107,9 +114,9 @@ export default function PVP() {
       />
 
       {/* SELECT FROM AVAILABLE NFTs MOBILE */}
-      <div className="step1m absolute 2xl:hidden grid grid-cols-2 gap-3 w-fit ml-7 sm:ml-14 top-1/2 -translate-y-1/2">
+      <div className="step1m absolute 2xl:hidden grid grid-cols-2 gap-3 w-fit ml-7 md:ml-14 top-1/2 -translate-y-1/2">
         {
-          //adding 3 empty divs to make the grid 2x3
+          //adding empty divs to make the grid 4x4
           data.concat(Array.from({ length: 3 })).map((nft, i) => (
             <div
               className={cn(
