@@ -11,7 +11,7 @@ import React, { useEffect } from "react";
 import { set } from "react-hook-form";
 
 function Game() {
-  const [step, setStep] = React.useState(3);
+  const [step, setStep] = React.useState(1);
   const [searching, setSearching] = React.useState(true);
   const [turn, setTurn] = React.useState("p1"); // p1 = player 1, p2 = player 2
   const [totalTime, setTotalTime] = React.useState(90);
@@ -25,7 +25,7 @@ function Game() {
       <div
         className={cn(
           "w-full h-full flex flex-col-reverse justify-start rounded-lg 2xl:rounded-2xl border-4 border-gray-700/20 relative overflow-y-hidden",
-          { "justify-between flex-col": !searching }
+          { "justify-between flex-col animate-fadein": !searching }
         )}
       >
         <div
@@ -93,7 +93,7 @@ function Game() {
       <div
         className={cn(
           "relative w-full h-full flex flex-col-reverse justify-start rounded-lg 2xl:rounded-2xl border-4 border-gray-700/20 overflow-y-hidden",
-          { "justify-between flex-col": !searching }
+          { "justify-between flex-col animate-fadein": !searching }
         )}
       >
         <div

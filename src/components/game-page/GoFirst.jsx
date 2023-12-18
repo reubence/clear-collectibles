@@ -30,7 +30,9 @@ function GoFirst({ setStep }) {
 
   return (
     <div
-      className={cn("h-full w-full flex flex-col items-center justify-between")}
+      className={cn(
+        "h-full w-full flex flex-col items-center justify-between animate-fadein"
+      )}
     >
       <div className="w-full lg:w-3/4 h-8 lg:h-16 rounded-lg lg:rounded-xl text-sm lg:text-[28px] font-bold overflow-hidden shadow-xl animate-bounce">
         <div
@@ -51,7 +53,13 @@ function GoFirst({ setStep }) {
           Wait for the game to start{" "}
         </div>
       </div>
-      <Image src="/images/game-goFirst.png" width={240} height={247} />
+      <Image
+        src="/images/game-goFirst.png"
+        alt="Logo"
+        width={240}
+        height={240}
+        className="w-24 h-24 lg:w-fit lg:h-fit"
+      />
 
       <div
         className={cn(

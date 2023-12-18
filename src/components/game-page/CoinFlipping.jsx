@@ -9,14 +9,14 @@ function CoinFlipping({ setStep }) {
   return (
     <div
       className={cn(
-        "h-full w-full flex flex-col  justify-between items-center"
+        "animate-fadein h-full w-full flex flex-col  justify-between items-center"
       )}
     >
       <div className="w-3/4 h-8 lg:h-16 rounded-lg lg:rounded-xl text-sm lg:text-[28px] font-bold overflow-hidden shadow-xl animate-bounce">
         <div
           className={cn(
             "bg-white w-full  h-full flex flex-col justify-center items-center text-center text-blue-700",
-            "animate-in transition-all duration-500",
+            "animate-fadein",
             { hidden: coinFlipResult }
           )}
         >
@@ -26,7 +26,7 @@ function CoinFlipping({ setStep }) {
         <div
           className={cn(
             "hidden bg-green-400 w-full h-full flex-col justify-center items-center text-center text-blue-700",
-            "animate-in transition-all duration-500",
+            "animate-fadein",
             { flex: coinFlipResult === "head" }
           )}
         >
@@ -36,7 +36,7 @@ function CoinFlipping({ setStep }) {
         <div
           className={cn(
             "hidden bg-red-300 w-full h-full flex-col justify-center items-center text-center text-blue-700",
-            "animate-in transition-all duration-500",
+            "animate-fadein",
             { flex: coinFlipResult === "tail" }
           )}
         >
