@@ -48,7 +48,7 @@ function PlayerSearching({ setStep, setSearching }) {
       />
       <Button
         disabled={!seconds > 0 && true}
-        className="text-base lg:text-3xl font-bold !py-2.5 !px-6"
+        className="text-base lg:text-[28px] font-bold !py-2.5 !px-7 lg:!px-16 lg:!py-5"
         variant="game"
       >
         Cancel{"..." + Math.abs(seconds.toFixed(0))}

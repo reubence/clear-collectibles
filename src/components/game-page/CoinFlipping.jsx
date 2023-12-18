@@ -12,7 +12,7 @@ function CoinFlipping({ setStep }) {
         "animate-fadein h-full w-full flex flex-col  justify-between items-center"
       )}
     >
-      <div className="w-3/4 h-8 lg:h-16 rounded-lg lg:rounded-xl text-sm lg:text-[28px] font-bold overflow-hidden shadow-xl animate-bounce">
+      <div className="w-full lg:w-3/4 h-8 lg:h-16 rounded-lg lg:rounded-xl text-sm lg:text-[28px] font-bold overflow-hidden shadow-xl animate-bounce">
         <div
           className={cn(
             "bg-white w-full  h-full flex flex-col justify-center items-center text-center text-blue-700",
@@ -46,7 +46,7 @@ function CoinFlipping({ setStep }) {
 
       <div className="flex gap-6">
         <Button
-          className="text-base lg:text-3xl font-bold !py-2.5 !px-6"
+          className="text-base lg:text-[28px] font-bold !py-2.5 !px-7 lg:!px-16 lg:!py-5"
           disabled={buttonsDisabled}
           variant="game"
           onClick={() => {
@@ -63,7 +63,7 @@ function CoinFlipping({ setStep }) {
           Head
         </Button>
         <Button
-          className="text-base lg:text-3xl font-bold !py-2.5 !px-6"
+          className="text-base lg:text-[28px] font-bold !py-2.5 !px-7 lg:!px-16 lg:!py-5"
           disabled={buttonsDisabled}
           variant="game"
           onClick={() => {
