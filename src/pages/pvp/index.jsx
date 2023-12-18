@@ -57,7 +57,7 @@ export default function PVP() {
   const [gameMode, setGameMode] = useState("PVP");
   const [rarity, setRarity] = useState("Mythic");
   const [rewardPointsNeeded, setRewardPointsNeeded] = useState(300);
-  const [rewardProgress, setRewardProgress] = useState(146);
+  const [rewardProgress, setRewardProgress] = useState(346);
   const [claimable, setClaimable] = useState(
     rewardPointsNeeded <= rewardProgress
   );

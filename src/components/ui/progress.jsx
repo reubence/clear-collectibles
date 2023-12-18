@@ -17,7 +17,7 @@ const Progress = React.forwardRef(
     >
       <span
         className={cn(
-          "absolute text-white text-[26px] left-1/2 -translate-x-1/2 whitespace-nowrap top-1/2 -translate-y-1/2 z-10 animate-pulse ",
+          "absolute text-white text-xs lg:text-base lg:text-[26px] left-1/2 -translate-x-1/2 whitespace-nowrap top-1/2 -translate-y-1/2 z-10 animate-pulse ",
           { hidden: !placeholder }
         )}
       >
