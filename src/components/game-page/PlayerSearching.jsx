@@ -42,7 +42,7 @@ function PlayerSearching({ setStep, setSearching }) {
             ? "Searching for players..."
             : "The player has been matched"
         }
-        className="h-20 rounded-3xl max-w-xl"
+        className="h-12 lg:h-20 rounded-lg lg:rounded-2xl max-w-xs lg:max-w-xl"
         max={100}
         value={seconds > 0 ? (5 - seconds) * 10 : 100}
       />

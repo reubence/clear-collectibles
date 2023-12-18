@@ -11,7 +11,7 @@ import React, { useEffect } from "react";
 import { set } from "react-hook-form";
 
 function Game() {
-  const [step, setStep] = React.useState(1);
+  const [step, setStep] = React.useState(3);
   const [searching, setSearching] = React.useState(true);
   const [turn, setTurn] = React.useState("p1"); // p1 = player 1, p2 = player 2
   const [totalTime, setTotalTime] = React.useState(90);
@@ -85,6 +85,8 @@ function Game() {
 
         {/* WHO GOES FIRST STARTS*/}
         {step === 3 && <GoFirst setStep={setStep} />}
+
+        {/* GAME STARTS*/}
       </div>
 
       {/* RIGHT SIDEBAR */}
