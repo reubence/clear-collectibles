@@ -18,7 +18,7 @@ const buttonVariants = cva(
           "bg-white text-secondary-foreground hover:bg-white/80 border",
         ghost: "hover:bg-accent hover:text-accent-foreground",
         link: "text-primary underline-offset-4 hover:underline",
-        game: "relative border-b-4 lg:border-b-8 border-b-yellow-500 bg-yellow-300 py-2.5 2xl:px-7 2xl:py-2 rounded-2xl shadow-lg active:shadow-inner hover:bg-yellow-400 focus:outline-none transform active:translate-y-0.5 active:border-none transition duration-150 ease-in-out",
+        game: "relative border-b-4 lg:border-b-8 border-b-yellow-500 bg-yellow-300 py-2.5 2xl:px-7 2xl:py-2 rounded-lg lg:rounded-2xl shadow-lg active:shadow-inner hover:bg-yellow-400 focus:outline-none transform active:translate-y-0.5 active:border-none transition duration-150 ease-in-out",
         gameSecondary:
           "text-white font-semibold bg-[#11A7FC] 2xl:!py-7 w-fit rounded-2xl transform border-b-4 2xl:border-b-8 border-blue-500 py-8 transform active:translate-y-1 active:border-none transition duration-150 ease-in-out z-10",
       },

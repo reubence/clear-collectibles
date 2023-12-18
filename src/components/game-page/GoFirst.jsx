@@ -38,7 +38,8 @@ function GoFirst({ setStep }) {
         <div
           className={cn(
             "bg-white w-full h-full flex flex-col justify-center items-center text-center text-blue-700",
-            "animate-in transition-all duration-500"
+            "animate-in transition-all duration-500",
+            { hidden: true }
           )}
         >
           Would you like to go first
@@ -46,8 +47,9 @@ function GoFirst({ setStep }) {
 
         <div
           className={cn(
-            "whitespace-nowrap bg-green-400 w-full h-full flex flex-col justify-center items-center text-center text-blue-700",
-            "animate-in transition-all duration-500"
+            "whitespace-nowrap bg-white w-full h-full flex flex-col justify-center items-center text-center text-blue-700",
+            "animate-in transition-all duration-500",
+            { hidden: false }
           )}
         >
           Wait for the game to start{" "}
