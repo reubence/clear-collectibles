@@ -12,7 +12,7 @@ import { set } from "react-hook-form";
 import { useState, useEffect } from "react";
 
 function Game() {
-  const [step, setStep] = useState(4);
+  const [step, setStep] = useState(2);
   const [searching, setSearching] = useState(false);
   const [turn, setTurn] = useState(); // p1 = player 1, p2 = player 2
   const [timer, setTimer] = useState(5);
@@ -80,7 +80,7 @@ function Game() {
             <Icons.countdown className="w-7 h-7 2xl:h-16 2xl:w-16" />
             <span className="absolute -bottom-0 2xl:top-4 left-3 2xl:left-8 -z-10 bg-black/20 mt-1 px-2.5 py-0.5 2xl:py-1 !pl-5 2xl:!pl-8 font-semibold border border-black/10 rounded-lg 2xl:rounded-xl">
               <Progress
-                fill={turn == "p1" ? "!bg-red-500" : "!bg-green-500"}
+                fill={turn == "p1" ? "!bg-red-500/90" : "!bg-green-500"}
                 className="absolute w-full h-full top-0 left-0 rounded-lg 2xl:rounded-xl -z-10 fill-black"
                 value={turn == "p1" ? timer : 5}
                 max={5}
@@ -186,12 +186,10 @@ function Game() {
           />
 
           {/* COUNTDOWN TIMER */}
-          {/* COUNTDOWN TIMER */}
-
           <div className="whitespace-nowrap relative flex text-sm 2xl:text-3xl !z-10 text-red-300 -translate-x-20  2xl:-translate-x-36 2xl:-bottom-14">
             <span className="absolute -bottom-0 2xl:top-4 left-3 2xl:left-8 -z-10 bg-black/20 mt-1 px-2.5 py-0.5 2xl:py-1 !pl-5 2xl:!pl-8 font-semibold border border-black/10 rounded-lg 2xl:rounded-xl">
               <Progress
-                fill={turn == "p2" ? "!bg-red-500" : "!bg-green-500"}
+                fill={turn == "p2" ? "!bg-red-500/90" : "!bg-green-500"}
                 className="absolute w-full h-full top-0 left-0 rounded-lg 2xl:rounded-xl -z-10 fill-black"
                 value={turn == "p2" ? timer : 5}
                 max={5}
