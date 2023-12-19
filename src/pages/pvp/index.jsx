@@ -18,6 +18,14 @@ import { Separator } from "@/components/ui/separator";
 import NavBar from "@/components/layout/navbar";
 import Link from "next/link";
 import RewardsPointsButton from "@/components/ui/rewards-badge";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
 
 const data = [
   {
@@ -229,10 +237,59 @@ export default function PVP() {
         </Button>
 
         {/* MOBILE PLAY BUTTON WITH POPUP */}
-        <Button variant="game" className={cn("step2m 2xl:hidden py-3")}>
-          <Icons.controller className="w-7 h-7 fill-[#353533]" />
-          PLAY!
-        </Button>
+        <Dialog>
+          <DialogTrigger
+            className={cn(
+              "step2m 2xl:hidden py-3",
+              buttonVariants({ variant: "game" })
+            )}
+          >
+            {" "}
+            <Icons.controller className="w-7 h-7 fill-[#353533]" />
+            PLAY!
+          </DialogTrigger>
+          <DialogContent className="h-fit w-fit p-5 bg-primary border-none !rounded-xl">
+            <DialogHeader className="">
+              <DialogTitle className="text-white text-sm font-bold text-center">
+                Choose a game type{" "}
+              </DialogTitle>
+            </DialogHeader>
+            <Tabs className="-mt-1">
+              <TabsList className="grid w-full grid-cols-2 h-full gap-2 rounded-[10px] p-2 text-white bg-black/30">
+                <TabsTrigger
+                  value="head"
+                  className="gap-2 px-6 py-1 2xl:px-10 2xl:py-3 rounded-md data-[state=active]:text-primary data-[state=active]:bg-white"
+                  onClick={() => setGameMode("PVP")}
+                  data-state={gameMode === "PVP" ? "active" : ""}
+                >
+                  <Icons.controller className="w-7 h-7 rotate-12 fill-primary" />
+                  PVP
+                </TabsTrigger>
+                <TabsTrigger
+                  value="tail"
+                  className="gap-2 px-6 py-1 2xl:px-10 2xl:py-3 rounded-md data-[state=active]:text-primary data-[state=active]:bg-white"
+                  onClick={() => setGameMode("Coin Flip")}
+                  data-state={gameMode === "Coin Flip" ? "active" : ""}
+                >
+                  <Icons.coin className="w-full h-full mr-2.5" />
+                  Coin Flip
+                </TabsTrigger>
+              </TabsList>
+            </Tabs>
+
+            <p className="text-center mt-3 whitespace-nowrap text-base 2xl:text-2xl font-bold text-white">
+              {" "}
+              Play Need :{" "}
+              <span className="px-2.5 py-1.5 bg-black/30 rounded-lg ">
+                🫧243
+              </span>
+            </p>
+
+            <Button variant="game" className="w-fit mx-auto">
+              Play
+            </Button>
+          </DialogContent>
+        </Dialog>
 
         {/* DESKTOP PLAY BUTTON */}
         <div className="hidden 2xl:flex relative">
