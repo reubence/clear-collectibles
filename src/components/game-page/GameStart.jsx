@@ -19,7 +19,7 @@ export default function GameStart({ setStep, setTurn }) {
       }
       setTurn(iteration % 2 === 0 ? "p2" : "p1");
       iteration++;
-    }, 3000);
+    }, 6000);
 
     return () => {
       clearInterval(intervalId);
@@ -28,8 +28,8 @@ export default function GameStart({ setStep, setTurn }) {
 
   return (
     <Image
-      width={1000}
-      height={1000}
+      width={2000}
+      height={2000}
       alt="Logo"
       src="/background/game-square-bg.png"
       className="absolute top-0 left-0  animate-fadein"
