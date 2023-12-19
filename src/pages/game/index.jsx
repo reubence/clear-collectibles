@@ -1,7 +1,7 @@
-import CoinFlipping from "@/components/game-page/CoinFlipping";
-import GameStart from "@/components/game-page/GameStart";
-import GoFirst from "@/components/game-page/GoFirst";
-import PlayerSearching from "@/components/game-page/PlayerSearching";
+import CoinFlipping from "@/components/game-page/pvp/CoinFlipping";
+import GameStart from "@/components/game-page/pvp/GameStart";
+import GoFirst from "@/components/game-page/pvp/GoFirst";
+import PlayerSearching from "@/components/game-page/pvp/PlayerSearching";
 import { Button } from "@/components/ui/button";
 import { Icons } from "@/components/ui/icons";
 import { Progress } from "@/components/ui/progress";
@@ -10,12 +10,15 @@ import { Separator } from "@radix-ui/react-dropdown-menu";
 import Image from "next/image";
 import { set } from "react-hook-form";
 import { useState, useEffect } from "react";
+import CoinFlippingGame from "@/components/game-page/coin-flipping/CoinFlippingGame";
 
 function Game() {
-  const [step, setStep] = useState(4);
+  const [step, setStep] = useState(5);
   const [searching, setSearching] = useState(false);
   const [turn, setTurn] = useState(""); // p1 = player 1, p2 = player 2
   const [timer, setTimer] = useState(5);
+
+  const [gameMode, setGameMode] = useState("coin-flipping");
   useEffect(() => {
     let countdownInterval;
 
@@ -36,9 +39,13 @@ function Game() {
       {/* LEFT SIDEBAR */}
       <div
         className={cn(
-          "relative w-fit 2xl:w-full h-full flex flex-col-reverse justify-start rounded-xl 2xl:rounded-2xl border-4 border-gray-700/20 overflow-y-hidden",
+          "relative w-fit 2xl:w-full h-full flex flex-col-reverse justify-start rounded-xl 2xl:rounded-2xl border-2 2xl:border-4 border-gray-700/20 overflow-y-hidden bg-black/10",
           { "justify-between flex-col animate-fadein": !searching },
-          { "!border-yellow-500": turn === "p1" }
+          { "!border-yellow-500": turn === "p1" },
+          {
+            "!max-w-[200px] lg:!max-w-[250px] 2xl:!max-w-md":
+              gameMode === "coin-flipping",
+          }
         )}
       >
         <div
@@ -110,8 +117,15 @@ function Game() {
         />
       </div>
 
-      {/* GAME SQUARE */}
-      <div className="relative w-full h-full p-5 2xl:p-12 rounded-xl 2xl:rounded-2xl border-4 border-gray-700/20 aspect-square ">
+      {/* PVP GAME SQUARE */}
+      <div
+        className={cn(
+          "relative w-full h-full p-5 2xl:p-12 rounded-xl 2xl:rounded-2xl border-2 2xl:border-4 border-gray-700/20 aspect-square bg-black/10",
+          {
+            hidden: gameMode === "coin-flipping",
+          }
+        )}
+      >
         {/* PLAYER SEARCHING STARTS*/}
         {step === 1 && (
           <PlayerSearching setSearching={setSearching} setStep={setStep} />
@@ -130,7 +144,8 @@ function Game() {
       {/* RIGHT SIDEBAR */}
       <div
         className={cn(
-          "relative w-fit 2xl:w-full h-full flex flex-col-reverse justify-start rounded-xl 2xl:rounded-2xl border-4 border-gray-700/20 overflow-y-hidden",
+          "relative w-fit 2xl:w-full h-full flex flex-col-reverse justify-start rounded-xl 2xl:rounded-2xl border-2 2xl:border-4 border-gray-700/20 overflow-y-hidden bg-black/10",
+          { "!hidden": gameMode === "coin-flipping" },
           { "justify-between flex-col animate-fadein": !searching },
           { "!border-yellow-500": turn === "p2" }
         )}
@@ -220,6 +235,17 @@ function Game() {
             "animate-pulse": searching,
           })}
         />
+      </div>
+
+      <div
+        className={cn(
+          "relative w-full h-full p-5 2xl:p-12 rounded-xl 2xl:rounded-2xl border-2 2xl:border-4 border-gray-700/20 aspect-square bg-black/10",
+          {
+            hidden: gameMode !== "coin-flipping",
+          }
+        )}
+      >
+        <CoinFlippingGame />
       </div>
     </main>
   );

@@ -7,7 +7,7 @@
 import { cn } from "@/lib/utils";
 import Image from "next/image";
 import { useEffect, useState } from "react";
-import { Button } from "../ui/button";
+import { Button } from "../../ui/button";
 
 export default function GameStart({ setStep, setTurn }) {
   const [countdown, setCountdown] = useState(3);
@@ -60,6 +60,7 @@ export default function GameStart({ setStep, setTurn }) {
           </p>
         </div>
       )}
+
       {victory == "lose" && (
         <div className="absolute left-0 top-0 w-full h-full z-40 flex flex-col p-16 justify-between items-center bg-black/50 rounded-md lg:rounded-lg xl:rounded-2xl animate-fadein">
           <div className="flex flex-col gap-2 2xl:gap-4 items-center justify-center">

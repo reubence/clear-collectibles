@@ -1,6 +1,6 @@
 import React from "react";
-import { Progress } from "../ui/progress";
-import { Button } from "../ui/button";
+import { Progress } from "../../ui/progress";
+import { Button } from "../../ui/button";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
 
