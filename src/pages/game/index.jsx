@@ -12,9 +12,9 @@ import { set } from "react-hook-form";
 import { useState, useEffect } from "react";
 
 function Game() {
-  const [step, setStep] = useState(3);
+  const [step, setStep] = useState(4);
   const [searching, setSearching] = useState(false);
-  const [turn, setTurn] = useState(); // p1 = player 1, p2 = player 2
+  const [turn, setTurn] = useState(""); // p1 = player 1, p2 = player 2
   const [timer, setTimer] = useState(5);
   useEffect(() => {
     let countdownInterval;

@@ -90,12 +90,17 @@ module.exports = {
           "0%": { opacity: 0 },
           "100%": { opacity: 1 },
         },
+        fadeOut: {
+          "0%": { opacity: 1 },
+          "100%": { opacity: 0 },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
         custom: "pulse 1s ease-in-out infinite",
         fadein: "fadeIn 450ms ease-in",
+        fadeout: "fadeOut 450ms ease-out",
       },
     },
   },
