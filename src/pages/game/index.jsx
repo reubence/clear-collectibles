@@ -111,7 +111,7 @@ function Game() {
           width={1000}
           height={1000}
           // mirrored
-          className={cn("!w-fit !h-fit", {
+          className={cn("w-[50vw] !h-fit", {
             relative: searching,
           })}
         />
@@ -161,7 +161,7 @@ function Game() {
         >
           <div
             className={cn(
-              "!text-white font-semibold text-xlw 2xl:text-[28px] text-center",
+              "!text-white font-semibold text-xl 2xl:text-[28px] text-center",
               {
                 hidden: !searching,
               }
@@ -230,7 +230,7 @@ function Game() {
           width={1000}
           height={1000}
           // mirrored
-          className={cn("!w-fit !h-fit", {
+          className={cn("w-[50vw] !h-fit", {
             "-scale-x-100": !searching,
             "animate-pulse": searching,
           })}
