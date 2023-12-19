@@ -12,7 +12,7 @@ function GameSearching({ timer }) {
         placeholder="Searching for players..."
         className=" h-20 rounded-3xl max-w-xl"
         max={100}
-        value={timer > 0 ? (5 - timer) * 10 : 100}
+        value={timer > 0 ? timer : 100}
       />
       <Button disabled={!timer > 0 && true} className="" variant="game">
         Cancel{"..." + timer}

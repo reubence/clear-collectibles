@@ -27,6 +27,7 @@ const Progress = React.forwardRef(
         className={cn("h-full w-full flex-1 bg-primary transition-all", fill)}
         style={{
           transform: `translateX(-${(max - (value || 0)) / (max / 100)}%)`,
+          transition: "transform 1s linear", // Add CSS transition property
         }}
       />
     </ProgressPrimitive.Root>

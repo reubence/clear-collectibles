@@ -13,8 +13,8 @@ function GoFirst({ setStep }) {
       // Set an interval to countdown
       const intervalId = setInterval(() => {
         // Decrement the seconds by 1 every second
-        setSeconds((seconds) => seconds - 0.1);
-      }, 100);
+        setSeconds((seconds) => seconds - 1);
+      }, 1000);
 
       // Clear the interval when the component unmounts or when the countdown is complete
       return () => clearInterval(intervalId);
