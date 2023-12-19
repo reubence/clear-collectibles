@@ -21,6 +21,11 @@ export default function GameStart({ setStep, setTurn }) {
       if (countdown === 0) {
         clearInterval(countdownIntervalId);
 
+        if (iteration === 1) {
+          setTurn(iteration % 2 === 0 ? "p2" : "p1");
+          iteration++;
+        }
+
         // Start the main game logic immediately after the countdown
         intervalId = setInterval(() => {
           if (iteration === 5) {
@@ -29,6 +34,7 @@ export default function GameStart({ setStep, setTurn }) {
             setVictory("lose");
             return;
           }
+
           setTurn(iteration % 2 === 0 ? "p2" : "p1");
           iteration++;
         }, 6000);
