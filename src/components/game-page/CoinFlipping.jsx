@@ -49,11 +49,15 @@ function CoinFlipping({ setStep }) {
           <CoinAnimation />
         ) : (
           <Image
-            src="/images/bitcoin_1.png"
+            src={
+              coinFlipResult === null
+                ? "/images/bitcoin_1.png"
+                : "/images/bitcoin_1_back.png"
+            }
             alt="Coin Flip"
             width={250}
             height={250}
-            className="w-fit h-fit"
+            className="w-fit h-fit animate-fadein"
           />
         )}
       </div>
@@ -115,7 +119,7 @@ function CoinAnimation() {
   }, []);
 
   return (
-    <div className="spinningasset coin">
+    <div className="spinningasset coin animate-fadein">
       <div>
         <div></div>
         <i></i>
