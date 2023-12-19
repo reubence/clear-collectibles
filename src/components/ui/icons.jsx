@@ -740,7 +740,7 @@ export const Icons = {
       </defs>
     </svg>
   ),
-  gamepad: ({ props }) => (
+  gamepad: (props) => (
     <svg
       {...props}
       xmlns="http://www.w3.org/2000/svg"

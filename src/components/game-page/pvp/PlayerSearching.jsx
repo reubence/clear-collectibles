@@ -34,7 +34,7 @@ function PlayerSearching({ setStep, setSearching }) {
         "h-full w-full flex flex-col items-center justify-center gap-12 "
       )}
     >
-      <Icons.gamepad className="" />
+      <Icons.gamepad className="w-20 h-20 2xl:w-40 2xl:h-40" />
       <Progress
         fill="!bg-green-400"
         placeholder={
