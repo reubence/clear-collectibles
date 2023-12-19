@@ -27,14 +27,12 @@ export default function GameStart({ setStep, setTurn }) {
   }, [setStep, setTurn]);
 
   return (
-    <div className={cn("w-full h-full flex flex-col animate-fadein")}>
-      <Image
-        width={1000}
-        height={1000}
-        alt="Logo"
-        src="/background/game-square-bg.png"
-        className="absolute top-0 left-0 object-cover"
-      />
-    </div>
+    <Image
+      width={1000}
+      height={1000}
+      alt="Logo"
+      src="/background/game-square-bg.png"
+      className="absolute top-0 left-0  animate-fadein"
+    />
   );
 }
