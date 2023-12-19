@@ -5,6 +5,7 @@ import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
 import React from "react";
+import CoinFlippingAnimation from "./CoinFlippingAnimation";
 
 function CoinFlippingGame() {
   const [coinFlipResult, setCoinFlipResult] = React.useState(null); // true = head, false = tail
@@ -74,7 +75,7 @@ function CoinFlippingGame() {
 
         <div className="absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 ">
           {isFlipping ? (
-            <CoinAnimation />
+            <CoinFlippingAnimation />
           ) : win !== true && win !== false ? (
             <Image
               src={
@@ -153,37 +154,3 @@ function CoinFlippingGame() {
 }
 
 export default CoinFlippingGame;
-
-function CoinAnimation() {
-  const [isFlipping, setIsFlipping] = React.useState(false);
-
-  React.useEffect(() => {
-    const timer = setTimeout(() => {
-      setIsFlipping(false);
-    }, 3000); // Wait for 3 seconds before stopping the animation
-
-    return () => clearTimeout(timer);
-  }, []);
-
-  return (
-    <div className="spinningasset coin animate-fadein">
-      <div>
-        <div></div>
-        <i></i>
-        <i></i>
-        <i></i>
-        <i></i>
-        <i></i>
-        <i></i>
-        <i></i>
-        <i></i>
-        <i></i>
-        <i></i>
-        <i></i>
-        <em></em>
-        <em></em>
-        <div></div>
-      </div>
-    </div>
-  );
-}

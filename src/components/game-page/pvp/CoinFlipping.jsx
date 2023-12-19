@@ -2,6 +2,7 @@ import React from "react";
 import { Button } from "../../ui/button";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
+import CoinFlippingAnimation from "./CoinFlippingAnimation";
 
 function CoinFlipping({ setStep }) {
   const [coinFlipResult, setCoinFlipResult] = React.useState(null); // true = head, false = tail
@@ -46,7 +47,7 @@ function CoinFlipping({ setStep }) {
       </div>
       <div>
         {isFlipping ? (
-          <CoinAnimation />
+          <CoinFlippingAnimation />
         ) : (
           <Image
             src={
@@ -106,37 +107,3 @@ function CoinFlipping({ setStep }) {
 }
 
 export default CoinFlipping;
-
-function CoinAnimation() {
-  const [isFlipping, setIsFlipping] = React.useState(false);
-
-  React.useEffect(() => {
-    const timer = setTimeout(() => {
-      setIsFlipping(false);
-    }, 3000); // Wait for 3 seconds before stopping the animation
-
-    return () => clearTimeout(timer);
-  }, []);
-
-  return (
-    <div className="spinningasset coin animate-fadein">
-      <div>
-        <div></div>
-        <i></i>
-        <i></i>
-        <i></i>
-        <i></i>
-        <i></i>
-        <i></i>
-        <i></i>
-        <i></i>
-        <i></i>
-        <i></i>
-        <i></i>
-        <em></em>
-        <em></em>
-        <div></div>
-      </div>
-    </div>
-  );
-}
