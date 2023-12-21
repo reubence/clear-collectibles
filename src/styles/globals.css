@@ -285,6 +285,7 @@ body {
   > div {
     position: relative;
     z-index: 2;
+
     perspective: 10000px;
     transform-style: preserve-3d;
     transform-origin: center;
