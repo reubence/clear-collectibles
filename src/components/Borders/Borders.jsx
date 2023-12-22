@@ -1,7 +1,7 @@
 import React from "react";
 
 /**
- * @component Borders
+ * @component Borderss
  * @description Represents a set of bordered div elements with varying heights and colors.
  * @param {string} className - Additional class name to be applied to the component.
  */
