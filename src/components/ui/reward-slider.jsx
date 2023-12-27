@@ -45,6 +45,7 @@ function RewardSlider() {
     <Swiper
       initialSlide={2}
       centeredSlides={true}
+      slideActiveClass="swiper-rewardSlide-active"
       breakpoints={{
         // Adjust the number of slides per view based on screen size
         400: {
