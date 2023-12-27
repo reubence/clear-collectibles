@@ -13,7 +13,7 @@ import { useState, useEffect } from "react";
 import CoinFlippingGame from "@/components/game-page/pvp/CoinFlippingGame";
 
 function Game() {
-  const [step, setStep] = useState(4);
+  const [step, setStep] = useState(1);
   const [searching, setSearching] = useState(false);
   const [turn, setTurn] = useState(""); // p1 = player 1, p2 = player 2
   const [timer, setTimer] = useState(5);
