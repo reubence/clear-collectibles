@@ -1,9 +1,9 @@
 import NavBar from "@/components/layout/navbar";
 import { buttonVariants } from "@/components/ui/button";
 import { Icons } from "@/components/ui/icons";
-import RewardItem from "@/components/ui/reward-item";
-import RewardSlider from "@/components/ui/reward-slider";
-import RewardsPointsButton from "@/components/ui/rewards-badge";
+import RewardItem from "@/components/rewards-page/reward-item";
+import RewardSlider from "@/components/rewards-page/reward-slider";
+import RewardsPointsButton from "@/components/rewards-page/rewards-badge";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 import React, { useState } from "react";

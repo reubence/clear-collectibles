@@ -3,9 +3,9 @@ import React, { useState } from "react";
 import { EffectCoverflow } from "swiper/modules";
 import { Swiper, SwiperSlide, useSwiper } from "swiper/react";
 import RewardItem from "./reward-item";
-import { Button, buttonVariants } from "./button";
+import { Button, buttonVariants } from "../ui/button";
 import { cn } from "@/lib/utils";
-import { Icons } from "./icons";
+import { Icons } from "../ui/icons";
 
 const rewardsData = [
   // PREVIOUSLY CLAIMED STATE DATA

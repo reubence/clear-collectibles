@@ -1,7 +1,7 @@
 import { cn } from "@/lib/utils";
 import Image from "next/image";
 import React from "react";
-import { Icons } from "./icons";
+import { Icons } from "../ui/icons";
 
 function RewardItem({
   onClick,
