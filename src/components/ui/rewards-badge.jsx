@@ -26,10 +26,11 @@ function RewardsPointsButton({
       )}
     >
       <Image
+        unoptimised
         src="/icons2/hexagon_rewards.png"
         alt="Dashboard Nft Image"
-        width={116}
-        height={110}
+        width={512}
+        height={512}
         className={cn(
           "w-20 h-16 2xl:w-32 2xl:h-28 z-40 transition-all duration-150 ease-in-out",
           "group-hover:rotate-12 group-hover:scale-110 2xl:group-hover:scale-125"

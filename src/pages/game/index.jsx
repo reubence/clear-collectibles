@@ -13,7 +13,7 @@ import { useState, useEffect } from "react";
 import CoinFlippingGame from "@/components/game-page/pvp/CoinFlippingGame";
 
 function Game() {
-  const [step, setStep] = useState(1);
+  const [step, setStep] = useState(4);
   const [searching, setSearching] = useState(false);
   const [turn, setTurn] = useState(""); // p1 = player 1, p2 = player 2
   const [timer, setTimer] = useState(5);
@@ -66,6 +66,7 @@ function Game() {
         >
           <div className="relative">
             <Image
+              unoptimised
               src="/background/mythic-badge.svg"
               alt="Dashboard Nft Image"
               width={220}
@@ -116,6 +117,7 @@ function Game() {
 
         {/* nft-image */}
         <Image
+          unoptimised
           src="/images/nft-pvp.png"
           alt="Dashboard Nft Image"
           width={1000}
@@ -185,6 +187,7 @@ function Game() {
           </div>
           <div className={cn("relative", { hidden: searching })}>
             <Image
+              unoptimised
               src="/background/mythic-badge.svg"
               alt="Dashboard Nft Image"
               width={220}
@@ -239,6 +242,7 @@ function Game() {
 
         {/* nft-image */}
         <Image
+          unoptimised
           src={!searching ? "/images/nft-pvp.png" : "/images/nft-searching.png"}
           alt="Dashboard Nft Image"
           width={1000}

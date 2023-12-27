@@ -111,6 +111,7 @@ export default function PVP() {
 
       {/* NFT IMAGE  */}
       <Image
+        unoptimised
         src={activeNFT?.src}
         alt="Dashboard Nft Image"
         width={1000}
@@ -140,6 +141,7 @@ export default function PVP() {
               onClick={() => setActiveNFT(nft)}
             >
               <Image
+                unoptimised
                 src={nft?.src || "/images/nft-pvp.png"}
                 alt="Dashboard Nft Image"
                 width={70}
@@ -174,6 +176,7 @@ export default function PVP() {
               className={cn("w-[460px] h-[150px] rounded-2xl overflow-hidden")}
             >
               <Image
+                unoptimised
                 src={nft?.src || "/images/nft-pvp.png"}
                 alt="Dashboard Nft Image"
                 width={900}
@@ -217,6 +220,7 @@ export default function PVP() {
         >
           {/* grid background mask */}
           <Image
+            unoptimised
             src="/background/grid-mask.png"
             alt="Dashboard Nft Image"
             width={234}
@@ -225,6 +229,7 @@ export default function PVP() {
           />
           {/* rarity badge bg */}
           <Image
+            unoptimised
             src="/background/mythic-badge.svg"
             alt="Dashboard Nft Image"
             width={220}

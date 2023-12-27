@@ -58,7 +58,8 @@ function CoinFlipping({ setStep }) {
             alt="Coin Flip"
             width={250}
             height={250}
-            className="w-fit h-fit animate-fadein"
+            className="w-fit h-fit xl:w-full xl:h-full animate-fadein"
+            unoptimized
           />
         )}
       </div>

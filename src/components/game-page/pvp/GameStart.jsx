@@ -60,6 +60,7 @@ export default function GameStart({ setStep, setTurn }) {
             alt="Logo"
             src="/images/game-versus.png"
             className="w-40 h-40 xl:w-72 xl:h-72 2xl:w-96 2xl:h-96"
+            unoptimized
           />
           <p className="text-white text-sm 2xl:text-2xl 2xl:-translate-y-20">
             Game starts in {countdown}...
@@ -76,6 +77,7 @@ export default function GameStart({ setStep, setTurn }) {
               alt="Logo"
               src="/images/game-defeat.png"
               className="absolute left-0 top-0 w-full h-full"
+              unoptimized
             />
             <p className="text-white text-sm 2xl:text-2xl z-40">
               You lost the nft{" "}
@@ -112,6 +114,7 @@ export default function GameStart({ setStep, setTurn }) {
             alt="Logo"
             src="/images/game-versus.png"
             className="absolute left-0 top-0 w-full h-full"
+            unoptimized
           />
           <p className="text-white text-sm 2xl:text-2xl">
             Won the opponent&apos;s nft{" "}
@@ -144,7 +147,8 @@ export default function GameStart({ setStep, setTurn }) {
         height={2000}
         alt="Logo"
         src="/background/game-square-bg.png"
-        className="absolute top-0 left-0 animate-fadein"
+        className="w-full h-full absolute top-0 left-0 animate-fadein"
+        unoptimized
       />
     </div>
   );
