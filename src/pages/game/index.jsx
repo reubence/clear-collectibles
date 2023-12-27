@@ -35,11 +35,20 @@ function Game() {
   }, [turn]);
 
   return (
-    <main className="h-screen w-screen px-[2vw] md:px-[6vw] py-[6vh] lg:px-[6vw] tallXS:px-[2vw] tallXS:py-[10vh] tallXL:py-[15vh] 2xl:px-[4vw] 2xl:!py-[8vh] flex gap-3.5 2xl:gap-6 bg-gradient-to-b from-[#5E58FF] to-[#00C6FF]">
+    <main
+      className={cn(
+        "h-screen w-screen px-[2vw] py-[6vh] flex gap-3.5 bg-gradient-to-b from-[#5E58FF] to-[#00C6FF]",
+        "md:px-[6vw]",
+        "tallXS:px-[2vw] tallXS:py-[10vh]",
+        "tallXL:py-[15vh]",
+        "2xl:px-[4vw] 2xl:!py-[8vh] 2xl:gap-6"
+      )}
+    >
       {/* LEFT SIDEBAR */}
       <div
         className={cn(
-          "relative w-fit 2xl:w-full h-full flex flex-col-reverse justify-start rounded-xl 2xl:rounded-2xl border-2 2xl:border-4 border-gray-700/20 overflow-y-hidden bg-black/10",
+          "relative w-fit h-full flex flex-col-reverse justify-start rounded-xl border-2 border-gray-700/20 overflow-y-hidden bg-black/10",
+          "2xl:w-full 2xl:rounded-2xl 2xl:border-4",
           { "justify-between flex-col animate-fadein": !searching },
           { "!border-yellow-500": turn === "p1" },
           {
@@ -50,7 +59,8 @@ function Game() {
       >
         <div
           className={cn(
-            "w-full flex flex-col relative p-4 2xl:p-8 bg-gray-800/50 left-0 bottom-0 h-64 rounded-b-xl 2xl:rounded-b-2xl",
+            "w-full flex flex-col relative p-4 2xl:p-8 bg-gray-800/50 left-0 bottom-0 h-64 rounded-b-xl ",
+            "2xl:rounded-b-2xl",
             { "bg-transparent mt-0": !searching }
           )}
         >
@@ -111,7 +121,7 @@ function Game() {
           width={1000}
           height={1000}
           // mirrored
-          className={cn("w-[50vw] !h-fit", {
+          className={cn("", {
             relative: searching,
           })}
         />
@@ -121,6 +131,10 @@ function Game() {
       <div
         className={cn(
           "relative w-full h-full p-5 2xl:p-12 rounded-xl 2xl:rounded-2xl border-2 2xl:border-4 border-gray-700/20 aspect-square bg-black/10",
+          "md:max-w-[50vw]",
+          // "lg:!max-w-7xl md:h-fit",
+          // "xl:!max-w-2xl md:h-fit",
+          // "2xl:!max-w-7xl md:h-fit",
           {
             hidden: gameMode === "coin-flipping",
           }
@@ -230,7 +244,7 @@ function Game() {
           width={1000}
           height={1000}
           // mirrored
-          className={cn("w-[50vw] !h-fit", {
+          className={cn("", {
             "-scale-x-100": !searching,
             "animate-pulse": searching,
           })}
