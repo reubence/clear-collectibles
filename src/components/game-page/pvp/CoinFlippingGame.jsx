@@ -11,7 +11,7 @@ function CoinFlippingGame() {
   const [coinFlipResult, setCoinFlipResult] = React.useState(null); // true = head, false = tail
   const [isFlipping, setIsFlipping] = React.useState(false);
   const [sliderValue, setSliderValue] = React.useState([50]);
-  const [select, setSelect] = React.useState("");
+  const [select, setSelect] = React.useState("head");
   const [win, setWin] = React.useState();
   return (
     <div
@@ -23,7 +23,7 @@ function CoinFlippingGame() {
         <div className="w-full h-8 lg:h-16 rounded-lg lg:rounded-xl text-sm lg:text-[28px] font-bold overflow-hidden shadow-xl animate-bounce">
           <div
             className={cn(
-              "bg-white w-full h-full flex flex-col justify-center items-center text-center text-blue-700",
+              "bg-white w-full h-full flex flex-col justify-center items-center text-center text-blue-700 whitespace-nowrap px-3",
               "animate-fadein",
               { hidden: coinFlipResult }
             )}
@@ -32,7 +32,7 @@ function CoinFlippingGame() {
           </div>
           <div
             className={cn(
-              "flex bg-green-400 w-full h-full flex-col justify-center items-center text-center text-blue-700",
+              "flex bg-green-400 w-full h-full flex-col justify-center items-center text-center text-blue-700 whitespace-nowrap px-3",
               "animate-fadein",
               { hidden: coinFlipResult !== "head" }
             )}
@@ -41,7 +41,7 @@ function CoinFlippingGame() {
           </div>
           <div
             className={cn(
-              "flex bg-red-300 w-full h-full flex-col justify-center items-center text-center text-blue-700",
+              "flex bg-red-300 w-full h-full flex-col justify-center items-center text-center text-blue-700 whitespace-nowrap px-3",
               "animate-fadein",
               { hidden: coinFlipResult !== "tail" }
             )}
@@ -51,6 +51,7 @@ function CoinFlippingGame() {
         </div>
         {win === false && coinFlipResult !== null && (
           <Image
+            unoptimized
             width={860}
             height={859}
             alt="Logo"
@@ -78,6 +79,7 @@ function CoinFlippingGame() {
             <CoinFlippingAnimation />
           ) : win !== true && win !== false ? (
             <Image
+              unoptimized
               src={
                 coinFlipResult === null
                   ? "/images/bitcoin_1.png"
@@ -86,7 +88,7 @@ function CoinFlippingGame() {
               alt="Coin Flip"
               width={250}
               height={250}
-              className="w-24 h-24 2xl:w-full 2xl:h-full animate-fadein"
+              className="w-fit h-fit xl:w-full xl:h-full animate-fadein"
             />
           ) : null}
         </div>
@@ -142,7 +144,7 @@ function CoinFlippingGame() {
               setIsFlipping(false);
               setTimeout(() => {
                 select === coinFlipResult ? setWin(true) : setWin(false);
-              }, 1000);
+              }, 1500);
             }, 3000); // Wait for 3 second before showing result
           }}
         >
