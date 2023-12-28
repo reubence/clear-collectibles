@@ -18,7 +18,7 @@ function Game() {
   const [turn, setTurn] = useState(""); // p1 = player 1, p2 = player 2
   const [timer, setTimer] = useState(5);
 
-  const [gameMode, setGameMode] = useState("pvp");
+  const [gameMode, setGameMode] = useState("coin-flipping");
   useEffect(() => {
     let countdownInterval;
 
