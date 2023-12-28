@@ -115,7 +115,7 @@ function CoinFlippingGame() {
               value="head"
               className="gap-2 px-6 py-1 2xl:px-10 2xl:py-3 rounded-md data-[state=active]:text-primary data-[state=active]:bg-white"
               onClick={() => setSelect("head")}
-              // data-state={head === "PVP" ? "active" : ""}
+              data-state={select === "head" ? "active" : ""}
             >
               Head
             </TabsTrigger>
@@ -123,13 +123,12 @@ function CoinFlippingGame() {
               value="tail"
               className="gap-2 px-6 py-1 2xl:px-10 2xl:py-3 rounded-md data-[state=active]:text-primary data-[state=active]:bg-white"
               onClick={() => setSelect("tail")}
-              // data-state={head === "Coin Flip" ? "active" : ""}
+              data-state={select === "tail" ? "active" : ""}
             >
               Tail
             </TabsTrigger>
           </TabsList>
         </Tabs>
-
         <Button
           className={cn(
             "2xl:absolute 2xl:bottom-16 2xl:right-16 text-base lg:text-[28px] font-bold !py-2.5 !px-7 lg:!px-16 lg:!py-5",

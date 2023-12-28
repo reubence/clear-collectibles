@@ -52,7 +52,7 @@ function Game() {
           { "justify-between flex-col animate-fadein": !searching },
           { "!border-yellow-500": turn === "p1" },
           {
-            "!max-w-[140px] lg:!max-w-[250px] 2xl:!max-w-md":
+            "!max-w-[140px] md:!max-w-[200px] lg:!max-w-[250px] 2xl:!max-w-md":
               gameMode === "coin-flipping",
           }
         )}
