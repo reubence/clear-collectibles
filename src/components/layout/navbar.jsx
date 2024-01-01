@@ -26,10 +26,17 @@ import { useRouter } from "next/router";
 
 const socialLinks = [
   { name: "X", href: "https://twitter.com/ClearCollectNFT", icon: Icons.xLogo },
-  { name: "Discord", href: "https://discord.com/invite/clearcollectibles", icon: Icons.discordLogo },
-  { name: "Square", href: "https://matrica.io/settings", icon: Icons.squareLogo },
+  {
+    name: "Discord",
+    href: "https://discord.com/invite/clearcollectibles",
+    icon: Icons.discordLogo,
+  },
+  {
+    name: "Square",
+    href: "https://matrica.io/settings",
+    icon: Icons.squareLogo,
+  },
 ];
-
 
 const navItems = [
   {
@@ -42,8 +49,6 @@ const navItems = [
     route: "/shop",
     label: "Shop",
   },
-
-
 ];
 
 function classNames() {
@@ -52,9 +57,9 @@ function classNames() {
 
 export default function NavBar({ page, avatar, hide }) {
   const pathname = usePathname();
-  const [open, setOpen] = React.useState(false)
+  const [open, setOpen] = React.useState(false);
   const [sheetOpen, setSheetOpen] = React.useState();
-  const router = useRouter()
+  const router = useRouter();
   const [active, setActive] = React.useState(
     pathname === "/shop"
       ? "/shop"
@@ -90,25 +95,26 @@ export default function NavBar({ page, avatar, hide }) {
   return (
     <nav className="w-full">
       <div className="px-6 lg:px-[40px] pb-3 pt-6 relative justify-between flex items-center">
-        
-        <div className="lg:hidden cursor-pointer"
-        onClick={() => {
-          router.push('/dashboard')
-        }}
+        <div
+          className="lg:hidden cursor-pointer"
+          onClick={() => {
+            router.push("/dashboard");
+          }}
         >
           <Image
             src="/images/logo-mobile.svg"
             alt="Logo"
             height={29}
             width={80}
-            className="lg:pt-4 lg:pl-2.5"
+            className="lg:pt-4 lg:pl-2.5 "
             unoptimized
           />
         </div>
-        <div className="flex items-center text-2xl gap-2 font-waves cursor-pointer"
-        onClick={() => {
-          router.push('/dashboard')
-        }}
+        <div
+          className="flex items-center text-2xl gap-2 font-waves cursor-pointer"
+          onClick={() => {
+            router.push("/dashboard");
+          }}
         >
           {page === "leaderboard" ? (
             <Image
@@ -135,7 +141,6 @@ export default function NavBar({ page, avatar, hide }) {
           <div className="hidden md:flex items-center gap-6">
             <div className="flex items-center gap-9">
               <div className="flex [&>*:last-child]:!border-none items-center mr-2">
-                
                 {socialLinks.map((item, index) => (
                   <div className="px-4 border-r border-r-white" key={index}>
                     <Link href={item.href}>
@@ -144,96 +149,86 @@ export default function NavBar({ page, avatar, hide }) {
                   </div>
                 ))}
               </div>
-              {pathname !== "/connect-social"
-              &&
-              <div className="hidden lg:flex items-center">
-              <Avatar className="h-10 w-10">
-                <AvatarImage src={avatar} />
-                <AvatarFallback></AvatarFallback>
-              </Avatar>
-            </div>
-
-              }
-             
+              {pathname !== "/connect-social" && (
+                <div className="hidden lg:flex items-center">
+                  <Avatar className="h-10 w-10">
+                    <AvatarImage src={avatar} />
+                    <AvatarFallback></AvatarFallback>
+                  </Avatar>
+                </div>
+              )}
             </div>
             <div className="hidden lg:block relative mr-2">
-              <NavigationMenu className="z-50" open={open} onOpenChange={setOpen}>
+              <NavigationMenu
+                className="z-50"
+                open={open}
+                onOpenChange={setOpen}
+              >
                 <NavigationMenuList>
                   <NavigationMenuItem className="w-[240px]">
                     <NavigationMenuTrigger
-                    onPointerMove={preventDefault}
-                    onPointerLeave={preventDefault}
-                   
+                      onPointerMove={preventDefault}
+                      onPointerLeave={preventDefault}
                     >
-                      
-                      <div className="flex gap-4 items-center pl-1 text-base"
-                      >
-                        {pathname === "/connect-social"
-                      ?
-                      <>
-                        <Icons.disconnect className="w-6 h-6 mb-1 fill-foreground pt-1" />
-                        Disconnect
-                      </>
-                      :
-                      <>
-                      
-                      <route.icon className="w-6 h-6 mb-1 fill-foreground" />
-                        {navItems.find((item) => item.route === active)?.label}
-                      </>
-                      
-                      }
-                        
+                      <div className="flex gap-4 items-center pl-1 text-base">
+                        {pathname === "/connect-social" ? (
+                          <>
+                            <Icons.disconnect className="w-6 h-6 mb-1 fill-foreground pt-1" />
+                            Disconnect
+                          </>
+                        ) : (
+                          <>
+                            <route.icon className="w-6 h-6 mb-1 fill-foreground" />
+                            {
+                              navItems.find((item) => item.route === active)
+                                ?.label
+                            }
+                          </>
+                        )}
                       </div>
                     </NavigationMenuTrigger>
                     <NavigationMenuContent className="w-full">
+                      {pathname !== "/connect-social" && (
+                        <>
+                          {navItems.map((item, index) => (
+                            <Link
+                              key={index}
+                              href={item.route}
+                              legacyBehavior
+                              passHref
+                            >
+                              <NavigationMenuLink
+                                className={cn(
+                                  navigationMenuTriggerStyle(),
+                                  "py-3 px-5 justify-normal gap-4 text-xs hover:bg-foreground group hover:text-white"
+                                )}
+                              >
+                                <item.icon className="w-6 h-6 mb-1 fill-foreground group-hover:fill-white" />
+                                <p>{item.label}</p>
+                              </NavigationMenuLink>
+                            </Link>
+                          ))}
+                        </>
+                      )}
 
-                      {pathname !== "/connect-social"
-                      &&
-                      <>
-                      {navItems.map((item, index) => (
-                        <Link
-                          key={index}
-                          href={item.route}
-                          legacyBehavior
-                          passHref
-                        >
-                          <NavigationMenuLink
-                            className={cn(
-                              navigationMenuTriggerStyle(),
-                              "py-3 px-5 justify-normal gap-4 text-xs hover:bg-foreground group hover:text-white"
-                            )}
-                          >
-                            <item.icon className="w-6 h-6 mb-1 fill-foreground group-hover:fill-white" />
-                            <p>{item.label}</p>
-                          </NavigationMenuLink>
-                        </Link>
-                      ))}
-                      </>
-                      
-                      
-                      
-                      }
-                      
                       <div
-                          
-                          onClick={() => {
-                            localStorage.clear();
-                            signOut({ callbackUrl: "/login" })
-                          }}
-                          legacyBehavior
-                          passHref
+                        onClick={() => {
+                          localStorage.clear();
+                          signOut({ callbackUrl: "/login" });
+                        }}
+                        legacyBehavior
+                        passHref
+                      >
+                        <NavigationMenuLink
+                          className={cn(
+                            navigationMenuTriggerStyle(),
+                            "py-3 px-5 justify-normal gap-4 text-xs hover:bg-foreground group hover:text-white"
+                          )}
                         >
-                          <NavigationMenuLink
-                            className={cn(
-                              navigationMenuTriggerStyle(),
-                              "py-3 px-5 justify-normal gap-4 text-xs hover:bg-foreground group hover:text-white"
-                            )}
-                          >
-                            <Icons.disconnect className="w-6 h-6 mb-1 fill-foreground group-hover:fill-white" />
-                            <p>Disconnect</p>
-                          </NavigationMenuLink>
-                        </div>
-                  
+                          <Icons.disconnect className="w-6 h-6 mb-1 fill-foreground group-hover:fill-white" />
+                          <p>Disconnect</p>
+                        </NavigationMenuLink>
+                      </div>
                     </NavigationMenuContent>
                   </NavigationMenuItem>
                 </NavigationMenuList>
@@ -315,20 +310,23 @@ export default function NavBar({ page, avatar, hide }) {
                 </div>
                 <div className="flex flex-col h-full w-full items-center justify-end mt-28 pb-10">
                   <div className="flex gap-6">
-                  <a href="https://twitter.com/ClearCollectNFT" target="_blank">
+                    <a
+                      href="https://twitter.com/ClearCollectNFT"
+                      target="_blank"
+                    >
                       <Icons.xLogo className="w-5 h-5" />
                     </a>
-                    <a href="https://discord.com/invite/clearcollectibles" target="_blank">
+                    <a
+                      href="https://discord.com/invite/clearcollectibles"
+                      target="_blank"
+                    >
                       <Icons.discordLogo className="w-5 h-5" />
                     </a>
                     <a href="https://matrica.io/settings" target="_blank">
                       <Icons.squareLogo className="w-5 h-5" />
                     </a>
-                 
-                
                   </div>
                 </div>
-               
               </SheetContent>
             </Sheet>
           </div>

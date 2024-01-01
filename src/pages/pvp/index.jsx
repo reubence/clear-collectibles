@@ -27,6 +27,7 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import SelectNFT from "@/components/pvp-page/select-nft";
+import { ScrollArea } from "@/components/ui/scroll-area";
 
 const data = [
   {
@@ -89,6 +90,8 @@ export default function PVP() {
         <NavBar avatar={avatar} />
       </div>
 
+      <SelectNFT activeNFT={activeNFT} setActiveNFT={setActiveNFT} />
+
       {/* MOBILE NAVIGATION */}
       <div
         className={cn(
@@ -123,8 +126,6 @@ export default function PVP() {
                   3xl:h-[calc(100vw-700px)] 3xl:max-w-[850px] 3xl:max-h-[850px] 
                   "
       />
-
-      <SelectNFT />
 
       {/* REWARD BUTTON */}
       <RewardsPointsButton
