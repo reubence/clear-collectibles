@@ -29,7 +29,7 @@ import {
 import SelectNFT from "@/components/pvp-page/select-nft";
 import { ScrollArea } from "@/components/ui/scroll-area";
 
-const data = [
+const selectData = [
   {
     id: 842,
     bubbles: 8952,
@@ -55,7 +55,25 @@ const data = [
     src: "/images/nft-1.png",
   },
   {
-    id: 743,
+    id: 7423,
+    bubbles: 7952,
+    level: 4,
+    src: "/images/nft-1.png",
+  },
+  {
+    id: 5432,
+    bubbles: 5952,
+    level: 3,
+    src: "/images/nft-pvp.png",
+  },
+  {
+    id: 6434,
+    bubbles: 6952,
+    level: 10,
+    src: "/images/nft-1.png",
+  },
+  {
+    id: 74312,
     bubbles: 7952,
     level: 4,
     src: "/images/nft-1.png",
@@ -63,7 +81,7 @@ const data = [
 ];
 
 export default function PVP() {
-  const [activeNFT, setActiveNFT] = useState(data[2]);
+  const [activeNFT, setActiveNFT] = useState(selectData[2]);
   const [gameMode, setGameMode] = useState("PVP");
   const [rarity, setRarity] = useState("Mythic");
   const [rewardPointsNeeded, setRewardPointsNeeded] = useState(300);
@@ -90,7 +108,11 @@ export default function PVP() {
         <NavBar avatar={avatar} />
       </div>
 
-      <SelectNFT activeNFT={activeNFT} setActiveNFT={setActiveNFT} />
+      <SelectNFT
+        data={selectData}
+        activeNFT={activeNFT}
+        setActiveNFT={setActiveNFT}
+      />
 
       {/* MOBILE NAVIGATION */}
       <div

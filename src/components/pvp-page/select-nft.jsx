@@ -2,42 +2,12 @@ import { cn } from "@/lib/utils";
 import Image from "next/image";
 import React, { useState } from "react";
 import { ScrollArea } from "../ui/scroll-area";
-const data = [
-  {
-    id: 842,
-    bubbles: 8952,
-    level: 2,
-    src: "/images/nft-1.png",
-  },
-  {
-    id: 443,
-    bubbles: 4952,
-    level: 1,
-    src: "/images/nft-1.png",
-  },
-  {
-    id: 543,
-    bubbles: 5952,
-    level: 3,
-    src: "/images/nft-pvp.png",
-  },
-  {
-    id: 643,
-    bubbles: 6952,
-    level: 10,
-    src: "/images/nft-1.png",
-  },
-  {
-    id: 743,
-    bubbles: 7952,
-    level: 4,
-    src: "/images/nft-1.png",
-  },
-];
 
-function SelectNFT({ activeNFT, setActiveNFT }) {
+function SelectNFT({ data, activeNFT, setActiveNFT }) {
   return (
-    <ScrollArea className="w-full h-[90%] 2xl:h-[85%]">
+    <ScrollArea className="w-full !h-full relative overflow-visible">
+      {/* <div className="absolute top-0 w-[560px] h-[150px] -translate-y-2 bg-gradient-to-b from-[#7E2EF7] to-transparent blur-lg z-50" /> */}
+      <div className="absolute bottom-0 w-[560px] h-[150px] -translate-y-2 bg-gradient-to-b from-[#9C93FF] to-transparent blur-lg z-50" />
       <div className="relative">
         {/* SELECT FROM AVAILABLE NFTs MOBILE */}
         <div className="step1m absolute 2xl:hidden grid grid-cols-2 gap-3 w-fit ml-7 md:ml-14 top-1/2 -translate-y-1/2 !z-[999999]">
@@ -77,7 +47,7 @@ function SelectNFT({ activeNFT, setActiveNFT }) {
           className={cn(
             "hidden absolute z-40 space-y-6 pl-[40px] h-fit w-fit translate-y-6",
             "",
-            "2xl:block"
+            "2xl:block 2xl:pb-[50vh]"
           )}
         >
           {data.map((nft, i) => (
