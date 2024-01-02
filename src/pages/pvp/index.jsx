@@ -61,6 +61,13 @@ const selectData = [
     src: "/images/nft-1.png",
   },
   {
+    id: 74223,
+    bubbles: 7952,
+    level: 4,
+    src: "/images/nft-1.png",
+  },
+
+  {
     id: 5432,
     bubbles: 5952,
     level: 3,
@@ -142,7 +149,7 @@ export default function PVP() {
         alt="Dashboard Nft Image"
         width={1000}
         height={1000}
-        className="step3 step3m absolute left-1/2 -translate-x-1/2 bottom-0 xl:-mb-10 z-40 w-[352px] h-[352px] lg:w-[600px] lg:h-[600px] 
+        className="step3 step3m absolute left-1/2 -translate-x-1/2 bottom-0 xl:-mb-10 z-40 w-[352px] h-[352px] lg:w-[600px] lg:h-[600px]
                   xl:w-[calc(100vw-750px)] xl:h-[calc(100vw-750px)] 2xl:bottom-[40px]
                   2xl:w-[calc(100vw-700px)] 2xl:max-w-[800px] 2xl:max-h-[800px]
                   3xl:h-[calc(100vw-700px)] 3xl:max-w-[850px] 3xl:max-h-[850px] 
@@ -159,7 +166,7 @@ export default function PVP() {
 
       {/* GAME MODE BUTTONS */}
       <div className="absolute flex gap-3 right-8 bottom-8 2xl:right-12 2xl:bottom-12 ">
-        <div className="absolute flex flex-col gap-1.5 2xl:gap-2.5 items-end bottom-20 md:bottom-28 lg:bottom-36 2xl:bottom-60 right-0 z-40">
+        <div className="absolute flex flex-col gap-1.5 2xl:gap-2.5 items-end bottom-20 md:bottom-28 lg:bottom-36 2xl:bottom-60 right-0">
           <div className="flex gap-4 items-baseline font-bold text-3xl 2xl:text-6xl text-white">
             <span className="text-base 2xl:text-3xl font-normal">
               LV.{activeNFT.level}

@@ -49,10 +49,10 @@ const steps = [
     content: "Before entering the game you need to select your nft",
     position: (positionProps, prevRect) => [
       positionProps.windowWidth <= 1024
-        ? 230
+        ? 140
         : positionProps.windowWidth > 1280
         ? 400
-        : 300,
+        : 180,
       positionProps.windowHeight * 0.35,
     ],
   },
