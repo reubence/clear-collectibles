@@ -7,7 +7,6 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
 import { useEffect, useState } from "react";
@@ -23,6 +22,9 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { motion } from "framer-motion";
+import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
 
 const selectData = [
   {
@@ -82,7 +84,14 @@ const selectData = [
   },
 ];
 
-export default function PVP() {
+let tabs = [
+  { id: "emote", label: "Emote" },
+  { id: "soul", label: "Soul" },
+  { id: "body", label: "Body" },
+  { id: "scarf", label: "Scarf" },
+];
+
+export default function Forge() {
   const [activeNFT, setActiveNFT] = useState(selectData[2]);
   const [gameMode, setGameMode] = useState("PVP");
   const [rarity, setRarity] = useState("Mythic");
@@ -98,22 +107,26 @@ export default function PVP() {
   return (
     <main
       className={
-        "h-screen w-screen overflow-clip bg-gradient-to-b relative from-[#5E58FF] to-[#00C6FF]"
+        "h-screen w-screen overflow-clip bg-gradient-to-b relative p-7 lg:p-14 xl:p-0 from-[#5E58FF] to-[#00C6FF]"
       }
     >
       {/* DESKTOP NAVIGATION */}
-      <div className="hidden 2xl:block">
+      <div className="hidden xl:block">
         <NavBar avatar={avatar} />
+      </div>
+
+      {/* SELECT OPTIONS */}
+      <div className="p-3 xl:p-6 xl:m-14 w-fit h-full xl:h-[77vh] rounded-2xl bg-black/30 border-white/20 border-4 z-50">
+        <SelectForge />
       </div>
 
       {/* BACKGROUND VIDEO ANIMATION */}
       <PVPBackgroundLottie />
 
       {/* Forge IMAGE  */}
-
       <div className="absolute left-1/2 -translate-x-1/2 bottom-1/2 translate-y-1/2">
         <div className="">
-          <Image
+          {/* <Image
             unoptimised
             src={"/images/forge/forge-none.png"}
             alt="Dashboard Nft Image"
@@ -132,15 +145,15 @@ export default function PVP() {
             className="absolute left-0 top-0 -translate-x-[1vw] translate-y-[0.5vw] z-50
                      w-[25.5vw]
                     "
-          />
-          {/* <Image
+          /> */}
+          <Image
             unoptimised
             src={"/images/forge/forge-dotted.png"}
             alt="Dashboard Nft Image"
             width={1000}
             height={1000}
-            className="w-[25vw]"
-          /> */}
+            className="w-[25vw] animate-pulse"
+          />
           <Image
             unoptimised
             src={"/images/forge/forge-emote.png"}
@@ -178,16 +191,16 @@ export default function PVP() {
       </div>
 
       {/* GAME MODE BUTTONS */}
-      <div className="absolute flex gap-3 right-8 bottom-8 2xl:right-12 2xl:bottom-12 ">
-        <div className="absolute flex flex-col gap-1.5 2xl:gap-2.5 items-end bottom-20 md:bottom-28 lg:bottom-36 2xl:bottom-60 right-0">
-          <div className="flex gap-4 items-baseline font-bold text-3xl 2xl:text-6xl text-white">
-            <span className="text-base 2xl:text-3xl font-normal">
+      <div className="absolute flex gap-3 right-8 bottom-8 xl:right-12 xl:bottom-12 ">
+        <div className="absolute flex flex-col gap-1.5 xl:gap-2.5 items-end bottom-20 md:bottom-28 lg:bottom-36 xl:bottom-60 right-0">
+          <div className="flex gap-4 items-baseline font-bold text-3xl xl:text-6xl text-white">
+            <span className="text-base xl:text-3xl font-normal">
               LV.{activeNFT.level}
             </span>
-            <Separator className="h-4 2xl:h-6 rounded-full w-0.5 bg-white/80" />
-            #{activeNFT.id}
+            <Separator className="h-4 xl:h-6 rounded-full w-0.5 bg-white/80" />#
+            {activeNFT.id}
           </div>
-          <div className="bg-black/30 rounded-lg 2xl:rounded-2xl py-2.5 px-4 font-bold text-xs 2xl:text-2xl text-white whitespace-nowrap">
+          <div className="bg-black/30 rounded-lg xl:rounded-2xl py-2.5 px-4 font-bold text-xs xl:text-2xl text-white whitespace-nowrap">
             Total Bubbles 🫧: {activeNFT.bubbles.toLocaleString()}
           </div>
         </div>
@@ -196,7 +209,7 @@ export default function PVP() {
         <Dialog>
           <DialogTrigger
             className={cn(
-              "2xl:hidden py-3",
+              "xl:hidden py-3",
               buttonVariants({ variant: "game" })
             )}
           >
@@ -214,7 +227,7 @@ export default function PVP() {
               <TabsList className="grid w-full grid-cols-2 h-full gap-2 rounded-[10px] p-2 text-white bg-black/30">
                 <TabsTrigger
                   value="head"
-                  className="gap-2 px-6 py-1 2xl:px-10 2xl:py-3 rounded-md data-[state=active]:text-primary data-[state=active]:bg-white"
+                  className="gap-2 px-6 py-1 xl:px-10 xl:py-3 rounded-md data-[state=active]:text-primary data-[state=active]:bg-white"
                   onClick={() => setGameMode("PVP")}
                   data-state={gameMode === "PVP" ? "active" : ""}
                 >
@@ -223,7 +236,7 @@ export default function PVP() {
                 </TabsTrigger>
                 <TabsTrigger
                   value="tail"
-                  className="gap-2 px-6 py-1 2xl:px-10 2xl:py-3 rounded-md data-[state=active]:text-primary data-[state=active]:bg-white"
+                  className="gap-2 px-6 py-1 xl:px-10 xl:py-3 rounded-md data-[state=active]:text-primary data-[state=active]:bg-white"
                   onClick={() => setGameMode("Coin Flip")}
                   data-state={gameMode === "Coin Flip" ? "active" : ""}
                 >
@@ -233,7 +246,7 @@ export default function PVP() {
               </TabsList>
             </Tabs>
 
-            <p className="text-center mt-3 whitespace-nowrap text-base 2xl:text-2xl font-bold text-white">
+            <p className="text-center mt-3 whitespace-nowrap text-base xl:text-2xl font-bold text-white">
               {" "}
               Play Need :{" "}
               <span className="px-2.5 py-1.5 bg-black/30 rounded-lg ">
@@ -248,9 +261,9 @@ export default function PVP() {
         </Dialog>
 
         {/* DESKTOP PLAY BUTTON */}
-        <div className="hidden 2xl:flex relative">
+        <div className="hidden xl:flex relative">
           {/* bubbles required green */}
-          <div className="hidden w-[calc(100%-2px)] 2xl:block whitespace-nowrap absolute -top-11 text-xl font-bold text-white bg-green-500 pt-2 pb-6 px-3 rounded-t-2xl">
+          <div className="hidden w-[calc(100%-2px)] xl:block whitespace-nowrap absolute -top-11 text-xl font-bold text-white bg-green-500 pt-2 pb-6 px-3 rounded-t-2xl">
             Bubbles required:{" "}
             <span className="px-2.5 py-1.5 bg-black/30 rounded-lg">🫧234</span>
           </div>
@@ -258,7 +271,7 @@ export default function PVP() {
           <Button
             variant="game"
             className={cn(
-              "text-base 2xl:text-[40px] font-semibold font-g8 text-[#353533] !rounded-r-none z-40"
+              "text-base xl:text-[40px] font-semibold font-g8 text-[#353533] !rounded-r-none z-40"
             )}
           >
             <Icons.controller className="w-16 h-16 fill-[#353533]" />
@@ -303,5 +316,60 @@ export default function PVP() {
         </div>
       </div>
     </main>
+  );
+}
+
+function SelectForge() {
+  let [activeTab, setActiveTab] = useState(tabs[0].id);
+
+  return (
+    <>
+      <h2 className="text-white text-xl xl:text-3xl font-bold">All Buddy</h2>
+      <Separator className="my-3 xl:my-7" />
+
+      <Tabs defaultValue="profile" className="relative z-50">
+        <ScrollArea className="w-[30vw] 2xl:w-full overflow rounded-lg bg-black/20">
+          <ScrollBar className="" orientation="horizontal" />
+          <TabsList className=" gap-4 xl:gap-10 mx-1.5 py-2.5 xl:mx-4 xl:my-3.5">
+            {tabs.map((tab) => (
+              <div className="relative" key={tab.id}>
+                <TabsTrigger
+                  className={cn(
+                    "relative font-bold text-white text-xs xl:text-xl p-1.5 px-2.5 xl:p-2.5 leading-none !z-20 data-[state=active]:text-primary",
+                    {
+                      "text-primary": activeTab === tab.id,
+                    }
+                  )}
+                  value={tab.id}
+                  onClick={() => setActiveTab(tab.id)}
+                >
+                  {activeTab === tab.id && (
+                    <motion.div
+                      layoutId="dot2"
+                      transition={{
+                        type: "spring",
+                        xbounce: 0.2,
+                        duration: 0.6,
+                      }}
+                      className="absolute w-full h-full rounded-md xl:rounded-lg bg-white -z-10"
+                      onClick={() => setActiveTab(tab.id)}
+                    />
+                  )}
+                  {tab.label}
+                </TabsTrigger>
+              </div>
+            ))}
+          </TabsList>
+        </ScrollArea>
+        <TabsContent
+          value="profile"
+          className="flex flex-col gap-5 font-medium text-foreground/50"
+        ></TabsContent>
+        <TabsContent
+          value="stat"
+          className="flex flex-col gap-5 font-bold text-foreground/50"
+        ></TabsContent>
+      </Tabs>
+    </>
   );
 }
