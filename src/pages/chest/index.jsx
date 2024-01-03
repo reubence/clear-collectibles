@@ -106,7 +106,7 @@ export default function Chest() {
   return (
     <main
       className={
-        "h-screens w-screen overflow-clip bg-gradient-to-b relative p-7 lg:p-14 xl:p-0 from-[#6DB89F] to-[#8CD3BB]"
+        "h-screen w-screen overflow-clip bg-gradient-to-b relative p-7 lg:p-14 xl:p-0 from-[#6DB89F] to-[#8CD3BB]"
       }
     >
       {/* DESKTOP NAVIGATION */}
