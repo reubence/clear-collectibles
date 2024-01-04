@@ -85,7 +85,21 @@ const selectData = [
 ];
 
 let tabs = [
-  { id: "emote", label: "Emote" },
+  {
+    id: "emote",
+    label: "Emote",
+    data: [
+      {
+        id: "emote1",
+        src: "/forge/forge-emote.png",
+      },
+      {
+        id: "emote2",
+        src: "/forge/forge-emote.png",
+      },
+    ],
+  },
+
   { id: "soul", label: "Soul" },
   { id: "body", label: "Body" },
   { id: "scarf", label: "Scarf" },
@@ -187,7 +201,7 @@ export default function Forge() {
       </div>
       {/* GAME MODE BUTTONS */}
       <div className="absolute flex gap-3 right-8 bottom-8 xl:right-12 xl:bottom-12 ">
-        <div className="absolute flex flex-col gap-1.5 xl:gap-2.5 items-end bottom-20 md:bottom-28 lg:bottom-36 xl:bottom-60 right-0">
+        <div className="absolute flex flex-col gap-1.5 xl:gap-2.5 items-end bottom-28 md:bottom-28 lg:bottom-36 xl:bottom-60 right-0">
           <div className="bg-black/30 rounded-lg xl:rounded-2xl py-2.5 px-4 font-bold text-xs xl:text-2xl text-white whitespace-nowrap">
             Total Bubbles 🫧: {activeNFT.bubbles.toLocaleString()}
           </div>
@@ -196,7 +210,7 @@ export default function Forge() {
         {/* DESKTOP PLAY BUTTON */}
         <div className="flex w-48 xl:w-96 relative">
           {/* bubbles required green */}
-          <div className="hidden w-full xl:block whitespace-nowrap absolute -top-11 text-xl font-bold text-white bg-green-500 pt-2 pb-6 px-3 rounded-t-2xl">
+          <div className="w-full whitespace-nowrap absolute -top-10 xl:-top-11 right-[1.5vw] xl:right-0 text-xs xl:text-xl font-bold text-white xl:bg-green-500 pt-2 pb-6 px-3 rounded-t-2xl">
             Bubbles required:{" "}
             <span className="px-2.5 py-1.5 bg-black/30 rounded-lg">🫧234</span>
           </div>
@@ -228,13 +242,17 @@ export default function Forge() {
 
 function SelectForge() {
   let [activeTab, setActiveTab] = useState(tabs[0].id);
+  let [activeEmote, setActiveEmote] = useState(tabs[0].data[0].src);
 
   return (
     <div className="z-50">
       <div className="hidden xl:block">
         <h2 className="text-white text-xl xl:text-3xl font-bold">All Buddy</h2>
         <Separator className="my-3 xl:my-7" />
-        <Tabs defaultValue="profile" className="relative z-50">
+        <Tabs
+          defaultValue="emote"
+          className="relative z-50 flex flex-col gap-7"
+        >
           <TabsList className="gap-4 xl:gap-10 px-1.5 py-2.5 xl:px-4 xl:h-14 2xl:h-20  rounded-lg bg-black/20">
             {tabs.map((tab) => (
               <div className="relative" key={tab.id}>
@@ -260,24 +278,62 @@ function SelectForge() {
                       onClick={() => setActiveTab(tab.id)}
                     />
                   )}
+                  {activeTab === tab.id && (
+                    <motion.div
+                      initial={{ scale: 0 }} // Set initial scale to 0
+                      animate={{ scale: 1 }} // Animate scale to 1
+                      transition={{
+                        type: "spring",
+                        bounce: 0.2,
+                        duration: 0.6,
+                      }}
+                      className="absolute -right-2 -top-2.5 "
+                    >
+                      <Icons.claimedIcon className="w-5 h-5" />
+                    </motion.div>
+                  )}
+
                   {tab.label}
                 </TabsTrigger>
               </div>
             ))}
           </TabsList>
-          <TabsContent
-            value="profile"
-            className="flex flex-col gap-5 font-medium text-foreground/50"
-          ></TabsContent>
-          <TabsContent
-            value="stat"
-            className="flex flex-col gap-5 font-bold text-foreground/50"
-          ></TabsContent>
+          <div>
+            <TabsContent
+              value="emote"
+              className="grid grid-cols-2 xl:grid-cols-3 gap-7"
+            >
+              {tabs[0].data.map((item, i) => (
+                <div
+                  key={i}
+                  className={cn(
+                    "bg-black/20 border border-black/30 px-2.5 py-5 h-24 w-24 3xl:h-36 3xl:w-36 cursor-pointer",
+                    "hover:scale-95 hover:outline-offset-4 hover:outline hover:outline-yellow-500 rounded-3xl transition-all duration-300 ease-in-out",
+                    {
+                      "outline outline-offset-4 outline-yellow-500":
+                        item.id === activeEmote,
+                    }
+                  )}
+                  onClick={() => setActiveEmote(item.id)}
+                >
+                  <Image
+                    src={"/images/forge/forge-emote.png"}
+                    width={1000}
+                    height={1000}
+                  />
+                </div>
+              ))}
+            </TabsContent>
+            <TabsContent
+              value="stat"
+              className="flex flex-col gap-5 font-bold text-foreground/50"
+            ></TabsContent>
+          </div>
         </Tabs>
       </div>
-      <div className="xl:hidden">
+      <div className="flex flex-col gap-5 xl:hidden">
         <Select className="">
-          <SelectTrigger className="w-[180px] rounded-xl border-black/30 bg-black/20 text-white font-semibold">
+          <SelectTrigger className="w-[180px] rounded-xl border-black/30 bg-black/20 text-white font-semibold ">
             <SelectValue placeholder="Theme" />
           </SelectTrigger>
           <SelectContent className="rounded-xl text-[#3562CC] font-semibold">
@@ -292,6 +348,17 @@ function SelectForge() {
             ))}
           </SelectContent>
         </Select>
+
+        <div className="grid grid-cols-2 gap-2">
+          {tabs.map((tab) => (
+            <div
+              key={tab.id}
+              className="bg-black/20 border-black/30 w-full h-full"
+            >
+              ss
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );
