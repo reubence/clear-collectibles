@@ -6,7 +6,7 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/select";
+} from "@/components/pvp-page/game-mode-select";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
@@ -280,7 +280,7 @@ export default function PVP() {
             <Icons.controller className="w-16 h-16 fill-[#353533]" />
             {gameMode}
           </Button>
-          <Select className="relative">
+          <Select className="relative z-0">
             <SelectTrigger
               className={cn(
                 "!rounded-l-none",
@@ -288,7 +288,7 @@ export default function PVP() {
               )}
             ></SelectTrigger>
             <SelectContent
-              className={cn({
+              className={cn("", {
                 "data-[side=top]:!w-[428px]": gameMode === "Coin Flip",
               })}
             >

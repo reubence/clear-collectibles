@@ -14,17 +14,10 @@ import { TourProvider, useTour, withTour } from "@reactour/tour";
 import PVPBackgroundLottie from "@/components/Lottie/PVPBackgroundLottie";
 import { Separator } from "@/components/ui/separator";
 import NavBar from "@/components/layout/navbar";
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from "@/components/ui/dialog";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { motion } from "framer-motion";
-import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
+import RotatingLight from "@/components/Lottie/RotatingLight";
+import { ScrollArea } from "@/components/ui/scroll-area";
 
 const selectData = [
   {
@@ -146,7 +139,7 @@ let tabs = [
 
 export default function Forge() {
   const [activeNFT, setActiveNFT] = useState(selectData[2]);
-  const [rarity, setRarity] = useState("Mythic");
+  const [forgeNFT, setForgeNFT] = useState(null);
   const [rewardPointsNeeded, setRewardPointsNeeded] = useState(300);
   const [rewardProgress, setRewardProgress] = useState(346);
   const [claimable, setClaimable] = useState(
@@ -155,6 +148,15 @@ export default function Forge() {
   const [rewardsLevel, setRewardsLevel] = useState(6);
 
   const [avatar, setAvatar] = useState(null);
+
+  useEffect(() => {
+    if (forgeNFT === "forging") {
+      setTimeout(() => {
+        setForgeNFT("forged");
+        setTimeout(() => {}, 1000);
+      }, 1000);
+    }
+  }, [forgeNFT]);
 
   return (
     <main
@@ -167,41 +169,78 @@ export default function Forge() {
         <NavBar avatar={avatar} />
       </div>
       {/* SELECT OPTIONS DESKTOP */}
-      <div className="p-3 pt-8 xl:p-6 xl:m-14 w-fit h-full xl:h-[77vh] rounded-2xl xl:bg-black/30 xl:border-white/20 xl:border-4 z-50">
+      <div
+        className={cn(
+          "p-3 pt-8 xl:p-6 xl:m-14 w-fit h-full xl:h-[77vh] rounded-2xl xl:bg-black/30 xl:border-white/20 xl:border-4 z-50",
+          {
+            "hidden animate-fadeout": forgeNFT !== null,
+          }
+        )}
+      >
         <SelectForge />
       </div>
+
       {/* BACKGROUND VIDEO ANIMATION */}
-      <PVPBackgroundLottie />
+      <div className="fixed top-0 left-0 w-full h-full overflow-hidden -z-50">
+        <PVPBackgroundLottie />
+      </div>
+
+      {/* Forge VIDEO */}
+      {/* <video
+        src="revealLight.mp4"
+        className="absolute top-0 left-0 z-50"
+        playbackRate={0.1}
+      /> */}
+
+      {/* FORGE SUCCESSFUL ROTATING LIGHT */}
+      <motion.div
+        animate={{ opacity: forgeNFT === "forged" ? 1 : 0 }}
+        transition={{ duration: 1, ease: "easeInOut" }}
+        className="fixed top-0 left-0 w-full h-full overflow-hidden -z-50"
+      >
+        <RotatingLight />
+      </motion.div>
+
       {/* Forge IMAGE  */}
-      <div className="absolute left-[38vw] top-[15vh] xl:top-[20vh] xl:left-1/2 xl:-translate-x-1/2">
-        <div className="">
-          {/* <Image
-            unoptimised
-            src={"/images/forge/forge-none.png"}
-            alt="Dashboard Nft Image"
-            width={1000}
-            height={1000}
-            className="invisible -translate-x-[1vw] translate-y-[0.5vw] z-50
-                     w-[25.5vw]
-                    "
-          />
-          <Image
-            unoptimised
-            src={"/images/forge/forge-none.png"}
-            alt="Dashboard Nft Image"
-            width={1000}
-            height={1000}
-            className="absolute left-0 top-0 -translate-x-[1vw] translate-y-[0.5vw] z-50
-                     w-[25.5vw]
-                    "
-          /> */}
+      <div className="absolute left-[38vw] top-[15vh] xl:top-[20vh] xl:left-1/2 xl:-translate-x-1/2 overflow-visible">
+        <motion.div
+          className=""
+          animate={{ scale: forgeNFT === "forging" ? 0.5 : 1 }}
+          transition={{ duration: 1, ease: "easeInOut" }}
+        >
+          {(forgeNFT === "forging" || forgeNFT === "forged") && (
+            <div className="fadeIn">
+              <Image
+                unoptimised
+                src={"/images/forge/forge-none.png"}
+                alt="Dashboard Nft Image"
+                width={1000}
+                height={1000}
+                className="invisible -translate-x-[1vw] translate-y-[0.5vw] z-50
+                       w-[25.5vw]
+                      "
+              />
+              <Image
+                unoptimised
+                src={"/images/forge/forge-none.png"}
+                alt="Dashboard Nft Image"
+                width={1000}
+                height={1000}
+                className="absolute left-0 top-0 -translate-x-[1vw] translate-y-[0.5vw] z-50
+                       w-[25.5vw]
+                      "
+              />
+            </div>
+          )}
           <Image
             unoptimised
             src={"/images/forge/forge-dotted.png"}
             alt="Dashboard Nft Image"
             width={1000}
             height={1000}
-            className="w-[25vw] animate-pulse"
+            className={cn("fadeIn w-[25vw]", {
+              hidden: forgeNFT === "forging" || forgeNFT === "forged",
+            })}
           />
           <Image
             unoptimised
@@ -236,7 +275,7 @@ export default function Forge() {
             w-[22.5vw]
                     "
           />
-        </div>
+        </motion.div>
       </div>
       {/* GAME MODE BUTTONS */}
       <div className="absolute flex gap-3 right-8 bottom-8 xl:right-12 xl:bottom-12 ">
@@ -261,6 +300,7 @@ export default function Forge() {
                 "!w-full !justify-center bg-yellow-400 hover:bg-yellow-500 border-yellow-600 !py-2.5 xl:!py-10",
                 "text-base xl:text-[40px] !font-bold font-g8 text-[#353533] justify-between z-40 w-full !rounded-r-none"
               )}
+              onClick={() => setForgeNFT("forging")}
             >
               Forge{" "}
             </Button>
@@ -369,10 +409,12 @@ function SelectForge() {
           </div>
         </Tabs>
       </div>
-      <div className="flex flex-col gap-5 xl:hidden">
+
+      {/* MOBILE */}
+      <div className="flex flex-col h-full w-full gap-5 xl:hidden">
         <Select className="">
           <SelectTrigger className="w-[180px] rounded-xl border-black/30 bg-black/20 text-white font-semibold ">
-            <SelectValue placeholder="Theme" />
+            <SelectValue placeholder={activeTab} />
           </SelectTrigger>
           <SelectContent className="rounded-xl text-[#3562CC] font-semibold">
             {tabs.map((tab) => (
@@ -380,6 +422,10 @@ function SelectForge() {
                 className="focus:bg-[#3562CC] focus:text-white rounded-xl"
                 key={tab.id}
                 value={tab.id}
+                onClick={() => {
+                  setActiveTab(tab.id);
+                  console.log(activeTab);
+                }}
               >
                 {tab.label}
               </SelectItem>
@@ -387,16 +433,45 @@ function SelectForge() {
           </SelectContent>
         </Select>
 
-        <div className="grid grid-cols-2 gap-2">
-          {tabs.map((tab) => (
-            <div
-              key={tab.id}
-              className="bg-black/20 border-black/30 w-full h-full"
-            >
-              ss
-            </div>
-          ))}
-        </div>
+        {/* SELECT FROM AVAILABLE NFTs MOBILE */}
+        <ScrollArea className="w-full h-[calc(100vh-122px)] lg:h-[calc(100vh-150px)]">
+          <div className={cn("2xl:hidden grid grid-cols-2 gap-5 w-full")}>
+            {
+              //adding empty divs to make the grid 4x4
+              tabs.map((tab, i) =>
+                tab.data.map((nft, i) => (
+                  <div
+                    className={cn(
+                      "block p-3 w-20 h-20 rounded-xl border border-black/30 bg-black/20 relative overflow-hidden transition-all duration-150 ease-in cursor-pointer",
+                      {
+                        // "border-2 bg-clip-content inset-0 p-1 bg-transparent border-yellow-400":
+                        //   activeNFT.id === nft?.id,
+                        "pointer-events-none": nft?.src == null,
+                        step1m: i === 2,
+                        hidden: activeTab !== tab.id,
+                      }
+                    )}
+                    key={i}
+                    // onClick={() => setActiveNFT(nft)}
+                  >
+                    {nft?.src && (
+                      <Image
+                        unoptimised
+                        src={nft?.src || "/images/nft-pvp.png"}
+                        alt="Dashboard Nft Image"
+                        width={70}
+                        height={70}
+                        key={i}
+                        className="w-full h-full rounded-lg 
+                      "
+                      />
+                    )}
+                  </div>
+                ))
+              )
+            }
+          </div>
+        </ScrollArea>
       </div>
     </div>
   );

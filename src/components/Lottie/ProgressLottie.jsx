@@ -18,21 +18,16 @@ const ProgressLottie = ({ percent, width, height, loop }) => {
   const [animation, setAnimation] = useState();
 
   useEffect(() => {
-
-
-      let lastDigit = percent % 10;
-      let index;
-      let result;
-      if(lastDigit >= 5){
-        index = Math.floor(percent / 5) * 5
-      }else{
-        index = Math.floor(percent / 10) * 10
-      }
-      result = index / 5
-      setAnimation(animations[result]);
-    
-   
-    
+    let lastDigit = percent % 10;
+    let index;
+    let result;
+    if (lastDigit >= 5) {
+      index = Math.floor(percent / 5) * 5;
+    } else {
+      index = Math.floor(percent / 10) * 10;
+    }
+    result = index / 5;
+    setAnimation(animations[result]);
   }, [percent]);
 
   const defaultOptions = {
@@ -44,7 +39,14 @@ const ProgressLottie = ({ percent, width, height, loop }) => {
     },
   };
 
-  return <Lottie options={defaultOptions} width={width} height={height} isClickToPauseDisabled={true} />;
+  return (
+    <Lottie
+      options={defaultOptions}
+      width={width}
+      height={height}
+      isClickToPauseDisabled={true}
+    />
+  );
 };
 
 export default ProgressLottie;
