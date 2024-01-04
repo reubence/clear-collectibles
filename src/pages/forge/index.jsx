@@ -91,18 +91,57 @@ let tabs = [
     data: [
       {
         id: "emote1",
-        src: "/forge/forge-emote.png",
+        src: "/images/forge/forge-emote.png",
       },
       {
         id: "emote2",
-        src: "/forge/forge-emote.png",
+        src: "/images/forge/forge-emote.png",
       },
     ],
   },
 
-  { id: "soul", label: "Soul" },
-  { id: "body", label: "Body" },
-  { id: "scarf", label: "Scarf" },
+  {
+    id: "soul",
+    label: "Soul",
+    data: [
+      {
+        id: "soul1",
+        src: "/images/forge/forge-soul.png",
+      },
+      {
+        id: "soul2",
+        src: "/images/forge/forge-soul.png",
+      },
+    ],
+  },
+  {
+    id: "body",
+    label: "Body",
+    data: [
+      {
+        id: "body1",
+        src: "/images/forge/forge-emote.png",
+      },
+      {
+        id: "body2",
+        src: "/images/forge/forge-emote.png",
+      },
+    ],
+  },
+  {
+    id: "scarf",
+    label: "Scarf",
+    data: [
+      {
+        id: "scarf1",
+        src: "/images/forge/forge-scarf.png",
+      },
+      {
+        id: "scarf2",
+        src: "/images/forge/forge-scarf.png",
+      },
+    ],
+  },
 ];
 
 export default function Forge() {
@@ -249,10 +288,7 @@ function SelectForge() {
       <div className="hidden xl:block">
         <h2 className="text-white text-xl xl:text-3xl font-bold">All Buddy</h2>
         <Separator className="my-3 xl:my-7" />
-        <Tabs
-          defaultValue="emote"
-          className="relative z-50 flex flex-col gap-7"
-        >
+        <Tabs defaultValue="emote" className="relative z-50">
           <TabsList className="gap-4 xl:gap-10 px-1.5 py-2.5 xl:px-4 xl:h-14 2xl:h-20  rounded-lg bg-black/20">
             {tabs.map((tab) => (
               <div className="relative" key={tab.id}>
@@ -298,36 +334,38 @@ function SelectForge() {
               </div>
             ))}
           </TabsList>
-          <div>
-            <TabsContent
-              value="emote"
-              className="grid grid-cols-2 xl:grid-cols-3 gap-7"
-            >
-              {tabs[0].data.map((item, i) => (
-                <div
-                  key={i}
-                  className={cn(
-                    "bg-black/20 border border-black/30 px-2.5 py-5 h-24 w-24 3xl:h-36 3xl:w-36 cursor-pointer",
-                    "hover:scale-95 hover:outline-offset-4 hover:outline hover:outline-yellow-500 rounded-3xl transition-all duration-300 ease-in-out",
-                    {
-                      "outline outline-offset-4 outline-yellow-500":
-                        item.id === activeEmote,
-                    }
-                  )}
-                  onClick={() => setActiveEmote(item.id)}
-                >
-                  <Image
-                    src={"/images/forge/forge-emote.png"}
-                    width={1000}
-                    height={1000}
-                  />
-                </div>
-              ))}
-            </TabsContent>
-            <TabsContent
-              value="stat"
-              className="flex flex-col gap-5 font-bold text-foreground/50"
-            ></TabsContent>
+          <div className="pt-7">
+            {tabs.map((tab, i) => (
+              <TabsContent
+                key={i}
+                value={tab.id}
+                className="grid grid-cols-2 xl:grid-cols-3 gap-7"
+              >
+                {tab.data.map((item) => (
+                  <div
+                    key={item.id}
+                    className={cn(
+                      "bg-black/20 border border-black/30 px-2.5 py-5 h-24 w-24 3xl:h-36 3xl:w-36 cursor-pointer",
+                      "hover:scale-95 hover:outline-offset-4 hover:outline hover:outline-yellow-500 rounded-3xl transition-all duration-300 ease-in-out",
+                      {
+                        "outline outline-offset-4 outline-yellow-500":
+                          item.id === activeEmote,
+                      }
+                    )}
+                    onClick={() => setActiveEmote(item.id)}
+                  >
+                    <div className="flex items-center justify-center h-full">
+                      <Image
+                        src={item.src}
+                        width={1000}
+                        height={1000}
+                        className="max-h-full max-w-full object-contain"
+                      />
+                    </div>
+                  </div>
+                ))}
+              </TabsContent>
+            ))}
           </div>
         </Tabs>
       </div>
