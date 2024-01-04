@@ -106,24 +106,21 @@ export default function Forge() {
   return (
     <main
       className={
-        "h-screen w-screen overflow-clip bg-gradient-to-b relative p-7 lg:p-14 xl:p-0 from-[#5E58FF] to-[#00C6FF]"
+        "h-screen w-screen overflow-clip bg-gradient-to-b relative p-7 lg:p-14 xl:p-0 from-[#5E58FF] to-[#00C6FF] z-0"
       }
     >
       {/* DESKTOP NAVIGATION */}
       <div className="hidden xl:block">
         <NavBar avatar={avatar} />
       </div>
-
-      {/* SELECT OPTIONS */}
-      <div className="p-3 xl:p-6 xl:m-14 w-fit h-full xl:h-[77vh] rounded-2xl bg-black/30 border-white/20 border-4 z-50">
+      {/* SELECT OPTIONS DESKTOP */}
+      <div className="p-3 pt-8 xl:p-6 xl:m-14 w-fit h-full xl:h-[77vh] rounded-2xl xl:bg-black/30 xl:border-white/20 xl:border-4 z-50">
         <SelectForge />
       </div>
-
       {/* BACKGROUND VIDEO ANIMATION */}
       <PVPBackgroundLottie />
-
       {/* Forge IMAGE  */}
-      <div className="absolute left-[40vw] top-[20vh] xl:left-1/2 xl:-translate-x-1/2">
+      <div className="absolute left-[38vw] top-[15vh] xl:top-[20vh] xl:left-1/2 xl:-translate-x-1/2">
         <div className="">
           {/* <Image
             unoptimised
@@ -188,7 +185,6 @@ export default function Forge() {
           />
         </div>
       </div>
-
       {/* GAME MODE BUTTONS */}
       <div className="absolute flex gap-3 right-8 bottom-8 xl:right-12 xl:bottom-12 ">
         <div className="absolute flex flex-col gap-1.5 xl:gap-2.5 items-end bottom-20 md:bottom-28 lg:bottom-36 xl:bottom-60 right-0">
@@ -234,19 +230,17 @@ function SelectForge() {
   let [activeTab, setActiveTab] = useState(tabs[0].id);
 
   return (
-    <>
-      <h2 className="text-white text-xl xl:text-3xl font-bold">All Buddy</h2>
-      <Separator className="my-3 xl:my-7" />
-
-      <Tabs defaultValue="profile" className="relative z-50">
-        <ScrollArea className="w-[30vw] 2xl:w-full overflow rounded-lg bg-black/20">
-          <ScrollBar className="" orientation="horizontal" />
-          <TabsList className=" gap-4 xl:gap-10 mx-1.5 py-2.5 xl:mx-4 xl:my-3.5">
+    <div className="z-50">
+      <div className="hidden xl:block">
+        <h2 className="text-white text-xl xl:text-3xl font-bold">All Buddy</h2>
+        <Separator className="my-3 xl:my-7" />
+        <Tabs defaultValue="profile" className="relative z-50">
+          <TabsList className="gap-4 xl:gap-10 px-1.5 py-2.5 xl:px-4 xl:h-14 2xl:h-20  rounded-lg bg-black/20">
             {tabs.map((tab) => (
               <div className="relative" key={tab.id}>
                 <TabsTrigger
                   className={cn(
-                    "relative font-bold text-white text-xs xl:text-xl p-1.5 px-2.5 xl:p-2.5 leading-none !z-20 data-[state=active]:text-primary",
+                    "relative font-bold text-white text-xs 2xl:text-xl p-1.5 px-2.5 xl:p-2.5 leading-none !z-20 data-[state=active]:text-primary",
                     {
                       "text-primary": activeTab === tab.id,
                     }
@@ -271,16 +265,34 @@ function SelectForge() {
               </div>
             ))}
           </TabsList>
-        </ScrollArea>
-        <TabsContent
-          value="profile"
-          className="flex flex-col gap-5 font-medium text-foreground/50"
-        ></TabsContent>
-        <TabsContent
-          value="stat"
-          className="flex flex-col gap-5 font-bold text-foreground/50"
-        ></TabsContent>
-      </Tabs>
-    </>
+          <TabsContent
+            value="profile"
+            className="flex flex-col gap-5 font-medium text-foreground/50"
+          ></TabsContent>
+          <TabsContent
+            value="stat"
+            className="flex flex-col gap-5 font-bold text-foreground/50"
+          ></TabsContent>
+        </Tabs>
+      </div>
+      <div className="xl:hidden">
+        <Select className="">
+          <SelectTrigger className="w-[180px] rounded-xl border-black/30 bg-black/20 text-white font-semibold">
+            <SelectValue placeholder="Theme" />
+          </SelectTrigger>
+          <SelectContent className="rounded-xl text-[#3562CC] font-semibold">
+            {tabs.map((tab) => (
+              <SelectItem
+                className="focus:bg-[#3562CC] focus:text-white rounded-xl"
+                key={tab.id}
+                value={tab.id}
+              >
+                {tab.label}
+              </SelectItem>
+            ))}
+          </SelectContent>
+        </Select>
+      </div>
+    </div>
   );
 }

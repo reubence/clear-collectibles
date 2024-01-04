@@ -27,6 +27,8 @@ const PVPBackgroundLottie = () => {
       animationContainer.current
         .querySelector("svg")
         .setAttribute("preserveAspectRatio", "xMidYMid slice");
+
+      animationContainer.current.style.zIndex = -1; // Set z-index to 0
     });
 
     return () => anim.destroy(); // optional clean up for unmounting
@@ -34,7 +36,7 @@ const PVPBackgroundLottie = () => {
 
   return (
     <div
-      className="fixed top-0 left-0 w-full h-full z-0 overflow-hidden"
+      className="fixed top-0 left-0 w-full h-full overflow-hidden"
       ref={animationContainer}
     />
   );

@@ -107,7 +107,7 @@ export default function PVP() {
   return (
     <main
       className={
-        "h-screen w-screen overflow-clip bg-gradient-to-b relative from-[#7E2EF7] to-[#9C93FF]"
+        "h-screen w-screen overflow-clip bg-gradient-to-b relative from-[#7E2EF7] to-[#9C93FF] z-0"
       }
     >
       {/* DESKTOP NAVIGATION */}

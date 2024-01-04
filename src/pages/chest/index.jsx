@@ -105,9 +105,14 @@ export default function Chest() {
 
   return (
     <main
-      className={
-        "h-screen w-screen overflow-clip bg-gradient-to-b relative p-7 lg:p-14 xl:p-0 from-[#6DB89F] to-[#8CD3BB]"
-      }
+      className={cn(
+        "h-screen w-screen overflow-clip bg-gradient-to-b relative p-7 lg:p-14 xl:p-0 z-0",
+        {
+          "from-[#C9CCD7] to-[#6D7496]": false,
+          "from-[#4CE0BC] to-[#4C8280]": true,
+          "from-[#F9C406] to-[#A96B0E]": true,
+        }
+      )}
     >
       {/* DESKTOP NAVIGATION */}
       <div className="hidden xl:block">
@@ -123,19 +128,24 @@ export default function Chest() {
       <PVPBackgroundLottie />
 
       {/* Forge IMAGE  */}
-      <div className="absolute left-[40vw] top-[20vh] xl:left-1/2 xl:-translate-x-1/2">
-        <div className="">
-          <Image
+      <div className="">
+        {/* <Image
             unoptimised
             src={"/images/chest/chest-none.png"}
             alt="Dashboard Nft Image"
             width={1000}
             height={1000}
-            className="invisible -translate-x-[1vw] translate-y-[0.5vw] z-50
-                     w-[25.5vw]
-                    "
-          />
-        </div>
+            className=" z-50 w-[30.5vw] absolute left-1/2 -translate-x-1/2"
+          /> */}
+
+        <Image
+          unoptimised
+          src={"/images/chest/chest-bronze.png"}
+          alt="Dashboard Nft Image"
+          width={1000}
+          height={1000}
+          className="absolute z-50 w-[45vw] left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2"
+        />
       </div>
 
       {/* GAME MODE BUTTONS */}
