@@ -106,7 +106,7 @@ module.exports = {
         custom: "pulse 1s ease-in-out infinite",
         fadein: "fadeIn 450ms ease-in",
         fadeout: "fadeOut 450ms ease-out",
-        float: "float 10s ease-in-out infinite",
+        float: "float 1.5s ease-in-out infinite",
       },
     },
   },

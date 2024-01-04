@@ -18,6 +18,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { motion } from "framer-motion";
 import RotatingLight from "@/components/Lottie/RotatingLight";
 import { ScrollArea } from "@/components/ui/scroll-area";
+import { animate } from "framer-motion";
 
 const selectData = [
   {
@@ -140,6 +141,7 @@ let tabs = [
 export default function Forge() {
   const [activeNFT, setActiveNFT] = useState(selectData[2]);
   const [forgeNFT, setForgeNFT] = useState(null);
+  const [float, setFloat] = useState(null);
   const [rewardPointsNeeded, setRewardPointsNeeded] = useState(300);
   const [rewardProgress, setRewardProgress] = useState(346);
   const [claimable, setClaimable] = useState(
@@ -153,7 +155,7 @@ export default function Forge() {
     if (forgeNFT === "forging") {
       setTimeout(() => {
         setForgeNFT("forged");
-        setTimeout(() => {}, 1000);
+        setTimeout(() => setFloat("float"), 1000);
       }, 1000);
     }
   }, [forgeNFT]);
@@ -204,9 +206,14 @@ export default function Forge() {
       {/* Forge IMAGE  */}
       <div className="absolute left-[38vw] top-[15vh] xl:top-[20vh] xl:left-1/2 xl:-translate-x-1/2 overflow-visible">
         <motion.div
-          className=""
-          animate={{ scale: forgeNFT === "forging" ? 0.5 : 1 }}
-          transition={{ duration: 1, ease: "easeInOut" }}
+          className={cn({ "animate-float": float === "float" })}
+          animate={{
+            scale: forgeNFT === "forging" ? 0.5 : 1,
+          }}
+          transition={{
+            duration: 1,
+            ease: "easeInOut",
+          }}
         >
           {(forgeNFT === "forging" || forgeNFT === "forged") && (
             <div className="fadeIn">
@@ -412,7 +419,7 @@ function SelectForge() {
 
       {/* MOBILE */}
       <div className="flex flex-col h-full w-full gap-5 xl:hidden">
-        <Select className="">
+        <Select className="" onValueChange={(e) => setActiveTab(e)}>
           <SelectTrigger className="w-[180px] rounded-xl border-black/30 bg-black/20 text-white font-semibold ">
             <SelectValue placeholder={activeTab} />
           </SelectTrigger>
@@ -423,7 +430,6 @@ function SelectForge() {
                 key={tab.id}
                 value={tab.id}
                 onClick={() => {
-                  setActiveTab(tab.id);
                   console.log(activeTab);
                 }}
               >
@@ -442,13 +448,13 @@ function SelectForge() {
                 tab.data.map((nft, i) => (
                   <div
                     className={cn(
-                      "block p-3 w-20 h-20 rounded-xl border border-black/30 bg-black/20 relative overflow-hidden transition-all duration-150 ease-in cursor-pointer",
+                      "hidden p-3 w-20 h-20 rounded-xl border border-black/30 bg-black/20 relative overflow-hidden transition-all duration-150 ease-in cursor-pointer",
                       {
                         // "border-2 bg-clip-content inset-0 p-1 bg-transparent border-yellow-400":
                         //   activeNFT.id === nft?.id,
                         "pointer-events-none": nft?.src == null,
                         step1m: i === 2,
-                        hidden: activeTab !== tab.id,
+                        block: activeTab === tab.id,
                       }
                     )}
                     key={i}

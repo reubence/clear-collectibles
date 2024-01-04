@@ -7,7 +7,19 @@ const RotatingLight = ({
   width = "100%",
   height = "100%",
 }) => {
-  return <Lottie animationData={lottieFile} style={{ width, height }} />;
+  return (
+    <Lottie
+      animationData={lottieFile}
+      style={{ width, height }}
+      options={{
+        loop: true,
+        autoplay: true,
+        rendererSettings: {
+          preserveAspectRatio: "xMidYMid slice",
+        },
+      }}
+    />
+  );
 };
 
 export default RotatingLight;
