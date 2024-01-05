@@ -152,8 +152,8 @@ export default function Chest() {
           setFloat("reveal-light");
           setTimeout(() => {
             setIsEditing(false);
-            setForgeNFT("treasure");
             setFloat("float");
+            setForgeNFT("treasure");
           }, 500);
         }, 500);
       }, 500);
@@ -198,12 +198,12 @@ export default function Chest() {
       </div>
 
       {/* ROTATING LIGHT ANIMATION */}
-      {forgeNFT === "forged" && (
+      {forgeNFT === "treasure" && (
         <motion.div
           animate={{ opacity: 1 }}
           style={{ opacity: 0 }}
-          transition={{ delay: 0.5, duration: 1, ease: "easeInOut" }}
-          className="fixed top-0 left-0 w-full h-full overflow-hidden -z-50"
+          transition={{ duration: 1, ease: "easeInOut" }}
+          className="absolute top-0 left-0 w-full h-full overflow-hidden -z-50"
         >
           <RotatingLight />
         </motion.div>
