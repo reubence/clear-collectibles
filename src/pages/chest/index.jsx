@@ -203,7 +203,7 @@ export default function Chest() {
           animate={{ opacity: 1 }}
           style={{ opacity: 0 }}
           transition={{ delay: 0.5, duration: 1, ease: "easeInOut" }}
-          className="fixed top-0 left-0 w-full h-full overflow-hidden z-50"
+          className="fixed top-0 left-0 w-full h-full overflow-hidden -z-50"
         >
           <RotatingLight />
         </motion.div>
