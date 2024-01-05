@@ -312,7 +312,7 @@ export default function Forge() {
         {/* DESKTOP PLAY BUTTON */}
         <div className="flex w-48 xl:w-96 relative">
           {/* bubbles required green */}
-          <div className="w-full whitespace-nowrap absolute -top-10 xl:-top-11 right-[1.5vw] xl:right-0 text-xs xl:text-xl font-bold text-white xl:bg-green-500 pt-2 pb-6 px-3 rounded-t-2xl">
+          <div className="w-full whitespace-nowrap absolute -top-10 xl:-top-11 right-[1.5vw] xl:right-0 text-xs xl:text-xl font-bold text-white xl:bg-green-500 pt-2 pb-3.5 px-3 rounded-t-2xl">
             Bubbles required:{" "}
             <span className="px-2.5 py-1.5 bg-black/30 rounded-lg">🫧234</span>
           </div>
@@ -325,10 +325,12 @@ export default function Forge() {
                 "text-base xl:text-[40px] !font-bold font-g8 text-[#353533] justify-between z-40 w-full !rounded-r-none"
               )}
               onClick={() => setForgeNFT("forging")}
+              disabled={Object.keys(nftData).length < 3}
             >
               Forge{" "}
             </Button>
             <Button
+              disabled={Object.keys(nftData).length < 3}
               variant="game"
               className={cn(
                 "flex w-fit  items-center justify-center !rounded-l-none !py-1.5 xl:!py-5"
