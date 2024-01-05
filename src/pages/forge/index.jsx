@@ -145,7 +145,7 @@ export default function Forge() {
   const [avatar, setAvatar] = useState(null);
 
   const [isEditing, setIsEditing] = useState(true);
-  const [nftData, setNftData] = useState({
+  const [nftData, setData] = useState({
     // emote: "/images/forge/forge-emote.png",
     // soul: "/images/forge/forge-soul.png",
     // body: "/images/forge/forge-none.png",
@@ -187,11 +187,11 @@ export default function Forge() {
           }
         )}
       >
-        <SelectForge data={nftData} setNftData={setNftData} />
+        <SelectForge data={nftData} setData={setData} />
       </div>
 
       {/* BACKGROUND HALO ANIMATION */}
-      <div className="fixed top-0 left-0 w-full h-full overflow-hidden -z-50">
+      <div className="pointer-events-none fixed top-0 left-0 w-full h-full overflow-hidden -z-50">
         <PVPBackgroundLottie />
       </div>
 
@@ -312,7 +312,7 @@ export default function Forge() {
         {/* DESKTOP PLAY BUTTON */}
         <div className="flex w-48 xl:w-96 relative">
           {/* bubbles required green */}
-          <div className="w-full whitespace-nowrap absolute -top-10 xl:-top-11 right-[1.5vw] xl:right-0 text-xs xl:text-xl font-bold text-white xl:bg-green-500 pt-2 pb-3.5 px-3 rounded-t-2xl">
+          <div className="w-full whitespace-nowrap absolute -top-10 xl:-top-11 right-[1.5vw] xl:right-0 text-xs xl:text-xl font-bold text-white xl:bg-green-500 pt-2 pb-5 px-3 rounded-t-2xl">
             Bubbles required:{" "}
             <span className="px-2.5 py-1.5 bg-black/30 rounded-lg">🫧234</span>
           </div>
@@ -345,7 +345,7 @@ export default function Forge() {
   );
 }
 
-function SelectForge({ data, setNftData }) {
+function SelectForge({ data, setData }) {
   let [activeTab, setActiveTab] = useState(tabs[0].id);
   let [activeEmote, setActiveEmote] = useState({
     emote: null,
@@ -420,7 +420,7 @@ function SelectForge({ data, setNftData }) {
                       "hover:scale-95 hover:outline-offset-4 hover:outline hover:outline-yellow-500 rounded-3xl transition-all duration-300 ease-in-out",
                       {
                         "outline outline-offset-4 outline-yellow-500":
-                          activeEmote[item.id] === item?.id,
+                          activeEmote[tab.id] === item?.id,
                       }
                     )}
                     onClick={() => {
@@ -428,7 +428,7 @@ function SelectForge({ data, setNftData }) {
                         ...activeEmote,
                         [activeTab]: item?.id,
                       });
-                      setNftData((prev) => ({
+                      setData((prev) => ({
                         ...prev,
                         [activeTab]: item.src,
                       }));
@@ -484,7 +484,7 @@ function SelectForge({ data, setNftData }) {
                       "hidden p-2.5 w-20 h-20 rounded-xl border border-black/30 bg-black/20 relative overflow-hidden transition-all duration-150 ease-in cursor-pointer",
                       {
                         "scale-90 outline outline-1 outline-offset-2 outline-yellow-500":
-                          activeEmote[item.id] === item?.id,
+                          activeEmote[tab.id] === item?.id,
                         "pointer-events-none": item?.src == null,
                         step1m: i === 2,
                         block: activeTab === tab.id,
@@ -496,7 +496,7 @@ function SelectForge({ data, setNftData }) {
                         ...activeEmote,
                         [activeTab]: item?.id,
                       });
-                      setNftData((prev) => ({
+                      setData((prev) => ({
                         ...prev,
                         [activeTab]: item.src,
                       }));
