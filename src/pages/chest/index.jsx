@@ -152,6 +152,7 @@ export default function Chest() {
           setFloat("reveal-light");
           setTimeout(() => {
             setIsEditing(false);
+            setForgeNFT("treasure");
             setFloat("float");
           }, 500);
         }, 500);
@@ -164,9 +165,9 @@ export default function Chest() {
       className={cn(
         "h-screen w-screen overflow-clip bg-gradient-to-b relative p-7 lg:p-14 xl:p-0 z-0",
         {
-          "from-[#C9CCD7] to-[#6D7496]": false,
-          "from-[#4CE0BC] to-[#4C8280]": true,
-          "from-[#F9C406] to-[#A96B0E]": true,
+          "from-[#C9CCD7] to-[#6D7496]": nftData.id === "common1" || true,
+          "from-[#4CE0BC] to-[#4C8280]": nftData.id === "rare1",
+          "from-[#F9C406] to-[#A96B0E]": nftData.id === "epic1",
         }
       )}
     >
@@ -202,7 +203,7 @@ export default function Chest() {
           animate={{ opacity: 1 }}
           style={{ opacity: 0 }}
           transition={{ delay: 0.5, duration: 1, ease: "easeInOut" }}
-          className="fixed top-0 left-0 w-full h-full overflow-hidden -z-50"
+          className="fixed top-0 left-0 w-full h-full overflow-hidden z-50"
         >
           <RotatingLight />
         </motion.div>
@@ -223,7 +224,7 @@ export default function Chest() {
       {/* CHEST IMAGE  */}
       <div className="absolute z-50 w-[25vw] left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2">
         <motion.div
-          className={cn({ "animate-float": float === "float" })}
+          className={cn("", { "animate-float": float === "float" })}
           animate={{
             scale: forgeNFT === "forging" ? 0.5 : 1,
           }}
@@ -233,17 +234,15 @@ export default function Chest() {
           }}
         >
           {/* NOT EDITING */}
-          {!isEditing && (
-            <div className="fadeIn">
-              <Image
-                unoptimised
-                src={"/images/chest/chest-bronze.png"}
-                alt="Dashboard Nft Image"
-                width={1000}
-                height={1000}
-                className=""
-              />{" "}
-            </div>
+          {!isEditing && forgeNFT !== "treasure" && (
+            <Image
+              unoptimised
+              src={nftData.src || "/images/chest/chest-bronze.png"}
+              alt="Dashboard Nft Image"
+              width={2000}
+              height={2000}
+              className="scale-150"
+            />
           )}
 
           {/* IS EDITING OUTLINE */}
@@ -254,7 +253,30 @@ export default function Chest() {
               alt="Dashboard Nft Image"
               width={1000}
               height={1000}
+              className=""
             />
+          )}
+
+          {/* TREASURE OPENED */}
+          {!isEditing && forgeNFT === "treasure" && (
+            <motion.div
+              animate={{
+                scale: 1.5,
+              }}
+              transition={{
+                duration: 0.5,
+                ease: "easeInOut",
+              }}
+            >
+              <Image
+                unoptimised
+                src={"/images/chest/treasure.png"}
+                alt="Dashboard Nft Image"
+                width={1000}
+                height={1000}
+                className={cn("")}
+              />
+            </motion.div>
           )}
         </motion.div>
       </div>
@@ -389,9 +411,9 @@ function SelectForge({ setIsEditing, setNftData }) {
                         ...activeEmote,
                         [activeTab]: item?.id,
                       });
-                      setNftData((prev) => ({
-                        ...prev,
-                        [activeTab]: item.src,
+                      setNftData(() => ({
+                        id: item.id,
+                        src: item.src,
                       }));
                     }}
                   >
@@ -453,13 +475,14 @@ function SelectForge({ setIsEditing, setNftData }) {
                     )}
                     key={i}
                     onClick={() => {
+                      setIsEditing(false);
                       setActiveEmote({
                         ...activeEmote,
                         [activeTab]: item?.id,
                       });
-                      setNftData((prev) => ({
-                        ...prev,
-                        [activeTab]: item.src,
+                      setNftData(() => ({
+                        id: item.id,
+                        src: item.src,
                       }));
                     }}
                   >
