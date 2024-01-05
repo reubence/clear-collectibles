@@ -7,17 +7,26 @@ const RotatingLight = ({
   width = "100%",
   height = "100%",
 }) => {
+  const defaultOptions = {
+    loop: true,
+    autoplay: true,
+    animationData: lottieFile,
+    rendererSettings: {
+      preserveAspectRatio: "xMidYMid slice",
+    },
+  };
   return (
     <Lottie
-      animationData={lottieFile}
-      style={{ width, height }}
-      options={{
-        loop: true,
-        autoplay: true,
-        rendererSettings: {
-          preserveAspectRatio: "xMidYMid slice",
-        },
+      style={{
+        width: width,
+        height: height,
+        objectFit: "cover",
+        position: "absolute",
+        zIndex: -1,
+        preserveAspectRatio: "xMidYMid slice",
       }}
+      animationData={lottieFile}
+      options={defaultOptions}
     />
   );
 };

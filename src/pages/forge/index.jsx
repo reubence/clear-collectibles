@@ -142,21 +142,28 @@ export default function Forge() {
   const [activeNFT, setActiveNFT] = useState(selectData[2]);
   const [forgeNFT, setForgeNFT] = useState(null);
   const [float, setFloat] = useState(null);
-  const [rewardPointsNeeded, setRewardPointsNeeded] = useState(300);
-  const [rewardProgress, setRewardProgress] = useState(346);
-  const [claimable, setClaimable] = useState(
-    rewardPointsNeeded <= rewardProgress
-  );
-  const [rewardsLevel, setRewardsLevel] = useState(6);
-
   const [avatar, setAvatar] = useState(null);
+
+  const [isEditing, setIsEditing] = useState(true);
+  const [nftData, setNftData] = useState({
+    // emote: "/images/forge/forge-emote.png",
+    // soul: "/images/forge/forge-soul.png",
+    // body: "/images/forge/forge-none.png",
+    // scarf: "/images/forge/forge-none.png",
+  });
 
   useEffect(() => {
     if (forgeNFT === "forging") {
       setTimeout(() => {
         setForgeNFT("forged");
-        setTimeout(() => setFloat("float"), 1000);
-      }, 1000);
+        setTimeout(() => {
+          setFloat("reveal-light");
+          setTimeout(() => {
+            setIsEditing(false);
+            setFloat("float");
+          }, 500);
+        }, 500);
+      }, 500);
     }
   }, [forgeNFT]);
 
@@ -170,7 +177,8 @@ export default function Forge() {
       <div className="hidden xl:block">
         <NavBar avatar={avatar} />
       </div>
-      {/* SELECT OPTIONS DESKTOP */}
+
+      {/* SELECT NFT ITEMS */}
       <div
         className={cn(
           "p-3 pt-8 xl:p-6 xl:m-14 w-fit h-full xl:h-[77vh] rounded-2xl xl:bg-black/30 xl:border-white/20 xl:border-4 z-50",
@@ -179,29 +187,37 @@ export default function Forge() {
           }
         )}
       >
-        <SelectForge />
+        <SelectForge data={nftData} setNftData={setNftData} />
       </div>
 
-      {/* BACKGROUND VIDEO ANIMATION */}
+      {/* BACKGROUND HALO ANIMATION */}
       <div className="fixed top-0 left-0 w-full h-full overflow-hidden -z-50">
         <PVPBackgroundLottie />
       </div>
 
-      {/* Forge VIDEO */}
-      {/* <video
-        src="revealLight.mp4"
-        className="absolute top-0 left-0 z-50"
-        playbackRate={0.1}
-      /> */}
+      {/* ROTATING LIGHT ANIMATION */}
+      {forgeNFT === "forged" && (
+        <motion.div
+          animate={{ opacity: 1 }}
+          style={{ opacity: 0 }}
+          transition={{ delay: 0.5, duration: 1, ease: "easeInOut" }}
+          className="fixed top-0 left-0 w-full h-full overflow-hidden -z-50"
+        >
+          <RotatingLight />
+        </motion.div>
+      )}
 
-      {/* FORGE SUCCESSFUL ROTATING LIGHT */}
-      <motion.div
-        animate={{ opacity: forgeNFT === "forged" ? 1 : 0 }}
-        transition={{ duration: 1, ease: "easeInOut" }}
-        className="fixed top-0 left-0 w-full h-full overflow-hidden -z-50"
-      >
-        <RotatingLight />
-      </motion.div>
+      {/* REVEAL LIGHT */}
+      {float === "reveal-light" && (
+        <Image
+          unoptimised
+          src="/background/revealLight.gif"
+          alt="Dashboard Nft Image"
+          width={1000}
+          height={1000}
+          className="absolute top-0 left-0 w-full h-full z-[99] animate-fadein duration-200"
+        />
+      )}
 
       {/* Forge IMAGE  */}
       <div className="absolute left-[38vw] top-[15vh] xl:top-[20vh] xl:left-1/2 xl:-translate-x-1/2 overflow-visible">
@@ -211,11 +227,12 @@ export default function Forge() {
             scale: forgeNFT === "forging" ? 0.5 : 1,
           }}
           transition={{
-            duration: 1,
+            duration: 0.5,
             ease: "easeInOut",
           }}
         >
-          {(forgeNFT === "forging" || forgeNFT === "forged") && (
+          {/* BODY ITEM - FORGING COMPLETE */}
+          {forgeNFT === "forged" && !isEditing && (
             <div className="fadeIn">
               <Image
                 unoptimised
@@ -223,9 +240,7 @@ export default function Forge() {
                 alt="Dashboard Nft Image"
                 width={1000}
                 height={1000}
-                className="invisible -translate-x-[1vw] translate-y-[0.5vw] z-50
-                       w-[25.5vw]
-                      "
+                className="animate-fadein duration-200 ease-out invisible -translate-x-[1vw] translate-y-[0.5vw] z-50 w-[25.5vw]"
               />
               <Image
                 unoptimised
@@ -233,55 +248,57 @@ export default function Forge() {
                 alt="Dashboard Nft Image"
                 width={1000}
                 height={1000}
-                className="absolute left-0 top-0 -translate-x-[1vw] translate-y-[0.5vw] z-50
-                       w-[25.5vw]
-                      "
+                className="animate-fadein duration-200 ease-out absolute left-0 top-0 -translate-x-[1vw] translate-y-[0.5vw] z-50 w-[25.5vw]"
               />
             </div>
           )}
-          <Image
-            unoptimised
-            src={"/images/forge/forge-dotted.png"}
-            alt="Dashboard Nft Image"
-            width={1000}
-            height={1000}
-            className={cn("fadeIn w-[25vw]", {
-              hidden: forgeNFT === "forging" || forgeNFT === "forged",
-            })}
-          />
-          <Image
-            unoptimised
-            src={"/images/forge/forge-emote.png"}
-            alt="Dashboard Nft Image"
-            width={1000}
-            height={1000}
-            className="absolute z-40
-            left-[7vw] top-[4vw] 
-            w-[12vw]
-                    "
-          />
-          <Image
-            unoptimised
-            src={"/images/forge/forge-scarf.png"}
-            alt="Dashboard Nft Image"
-            width={1000}
-            height={1000}
-            className="absolute z-50
-            left-[7.3vw] top-[14.2vw]
-            w-[10.8vw]
-                    "
-          />
-          <Image
-            unoptimised
-            src={"/images/forge/forge-soul.png"}
-            alt="Dashboard Nft Image"
-            width={1000}
-            height={1000}
-            className="absolute z-30
-            left-[0.5vw] top-[1vw]
-            w-[22.5vw]
-                    "
-          />
+
+          {/* IS EDITING OUTLINE */}
+          {isEditing && (
+            <Image
+              unoptimised
+              src={"/images/forge/forge-dotted.png"}
+              alt="Dashboard Nft Image"
+              width={1000}
+              height={1000}
+              className={cn("w-[25vw]", {
+                // "animate-pulse": isEditing,
+              })}
+            />
+          )}
+          {/* EMOTE ITEM */}
+          {nftData.emote && (
+            <Image
+              unoptimised
+              src={"/images/forge/forge-emote.png"}
+              alt="Dashboard Nft Image"
+              width={1000}
+              height={1000}
+              className="animate-fadein absolute z-40 left-[7vw] top-[4vw] w-[12vw]"
+            />
+          )}
+          {/* SCARF ITEM */}
+          {nftData.scarf && (
+            <Image
+              unoptimised
+              src={"/images/forge/forge-scarf.png"}
+              alt="Dashboard Nft Image"
+              width={1000}
+              height={1000}
+              className="animate-fadein absolute z-50 left-[7.3vw] top-[14.2vw] w-[10.8vw]"
+            />
+          )}
+          {/* SOUL ITEM */}
+          {nftData.soul && (
+            <Image
+              unoptimised
+              src={"/images/forge/forge-soul.png"}
+              alt="Dashboard Nft Image"
+              width={1000}
+              height={1000}
+              className="animate-fadein absolute z-30 left-[0.5vw] top-[1vw] w-[22.5vw]"
+            />
+          )}
         </motion.div>
       </div>
       {/* GAME MODE BUTTONS */}
@@ -326,9 +343,14 @@ export default function Forge() {
   );
 }
 
-function SelectForge() {
+function SelectForge({ data, setNftData }) {
   let [activeTab, setActiveTab] = useState(tabs[0].id);
-  let [activeEmote, setActiveEmote] = useState(tabs[0].data[0].src);
+  let [activeEmote, setActiveEmote] = useState({
+    emote: null,
+    soul: null,
+    body: null,
+    scarf: null,
+  });
 
   return (
     <div className="z-50">
@@ -396,10 +418,19 @@ function SelectForge() {
                       "hover:scale-95 hover:outline-offset-4 hover:outline hover:outline-yellow-500 rounded-3xl transition-all duration-300 ease-in-out",
                       {
                         "outline outline-offset-4 outline-yellow-500":
-                          item.id === activeEmote,
+                          activeEmote[item.id] === item?.id,
                       }
                     )}
-                    onClick={() => setActiveEmote(item.id)}
+                    onClick={() => {
+                      setActiveEmote({
+                        ...activeEmote,
+                        [activeTab]: item?.id,
+                      });
+                      setNftData((prev) => ({
+                        ...prev,
+                        [activeTab]: item.src,
+                      }));
+                    }}
                   >
                     <div className="flex items-center justify-center h-full">
                       <Image
@@ -441,35 +472,43 @@ function SelectForge() {
 
         {/* SELECT FROM AVAILABLE NFTs MOBILE */}
         <ScrollArea className="w-full h-[calc(100vh-122px)] lg:h-[calc(100vh-150px)]">
-          <div className={cn("2xl:hidden grid grid-cols-2 gap-5 w-full")}>
+          <div className={cn("2xl:hidden grid grid-cols-2 gap-5 w-full ")}>
             {
               //adding empty divs to make the grid 4x4
               tabs.map((tab, i) =>
-                tab.data.map((nft, i) => (
+                tab.data.map((item, i) => (
                   <div
                     className={cn(
-                      "hidden p-3 w-20 h-20 rounded-xl border border-black/30 bg-black/20 relative overflow-hidden transition-all duration-150 ease-in cursor-pointer",
+                      "hidden p-2.5 w-20 h-20 rounded-xl border border-black/30 bg-black/20 relative overflow-hidden transition-all duration-150 ease-in cursor-pointer",
                       {
-                        // "border-2 bg-clip-content inset-0 p-1 bg-transparent border-yellow-400":
-                        //   activeNFT.id === nft?.id,
-                        "pointer-events-none": nft?.src == null,
+                        "scale-90 outline outline-1 outline-offset-2 outline-yellow-500":
+                          activeEmote[item.id] === item?.id,
+                        "pointer-events-none": item?.src == null,
                         step1m: i === 2,
                         block: activeTab === tab.id,
                       }
                     )}
                     key={i}
-                    // onClick={() => setActiveNFT(nft)}
+                    onClick={() => {
+                      setActiveEmote({
+                        ...activeEmote,
+                        [activeTab]: item?.id,
+                      });
+                      setNftData((prev) => ({
+                        ...prev,
+                        [activeTab]: item.src,
+                      }));
+                    }}
                   >
-                    {nft?.src && (
+                    {item?.src && (
                       <Image
                         unoptimised
-                        src={nft?.src || "/images/nft-pvp.png"}
+                        src={item?.src || "/images/nft-pvp.png"}
                         alt="Dashboard Nft Image"
                         width={70}
                         height={70}
                         key={i}
-                        className="w-full h-full rounded-lg 
-                      "
+                        className="w-full h-full rounded-lg object-contain"
                       />
                     )}
                   </div>
