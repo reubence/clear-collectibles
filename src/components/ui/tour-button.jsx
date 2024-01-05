@@ -13,7 +13,7 @@ class TourButton extends Component {
     return (
       <div
         className={cn(
-          "absolute flex gap-3 bottom-10 left-1/2 -translate-x-1/2 z-[9999999]",
+          "absolute flex gap-3 bottom-10 left-1/2 -translate-x-1/2 z-[999999]",
           { hidden: this.props.isOpen === false }
         )}
       >
