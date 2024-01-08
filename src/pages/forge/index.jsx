@@ -354,20 +354,20 @@ export default function Forge() {
       {/* MOBILE NAVIGATION */}
       <div
         className={cn(
-          "group absolute w-fit flex gap-4 lg:hidden items-center right-8 top-8 transition-all duration-150 ease-in cursor-pointer"
+          "group absolute w-fit flex gap-4 items-center right-8 top-8 lg:right-12 lg:top-32 transition-all duration-150 ease-in cursor-pointer"
         )}
       >
         <Link
           href={"/pvp"}
           className={cn(
             buttonVariants({ variant: "gameSecondary" }),
-            "!py-2 !px-5 ",
+            "!py-2 !px-5 2xl:!py-3",
             "active:scale-95"
           )}
         >
           Back
         </Link>
-        <Icons.skullLogo className="w-12 h-12 fill-white" />
+        <Icons.skullLogo className="w-12 h-12 lg:hidden fill-white" />
       </div>
     </main>
   );

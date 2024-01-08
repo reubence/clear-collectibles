@@ -167,9 +167,9 @@ export default function Chest() {
         "h-screen w-screen overflow-clip bg-gradient-to-b relative p-7 lg:p-14 xl:p-0 z-0",
         {
           "from-[#C9CCD7] to-[#6D7496]":
-            nftData.id.split("-")[0] === "common" || true,
-          "from-[#4CE0BC] to-[#4C8280]": nftData.id.split("-")[0] === "rare",
-          "from-[#F9C406] to-[#A96B0E]": nftData.id.split("-")[0] === "epic",
+            nftData.id?.split("-")[0] === "common" || true,
+          "from-[#4CE0BC] to-[#4C8280]": nftData.id?.split("-")[0] === "rare",
+          "from-[#F9C406] to-[#A96B0E]": nftData.id?.split("-")[0] === "epic",
         }
       )}
     >
@@ -327,20 +327,20 @@ export default function Chest() {
       {/* MOBILE NAVIGATION */}
       <div
         className={cn(
-          "group absolute w-fit flex gap-4 lg:hidden items-center right-8 top-8 transition-all duration-150 ease-in cursor-pointer"
+          "group absolute w-fit flex gap-4 items-center right-8 top-8 lg:right-12 lg:top-32 transition-all duration-150 ease-in cursor-pointer"
         )}
       >
         <Link
           href={"/pvp"}
           className={cn(
             buttonVariants({ variant: "gameSecondary" }),
-            "!py-2 !px-5 ",
+            "!py-2 !px-5 2xl:!py-3",
             "active:scale-95"
           )}
         >
           Back
         </Link>
-        <Icons.skullLogo className="w-12 h-12 fill-white" />
+        <Icons.skullLogo className="w-12 h-12 lg:hidden fill-white" />
       </div>
     </main>
   );
