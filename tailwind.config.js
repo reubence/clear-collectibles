@@ -99,6 +99,10 @@ module.exports = {
           "50%": { transform: "translateY(-20px)" },
           "100%": { transform: "translateY(0)" },
         },
+        zoomIn: {
+          "0%": { transform: "scale(0.6)" },
+          "100%": { transform: "scale(1)" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
@@ -107,6 +111,7 @@ module.exports = {
         fadein: "fadeIn 450ms ease-in",
         fadeout: "fadeOut 450ms ease-out",
         float: "float 1.5s ease-in-out infinite",
+        zoomIn: "zoomIn 350ms ease-in",
       },
     },
   },

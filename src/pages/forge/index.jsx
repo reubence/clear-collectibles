@@ -141,6 +141,7 @@ let tabs = [
 export default function Forge() {
   const [activeNFT, setActiveNFT] = useState(selectData[2]);
   const [forgeNFT, setForgeNFT] = useState(null);
+  const [zoom, setZoom] = useState(null);
   const [float, setFloat] = useState(null);
   const [avatar, setAvatar] = useState(null);
 
@@ -159,8 +160,12 @@ export default function Forge() {
         setTimeout(() => {
           setFloat("reveal-light");
           setTimeout(() => {
+            setZoom(true);
             setIsEditing(false);
             setFloat("float");
+            setTimeout(() => {
+              setZoom(false);
+            }, 350);
           }, 500);
         }, 500);
       }, 500);
@@ -222,7 +227,10 @@ export default function Forge() {
       {/* Forge IMAGE  */}
       <div className="absolute left-[38vw] top-[15vh] xl:top-[20vh] xl:left-1/2 xl:-translate-x-1/2 overflow-visible">
         <motion.div
-          className={cn({ "animate-float": float === "float" })}
+          className={cn({
+            "animate-float": float === "float",
+            "animate-zoomIn": zoom === true,
+          })}
           animate={{
             scale: forgeNFT === "forging" ? 0.5 : 1,
           }}
@@ -233,14 +241,14 @@ export default function Forge() {
         >
           {/* BODY ITEM - FORGING COMPLETE */}
           {forgeNFT === "forged" && !isEditing && (
-            <div className="fadeIn">
+            <div className="">
               <Image
                 unoptimised
                 src={"/images/forge/forge-none.png"}
                 alt="Dashboard Nft Image"
                 width={1000}
                 height={1000}
-                className="animate-fadein duration-200 ease-out invisible -translate-x-[1vw] translate-y-[0.5vw] z-50 w-[25.5vw]"
+                className=" duration-200 ease-out invisible -translate-x-[1vw] translate-y-[0.5vw] z-50 w-[25.5vw]"
               />
               <Image
                 unoptimised
@@ -248,7 +256,7 @@ export default function Forge() {
                 alt="Dashboard Nft Image"
                 width={1000}
                 height={1000}
-                className="animate-fadein duration-200 ease-out absolute left-0 top-0 -translate-x-[1vw] translate-y-[0.5vw] z-50 w-[25.5vw]"
+                className=" duration-200 ease-out absolute left-0 top-0 -translate-x-[1vw] translate-y-[0.5vw] z-50 w-[25.5vw]"
               />
             </div>
           )}
