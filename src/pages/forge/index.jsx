@@ -248,7 +248,7 @@ export default function Forge() {
                 alt="Dashboard Nft Image"
                 width={1000}
                 height={1000}
-                className=" duration-200 ease-out invisible -translate-x-[1vw] translate-y-[0.5vw] z-50 w-[25.5vw]"
+                className="animate-fadein duration-200 ease-out invisible -translate-x-[1vw] translate-y-[0.5vw] z-50 w-[25.5vw]"
               />
               <Image
                 unoptimised
