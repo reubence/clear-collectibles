@@ -232,7 +232,7 @@ export default function Forge() {
             "animate-zoomIn": zoom === true,
           })}
           animate={{
-            scale: forgeNFT === "forging" ? 0.5 : 1,
+            scale: forgeNFT === "forging" ? 0.65 : 1,
           }}
           transition={{
             duration: 0.5,

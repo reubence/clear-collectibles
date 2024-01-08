@@ -100,7 +100,7 @@ module.exports = {
           "100%": { transform: "translateY(0)" },
         },
         zoomIn: {
-          "0%": { transform: "scale(0.6)" },
+          "0%": { transform: "scale(0.8)" },
           "100%": { transform: "scale(1)" },
         },
       },
