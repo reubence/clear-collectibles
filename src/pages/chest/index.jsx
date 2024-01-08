@@ -19,6 +19,7 @@ import { motion } from "framer-motion";
 import RotatingLight from "@/components/Lottie/RotatingLight";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { animate } from "framer-motion";
+import Link from "next/link";
 
 const selectData = [
   {
@@ -84,12 +85,12 @@ let tabs = [
     label: "Common",
     data: [
       {
-        id: "common1",
+        id: "common-1",
         bubbles: 792,
         src: "/images/chest/chest-bronze.png",
       },
       {
-        id: "common2",
+        id: "common-2",
         bubbles: 952,
         src: "/images/chest/chest-bronze.png",
       },
@@ -101,12 +102,12 @@ let tabs = [
     label: "Rare",
     data: [
       {
-        id: "rare1",
+        id: "rare-1",
         bubbles: 792,
         src: "/images/chest/chest-silver.png",
       },
       {
-        id: "rare2",
+        id: "rare-2",
         bubbles: 795,
         src: "/images/chest/chest-silver.png",
       },
@@ -117,12 +118,12 @@ let tabs = [
     label: "Epic",
     data: [
       {
-        id: "epic1",
+        id: "epic-1",
         bubbles: 552,
         src: "/images/chest/chest-gold.png",
       },
       {
-        id: "epic2",
+        id: "epic-2",
         bubbles: 852,
         src: "/images/chest/chest-gold.png",
       },
@@ -165,9 +166,10 @@ export default function Chest() {
       className={cn(
         "h-screen w-screen overflow-clip bg-gradient-to-b relative p-7 lg:p-14 xl:p-0 z-0",
         {
-          "from-[#C9CCD7] to-[#6D7496]": nftData.id === "common1" || true,
-          "from-[#4CE0BC] to-[#4C8280]": nftData.id === "rare1",
-          "from-[#F9C406] to-[#A96B0E]": nftData.id === "epic1",
+          "from-[#C9CCD7] to-[#6D7496]":
+            nftData.id.split("-")[0] === "common" || true,
+          "from-[#4CE0BC] to-[#4C8280]": nftData.id.split("-")[0] === "rare",
+          "from-[#F9C406] to-[#A96B0E]": nftData.id.split("-")[0] === "epic",
         }
       )}
     >
@@ -321,6 +323,25 @@ export default function Chest() {
           </div>
         </div>
       </div>
+
+      {/* MOBILE NAVIGATION */}
+      <div
+        className={cn(
+          "group absolute w-fit flex gap-4 lg:hidden items-center right-8 top-8 transition-all duration-150 ease-in cursor-pointer"
+        )}
+      >
+        <Link
+          href={"/pvp"}
+          className={cn(
+            buttonVariants({ variant: "gameSecondary" }),
+            "!py-2 !px-5 ",
+            "active:scale-95"
+          )}
+        >
+          Back
+        </Link>
+        <Icons.skullLogo className="w-12 h-12 fill-white" />
+      </div>
     </main>
   );
 }
@@ -398,7 +419,7 @@ function SelectForge({ setIsEditing, setNftData }) {
                   <div
                     key={item.id}
                     className={cn(
-                      "bg-black/20 border border-black/30 px-2.5 py-5 h-24 w-24 2xl:h-36 2xl:w-36 cursor-pointer",
+                      "bg-black/20 border border-black/30 p-0.5 h-24 w-24 2xl:h-36 2xl:w-36 cursor-pointer",
                       "hover:scale-95 hover:outline-offset-4 hover:outline hover:outline-yellow-500 rounded-3xl transition-all duration-300 ease-in-out",
                       {
                         "outline outline-offset-4 outline-yellow-500":
@@ -464,7 +485,7 @@ function SelectForge({ setIsEditing, setNftData }) {
                 tab.data.map((item, i) => (
                   <div
                     className={cn(
-                      "hidden p-2.5 w-20 h-20 rounded-xl border border-black/30 bg-black/20 relative overflow-hidden transition-all duration-150 ease-in cursor-pointer",
+                      "hidden p-0.5 w-20 h-20 rounded-xl border border-black/30 bg-black/20 relative overflow-hidden transition-all duration-150 ease-in cursor-pointer",
                       {
                         "scale-90 outline outline-1 outline-offset-2 outline-yellow-500":
                           activeEmote[tab.id] === item?.id,

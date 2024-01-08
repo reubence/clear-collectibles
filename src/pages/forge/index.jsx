@@ -19,6 +19,7 @@ import { motion } from "framer-motion";
 import RotatingLight from "@/components/Lottie/RotatingLight";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { animate } from "framer-motion";
+import Link from "next/link";
 
 const selectData = [
   {
@@ -348,6 +349,25 @@ export default function Forge() {
             </Button>
           </div>
         </div>
+      </div>
+
+      {/* MOBILE NAVIGATION */}
+      <div
+        className={cn(
+          "group absolute w-fit flex gap-4 lg:hidden items-center right-8 top-8 transition-all duration-150 ease-in cursor-pointer"
+        )}
+      >
+        <Link
+          href={"/pvp"}
+          className={cn(
+            buttonVariants({ variant: "gameSecondary" }),
+            "!py-2 !px-5 ",
+            "active:scale-95"
+          )}
+        >
+          Back
+        </Link>
+        <Icons.skullLogo className="w-12 h-12 fill-white" />
       </div>
     </main>
   );
