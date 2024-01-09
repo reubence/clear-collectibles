@@ -875,7 +875,7 @@ export const Icons = {
       />
     </svg>
   ),
-  arrowLeft: ({ props }) => (
+  arrowLeft: (props) => (
     <svg
       {...props}
       width="40"

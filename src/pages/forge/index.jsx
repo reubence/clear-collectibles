@@ -354,20 +354,27 @@ export default function Forge() {
       {/* MOBILE NAVIGATION */}
       <div
         className={cn(
-          "group absolute w-fit flex gap-4 items-center right-8 top-8 lg:right-12 lg:top-32 transition-all duration-150 ease-in cursor-pointer"
+          "group absolute w-fit flex gap-4 items-center left-8 top-8 lg:left-14 lg:top-40 transition-all duration-150 ease-in cursor-pointer",
+          {
+            hidden: isEditing,
+          }
         )}
       >
-        <Link
+        <Button
+          variant="gameSecondary"
           href={"/pvp"}
-          className={cn(
-            buttonVariants({ variant: "gameSecondary" }),
-            "!py-2 !px-5 2xl:!py-3",
-            "active:scale-95"
-          )}
+          className={cn("!py-2.5 !px-3 2xl:!py-3 2xl:!px-3.5")}
+          onClick={() => {
+            setForgeNFT(null);
+            setZoom(null);
+            setFloat(null);
+            setAvatar(null);
+            setIsEditing(true);
+            setData({});
+          }}
         >
-          Back
-        </Link>
-        <Icons.skullLogo className="w-12 h-12 lg:hidden fill-white" />
+          <Icons.arrowLeft className="w-6 h-6 lg:w-8 lg:h-8 fill-white" />
+        </Button>
       </div>
     </main>
   );
